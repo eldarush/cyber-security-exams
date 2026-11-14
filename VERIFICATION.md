@@ -12,6 +12,7 @@ Connected Brave browser verification used the browser tool, without a Playwright
 - Prediction priority and text filters narrow 30 → 3 → 1 items. Marking the last item mastered and enabling pending-only produces the empty state. The checkbox persists on reload and was reset after testing.
 - Desktop at 1429×688 and mobile at 390×844 show no page-level horizontal overflow. Tables intentionally scroll within their own containers on narrow screens.
 - No browser console errors were observed in these flows. Local test progress is on localhost, separate from the published site's storage.
+- Four historical questions with explicit source acceptance notes now grade all accepted alternatives. In a browser test, choosing the RSA option for Q013 (all alternatives accepted in its source) scored 100 and marked all four alternatives accepted; the explanation explicitly says there is no unique defensible answer as worded. Q021, Q038 and Q055 accept original alternatives A and B.
 
 ## Visual fidelity review
 

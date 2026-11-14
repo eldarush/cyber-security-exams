@@ -37,9 +37,9 @@
   },
   {
     "topic": "אבטחת Web",
-    "a": 7,
+    "a": 6,
     "b": 5,
-    "both": 5
+    "both": 4
   },
   {
     "topic": "רשתות: ARP, DNS, DoS ו-Firewall",

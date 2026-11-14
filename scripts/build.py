@@ -28,8 +28,9 @@ old=load('data/old-forecast.json')
 qbank=original['questions']
 # The inherited topic classifier used distractor words in several questions.
 # These corrections keep broad-topic counts aligned with the tested operation.
-fix={'Q038':6,'Q070':4,'Q123':1,'Q131':6,'Q172':7}
+fix={'Q038':6,'Q048':4,'Q065':6,'Q066':8,'Q070':4,'Q080':4,'Q121':0,'Q123':1,'Q131':6,'Q172':7}
 for q in qbank:
+    q['accepted_indices']=[0,1,2,3] if q['id']=='Q013' else [0,1] if q['id'] in ['Q021','Q038','Q055'] else [0]
     if q['id'] in fix:q['topic']=TOPICS[fix[q['id']]]
     if q['id'] in AUG:
         q['answer_html']=AUG[q['id']];q['answer_origin']='פתרון חדש שנכתב ונבדק במסגרת עדכון נובמבר 2026'
@@ -40,6 +41,7 @@ for q in qbank:
         q['answer_html']=clean(match[1]);q['answer_origin']='פתרון מפורט מהתיקייה organized exams · 17/10/2026'
         q['answer_source']=Path(match[0]['file']).name
 for q in LATEST:
+    q['accepted_indices']=[0]
     q['answer_origin']='פתרון חדש · המפתח הרשמי בקובץ: א׳ · ההסבר הוא חומר לימוד עצמאי'
     qbank.append(q)
 assert len(qbank)==182
@@ -61,7 +63,7 @@ for i,(key,priority,ev) in enumerate(PLAN,1):
         body=re.search(r'<div class="answer-body">(.*)</div><p class="muted">',old['answers'][key-1],re.S)[1]
         q=dict(stem=oq['stem'],options=[correct]+[s for j,s in enumerate(oq['options']) if j!=oq['answer_index']],topic=TOPICS[TOPIC_MAP[oq['topic']]],answer_html=clean(body),title=oq['topic'],old_number=key)
         origin=f'תרגיל {key} מהמאגר שנכתב ב-17/10/2026; נבחר מחדש לפי ההשוואה המעודכנת'
-    q.update(id=f'P{i:02}',year='תרגול',note='תחזית לימודית, לא שאלה שנצפתה בבחינה עתידית',sources=[dict(file='predictions.html',date=None,num=i)],flags=[],fixed_order=False,exclude=False,exam_count=0,in_sample_exam=False,variant_group=None,priority=priority,evidence=ev,mock=(i-1)//10+1,answer_origin=origin)
+    q.update(id=f'P{i:02}',year='תרגול',note='תחזית לימודית, לא שאלה שנצפתה בבחינה עתידית',sources=[dict(file='predictions.html',date=None,num=i)],flags=[],fixed_order=False,exclude=False,exam_count=0,in_sample_exam=False,variant_group=None,priority=priority,evidence=ev,mock=(i-1)//10+1,answer_origin=origin,accepted_indices=[0])
     pred.append(q)
 
 for q in qbank+pred:
@@ -108,6 +110,8 @@ def options(q):return '<ol class="study-options" type="א">'+''.join('<li>'+e(o)
 for q in qbank+pred:
     body='<p class="muted">'+e(q['id']+' · '+q['topic'])+'</p>'+paragraphs(q['stem'])+options(q)
     body+='<p class="correct"><strong>התשובה הנכונה:</strong> '+e(q['options'][0])+'</p><p class="muted">בתרגול החלופות מתערבבות. אותיות המוזכרות בפתרון מיובא מתייחסות לשאלון המקורי; יש לזהות את התשובה לפי התוכן.</p>'
+    if len(q['accepted_indices'])>1:
+        body=body.replace('<p class="correct"><strong>התשובה הנכונה:</strong> '+e(q['options'][0])+'</p>', '<p class="study-intro"><strong>שאלה עם הערת בדיקה מקורית:</strong> '+e(q['note'])+'. אין להציג כאן תשובה יחידה ללא ההסתייגות. הפתרון להלן מסביר את ההכרעה המקצועית; הניקוד האינטראקטיבי מכבד את כל החלופות שהתקבלו.</p>')
     if q.get('note'):body+='<p class="study-intro">'+e(q['note'])+'</p>'
     body+=answer(q,'../')+'<p>'+srclinks(q,'../')+'</p>'
     if q['id'].startswith('P'):body+='<h2>למה לתרגל?</h2><p>עדיפות: '+q['priority']+' — שילוב של חזרתיות במשפחת הנושא, וריאציות במועדי ב׳ ופערים שנחשפו במועד א׳. אין זו הסתברות להופעת השאלה.</p><p>'+qlinks(q['evidence'],'../')+'</p><p><a href="../predictions.html#'+q['id']+'">חזרה לתחזית</a></p>'
@@ -215,6 +219,25 @@ template=template.replace('localStorage.getItem(k)', "localStorage.getItem('cybe
 template=template.replace('function srcLabel(q){', "function srcLabel(q){ if(q.id.startsWith('P')) return 'תרגיל תחזית '+q.id+' · אינו שאלת בחינה מקורית';")
 template=template.replace("/* ---------- seeded random ---------- */",'''function solutionDetails(q){return `<details class="answer-detail"><summary>פתרון מפורט — הסבר וניתוח הטעויות</summary><p class="correct"><b>התשובה הנכונה:</b> ${esc(q.options[0])}</p><p class="study-source">${esc(q.answer_origin || '')} · אותיות בפתרון מיובא מתייחסות למקור, ולא לסדר שהוגרל.</p>${q.answer_html}<p><a href="${q.solution}" target="_blank" rel="noopener">פתרון בעמוד נפרד</a></p></details>`;}
 /* ---------- seeded random ---------- */''')
+template=template.replace('function solutionDetails(q){', '''function isCorrect(q,index){return (q.accepted_indices || [0]).includes(index);}
+function correctLetters(item){return item.order.map((oi,j)=>isCorrect(item.q,oi)?LET[j]:null).filter(Boolean).join(' / ');}
+function solutionDetails(q){''')
+template=template.replace('<p class="correct"><b>התשובה הנכונה:</b> ${esc(q.options[0])}</p>', '<p class="correct">${q.accepted_indices?.length>1 ? `<b>הערת בדיקה: ${esc(q.note)}</b> · ההסבר מפרט את ההסתייגות; הניקוד מכבד את החלופות שהתקבלו.` : `<b>התשובה הנכונה:</b> ${esc(q.options[0])}`}</p>')
+for oldexpr,newexpr in [
+ ('x.order[x.ans] === 0','isCorrect(x.q,x.order[x.ans])'),
+ ('x.order[x.ans]===0','isCorrect(x.q,x.order[x.ans])'),
+ ('x.order[x.ans] !== 0','!isCorrect(x.q,x.order[x.ans])'),
+ ('x.order[x.ans]!==0','!isCorrect(x.q,x.order[x.ans])'),
+ ('it.order[it.ans]===0','isCorrect(it.q,it.order[it.ans])'),
+ ('x.order[j]===0','isCorrect(x.q,x.order[j])'),
+ ('oi===0','isCorrect(q,oi)'),
+ ('B.show&&i===0','B.show&&isCorrect(q,i)'),
+ ('LET[it.order.indexOf(0)]','correctLetters(it)'),
+ ('LET[items[i].order.indexOf(0)]','correctLetters(items[i])')]:
+    template=template.replace(oldexpr,newexpr)
+template=template.replace("mark='<span class=\"mark okm\">✓ נכונה</span>';", "mark=q.accepted_indices.length>1?'<span class=\"mark okm\">✓ מתקבלת</span>':'<span class=\"mark okm\">✓ נכונה</span>';")
+template=template.replace("isCorrect(q,oi) ? '<span class=\"mark okm\">✓ נכונה</span>'", "isCorrect(q,oi) ? (q.accepted_indices.length>1?'<span class=\"mark okm\">✓ מתקבלת</span>':'<span class=\"mark okm\">✓ נכונה</span>')")
+template=template.replace("isCorrect(it.q,it.order[it.ans]) ? '✓ נכון.'", "isCorrect(it.q,it.order[it.ans]) ? (q.accepted_indices.length>1?'✓ התשובה התקבלה בבדיקה המקורית.':'✓ נכון.')")
 template=template.replace("</div>` : ''}\n        <div class=\"qnav\">", "</div>${solutionDetails(q)}` : ''}\n        <div class=\"qnav\">")
 template=template.replace('<span class="mono">${q.id}</span></div>','<span class="mono">${q.id}</span></div>${solutionDetails(q)}')
 template=template.replace("${q.note?`<div class=\"meta-line\">${esc(q.note)}</div>`:''}","${q.note?`<div class=\"meta-line\">${esc(q.note)}</div>`:''}${solutionDetails(q)}")

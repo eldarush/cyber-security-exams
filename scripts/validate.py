@@ -19,7 +19,8 @@ for q in bank+forecast:
     for ev in q.get('evidence',[]): assert any(x['id']==ev for x in bank),(q['id'],ev)
 assert sum(len({(s['date'],s['num']) for s in q['sources'] if s.get('date')}) for q in bank)==186
 assert all(not s.get('date') for q in forecast for s in q['sources'])
-assert [p['b_in_a'] for p in pairs]==[8,9,9,8,9,10,7]
+assert [p['b_in_a'] for p in pairs]==[8,8,9,6,8,10,7]
+assert {q['id']:q['accepted_indices'] for q in bank if len(q['accepted_indices'])>1}=={'Q013':[0,1,2,3],'Q021':[0,1],'Q038':[0,1],'Q055':[0,1]}
 assert sum(len(p['exact']) for p in pairs)==0
 assert {k:sum(x['status']==k for x in load('data/forecast-audit.json')) for k in ['קרוב','חלקי','פער']}=={'קרוב':2,'חלקי':3,'פער':5}
 
