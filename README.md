@@ -54,3 +54,5 @@ Fork של [salimkh25/cyber-security-exams](https://github.com/salimkh25/cyber-se
 בהצלחה במבחן! 🎓
 
 ציוני הביטחון הם מדד לימודי ולא אחוזי הסתברות לשאלה מדויקת. [שיטת הדירוג והראיות מכל המועדים](https://eldarush.github.io/cyber-security-exams/confidence.html).
+
+[הסימולציה הממוקדת למועד ב׳ — 10 שאלות](https://eldarush.github.io/cyber-security-exams/index.html?set=forecast-best#setup): סט קבוע המשלב את ציוני הביטחון הגבוהים בכל נושא עם תמהיל משבעת מועדי ב׳ הקודמים, ללא כפילות מיומנויות. תשובות מעורבבות, 80 דקות ופתרונות מפורטים לאחר ההגשה. [הנימוק לבחירה והתמהיל](https://eldarush.github.io/cyber-security-exams/best-mock.html).

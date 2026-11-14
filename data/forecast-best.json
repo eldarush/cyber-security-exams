@@ -1,0 +1,47 @@
+{
+  "id": "forecast-best",
+  "question_ids": [
+    "P02",
+    "P11",
+    "P08",
+    "P04",
+    "P17",
+    "P01",
+    "P15",
+    "P10",
+    "P20",
+    "P09"
+  ],
+  "b_dates": [
+    "06/11/2022",
+    "08/08/2023",
+    "04/07/2024",
+    "20/10/2024",
+    "21/08/2025",
+    "02/11/2025",
+    "09/08/2026"
+  ],
+  "quotas": {
+    "Hash, MAC וסיסמאות": 1,
+    "PKI, תעודות, CT ו-OCSP": 2,
+    "RSA, מפתח ציבורי וחתימות": 1,
+    "TLS / HTTPS": 0,
+    "אבטחת Web": 1,
+    "ביטקוין ובלוקצ׳יין": 1,
+    "דיפי-הלמן והחלפת מפתחות": 1,
+    "הצפנה סימטרית וצפנים קלאסיים": 2,
+    "רשתות: ARP, DNS, DoS ו-Firewall": 1
+  },
+  "target_counts": {
+    "Hash, MAC וסיסמאות": 1.381,
+    "PKI, תעודות, CT ו-OCSP": 1.9286,
+    "RSA, מפתח ציבורי וחתימות": 0.6905,
+    "TLS / HTTPS": 0.2857,
+    "אבטחת Web": 1.2381,
+    "ביטקוין ובלוקצ׳יין": 1.2619,
+    "דיפי-הלמן והחלפת מפתחות": 0.7143,
+    "הצפנה סימטרית וצפנים קלאסיים": 1.4048,
+    "רשתות: ARP, DNS, DoS ו-Firewall": 1.0952
+  },
+  "method": "Equal-weight B exams normalized to ten; largest-remainder topic quotas; highest confidence per topic with distinct skills; ID breaks ties."
+}

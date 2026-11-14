@@ -31,7 +31,7 @@ function harness(set = '', initial = {}) {
   return {context, storage, button, run: expression => vm.runInContext(expression, context)};
 }
 
-for (const [set, count] of [['',182], ['latest',10], ['forecast-all',60], ['forecast-focus',20], ['forecast-1',10], ['forecast-2',10], ['forecast-3',10], ['forecast-4',10], ['forecast-5',10], ['forecast-6',10]]) {
+for (const [set, count] of [['',182], ['latest',10], ['forecast-all',60], ['forecast-focus',20], ['forecast-best',10], ['forecast-1',10], ['forecast-2',10], ['forecast-3',10], ['forecast-4',10], ['forecast-5',10], ['forecast-6',10]]) {
   const h = harness(set, { cfg: {collection: 'old-source', years:['2022'], topics:['old-topic'], skipNoted:true, wrongOnly:true, n:10} });
   assert.equal(h.run('QS.length'), count);
   assert.equal(h.run('pool().length'), count);
@@ -46,11 +46,28 @@ for (const [set, count] of [['',182], ['latest',10], ['forecast-all',60], ['fore
     assert.equal(h.run('pool().length'), count);
     if (set === 'forecast-focus') {
       assert.equal(h.run('QS.map(q=>q.id).join() === [...FORECAST].sort((a,b)=>b.confidence-a.confidence || a.id.localeCompare(b.id)).slice(0,20).map(q=>q.id).join()'), true);
+    } else if (set === 'forecast-best') {
+      assert.equal(h.run('QS.map(q=>q.id).join() === BEST_MOCK.question_ids.join()'), true);
     } else if (/forecast-[1-6]$/.test(set)) {
       assert.equal(h.run(`QS.every(q=>q.mock===${Number(set.slice(-1))})`), true);
     }
   }
 }
+
+// A saved short practice configuration must not turn the fixed mock into two questions.
+const best = harness('forecast-best', {cfg:{collection:'forecast-all',mode:'practice',n:2,topics:['old'],years:['2022'],wrongOnly:true,minutes:5}});
+best.run('start()');
+assert.equal(best.run('S.exam.mode'), 'digital');
+assert.equal(best.run('S.exam.limit'), 80*60);
+assert.equal(best.run('S.exam.items.map(x=>x.q.id).sort().join()'), 'P01,P02,P04,P08,P09,P10,P11,P15,P17,P20');
+best.run('S.exam.items.forEach((x,i)=>x.ans=x.order.indexOf(i===0?1:0)); finish(false)');
+assert.equal(best.run('S.result.score'), 90);
+assert.equal(best.run('S.result.exam.items.map(reviewItem).join("").match(/class="option-review"/g).length'), 40);
+const bestWrong = best.run('S.exam.items[0].q.id');
+best.run('S.cfg.wrongOnly=true');
+assert.equal(best.run('pool().map(q=>q.id).join()'), bestWrong);
+best.run('start(); S.exam.items[0].ans=S.exam.items[0].order.indexOf(0); finish(false)');
+assert.equal(best.run('pool().length'), 0);
 
 const h = harness('forecast-all');
 h.run('S.cfg.n=2; start(); S.exam.items[0].ans=S.exam.items[0].order.indexOf(0); S.exam.items[1].ans=S.exam.items[1].order.indexOf(1); finish(false);');
@@ -95,4 +112,4 @@ assert.equal(mixed.storage.get('cyber-study-v2:history'), '[]');
 assert.equal(JSON.parse(mixed.storage.get('cyber-study-v2:cfg')).wrongOnly, false);
 assert.equal(mixed.run('pool().length'), 60);
 assert.equal(mixed.run('wrongQuestionIds().size'), 0);
-console.log('Exam flow: ten sources; forecast-only attempts; shuffled grading and explanations; wrong-only latest results; reload; clear-history confirmation and recovery passed.');
+console.log('Exam flow: eleven sources; full balanced mock; shuffled grading and explanations; wrong-only latest results; reload; clear-history confirmation and recovery passed.');

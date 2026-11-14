@@ -8,6 +8,7 @@ from forecast_review import apply_reviews
 from forecast_expansion import EXTRA
 from forecast_confidence import annotate
 from forecast_presentation import confidence_summary, forecast_intro, confidence_page
+from forecast_mock import select_mock, mock_page
 
 R=Path(__file__).resolve().parents[1]
 def load(p):return json.loads((R/p).read_text(encoding='utf-8'))
@@ -73,6 +74,8 @@ pred.extend(EXTRA)
 apply_reviews(pred)
 confidence_report=annotate(pred,qbank,PAIRS)
 save('data/forecast-confidence.json',confidence_report)
+best_mock=select_mock(pred,confidence_report,PAIRS)
+save('data/forecast-best.json',best_mock)
 for q in qbank+pred:
     q['question_type']='multiple-choice'
     q['solution']='solutions/'+q['id']+'.html'
@@ -198,6 +201,7 @@ for q in sorted(pred,key=lambda q:(-q['confidence'],q['id'])):
     intro+=f'<div class="study-controls"><label><input type="checkbox" data-mastered="{q["id"]}"> שולט/ת בשאלה ובנימוק</label><a href="{q["solution"]}">פתרון בעמוד נפרד</a></div></article>'
 intro+='</div>'
 page('confidence.html','איך דירגנו את 60 שאלות התחזית?',confidence_page(confidence_report,pred))
+page('best-mock.html','הסימולציה הממוקדת למועד ב׳ — 10 שאלות',mock_page(best_mock,pred))
 page('predictions.html','לקראת מועד ב׳ — תחזית ותרגול',intro)
 
 audit='''<p class="sub">בדיקה בדיעבד של התחזית הישנה, ואחריה ניתוח א׳→ב׳ לצורך תכנון הלמידה הבא.</p><div class="study-intro"><strong>לא נחשב ״דיוק״ לפי שם הנושא בלבד.</strong><p>ב-50 התרגילים שנכתבו לפני אוקטובר מצאנו 2 התאמות קרובות, 3 התאמות חלקיות ו-5 פערים ביחס ל-10 שאלות הבחינה. זהו סיווג ידני של כיסוי מיומנות, לא ציון צפוי ולא אומדן סטטיסטי של דיוק. תחזית רחבה של 50 שאלות אינה שקולה לניבוי של מבחן בן 10.</p></div><p><a href="old-forecast.html">התחזית הישנה והתרגילים המקוריים</a> · <a href="latest.html">בחינת אוקטובר בפועל</a></p><h2>התחזית מול כל שאלה בפועל</h2><p>״קרוב״: מנגנון הפתרון המרכזי תורגל במפורש. ״חלקי״: אותה משפחת מושגים, אך פעולה או הנחה חשובה השתנתה. ״פער״: אין תרגיל ישיר במיומנות בסט הישן. חומר הסבר רחב עשוי להזכיר יותר נושאים; הטבלה אינה טוענת שהמושג נעדר מכל מסמך בתיקייה.</p><div class="study-table"><table><thead><tr><th>שאלה בפועל</th><th>סיווג</th><th>תרגול ישן</th><th>מה למדנו</th></tr></thead><tbody>'''
@@ -235,13 +239,14 @@ page('archive.html','ארכיון בחינות ופתרונות מלאים',arch
 
 template=(R/'scripts/index.template.html').read_text(encoding='utf-8')
 template=template.replace('__BANK_JSON__',json.dumps(original,ensure_ascii=False,separators=(',',':')))
+template=template.replace('__BEST_MOCK_JSON__',json.dumps(best_mock,ensure_ascii=False,separators=(',',':')))
 template=template.replace('const QS = BANK.questions.filter(q => !q.exclude);', '''const FORECAST = '''+json.dumps(pred,ensure_ascii=False,separators=(',',':'))+''';
 const requestedSet = new URLSearchParams(location.search).get('set') || '';
-const selectedSet = ['latest','forecast-all','forecast-focus',...Array.from({length:6},(_,i)=>'forecast-'+(i+1))].includes(requestedSet) ? requestedSet : '';
-const isForecast = /^forecast-([1-6]|all|focus)$/.test(selectedSet);
+const selectedSet = ['latest','forecast-all','forecast-focus','forecast-best',...Array.from({length:6},(_,i)=>'forecast-'+(i+1))].includes(requestedSet) ? requestedSet : '';
+const isForecast = /^forecast-([1-6]|all|focus|best)$/.test(selectedSet);
 const rankedForecast = [...FORECAST].sort((a,b)=>b.confidence-a.confidence || a.id.localeCompare(b.id));
-const QS = isForecast ? (selectedSet==='forecast-focus' ? rankedForecast.slice(0,20) : FORECAST.filter(q => q.question_type==='multiple-choice' && (selectedSet==='forecast-all' || q.mock===Number(selectedSet.slice(-1))))) : BANK.questions.filter(q => q.question_type==='multiple-choice' && !q.exclude && (selectedSet!=='latest' || q.sources.some(s=>s.date==='19/10/2026')));
-const collectionName = isForecast ? 'תרגול תחזית מועד ב׳ — שאלות שחוברו לתרגול' : selectedSet==='latest' ? 'מועד א׳ · 19/10/2026' : 'מאגר הבחינות';''')
+const QS = selectedSet==='forecast-best' ? BEST_MOCK.question_ids.map(id=>FORECAST.find(q=>q.id===id)) : isForecast ? (selectedSet==='forecast-focus' ? rankedForecast.slice(0,20) : FORECAST.filter(q => q.question_type==='multiple-choice' && (selectedSet==='forecast-all' || q.mock===Number(selectedSet.slice(-1))))) : BANK.questions.filter(q => q.question_type==='multiple-choice' && !q.exclude && (selectedSet!=='latest' || q.sources.some(s=>s.date==='19/10/2026')));
+const collectionName = selectedSet==='forecast-best' ? 'הסימולציה הממוקדת למועד ב׳ — 10 שאלות בתמהיל היסטורי' : isForecast ? 'תרגול תחזית מועד ב׳ — שאלות שחוברו לתרגול' : selectedSet==='latest' ? 'מועד א׳ · 19/10/2026' : 'מאגר הבחינות';''')
 template=template.replace('</head>','<link rel="stylesheet" href="'+asset('study.css')+'"><script src="'+asset('answer-order.js')+'"></script></head>')
 template=template.replace('אותו קוד = אותו מבחן', 'אותו קוד = אותן שאלות; סדר התשובות מתחדש')
 template=template.replace('</body>', '<script src="'+asset('study.js')+'" defer></script></body>')
@@ -280,7 +285,7 @@ template=template.replace("</div>` : ''}\n        <div class=\"qnav\">", "</div>
 template=template.replace('<span class="mono">${q.id}</span></div>','<span class="mono">${q.id}</span></div>${solutionDetails(q)}')
 template=template.replace("${q.note?`<div class=\"meta-line\">${esc(q.note)}</div>`:''}","${q.note?`<div class=\"meta-line\">${esc(q.note)}</div>`:''}${solutionDetails(q)}")
 template=template.replace('tabFromHash();\nrender();', '''if ((S.cfg.collection || '') !== selectedSet) {
-  S.cfg = {...S.cfg, collection:selectedSet, n:Math.min(S.cfg.n,QS.length),topics:[],years:[],wrongOnly:false,skipNoted:false,minutes:null,shuffle:true,onlyMultipleChoice:true};
+  S.cfg = {...S.cfg, collection:selectedSet, mode:selectedSet==='forecast-best'?'digital':S.cfg.mode, n:selectedSet==='forecast-best'?10:Math.min(S.cfg.n,QS.length),topics:[],years:[],wrongOnly:false,skipNoted:false,minutes:null,shuffle:true,onlyMultipleChoice:true};
   store.set('cfg', S.cfg);
 }
 tabFromHash();

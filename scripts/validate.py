@@ -48,7 +48,7 @@ class Links(HTMLParser):
         for attr in ['href','src']:
             if attr in attrs:self.links.append(attrs[attr])
 
-files=[R/f for f in ['index.html','latest.html','predictions.html','analysis.html','confidence.html','archive.html','old-forecast.html']]+list((R/'solutions').glob('*.html'))
+files=[R/f for f in ['index.html','latest.html','predictions.html','analysis.html','confidence.html','best-mock.html','archive.html','old-forecast.html']]+list((R/'solutions').glob('*.html'))
 parsed={}
 for p in files:
     h=Links();h.feed(p.read_text(encoding='utf-8'));parsed[p.resolve()]=h
@@ -76,6 +76,7 @@ subprocess.run(['node',str(R/'scripts/test-answer-order.cjs')],check=True)
 subprocess.run(['node',str(R/'scripts/test-exam-flow.cjs')],check=True)
 subprocess.run([sys.executable,str(R/'scripts/test_forecast_content.py')],check=True)
 subprocess.run([sys.executable,str(R/'scripts/test_confidence.py')],check=True)
+subprocess.run([sys.executable,str(R/'scripts/test_best_mock.py')],check=True)
 archive_pages=[p for p in files if p.name.startswith('archive-')]
 assert sum(p.read_text(encoding='utf-8').count('data-question-type="open"') for p in archive_pages)==26
 assert all('id="only-multiple-choice" checked' in p.read_text(encoding='utf-8') for p in archive_pages)

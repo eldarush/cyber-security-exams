@@ -224,6 +224,7 @@ details summary{cursor:pointer;font-weight:600}
 
 <script>
 const BANK = __BANK_JSON__;
+const BEST_MOCK = __BEST_MOCK_JSON__;
 const PRINT_ENABLED = true;
 const QS = BANK.questions.filter(q => !q.exclude);
 const TOPICS = Object.keys(BANK.meta.topics);
@@ -330,9 +331,14 @@ function renderSetup(app){
       <div><h2>מבחן חדש</h2><p class="sub">בוחרים שאלות מתוך ${QS.length} השאלות שנאספו מ-${countExams()} מבחנים, מערבבים, ומתחילים.</p></div>
       <div class="panel stack">
         <label class="field">מקור השאלות<select id="f-source">
-          ${[['','מבחני עבר — כל המאגר'],['latest','מועד א׳ · אוקטובר 2026'],['forecast-all','תחזית מועד ב׳ — כל 60 השאלות'],['forecast-focus','תחזית מועד ב׳ — 20 המדורגות ראשונות'],...Array.from({length:6},(_,i)=>['forecast-'+(i+1),'תחזית מועד ב׳ — סט '+(i+1)+' (10 שאלות)'])].map(([value,label]) => `<option value="${value}" ${selectedSet===value?'selected':''}>${label}</option>`).join('')}
+          ${[['','מבחני עבר — כל המאגר'],['latest','מועד א׳ · אוקטובר 2026'],['forecast-best','הסימולציה הממוקדת למועד ב׳ — 10 שאלות'],['forecast-all','תחזית מועד ב׳ — כל 60 השאלות'],['forecast-focus','תחזית מועד ב׳ — 20 המדורגות ראשונות'],...Array.from({length:6},(_,i)=>['forecast-'+(i+1),'תחזית מועד ב׳ — סט '+(i+1)+' (10 שאלות)'])].map(([value,label]) => `<option value="${value}" ${selectedSet===value?'selected':''}>${label}</option>`).join('')}
         </select></label>
         <p class="sub">בחרו תחזית מועד ב׳ כדי ליצור מבחן משאלות התחזית בלבד. התשובות מעורבבות בכל ניסיון; פתרון מפורט לכל שאלה זמין לאחר ההגשה. התחזית היא חומר לתרגול, ולא בחינה עתידית ידועה.</p>
+        <div class="study-intro"><strong>הסימולציה הממוקדת למועד ב׳ — 10 שאלות</strong>
+          <p class="sub">השאלות בעלות הביטחון הגבוה ביותר בכל נושא, עם מיומנויות שונות ותמהיל משבעת מועדי ב׳: 2 PKI/CT, ‏2 הצפנה סימטרית, ואחת מכל נושא: RSA, ‏Hash/MAC, ‏Web, ביטקוין, DH ורשתות.</p>
+          ${selectedSet==='forecast-best' ? `<p class="sub" role="status">${n===10 && P.length===10 ? 'הסט המלא נבחר: 10 שאלות בתמהיל המאוזן.' : 'נבחר תרגול חלקי: הסינון או מספר השאלות שינו את התמהיל המלא.'}</p><button class="btn" id="reset-best">שחזור הסימולציה המלאה — 10 שאלות, 80 דקות</button>` : '<a class="btn primary" href="index.html?set=forecast-best#setup">בחרו את הסימולציה הממוקדת</a>'}
+          <p class="sub"><a href="best-mock.html" target="_blank" rel="noopener">למה נבחרו עשר השאלות האלה?</a> · זו תחזית לימודית, ללא הבטחה לשאלון העתידי.</p>
+        </div>
       </div>
       <div class="modes" role="radiogroup" aria-label="סוג מבחן">
         ${[['digital','מבחן דיגיטלי','עונים על הכל, מגישים, ומקבלים ציון ופירוט טעויות. עם טיימר.'],
@@ -380,6 +386,10 @@ function renderSetup(app){
     </aside>
   </div>`;
   const save = () => { store.set('cfg', S.cfg); renderSetup(app); };
+  if ($('#reset-best')) $('#reset-best').onclick = () => {
+    Object.assign(c, {mode:'digital',n:10,topics:[],years:[],wrongOnly:false,skipNoted:false,minutes:80,onlyMultipleChoice:true,shuffle:true});
+    save();
+  };
   $('#f-source').onchange = e => {
     const url = new URL(location.href);
     if (e.target.value) url.searchParams.set('set', e.target.value); else url.searchParams.delete('set');
