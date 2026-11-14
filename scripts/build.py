@@ -240,7 +240,6 @@ template=template.replace('</body>', '<script src="'+asset('study.js')+'" defer>
 template=template.replace('<main ', '<main ',1)
 template=template.replace('<body>','<body><a class="skip-link" href="#app">דלג לתוכן</a>')
 template=template.replace('</header>','''</header><div class="study-banner"><div class="wrap"><a href="predictions.html">תחזית מועד ב׳ · 30 שאלות ופתרונות</a><a href="latest.html">בחינת אוקטובר 2026</a><a href="analysis.html">בדיקת התחזית הקודמת</a><a href="archive.html">כל הפתרונות</a><a href="index.html#setup">כל מאגר הבחינות</a></div></div>''',1)
-template=template.replace('<main ', '<div class="wrap">'+question_type_filter()+'</div><main ',1)
 template=template.replace('function renderStats(app){', '''function renderStats(app){
   if(isForecast){app.innerHTML='<div class="panel stack"><h2>תחזית אינה נתון היסטורי</h2><p>השאלות בסט הזה נבחרו לתרגול. אין להציג אותן כהופעות במבחני עבר.</p><a href="analysis.html">ניתוח א׳/ב׳ והראיות לבחירה</a><a href="index.html#stats">סטטיסטיקת מאגר הבחינות</a></div>';return;}''')
 template=template.replace('בוחרים שאלות מתוך ${QS.length} השאלות שנאספו מ-${countExams()} מבחנים, מערבבים, ומתחילים.', '${esc(collectionName)} · ${QS.length} שאלות זמינות. בוחרים מצב, מערבבים ומתחילים. לכל שאלה פתרון מפורט לאחר המענה.')
@@ -271,7 +270,7 @@ template=template.replace("isCorrect(it.q,it.order[it.ans]) ? '✓ נכון.'", 
 template=template.replace("</div>` : ''}\n        <div class=\"qnav\">", "</div>${solutionDetails(q)}` : ''}\n        <div class=\"qnav\">")
 template=template.replace('<span class="mono">${q.id}</span></div>','<span class="mono">${q.id}</span></div>${solutionDetails(q)}')
 template=template.replace("${q.note?`<div class=\"meta-line\">${esc(q.note)}</div>`:''}","${q.note?`<div class=\"meta-line\">${esc(q.note)}</div>`:''}${solutionDetails(q)}")
-template=template.replace('tabFromHash();\nrender();', '''if (selectedSet) { S.cfg = {...S.cfg, mode:'digital',n:Math.min(10,QS.length),topics:[],years:[],wrongOnly:false,skipNoted:false,minutes:80,shuffle:true}; }
+template=template.replace('tabFromHash();\nrender();', '''if (selectedSet) { S.cfg = {...S.cfg, mode:'digital',n:Math.min(10,QS.length),topics:[],years:[],wrongOnly:false,skipNoted:false,minutes:80,shuffle:true,onlyMultipleChoice:true}; }
 tabFromHash();
 render();''')
 assert template.count('solutionDetails(q)')>=4

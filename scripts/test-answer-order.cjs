@@ -43,3 +43,29 @@ assert.equal(vm.runInContext('makeItems(questions)[0].order.join()', context), '
 assert(called);
 assert(!source.includes('id="f-shuffle"'));
 console.log('Answer ordering: all 24 permutations, 288 grading cases, matching answer keys, mandatory shuffling passed.');
+
+// Check the real generation functions with a mixed fixture, so the current
+// all-choice bank cannot conceal a missing filter in a generation route.
+const state = source.match(/const S = \{[\s\S]*?(?=function pool\()/)[0];
+const pool = source.match(/function pool\(\)\{[\s\S]*?(?=\/\* ---------- tabs)/)[0];
+const start = source.match(/function start\(ids\)\{[\s\S]*?(?=\/\* ---------- exam)/)[0];
+const generation = vm.createContext({
+  store: { get(key, fallback) { return key === 'cfg' ? { n: 10 } : fallback; } },
+  QS: [{id:'choice', question_type:'multiple-choice'}, {id:'open', question_type:'open'}],
+  rng() {}, shuffle: items => items.slice(), makeItems: items => items.map(q => ({q})),
+  go() {}, startTimer() {}, Date, Math
+});
+vm.runInContext(state + pool + start, generation);
+assert.equal(vm.runInContext('S.cfg.onlyMultipleChoice', generation), true);
+assert.equal(vm.runInContext('pool().map(q=>q.id).join()', generation), 'choice');
+for (const mode of ['digital', 'practice', 'print']) {
+  vm.runInContext(`S.cfg.mode='${mode}'; start();`, generation);
+  assert.equal(vm.runInContext(mode === 'print'
+    ? 'S.print.versions.every(v=>v.length===1 && v[0].q.id==="choice")'
+    : 'S.exam.items.length===1 && S.exam.items[0].q.id==="choice"', generation), true);
+}
+vm.runInContext('start(["choice","open"])', generation);
+assert.equal(vm.runInContext('S.exam.items.map(x=>x.q.id).join()', generation), 'choice');
+vm.runInContext('S.cfg.onlyMultipleChoice=false', generation);
+assert.equal(vm.runInContext('pool().length', generation), 2);
+console.log('Exam setup: default-on choice filter excludes open questions in digital, practice, print and retry generation.');

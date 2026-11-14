@@ -280,7 +280,7 @@ function srcLabel(q){ const s = q.sources.find(s=>s.date) || q.sources[0]; retur
 /* ---------- state ---------- */
 const S = {
   tab: 'setup',
-  cfg: Object.assign({mode:'digital', n:10, topics:[], years:[], shuffle:true, skipNoted:false, wrongOnly:false, minutes:null, versions:2, verMode:'random', seed:''}, store.get('cfg', {})),
+  cfg: Object.assign({mode:'digital', n:10, topics:[], years:[], shuffle:true, onlyMultipleChoice:true, skipNoted:false, wrongOnly:false, minutes:null, versions:2, verMode:'random', seed:''}, store.get('cfg', {})),
   exam: null, result: null, print: null,
   bank: {q:'', topic:'', year:'', show:false}
 };
@@ -290,6 +290,7 @@ function pool(){
   const wrong = new Set(); const right = new Set();
   if (c.wrongOnly) for (const h of hist) for (const a of h.answers){ (a.ok ? right : wrong).add(a.id); }
   return QS.filter(q =>
+    (!c.onlyMultipleChoice || q.question_type === 'multiple-choice') &&
     (!c.topics.length || c.topics.includes(q.topic)) &&
     (!c.years.length || yearsOf(q).some(y => c.years.includes(y))) &&
     (!c.skipNoted || !q.note) &&
@@ -341,6 +342,8 @@ function renderSetup(app){
           <div class="chips">${YEARS.map(y=>`<button class="chip" data-year="${y}" aria-pressed="${c.years.includes(y)}">${y} <span class="n">${yc(y)}</span></button>`).join('')}</div></div>
         <div class="row" style="gap:22px">
           <p class="sub">סדר התשובות מעורבב אוטומטית בכל ניסיון חדש. הסדר נשמר במהלך המענה ובבדיקת התוצאות.</p>
+          <label class="check"><input type="checkbox" id="f-choice" ${c.onlyMultipleChoice?'checked':''}>בלי שאלות פתוחות</label>
+          <p class="sub">המבחן יכלול שאלות שבהן בוחרים תשובה. כרגע כל השאלות במאגר התרגול הן שאלות בחירה; שאלות פתוחות זמינות בארכיון בלבד.</p>
           <label class="check"><input type="checkbox" id="f-noted" ${c.skipNoted?'checked':''}>בלי שאלות שבוטלו/קיבלו כמה תשובות</label>
           <label class="check" ${histN?'':'title="יופעל אחרי מבחן ראשון"'}><input type="checkbox" id="f-wrong" ${c.wrongOnly?'checked':''} ${histN?'':'disabled'}>רק שאלות שטעיתי בהן</label>
         </div>
@@ -371,6 +374,7 @@ function renderSetup(app){
   app.querySelectorAll('[data-topic]').forEach(b => b.onclick = () => { const t=b.dataset.topic; c.topics = c.topics.includes(t) ? c.topics.filter(x=>x!==t) : [...c.topics, t]; save(); });
   app.querySelectorAll('[data-year]').forEach(b => b.onclick = () => { const y=b.dataset.year; c.years = c.years.includes(y) ? c.years.filter(x=>x!==y) : [...c.years, y]; save(); });
   $('#f-n').onchange = e => { c.n = Math.max(1, Math.min(QS.length, +e.target.value||10)); c.minutes = null; save(); };
+  $('#f-choice').onchange = e => { c.onlyMultipleChoice = e.target.checked; save(); };
   $('#f-noted').onchange = e => { c.skipNoted = e.target.checked; save(); };
   $('#f-wrong').onchange = e => { c.wrongOnly = e.target.checked; save(); };
   if ($('#f-min')) $('#f-min').onchange = e => { c.minutes = Math.max(0, +e.target.value||0); save(); };
@@ -388,7 +392,7 @@ function start(ids){
   const c = S.cfg;
   const seed = c.seed ? +c.seed : Math.floor(Math.random()*900000)+100000;
   const r = rng(seed);
-  const P = Array.isArray(ids) ? QS.filter(q => ids.includes(q.id)) : pool();
+  const P = Array.isArray(ids) ? QS.filter(q => ids.includes(q.id) && (!c.onlyMultipleChoice || q.question_type === 'multiple-choice')) : pool();
   const n = Array.isArray(ids) ? P.length : Math.min(c.n, P.length);
   if (c.mode === 'print' && !Array.isArray(ids)){
     const versions = []; let remaining = P.slice(); const base = shuffle(P, r).slice(0, n);
