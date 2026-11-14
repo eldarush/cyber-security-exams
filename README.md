@@ -2,7 +2,7 @@
 
 **[תחזית מועד ב׳](https://eldarush.github.io/cyber-security-exams/predictions.html)** · **[בחינת אוקטובר 2026 ופתרונות](https://eldarush.github.io/cyber-security-exams/latest.html)** · **[בדיקת התחזית הישנה](https://eldarush.github.io/cyber-security-exams/analysis.html)**
 
-Fork של [salimkh25/cyber-security-exams](https://github.com/salimkh25/cyber-security-exams), עם 182 שאלות מ-18 מועדים ופתרון מפורט לכל שאלה. נוספו 20 פתרונות לאוגוסט ולאוקטובר 2026, 26 מסמכי פתרונות מהתיקייה שסופקה כולל הסעיפים הפתוחים, ו-30 תרגילי תחזית בשלוש סימולציות.
+Fork של [salimkh25/cyber-security-exams](https://github.com/salimkh25/cyber-security-exams), עם 182 שאלות מ-18 מועדים ופתרון מפורט לכל שאלה. נוספו 20 פתרונות לאוגוסט ולאוקטובר 2026, 26 מסמכי פתרונות מהתיקייה שסופקה כולל הסעיפים הפתוחים, ו-60 תרגילי תחזית בשש סימולציות, עם ציוני ביטחון מוסברים של 1–100 לכל שאלה.
 
 הניתוח משווה שבעה זוגות א׳/ב׳. בבדיקת 50 תרגילי התחזית הישנה מול עשר שאלות אוקטובר נמצאו 2 התאמות קרובות, 3 חלקיות ו-5 פערים. זהו סיווג כיסוי ידני, לא מדד סטטיסטי של דיוק. הדירוג החדש הוא סדר עדיפות ללמידה, לא הבטחה לשאלון עתידי. ההסברים הם חומר לימוד עצמאי, לא פתרון רשמי.
 
@@ -52,3 +52,5 @@ Fork של [salimkh25/cyber-security-exams](https://github.com/salimkh25/cyber-se
 ---
 
 בהצלחה במבחן! 🎓
+
+ציוני הביטחון הם מדד לימודי ולא אחוזי הסתברות לשאלה מדויקת. [שיטת הדירוג והראיות מכל המועדים](https://eldarush.github.io/cyber-security-exams/confidence.html).

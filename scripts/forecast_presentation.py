@@ -1,0 +1,58 @@
+from html import escape as e
+
+def confidence_summary(q, prefix=''):
+    return (f'<p class="study-intro"><strong>ביטחון במיומנות: {q["confidence"]}/100</strong> · '
+        'מדד שיפוטי, לא אחוז הסתברות לניסוח הזה. '
+        f'<a href="{prefix}confidence.html">איך חושב הציון?</a></p>'
+        f'<p class="study-source">מיומנות: {e(q["skill_label"])}. {e(q["confidence_reason"])}</p>')
+
+def forecast_intro(pred):
+    ranked=sorted(pred,key=lambda q:(-q['confidence'],q['id']))
+    links=''.join(f'<a href="index.html?set=forecast-{n}">סימולציה {n} · 10 שאלות</a>' for n in range(1,7))
+    focus=''.join(f'<li><a href="#{q["id"]}">{q["id"]} · {e(q["title"])}</a> — {q["confidence"]}/100</li>' for q in ranked[:12])
+    return ('''<p class="sub">מועד ב׳ שאחרי בחינת 19/10/2026 · עדכון 14/11/2026</p>
+<div class="study-intro"><strong>60 שאלות בחירה, מדורגות לפי הראיות.</strong>
+<p>30 שאלות נוספו לתחזית ונבדקו לצד 30 הקיימות. בכל שאלה ארבע חלופות ותשובה נכונה אחת, עם הסבר נפרד לכל חלופה. אין שאלות פתוחות בתחזית.</p>
+<p>הבסיס: 18 מועדים מתוארכים מאוקטובר 2022 עד אוקטובר 2026, שבעה זוגות א׳/ב׳ ושלושה זוגות קיץ. קובצי מקור כפולים אינם נספרים פעמיים.</p>
+<p><strong>מה אומר הציון?</strong> ביטחון יחסי, בסולם 1–100, שכדאי להתכונן למיומנות דומה. 80/100 אינו טענה לסיכוי 80% שהשאלה תופיע. אין לנו את הבחינה העתידית, והציון לא כויל מול תחזיות קפואות ממחזורים קודמים.</p></div>
+<div class="study-actions"><a class="primary" href="index.html?set=forecast-focus">תרגול מתוך 20 השאלות המדורגות ראשונות</a>
+<a href="index.html?set=forecast-all">יצירת מבחן מתוך כל 60 השאלות</a>'''+links+'''
+<a href="confidence.html">חישוב הציונים וראיות מכל השנים</a><a href="analysis.html">השוואת א׳/ב׳ ובדיקת התחזית הקודמת</a></div>
+<h2>במה להתחיל?</h2><p>החלפת פעולה בתוך משפחה חוזרת: שרשרת תעודות מול תנאי אמון; חתימה מול אימות RSA; שלמות מול סודיות; אישורים מול תוקף הוצאה. הנושאים בעלי המשקל הגבוה כוללים PKI/CT, ביטקוין, Hash/MAC, RSA ו-OTP. עצם הופעת נושא במועד א׳ אינה מבטיחה חזרה במועד ב׳.</p>
+<details class="study-card"><summary>12 השאלות המדורגות ראשונות</summary><ol>'''+focus+'''</ol></details>
+<p>הכינו תשובה גם כשהמספרים, הכיוון או ההנחה משתנים. שש הסימולציות מכסות את כל 60 השאלות ללא כפילות; הן תרגול ואינן שישה ניחושים של תמהיל הבחינה. הציונים אינם בלתי תלויים ושאלות קרובות חולקות אותה ראיה.</p>
+<div class="study-filter"><label>חיפוש <input type="search" id="forecast-search" placeholder="למשל RSA או OTP"></label>
+<label>עדיפות <select id="forecast-priority"><option value="">הכל</option><option>ליבה</option><option>משלים</option><option>ממוקד</option><option>רשת ביטחון</option></select></label>
+<label>ביטחון מינימלי <select id="forecast-confidence"><option value="0">כל הציונים</option><option value="70">70 ומעלה</option><option value="60">60 ומעלה</option><option value="50">50 ומעלה</option></select></label>
+<label>מיון <select id="forecast-sort"><option value="confidence">ביטחון — מהגבוה לנמוך</option><option value="id">מספר שאלה</option></select></label>
+<label><input type="checkbox" id="forecast-pending"> רק מה שטרם סומן</label><output id="forecast-count" aria-live="polite"></output><button class="btn" id="print-study">הדפסה עם פתרונות</button></div>
+<p>סימון שליטה נשמר בדפדפן בלבד. ליבה: 70 ומעלה; משלים: 55–69; ממוקד: 45–54; רשת ביטחון: פחות מ-45.</p>
+<p id="forecast-empty" hidden>אין שאלות בסינון הזה. נסו חיפוש אחר או הסירו סינון.</p>''')
+
+def confidence_page(report,pred):
+    weights=[('כל 18 המועדים',15,'שיעור המועדים עם לפחות שאלה במשפחת הנושא'),
+        ('שבעת מועדי ב׳ המזוהים',25,'שיעור מועדי ב׳ עם משפחת הנושא'),
+        ('המשכיות א׳→ב׳',15,'מתוך הזוגות שבהם הנושא הופיע בא׳, כמה כוללים אותו בב׳'),
+        ('שלושת מועדי ב׳ של קיץ',15,'אותה משפחה במועדי ב׳ של קיץ 2022, 2024, 2025'),
+        ('סימוכין למיומנות',20,'מספר תאריכים שונים במיפוי הידני של המיומנות, מחולק ב-6 ונחסם ב-1'),
+        ('מועד א׳ האחרון',10,'10 נקודות אם המיומנות מתועדת בבחינת 19/10/2026; אחרת 0')]
+    body='''<div class="study-intro"><strong>ציון ביטחון 1–100: מדד לימודי מוסבר, לא הסתברות מכוילת.</strong>
+<p>המטרה היא לדרג את חוזק הראיות להופעת מיומנות דומה. אי אפשר להבטיח את ניסוח השאלה, את המספרים או את תמהיל הבחינה. המשקלים הם בחירה שיפוטית גלויה, ולא תוצאה של התאמת מודל שנבחן על נתונים שלא ראה.</p></div>
+<h2>מה נכלל בניתוח?</h2><p>כל בחינות הברירה המתוארכות הזמינות בתיקייה: 18 תאריכים לאורך כארבע שנים, 182 נוסחים ייחודיים ו-186 הופעות לפי תאריך. שאלות פתוחות אינן נכנסות לספירה. מועד מיוחד נכלל בכיסוי הכללי אך אינו הופך אוטומטית למועד ב׳. שבעת הזוגות תועדו בנפרד.</p>'''
+    body+='<ul>'+''.join(f'<li>{year}: {n} מועדים</li>' for year,n in report['year_exam_counts'].items())+'</ul>'
+    body+='<p><a href="analysis.html">תאריכי הזוגות, מעבר בין מיומנויות ומגבלות ההשוואה</a> · <a href="archive.html">כל השאלונים והפתרונות</a></p>'
+    body+='<h2>הנוסחה הגלויה</h2><div class="study-table"><table><thead><tr><th>רכיב</th><th>משקל מרבי</th><th>משמעות</th></tr></thead><tbody>'+''.join(f'<tr><td>{a}</td><td>{b}</td><td>{c}</td></tr>' for a,b,c in weights)+'</tbody></table></div>'
+    body+='''<p>בארבעת רכיבי השכיחות משתמשים בהחלקה (מספר הצלחות + 1) / (מספר הזדמנויות + 2), כדי ש-3/3 לא יתפרש כוודאות. מחברים את התרומות, מפחיתים 20 נקודות בשאלות שהן הרחבה מעבר למקרה המתועד, מעגלים למספר שלם ותוחמים ל-1–100. ההחלקה אינה הופכת את הציון להסתברות.</p>
+<p>מיפוי המיומנויות הוא מיפוי ידני ושמרני של סימוכין מאומתים, לא סיווג ממצה של כל משפט בשאלות מרובות טענות. ספירת הנושאים היא לפי הנושא הראשי של השאלה. הופעה בודדת אינה נחשבת בכמה תאריכים רק מפני שיש לה כמה קבצים. ציונים זהים למיומנויות קרובות הם צפויים, ולא ראיות עצמאיות.</p>
+<h2>כיסוי הנושאים בכל השנים ובזוגות</h2><div class="study-table"><table><thead><tr><th>משפחת נושא</th><th>כל המועדים</th><th>ב׳</th><th>המשך מא׳</th><th>ב׳ קיץ</th></tr></thead><tbody>'''
+    for topic,t in report['topic_stats'].items():
+        body+=f'<tr><td>{e(topic)}</td><td>{t["exams"]}/18</td><td>{t["b"]}/7</td><td>{t["both"]}/{t["a"]}</td><td>{t["summer_b"]}/3</td></tr>'
+    body+='</tbody></table></div><h2>18 המועדים שנבדקו</h2><div class="study-table"><table><thead><tr><th>תאריך</th><th>שאלות ברירה</th><th>התפלגות נושאים</th></tr></thead><tbody>'
+    for date,topics in report['exam_topics'].items():
+        body+=f'<tr><td>{date}</td><td>{sum(topics.values())}</td><td>'+e(' · '.join(f'{k}: {v}' for k,v in topics.items()))+'</td></tr>'
+    body+='</tbody></table></div><h2>60 שאלות — ציון והנמקה</h2><ol>'
+    for q in sorted(pred,key=lambda q:(-q['confidence'],q['id'])):
+        body+=f'<li><a href="predictions.html#{q["id"]}">{q["id"]} — {e(q["title"])}</a> · <b>{q["confidence"]}/100</b><p>{e(q["confidence_reason"])}</p></li>'
+    body+='</ol><p><a href="data/forecast-confidence.json">נתוני המקור, המיפוי והרכיבים לכל ציון (JSON)</a></p>'
+    body+='<h2>מה עדיין לא ידוע?</h2><p>אין בדיקת דיוק של תחזיות שהוקפאו מראש על כמה מחזורים נפרדים, ולכן אין לייחס לציון שיעור הצלחה אמפירי. מועדים מעטים, שאלות קשורות, שינוי פורמט ושינוי דגש של המרצה מגבילים את ההסקה. שש סימולציות של 10 שאלות מספקות תרגול רחב; אין טענה שכל 60 המיומנויות יופיעו באותה בחינה.</p>'
+    return body

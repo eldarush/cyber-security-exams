@@ -8,9 +8,9 @@ import json,re,math,subprocess,tempfile,sys
 R=Path(__file__).resolve().parents[1]
 def load(p):return json.loads((R/p).read_text(encoding='utf-8'))
 bank=load('data/bank.json')['questions'];forecast=load('data/forecast.json');pairs=load('data/pairs.json')
-assert len(bank)==182 and len(forecast)==30 and len(pairs)==7
-assert len({q['id'] for q in bank+forecast})==212
-assert all(sum(q['mock']==n for q in forecast)==10 for n in [1,2,3])
+assert len(bank)==182 and len(forecast)==60 and len(pairs)==7
+assert len({q['id'] for q in bank+forecast})==242
+assert all(sum(q['mock']==n for q in forecast)==10 for n in range(1,7))
 assert all(len(q['options'])==4 and len(set(q['options']))==4 for q in bank+forecast)
 for q in bank+forecast:
     assert (R/q['solution']).exists(),q['id']
@@ -48,7 +48,7 @@ class Links(HTMLParser):
         for attr in ['href','src']:
             if attr in attrs:self.links.append(attrs[attr])
 
-files=[R/f for f in ['index.html','latest.html','predictions.html','analysis.html','archive.html','old-forecast.html']]+list((R/'solutions').glob('*.html'))
+files=[R/f for f in ['index.html','latest.html','predictions.html','analysis.html','confidence.html','archive.html','old-forecast.html']]+list((R/'solutions').glob('*.html'))
 parsed={}
 for p in files:
     h=Links();h.feed(p.read_text(encoding='utf-8'));parsed[p.resolve()]=h
@@ -75,6 +75,7 @@ subprocess.run(['node','--check',str(R/'answer-order.js')],check=True,capture_ou
 subprocess.run(['node',str(R/'scripts/test-answer-order.cjs')],check=True)
 subprocess.run(['node',str(R/'scripts/test-exam-flow.cjs')],check=True)
 subprocess.run([sys.executable,str(R/'scripts/test_forecast_content.py')],check=True)
+subprocess.run([sys.executable,str(R/'scripts/test_confidence.py')],check=True)
 archive_pages=[p for p in files if p.name.startswith('archive-')]
 assert sum(p.read_text(encoding='utf-8').count('data-question-type="open"') for p in archive_pages)==26
 assert all('id="only-multiple-choice" checked' in p.read_text(encoding='utf-8') for p in archive_pages)
@@ -88,4 +89,4 @@ for p in files:
         list_id=re.search(r'id="([^"]+)"',attrs)[1]
         assert 'data-answer-for="'+list_id+'"' in doc,p
         assert 'answer-order.js' in doc and 'study.js' in doc,p
-print(json.dumps({'html_pages_checked':len(files),'local_links_checked':links,'past_questions':182,'forecast_questions':30,'pairs':7,'arithmetic':'passed','javascript_syntax':'passed'},indent=2))
+print(json.dumps({'html_pages_checked':len(files),'local_links_checked':links,'past_questions':182,'forecast_questions':60,'pairs':7,'arithmetic':'passed','javascript_syntax':'passed'},indent=2))

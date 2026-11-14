@@ -31,7 +31,7 @@ function harness(set = '', initial = {}) {
   return {context, storage, button, run: expression => vm.runInContext(expression, context)};
 }
 
-for (const [set, count] of [['',182], ['latest',10], ['forecast-all',30], ['forecast-1',10], ['forecast-2',10], ['forecast-3',10]]) {
+for (const [set, count] of [['',182], ['latest',10], ['forecast-all',60], ['forecast-focus',20], ['forecast-1',10], ['forecast-2',10], ['forecast-3',10], ['forecast-4',10], ['forecast-5',10], ['forecast-6',10]]) {
   const h = harness(set, { cfg: {collection: 'old-source', years:['2022'], topics:['old-topic'], skipNoted:true, wrongOnly:true, n:10} });
   assert.equal(h.run('QS.length'), count);
   assert.equal(h.run('pool().length'), count);
@@ -44,6 +44,11 @@ for (const [set, count] of [['',182], ['latest',10], ['forecast-all',30], ['fore
     // The forecast disclaimer must not be mistaken for a cancelled exam question.
     h.run('S.cfg.skipNoted=true');
     assert.equal(h.run('pool().length'), count);
+    if (set === 'forecast-focus') {
+      assert.equal(h.run('QS.map(q=>q.id).join() === [...FORECAST].sort((a,b)=>b.confidence-a.confidence || a.id.localeCompare(b.id)).slice(0,20).map(q=>q.id).join()'), true);
+    } else if (/forecast-[1-6]$/.test(set)) {
+      assert.equal(h.run(`QS.every(q=>q.mock===${Number(set.slice(-1))})`), true);
+    }
   }
 }
 
@@ -88,6 +93,6 @@ mixed.run('S.cfg.wrongOnly=true');
 mixed.context.confirmation.callback();
 assert.equal(mixed.storage.get('cyber-study-v2:history'), '[]');
 assert.equal(JSON.parse(mixed.storage.get('cyber-study-v2:cfg')).wrongOnly, false);
-assert.equal(mixed.run('pool().length'), 30);
+assert.equal(mixed.run('pool().length'), 60);
 assert.equal(mixed.run('wrongQuestionIds().size'), 0);
-console.log('Exam flow: six sources; forecast-only attempts; shuffled grading and explanations; wrong-only latest results; reload; clear-history confirmation and recovery passed.');
+console.log('Exam flow: ten sources; forecast-only attempts; shuffled grading and explanations; wrong-only latest results; reload; clear-history confirmation and recovery passed.');

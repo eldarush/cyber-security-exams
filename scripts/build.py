@@ -5,6 +5,9 @@ import json,re,html,hashlib
 from content import LATEST,AUG,TOPICS
 from forecast import NEW,PLAN,TOPIC_MAP,AUDIT,PAIRS,SOURCES
 from forecast_review import apply_reviews
+from forecast_expansion import EXTRA
+from forecast_confidence import annotate
+from forecast_presentation import confidence_summary, forecast_intro, confidence_page
 
 R=Path(__file__).resolve().parents[1]
 def load(p):return json.loads((R/p).read_text(encoding='utf-8'))
@@ -66,7 +69,10 @@ for i,(key,priority,ev) in enumerate(PLAN,1):
     q.update(id=f'P{i:02}',year='תרגול',note='תחזית לימודית, לא שאלה שנצפתה בבחינה עתידית',sources=[dict(file='predictions.html',date=None,num=i)],flags=[],fixed_order=False,exclude=False,exam_count=0,in_sample_exam=False,variant_group=None,priority=priority,evidence=ev,mock=(i-1)//10+1,answer_origin=origin,accepted_indices=[0])
     pred.append(q)
 
+pred.extend(EXTRA)
 apply_reviews(pred)
+confidence_report=annotate(pred,qbank,PAIRS)
+save('data/forecast-confidence.json',confidence_report)
 for q in qbank+pred:
     q['question_type']='multiple-choice'
     q['solution']='solutions/'+q['id']+'.html'
@@ -127,6 +133,7 @@ def answer_key(q):
     return '<p class="correct" data-answer-for="opts-'+q['id']+'">'+e(label+' / '.join(keys))+'</p>'
 for q in qbank+pred:
     body='<p class="muted">'+e(q['id']+' · '+q['topic'])+'</p>'+paragraphs(q['stem'])+options(q)
+    if q.get('confidence'):body=confidence_summary(q,'../')+body
     body+=answer_key(q)
     if len(q['accepted_indices'])>1:
         body+='<p class="study-intro">הניקוד מכבד את החלופות שהתקבלו בבדיקה המקורית. הפתרון מסביר את ההסתייגות המקצועית.</p>'
@@ -182,16 +189,15 @@ for label,a,b,note in PAIRS:
 save('data/pairs.json',pairdata)
 save('data/forecast-audit.json',AUDIT)
 
-intro='''<p class="sub">תחזית לימודית למועד ב׳ שאחרי 19/10/2026 · עדכון 14/11/2026.</p><div class="study-intro"><strong>מה כדאי לדעת לפתור, גם כשהניסוח מתחלף.</strong><p>30 שאלות נבחרות ב-3 סימולציות של 10 שאלות: 10 וריאציות חדשות ו-20 תרגילים מהמאגר הקודם, עם פתרונות מלאים ומקורות. הדירוג הוא סדר עדיפות ללמידה, לא הסתברות לשאלה עתידית. אין לנו את שאלון מועד ב׳, ולא ידועים מועדו המדויק או שינויים בסילבוס.</p></div><div class="study-actions"><a class="primary" href="index.html?set=forecast-1">סימולציה 1 · 80 דקות</a><a href="index.html?set=forecast-2">סימולציה 2 · 80 דקות</a><a href="index.html?set=forecast-3">סימולציה 3 · 80 דקות</a><a href="index.html?set=forecast-all">כל 30 שאלות התרגול</a><a href="analysis.html">הנתונים מאחורי הדירוג</a></div>'''
-intro+='''<h2>סדר העדיפויות</h2><div class="study-table"><table><thead><tr><th>רמה</th><th>מה לתרגל</th><th>למה</th></tr></thead><tbody><tr><td>ליבה</td><td>PKI/CT/OCSP; ביטקוין ומרקל; Hash/MAC; RSA; ECB/CBC/OTP; XSS/CSRF</td><td>משפחות שחוזרות במדגם או מאפשרות מעבר בין מיומנויות קרובות. לא כולן צפויות להופיע יחד.</td></tr><tr><td>משלים</td><td>DH, TLS, HSTS/CSP, SOP, סיסמאות, ARP</td><td>נושאים שמופיעים במועדים קודמים ויכולים לחזור גם אם נעדרו מאוקטובר.</td></tr><tr><td>ממוקד</td><td>Vigenère, ספירת מפתחות, hash הצעצוע</td><td>סגירת פערים ממועד א׳; הופעה טרייה אינה לבדה ראיה לחזרתיות גבוהה במועד ב׳.</td></tr><tr><td>רשת ביטחון</td><td>SQL injection, DNS, DoS</td><td>כיסוי משלים כדי לא להמר רק על הנושאים האחרונים.</td></tr></tbody></table></div>'''
-intro+='''<h2>איך לעבוד עם התחזית</h2><ol><li>פתרו את מועד א׳ האחרון והסבירו בקול למה כל מסיח שגוי.</li><li>בצעו סימולציה של 10 שאלות בלי לפתוח פתרונות; בחרו במצב ״מבחן דיגיטלי״. לכל שאלה כשמונה דקות.</li><li>קראו הסבר לכל טעות, ואז החליפו מספר או הנחה ופתרו שוב. שינוי מ-OTP חוזר לחד פעמי או מ-CT בלי SCT ל-CT עם SCT משנה את ההסקה.</li><li>המשיכו לסימולציות 2–3 ולמבחני ב׳ ההיסטוריים. הצלחה בסט אחד אינה מדד מספיק לשליטה.</li></ol><p>סימון ״שולט/ת״ נשמר רק בדפדפן הזה. הוא אינו נשלח לשרת.</p><div class="study-filter"><label>חיפוש <input type="search" id="forecast-search" placeholder="למשל RSA או OTP"></label><label>עדיפות <select id="forecast-priority"><option value="">הכל</option><option>ליבה</option><option>משלים</option><option>ממוקד</option><option>רשת ביטחון</option></select></label><label><input type="checkbox" id="forecast-pending"> רק מה שטרם סומן</label><output id="forecast-count" aria-live="polite"></output><button class="btn" id="print-study">הדפסה עם פתרונות</button></div><p id="forecast-empty" hidden>אין שאלות בסינון הזה. נסו חיפוש אחר או הסירו סינון.</p>'''
-for q in pred:
-    intro+=f'<article class="study-card forecast-card" id="{q["id"]}" data-priority="{q["priority"]}"><p class="muted">{q["id"]} · סימולציה {q["mock"]} · {q["priority"]} · {e(q["topic"])}</p><h3>{e(q["title"])}</h3>'+paragraphs(q['stem'])
-    intro+=options(q)
+intro=forecast_intro(pred)+'<div id="forecast-questions">'
+for q in sorted(pred,key=lambda q:(-q['confidence'],q['id'])):
+    intro+=f'<article class="study-card forecast-card" id="{q["id"]}" data-priority="{q["priority"]}" data-confidence="{q["confidence"]}"><p class="muted">{q["id"]} · סימולציה {q["mock"]} · {q["priority"]} · {e(q["topic"])}</p><h3>{e(q["title"])}</h3>'+paragraphs(q['stem'])
+    intro+=confidence_summary(q)+options(q)
     intro+='<details class="answer-detail"><summary>בדקו תשובה והסבר</summary>'+answer_key(q)+answer(q)+'</details>'
     intro+='<p class="study-source">הראיות לבחירה: '+qlinks(q['evidence'])+'</p>'
     intro+=f'<div class="study-controls"><label><input type="checkbox" data-mastered="{q["id"]}"> שולט/ת בשאלה ובנימוק</label><a href="{q["solution"]}">פתרון בעמוד נפרד</a></div></article>'
-intro=intro.replace('<h2>סדר העדיפויות</h2>', '<p class="study-intro"><strong>פורמט הבחינה החדש: שאלות בחירה בלבד.</strong> בכל אחת מ-30 השאלות יש ארבע חלופות ותשובה נכונה אחת. כל הפתרונות נבדקו מחדש: דרך פתרון, נימוק לחלופה הנכונה ונימוק נפרד לכל מסיח. אין שאלות פתוחות בתחזית.</p><h2>סדר העדיפויות</h2>')
+intro+='</div>'
+page('confidence.html','איך דירגנו את 60 שאלות התחזית?',confidence_page(confidence_report,pred))
 page('predictions.html','לקראת מועד ב׳ — תחזית ותרגול',intro)
 
 audit='''<p class="sub">בדיקה בדיעבד של התחזית הישנה, ואחריה ניתוח א׳→ב׳ לצורך תכנון הלמידה הבא.</p><div class="study-intro"><strong>לא נחשב ״דיוק״ לפי שם הנושא בלבד.</strong><p>ב-50 התרגילים שנכתבו לפני אוקטובר מצאנו 2 התאמות קרובות, 3 התאמות חלקיות ו-5 פערים ביחס ל-10 שאלות הבחינה. זהו סיווג ידני של כיסוי מיומנות, לא ציון צפוי ולא אומדן סטטיסטי של דיוק. תחזית רחבה של 50 שאלות אינה שקולה לניבוי של מבחן בן 10.</p></div><p><a href="old-forecast.html">התחזית הישנה והתרגילים המקוריים</a> · <a href="latest.html">בחינת אוקטובר בפועל</a></p><h2>התחזית מול כל שאלה בפועל</h2><p>״קרוב״: מנגנון הפתרון המרכזי תורגל במפורש. ״חלקי״: אותה משפחת מושגים, אך פעולה או הנחה חשובה השתנתה. ״פער״: אין תרגיל ישיר במיומנות בסט הישן. חומר הסבר רחב עשוי להזכיר יותר נושאים; הטבלה אינה טוענת שהמושג נעדר מכל מסמך בתיקייה.</p><div class="study-table"><table><thead><tr><th>שאלה בפועל</th><th>סיווג</th><th>תרגול ישן</th><th>מה למדנו</th></tr></thead><tbody>'''
@@ -217,7 +223,7 @@ summertext='<h2>מה רואים דווקא בסמסטר קיץ?</h2><p>הבחי�
 assert len(summer)==3
 assert all(all(TOPICS[i] in p['b_topics'] for i in [0,1,4,6,8]) for p in summer)
 audit=audit.replace('<h2>מגבלות והסקה</h2>',summertext+'<h2>מגבלות והסקה</h2>')
-page('analysis.html','בדיקת התחזית וניתוח מועדי א׳/ב׳',audit)
+page('analysis.html','בדיקת התחזית וניתוח מועדי א׳/ב׳','<p><a href="confidence.html">חדש: ציוני ביטחון ל-60 שאלות, עם ראיות מכל 18 המועדים</a></p>'+audit)
 save('data/topic-stats.json',topicstats)
 
 arch='<p>כל 182 שאלות המאגר מקושרות לפתרון מפורט. 162 פתרונות מבוססים על קובצי התיקייה שסופקה; נוספו 10 פתרונות לאוגוסט 2026 ו-10 לאוקטובר 2026. הסעיפים הפתוחים של 2022 זמינים גם הם במסמכים המלאים למטה. הפתרונות הם חומר לימוד עצמאי, גם כאשר מפתח התשובות מגיע מהבחינה.</p><div class="study-actions"><a href="index.html#bank">חיפוש במאגר</a><a href="latest.html">אוקטובר 2026</a><a href="old-forecast.html">תחזית אוקטובר המקורית</a></div><h2>לפי מועד — ללא כפילות קבצים</h2>'
@@ -231,16 +237,17 @@ template=(R/'scripts/index.template.html').read_text(encoding='utf-8')
 template=template.replace('__BANK_JSON__',json.dumps(original,ensure_ascii=False,separators=(',',':')))
 template=template.replace('const QS = BANK.questions.filter(q => !q.exclude);', '''const FORECAST = '''+json.dumps(pred,ensure_ascii=False,separators=(',',':'))+''';
 const requestedSet = new URLSearchParams(location.search).get('set') || '';
-const selectedSet = ['latest','forecast-all','forecast-1','forecast-2','forecast-3'].includes(requestedSet) ? requestedSet : '';
-const isForecast = /^forecast-(1|2|3|all)$/.test(selectedSet);
-const QS = isForecast ? FORECAST.filter(q => q.question_type==='multiple-choice' && (selectedSet==='forecast-all' || q.mock===Number(selectedSet.slice(-1)))) : BANK.questions.filter(q => q.question_type==='multiple-choice' && !q.exclude && (selectedSet!=='latest' || q.sources.some(s=>s.date==='19/10/2026')));
+const selectedSet = ['latest','forecast-all','forecast-focus',...Array.from({length:6},(_,i)=>'forecast-'+(i+1))].includes(requestedSet) ? requestedSet : '';
+const isForecast = /^forecast-([1-6]|all|focus)$/.test(selectedSet);
+const rankedForecast = [...FORECAST].sort((a,b)=>b.confidence-a.confidence || a.id.localeCompare(b.id));
+const QS = isForecast ? (selectedSet==='forecast-focus' ? rankedForecast.slice(0,20) : FORECAST.filter(q => q.question_type==='multiple-choice' && (selectedSet==='forecast-all' || q.mock===Number(selectedSet.slice(-1))))) : BANK.questions.filter(q => q.question_type==='multiple-choice' && !q.exclude && (selectedSet!=='latest' || q.sources.some(s=>s.date==='19/10/2026')));
 const collectionName = isForecast ? 'תרגול תחזית מועד ב׳ — שאלות שחוברו לתרגול' : selectedSet==='latest' ? 'מועד א׳ · 19/10/2026' : 'מאגר הבחינות';''')
 template=template.replace('</head>','<link rel="stylesheet" href="'+asset('study.css')+'"><script src="'+asset('answer-order.js')+'"></script></head>')
 template=template.replace('אותו קוד = אותו מבחן', 'אותו קוד = אותן שאלות; סדר התשובות מתחדש')
 template=template.replace('</body>', '<script src="'+asset('study.js')+'" defer></script></body>')
 template=template.replace('<main ', '<main ',1)
 template=template.replace('<body>','<body><a class="skip-link" href="#app">דלג לתוכן</a>')
-template=template.replace('</header>','''</header><div class="study-banner"><div class="wrap"><a href="predictions.html">תחזית מועד ב׳ · 30 שאלות ופתרונות</a><a href="latest.html">בחינת אוקטובר 2026</a><a href="analysis.html">בדיקת התחזית הקודמת</a><a href="archive.html">כל הפתרונות</a><a href="index.html#setup">כל מאגר הבחינות</a></div></div>''',1)
+template=template.replace('</header>','''</header><div class="study-banner"><div class="wrap"><a href="predictions.html">תחזית מועד ב׳ · 60 שאלות ופתרונות</a><a href="latest.html">בחינת אוקטובר 2026</a><a href="analysis.html">בדיקת התחזית הקודמת</a><a href="archive.html">כל הפתרונות</a><a href="index.html#setup">כל מאגר הבחינות</a></div></div>''',1)
 template=template.replace('function renderStats(app){', '''function renderStats(app){
   if(isForecast){app.innerHTML='<div class="panel stack"><h2>תחזית אינה נתון היסטורי</h2><p>השאלות בסט הזה נבחרו לתרגול. אין להציג אותן כהופעות במבחני עבר.</p><a href="analysis.html">ניתוח א׳/ב׳ והראיות לבחירה</a><a href="index.html#stats">סטטיסטיקת מאגר הבחינות</a></div>';return;}''')
 template=template.replace('בוחרים שאלות מתוך ${QS.length} השאלות שנאספו מ-${countExams()} מבחנים, מערבבים, ומתחילים.', '${esc(collectionName)} · ${QS.length} שאלות זמינות. בוחרים מצב, מערבבים ומתחילים. לכל שאלה פתרון מפורט לאחר המענה.')
@@ -251,6 +258,7 @@ template=template.replace("/* ---------- seeded random ---------- */",'''functio
 /* ---------- seeded random ---------- */''')
 template=template.replace('function solutionDetails(q){', '''function isCorrect(q,index){return (q.accepted_indices || [0]).includes(index);}
 function correctLetters(item){return item.order.map((oi,j)=>isCorrect(item.q,oi)?LET[j]:null).filter(Boolean).join(' / ');}
+function confidenceBadge(q){return q.confidence ? `<p class="study-source"><b>ביטחון במיומנות: ${q.confidence}/100</b> · מדד שיפוטי, לא הסתברות לניסוח המדויק · <a href="confidence.html" target="_blank" rel="noopener">שיטת הדירוג</a></p>` : '';}
 function solutionDetails(q){''')
 template=template.replace('<p class="correct"><b>התשובה הנכונה:</b> ${esc(q.options[0])}</p>', '<p class="correct">${q.accepted_indices?.length>1 ? `<b>הערת בדיקה: ${esc(q.note)}</b> · ההסבר מפרט את ההסתייגות; הניקוד מכבד את החלופות שהתקבלו.` : `<b>התשובה הנכונה:</b> ${esc(q.options[0])}`}</p>')
 for oldexpr,newexpr in [

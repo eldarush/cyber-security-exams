@@ -330,7 +330,7 @@ function renderSetup(app){
       <div><h2>מבחן חדש</h2><p class="sub">בוחרים שאלות מתוך ${QS.length} השאלות שנאספו מ-${countExams()} מבחנים, מערבבים, ומתחילים.</p></div>
       <div class="panel stack">
         <label class="field">מקור השאלות<select id="f-source">
-          ${[['','מבחני עבר — כל המאגר'],['latest','מועד א׳ · אוקטובר 2026'],['forecast-all','תחזית מועד ב׳ — כל 30 השאלות'],['forecast-1','תחזית מועד ב׳ — סט 1 (10 שאלות)'],['forecast-2','תחזית מועד ב׳ — סט 2 (10 שאלות)'],['forecast-3','תחזית מועד ב׳ — סט 3 (10 שאלות)']].map(([value,label]) => `<option value="${value}" ${selectedSet===value?'selected':''}>${label}</option>`).join('')}
+          ${[['','מבחני עבר — כל המאגר'],['latest','מועד א׳ · אוקטובר 2026'],['forecast-all','תחזית מועד ב׳ — כל 60 השאלות'],['forecast-focus','תחזית מועד ב׳ — 20 המדורגות ראשונות'],...Array.from({length:6},(_,i)=>['forecast-'+(i+1),'תחזית מועד ב׳ — סט '+(i+1)+' (10 שאלות)'])].map(([value,label]) => `<option value="${value}" ${selectedSet===value?'selected':''}>${label}</option>`).join('')}
         </select></label>
         <p class="sub">בחרו תחזית מועד ב׳ כדי ליצור מבחן משאלות התחזית בלבד. התשובות מעורבבות בכל ניסיון; פתרון מפורט לכל שאלה זמין לאחר ההגשה. התחזית היא חומר לתרגול, ולא בחינה עתידית ידועה.</p>
       </div>
@@ -465,7 +465,7 @@ function renderExam(app){
         <div class="qhead"><span class="qnum">שאלה ${E.cur+1} <span style="color:var(--faint);font-weight:400">מתוך ${E.items.length}</span></span>
           <div class="row" style="gap:8px">${practice ? `<span class="tag">${esc(q.topic)}</span>` : ''}
           <button class="btn ghost" id="flag" aria-pressed="${it.flag}" style="padding:4px 8px;font-size:13px;color:${it.flag?'var(--warn)':'var(--muted)'}">${it.flag ? '⚑ מסומנת לחזרה' : '⚐ סמן לחזרה'}</button></div></div>
-        <div class="stem">${rich(q.stem)}</div>
+        ${confidenceBadge(q)}<div class="stem">${rich(q.stem)}</div>
         <div class="opts" role="radiogroup">
           ${it.order.map((oi,j) => {
             let cls = '', mark = '';
@@ -577,7 +577,7 @@ function reviewItem(x, i){
   return `<div class="review-item">
     <div class="qhead"><span class="qnum">שאלה ${i+1}</span><span class="row" style="gap:6px"><span class="tag">${esc(q.topic)}</span>
       <b style="font-size:13px;color:${x.ans===null?'var(--warn)':ok?'var(--good)':'var(--bad)'}">${x.ans===null?'– לא נענתה':ok?'✓ נכון':'✗ לא נכון'}</b></span></div>
-    <div class="stem">${rich(q.stem)}</div>
+    ${confidenceBadge(q)}<div class="stem">${rich(q.stem)}</div>
     <div class="opts">${x.order.map((oi,j) => {
       const cls = oi===0 ? 'ok' : (j===x.ans ? 'bad' : '');
       const mark = oi===0 ? '<span class="mark okm">✓ נכונה</span>' : (j===x.ans ? '<span class="mark badm">✗ הבחירה שלך</span>' : '');
@@ -600,7 +600,7 @@ function renderPrint(app){
       <div style="border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:14px"><h2>מבוא לאבטחת סייבר – מבחן תרגול</h2>
         <div class="sub">גרסה ${v+1} מתוך ${V.length} · ${items.length} שאלות · יש לבחור את התשובה הנכונה ביותר</div>
         <div class="row" style="gap:40px;margin-top:10px;font-size:14px"><span>שם: ________________</span><span>ת.ז: ________________</span></div></div>
-      ${items.map((x,i) => `<div class="pq"><b>שאלה ${i+1}</b><div class="stem" style="font-size:15px">${rich(x.q.stem)}</div>
+      ${items.map((x,i) => `<div class="pq"><b>שאלה ${i+1}</b>${confidenceBadge(x.q)}<div class="stem" style="font-size:15px">${rich(x.q.stem)}</div>
         <ol>${x.order.map((oi,j)=>`<li><b>${LET[j]}.</b><span class="t" style="flex:1;min-width:0">${rich(x.q.options[oi])}</span></li>`).join('')}</ol></div>`).join('')}
     </section>`).join('')}
     <section class="ver"><h2>מפתח תשובות</h2>
@@ -647,7 +647,7 @@ function renderBank(app){
     <div class="list">${list.slice(0, 60).map(q => `<div class="bankq">
       <div class="qhead"><span class="row" style="gap:8px"><b class="mono">${q.id}</b><span class="tag">${esc(q.topic)}</span>${q.exam_count>1?`<span class="tag" style="color:var(--accent)">חזרה ב-${q.exam_count} מבחנים</span>`:''}${q.variant_group?`<span class="tag">וריאציה ${q.variant_group}</span>`:''}</span>
         <span class="sub" style="font-size:12.5px;margin:0">${esc(q.sources.map(s=>s.date||'לדוגמא').filter((v,i,a)=>a.indexOf(v)===i).join(' · '))}</span></div>
-      <div class="stem" style="font-size:15px">${rich(q.stem)}</div>
+      ${confidenceBadge(q)}<div class="stem" style="font-size:15px">${rich(q.stem)}</div>
       <div class="opts">${AnswerOrder.indices(q.options.length).map((oi,i)=>`<div class="opt ${B.show&&isCorrect(q,oi)?'ok':''}"><span class="bub">${LET[i]}</span><span class="t">${rich(q.options[oi])}</span></div>`).join('')}</div>
       ${q.note?`<div class="meta-line">${esc(q.note)}</div>`:''}
     </div>`).join('')}

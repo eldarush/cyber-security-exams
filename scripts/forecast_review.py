@@ -5,8 +5,20 @@ The archived October materials remain unchanged; this module owns the revised
 November forecast explanations, assumptions, and technical references.
 """
 from html import escape
+from forecast_expansion import REVIEWS as EXTRA_REVIEWS
 
 SOURCES = {
+    'identity': ('RFC 9525 — service identity', 'https://www.rfc-editor.org/rfc/rfc9525.html#section-6'),
+    'constraints': ('RFC 5280 — Basic Constraints', 'https://www.rfc-editor.org/rfc/rfc5280.html#section-4.2.1.9'),
+    'ocsp-auth': ('RFC 6960 — authorized responders', 'https://www.rfc-editor.org/rfc/rfc6960.html#section-4.2.2.2'),
+    'ct-protocol': ('RFC 6962 — CT log model, SCTs and consistency', 'https://www.rfc-editor.org/rfc/rfc6962.html'),
+    'blockchain': ('Bitcoin Developer Guide — consensus and proof of work', 'https://developer.bitcoin.org/devguide/block_chain.html'),
+    'contracts': ('Bitcoin Developer Guide — escrow', 'https://developer.bitcoin.org/devguide/contracts.html#escrow-and-arbitration'),
+    'mac': ('RFC 2104 — keyed message authentication', 'https://www.rfc-editor.org/rfc/rfc2104.html'),
+    'dh-auth': ('RFC 5246 — authenticated Diffie–Hellman', 'https://www.rfc-editor.org/rfc/rfc5246.html#appendix-F.1.1.3'),
+    'tls-forward': ('RFC 5246 — forward secrecy', 'https://www.rfc-editor.org/rfc/rfc5246.html#appendix-F.1.1.3'),
+    'cookies': ('RFC 6265 — Secure and HttpOnly', 'https://www.rfc-editor.org/rfc/rfc6265.html#section-4.1.2.6'),
+    'xss': ('OWASP — XSS safe sinks', 'https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html#safe-sinks'),
     'rsa': ('RFC 8017 — RSA primitives', 'https://www.rfc-editor.org/rfc/rfc8017.html#section-5.2.2'),
     'pki': ('RFC 5280 — certificate path validation', 'https://www.rfc-editor.org/rfc/rfc5280.html#section-6.1'),
     'bitcoin': ('Bitcoin Developer Guide — transactions', 'https://developer.bitcoin.org/devguide/transactions.html'),
@@ -376,9 +388,10 @@ TITLES = {
 }
 
 def apply_reviews(questions):
-    assert set(REVIEWS) == {q['id'] for q in questions}
+    reviews = {**REVIEWS, **EXTRA_REVIEWS}
+    assert set(reviews) == {q['id'] for q in questions}
     for q in questions:
-        derivation, reasons, precision, working, sources = REVIEWS[q['id']]
+        derivation, reasons, precision, working, sources = reviews[q['id']]
         assert len(reasons) == len(q['options']) == 4
         if q['id'] in STEM_UPDATES:
             q['stem'] = STEM_UPDATES[q['id']]

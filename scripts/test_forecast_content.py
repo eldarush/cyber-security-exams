@@ -1,4 +1,4 @@
-"""Independent arithmetic and structural checks for the 30 reviewed exercises."""
+"""Independent arithmetic and structural checks for the 60 reviewed exercises."""
 from decimal import Decimal
 from hashlib import sha256
 from itertools import combinations
@@ -10,7 +10,7 @@ import math
 ROOT = Path(__file__).resolve().parents[1]
 QUESTIONS = {q['id']: q for q in json.loads((ROOT/'data/forecast.json').read_text(encoding='utf-8'))}
 
-assert len(QUESTIONS) == 30
+assert len(QUESTIONS) == 60
 for q in QUESTIONS.values():
     assert q['question_type'] == 'multiple-choice'
     assert q['accepted_indices'] == [0]
@@ -110,4 +110,66 @@ def origin(url):
 pairs = [option.split(' וכן ') for option in QUESTIONS['P25']['options']]
 assert [origin(a) == origin(b) for a,b in pairs] == [True,False,False,False]
 assert QUESTIONS['P29']['options'][0] == f'1/{2**16}'
-print('Forecast review: 30 multiple-choice questions, 120 option explanations, arithmetic and boundary checks passed.')
+# New variations: evaluate every numerical answer, not only the expected key.
+assert [pow(int(x),3,55)==9 for x in QUESTIONS['P31']['options']] == [True,False,False,False]
+assert pow(9,27,55)==4 and [pow(x,3,55) for x in [4,9,14,27]]==[9,14,49,48]
+assert [pow(int(x),3,55)==8 for x in QUESTIONS['P32']['options']] == [True,False,False,False]
+assert pow(8,27,55)==2
+assert [math.gcd(int(x),60)==1 and 1<int(x)<60 for x in QUESTIONS['P34']['options']] == [True,False,False,False]
+assert 7*43 % 60 == 1
+assert Decimal('.6')+Decimal('.5') > Decimal('1')
+assert set(combinations('ABT',2)) == {('A','B'),('A','T'),('B','T')}
+
+# Enumerate a small ideal PoW output space: reducing T reduces success rate
+# linearly, rather than by the square-root birthday relationship.
+from fractions import Fraction
+p=Fraction(sum(h<128 for h in range(256)),256)
+p_small=Fraction(sum(h<8 for h in range(256)),256)
+assert (1/p_small)/(1/p)==16
+assert QUESTIONS['P43']['options'][0]=='גדל פי 16'
+
+def merkle_levels(leaves):
+    levels=[[sha256(x).digest() for x in leaves]]
+    while len(levels[-1])>1:
+        last=levels[-1]
+        levels.append([sha256(last[i]+last[i+1]).digest() for i in range(0,len(last),2)])
+    return levels
+leaves=[bytes([i]) for i in range(32)]
+original=merkle_levels(leaves)
+for pos in range(32):
+    changed=leaves.copy();changed[pos]=b'changed'+changed[pos]
+    after=merkle_levels(changed)
+    differences=[sum(a!=b for a,b in zip(x,y)) for x,y in zip(original,after)]
+    assert differences == [1,1,1,1,1,1] # one changed leaf, five internal ancestors
+assert QUESTIONS['P44']['options'][0]=='5'
+
+assert [int(x,16)==(0xA6^0x3C^0x55) for x in QUESTIONS['P45']['options']] == [True,False,False,False]
+assert 0x55^0xF3==0xA6 and 0xCF^0xF3==0x3C
+# Dependency check using an independently constructed invertible byte cipher;
+# this verifies CBC wiring, not the security of a real block cipher.
+enc=lambda x:(197*x+31)%256
+dec=lambda x:((x-31)*pow(197,-1,256))%256
+plain=[10,20,30,40];iv=71;cipher=[];previous=iv
+for value in plain:
+    previous=enc(value^previous);cipher.append(previous)
+for bit in range(8):
+    prev=iv^(1<<bit);decoded=[]
+    for value in cipher:
+        decoded.append(dec(value)^prev);prev=value
+    assert decoded==[plain[0]^(1<<bit),*plain[1:]]
+for message in range(256):
+    assert enc(dec(enc(message)))==enc(message) # EDE equal-key identity
+def pattern(s):
+    return tuple(s.index(ch) for ch in s)
+assert [pattern(x)==pattern('ABBA') for x in QUESTIONS['P48']['options']]==[True,False,False,False]
+def encrypt_vigenere(plain,key):
+    return ''.join(chr(65+(ord(c)-65+ord(key[i%len(key)])-65)%26) for i,c in enumerate(plain))
+assert [encrypt_vigenere('ATTACK',key)=='DHZDQQ' for key in QUESTIONS['P49']['options']]==[True,False,False,False]
+assert [int(x)%256==42 for x in QUESTIONS['P51']['options']]==[True,False,False,False]
+assert 2**40>2**24
+import hmac
+tag=hmac.digest(b'example-test-key',b'command','sha256')
+assert hmac.compare_digest(tag,hmac.digest(b'example-test-key',b'command','sha256'))
+assert not hmac.compare_digest(tag,hmac.digest(b'example-test-key',b'changed-command','sha256'))
+assert len({q['stem'] for q in QUESTIONS.values()})==60
+print('Forecast review: 60 multiple-choice questions, 240 option explanations, arithmetic and boundary checks passed.')
