@@ -1,4 +1,30 @@
 (() => {
+  const typeFilter = document.querySelector('#only-multiple-choice');
+  const typeKey = 'cyber-study-v2:only-multiple-choice';
+  if (typeFilter) {
+    let onlyChoice = true;
+    try { onlyChoice = localStorage.getItem(typeKey) !== 'false'; } catch { /* Default remains multiple-choice only. */ }
+    const applyTypeFilter = () => {
+      document.documentElement.classList.toggle('only-multiple-choice', typeFilter.checked);
+      document.querySelectorAll('[data-archive-document]').forEach(row => {
+        const mc = Number(row.dataset.mcCount), open = Number(row.dataset.openCount);
+        row.hidden = typeFilter.checked && mc === 0;
+        row.querySelector('[data-archive-count]').textContent = `${mc} שאלות בחירה` + (!typeFilter.checked && open ? ` + ${open} סעיפים פתוחים` : '');
+      });
+      const open = document.querySelectorAll('[data-question-type="open"]').length;
+      const choice = document.querySelectorAll('[data-question-type="multiple-choice"]').length;
+      const status = document.querySelector('[data-question-filter-status]');
+      if (status) status.textContent = choice || open
+        ? `${choice} שאלות בחירה מוצגות · ${open} סעיפים פתוחים ${typeFilter.checked ? 'מוסתרים' : 'מוצגים'}`
+        : typeFilter.checked ? 'הסינון פעיל גם בכניסה למסמכי הארכיון.' : 'מסמכי הארכיון יציגו גם סעיפים פתוחים.';
+    };
+    typeFilter.checked = onlyChoice;
+    applyTypeFilter();
+    typeFilter.addEventListener('change', () => {
+      try { localStorage.setItem(typeKey, String(typeFilter.checked)); } catch { /* In-page filtering still works. */ }
+      applyTypeFilter();
+    });
+  }
   const letters = ['א', 'ב', 'ג', 'ד'];
   document.querySelectorAll('.study-options').forEach(list => {
     const items = [...list.children];

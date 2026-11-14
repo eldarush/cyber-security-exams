@@ -3,7 +3,7 @@ from pathlib import Path
 from html.parser import HTMLParser
 from urllib.parse import urlsplit,unquote
 from decimal import Decimal
-import json,re,math,subprocess,tempfile
+import json,re,math,subprocess,tempfile,sys
 
 R=Path(__file__).resolve().parents[1]
 def load(p):return json.loads((R/p).read_text(encoding='utf-8'))
@@ -73,6 +73,11 @@ with tempfile.TemporaryDirectory() as t:
 subprocess.run(['node','--check',str(R/'study.js')],check=True,capture_output=True)
 subprocess.run(['node','--check',str(R/'answer-order.js')],check=True,capture_output=True)
 subprocess.run(['node',str(R/'scripts/test-answer-order.cjs')],check=True)
+subprocess.run([sys.executable,str(R/'scripts/test_forecast_content.py')],check=True)
+archive_pages=[p for p in files if p.name.startswith('archive-')]
+assert sum(p.read_text(encoding='utf-8').count('data-question-type="open"') for p in archive_pages)==26
+assert all('id="only-multiple-choice" checked' in p.read_text(encoding='utf-8') for p in archive_pages)
+assert all(q['question_type']=='multiple-choice' for q in bank+forecast)
 for p in files:
     doc=p.read_text(encoding='utf-8')
     for attrs,body in re.findall(r'<ol (class="study-options"[^>]*)>(.*?)</ol>',doc,re.S):

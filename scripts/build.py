@@ -4,6 +4,7 @@ from urllib.parse import quote
 import json,re,html,hashlib
 from content import LATEST,AUG,TOPICS
 from forecast import NEW,PLAN,TOPIC_MAP,AUDIT,PAIRS,SOURCES
+from forecast_review import apply_reviews
 
 R=Path(__file__).resolve().parents[1]
 def load(p):return json.loads((R/p).read_text(encoding='utf-8'))
@@ -53,8 +54,6 @@ for i,(key,priority,ev) in enumerate(PLAN,1):
     if isinstance(key,str):
         item=NEW[key]
         q=dict(stem=item['stem'],options=item['options'],topic=TOPICS[item['topic']],answer_html=item['answer'],title=item['title'],guide=item['guide'])
-        q['answer_html']+='<h3>העמקה ודוגמה נוספת מהבחינה המקורית</h3>'+lookup[q['guide']]['answer_html']
-        q['answer_html']+='<p>להסבר המלא של המנגנון ולניתוח המסיחים: <a href="'+q['guide']+'.html">פתרון '+q['guide']+'</a>.</p>'
         origin='וריאציה חדשה לצורך תרגול מועד ב׳'
     else:
         oq=next(x for x in old['questions'] if x['id']==key)
@@ -67,7 +66,9 @@ for i,(key,priority,ev) in enumerate(PLAN,1):
     q.update(id=f'P{i:02}',year='תרגול',note='תחזית לימודית, לא שאלה שנצפתה בבחינה עתידית',sources=[dict(file='predictions.html',date=None,num=i)],flags=[],fixed_order=False,exclude=False,exam_count=0,in_sample_exam=False,variant_group=None,priority=priority,evidence=ev,mock=(i-1)//10+1,answer_origin=origin,accepted_indices=[0])
     pred.append(q)
 
+apply_reviews(pred)
 for q in qbank+pred:
+    q['question_type']='multiple-choice'
     q['solution']='solutions/'+q['id']+'.html'
     # Main app is at root; its links must differ from standalone solution links.
     q['answer_html']=q['answer_html'].replace('href="Q','href="solutions/Q')
@@ -84,8 +85,11 @@ html{scroll-behavior:smooth}a{color:var(--accent)}.study-nav{display:flex;flex-w
 @media(max-width:600px){.reading{padding:0 15px 40px;margin-top:18px}.reading h1{font-size:26px}.reading p{font-size:16px}.study-card{padding:16px}.study-intro{padding:14px}.top .wrap{gap:6px}.brand small{display:block}.study-nav{gap:8px 14px}.answer-detail{padding:12px}.reading pre{font-size:13px}}
 @media print{.top,.study-nav,.study-actions,.study-filter,.study-controls,.study-banner,.skip-link{display:none!important}.reading{max-width:none;margin:0;padding:0}.reading p{font-size:12pt}.study-card{border:0;break-before:page;padding:0}.answer-detail{border:0;background:white}.study-table table{min-width:0;font-size:9pt}.study-footer{font-size:9pt}details>summary{display:none}.correct{background:white!important;color:black!important}a{color:black!important}body{background:white!important;color:black!important}}
 '''
-write('study.css',css+extra)
+write('study.css',css+extra+'\nhtml.only-multiple-choice [data-question-type="open"]{display:none!important}.option-review{padding:8px 0;border-bottom:1px solid var(--line)}.option-review h4{margin:10px 0}.question-type-filter{padding:14px 18px;margin:18px 0;background:var(--surface);border:1px solid var(--line);border-radius:8px}.question-type-filter label{cursor:pointer}.question-type-filter p{margin:6px 0;font-size:14px}\n')
 NAV=[('index.html#setup','תרגול אינטראקטיבי'),('latest.html','מועד א׳ 2026'),('predictions.html','תחזית מועד ב׳'),('analysis.html','בדיקת התחזית'),('archive.html','כל הפתרונות')]
+
+def question_type_filter():
+    return '<div class="question-type-filter"><label><input type="checkbox" id="only-multiple-choice" checked> בלי שאלות פתוחות</label><p>הסינון מסתיר סעיפים פתוחים במסמכי הארכיון. התרגול האינטראקטיבי והתחזית כוללים רק שאלות בחירה בכל מצב.</p><p role="status" data-question-filter-status></p></div>'
 def page(path,title,body,depth=0):
     prefix='../'*depth
     nav=''.join(f'<a href="{prefix}{p}">{label}</a>' for p,label in NAV)
@@ -93,6 +97,8 @@ def page(path,title,body,depth=0):
     fonts='<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&family=Suez+One&display=swap">'
     doc=doc.replace('</head>',fonts+f'<script src="{prefix}{asset("answer-order.js")}"></script></head>')
     doc=doc.replace('study.js"',asset('study.js')+'"')
+    doc=doc.replace('href="'+prefix+'study.css"','href="'+prefix+asset('study.css')+'"')
+    doc=doc.replace('<html lang="he"', '<html class="only-multiple-choice" lang="he"')
     if 'class="study-options"' in body:
         doc=doc.replace('<h1>'+e(title)+'</h1>', '<h1>'+e(title)+'</h1><p class="study-source">סדר החלופות מתערבב בכל פתיחת עמוד. המפתח המוצג מתאים לסדר הנוכחי. אותיות בתוך הסברים מיובאים מתייחסות לשאלון המקורי — יש לזהות את התשובה לפי תוכנה.</p>')
     write(path,doc)
@@ -135,9 +141,15 @@ for i,doc in enumerate(archive,1):
     p=next((p for p in R.glob('*/*.pdf') if p.name==doc['file']),None)
     assert p,doc['file']
     fn=f'solutions/archive-{i:02}.html'
-    body='<p class="study-intro">פתרונות מהתיקייה שסופקה, כולל סעיפים פתוחים אם קיימים. עותקים שונים של אותו מועד אינם מבחנים עצמאיים בניתוח.</p><p><a href="../'+url(p.relative_to(R))+'">שאלון המקור PDF</a></p>'+''.join(clean(a) for a in doc['articles'])
+    sections=[];open_count=0
+    for article in doc['articles']:
+        is_open=bool(re.search(r'<h[23]>שאלה א\.',article))
+        kind='open' if is_open else 'multiple-choice'
+        open_count+=is_open
+        sections.append(clean(article).replace('<article ', '<article data-question-type="'+kind+'" ',1))
+    body='<p class="study-intro">פתרונות מהתיקייה שסופקה. סעיפים פתוחים, אם קיימים, מוסתרים כברירת מחדל. עותקים שונים של אותו מועד אינם מבחנים עצמאיים בניתוח.</p>'+question_type_filter()+'<p><a href="../'+url(p.relative_to(R))+'">שאלון המקור PDF — הקובץ המקורי אינו מסונן</a></p>'+''.join(sections)
     page(fn,'פתרונות מלאים · '+doc['file'],body,1)
-    archive_links.append((doc['file'],fn,len(doc['articles'])))
+    archive_links.append((doc['file'],fn,len(doc['articles']),open_count))
 
 # Frozen historical practice, retained separately from the new ranking.
 for i,(q,a) in enumerate(zip(old['questions'],old['answers']),1):
@@ -179,6 +191,7 @@ for q in pred:
     intro+='<details class="answer-detail"><summary>בדקו תשובה והסבר</summary>'+answer_key(q)+answer(q)+'</details>'
     intro+='<p class="study-source">הראיות לבחירה: '+qlinks(q['evidence'])+'</p>'
     intro+=f'<div class="study-controls"><label><input type="checkbox" data-mastered="{q["id"]}"> שולט/ת בשאלה ובנימוק</label><a href="{q["solution"]}">פתרון בעמוד נפרד</a></div></article>'
+intro=intro.replace('<h2>סדר העדיפויות</h2>', '<p class="study-intro"><strong>פורמט הבחינה החדש: שאלות בחירה בלבד.</strong> בכל אחת מ-30 השאלות יש ארבע חלופות ותשובה נכונה אחת. כל הפתרונות נבדקו מחדש: דרך פתרון, נימוק לחלופה הנכונה ונימוק נפרד לכל מסיח. אין שאלות פתוחות בתחזית.</p><h2>סדר העדיפויות</h2>')
 page('predictions.html','לקראת מועד ב׳ — תחזית ותרגול',intro)
 
 audit='''<p class="sub">בדיקה בדיעבד של התחזית הישנה, ואחריה ניתוח א׳→ב׳ לצורך תכנון הלמידה הבא.</p><div class="study-intro"><strong>לא נחשב ״דיוק״ לפי שם הנושא בלבד.</strong><p>ב-50 התרגילים שנכתבו לפני אוקטובר מצאנו 2 התאמות קרובות, 3 התאמות חלקיות ו-5 פערים ביחס ל-10 שאלות הבחינה. זהו סיווג ידני של כיסוי מיומנות, לא ציון צפוי ולא אומדן סטטיסטי של דיוק. תחזית רחבה של 50 שאלות אינה שקולה לניבוי של מבחן בן 10.</p></div><p><a href="old-forecast.html">התחזית הישנה והתרגילים המקוריים</a> · <a href="latest.html">בחינת אוקטובר בפועל</a></p><h2>התחזית מול כל שאלה בפועל</h2><p>״קרוב״: מנגנון הפתרון המרכזי תורגל במפורש. ״חלקי״: אותה משפחת מושגים, אך פעולה או הנחה חשובה השתנתה. ״פער״: אין תרגיל ישיר במיומנות בסט הישן. חומר הסבר רחב עשוי להזכיר יותר נושאים; הטבלה אינה טוענת שהמושג נעדר מכל מסמך בתיקייה.</p><div class="study-table"><table><thead><tr><th>שאלה בפועל</th><th>סיווג</th><th>תרגול ישן</th><th>מה למדנו</th></tr></thead><tbody>'''
@@ -210,7 +223,8 @@ save('data/topic-stats.json',topicstats)
 arch='<p>כל 182 שאלות המאגר מקושרות לפתרון מפורט. 162 פתרונות מבוססים על קובצי התיקייה שסופקה; נוספו 10 פתרונות לאוגוסט 2026 ו-10 לאוקטובר 2026. הסעיפים הפתוחים של 2022 זמינים גם הם במסמכים המלאים למטה. הפתרונות הם חומר לימוד עצמאי, גם כאשר מפתח התשובות מגיע מהבחינה.</p><div class="study-actions"><a href="index.html#bank">חיפוש במאגר</a><a href="latest.html">אוקטובר 2026</a><a href="old-forecast.html">תחזית אוקטובר המקורית</a></div><h2>לפי מועד — ללא כפילות קבצים</h2>'
 for date,qq in sorted(bydate.items(),key=lambda it:tuple(reversed(it[0].split('/'))),reverse=True):
     arch+='<details class="study-card"><summary>'+date+' · '+str(len(qq))+' שאלות ברירה</summary><ol>'+''.join('<li><a href="'+q['solution']+'">שאלה '+str(num)+' · '+e(q.get('title',q['topic']))+'</a></li>' for num,q in sorted(qq.items()))+'</ol></details>'
-arch+='<h2>מסמכים מלאים מהתיקייה, כולל סעיפים פתוחים</h2><ul>'+''.join(f'<li><a href="{p}"><bdi>{e(name)}</bdi></a> · {n} סעיפי פתרון</li>' for name,p,n in archive_links)+'</ul>'
+arch=question_type_filter()+arch
+arch+='<h2>מסמכי פתרונות לפי קובץ מקור</h2><ul>'+''.join(f'<li data-archive-document data-mc-count="{n-o}" data-open-count="{o}"><a href="{p}"><bdi>{e(name)}</bdi></a> · <span data-archive-count>{n-o} שאלות בחירה</span></li>' for name,p,n,o in archive_links)+'</ul>'
 page('archive.html','ארכיון בחינות ופתרונות מלאים',arch)
 
 template=(R/'scripts/index.template.html').read_text(encoding='utf-8')
@@ -218,13 +232,15 @@ template=template.replace('__BANK_JSON__',json.dumps(original,ensure_ascii=False
 template=template.replace('const QS = BANK.questions.filter(q => !q.exclude);', '''const FORECAST = '''+json.dumps(pred,ensure_ascii=False,separators=(',',':'))+''';
 const selectedSet = new URLSearchParams(location.search).get('set') || '';
 const isForecast = /^forecast-(1|2|3|all)$/.test(selectedSet);
-const QS = isForecast ? FORECAST.filter(q => selectedSet==='forecast-all' || q.mock===Number(selectedSet.slice(-1))) : BANK.questions.filter(q => !q.exclude && (selectedSet!=='latest' || q.sources.some(s=>s.date==='19/10/2026')));
+const QS = isForecast ? FORECAST.filter(q => q.question_type==='multiple-choice' && (selectedSet==='forecast-all' || q.mock===Number(selectedSet.slice(-1)))) : BANK.questions.filter(q => q.question_type==='multiple-choice' && !q.exclude && (selectedSet!=='latest' || q.sources.some(s=>s.date==='19/10/2026')));
 const collectionName = isForecast ? 'תרגול תחזית מועד ב׳ — שאלות שחוברו לתרגול' : selectedSet==='latest' ? 'מועד א׳ · 19/10/2026' : 'מאגר הבחינות';''')
-template=template.replace('</head>','<link rel="stylesheet" href="study.css"><script src="'+asset('answer-order.js')+'"></script></head>')
+template=template.replace('</head>','<link rel="stylesheet" href="'+asset('study.css')+'"><script src="'+asset('answer-order.js')+'"></script></head>')
 template=template.replace('אותו קוד = אותו מבחן', 'אותו קוד = אותן שאלות; סדר התשובות מתחדש')
+template=template.replace('</body>', '<script src="'+asset('study.js')+'" defer></script></body>')
 template=template.replace('<main ', '<main ',1)
 template=template.replace('<body>','<body><a class="skip-link" href="#app">דלג לתוכן</a>')
 template=template.replace('</header>','''</header><div class="study-banner"><div class="wrap"><a href="predictions.html">תחזית מועד ב׳ · 30 שאלות ופתרונות</a><a href="latest.html">בחינת אוקטובר 2026</a><a href="analysis.html">בדיקת התחזית הקודמת</a><a href="archive.html">כל הפתרונות</a><a href="index.html#setup">כל מאגר הבחינות</a></div></div>''',1)
+template=template.replace('<main ', '<div class="wrap">'+question_type_filter()+'</div><main ',1)
 template=template.replace('function renderStats(app){', '''function renderStats(app){
   if(isForecast){app.innerHTML='<div class="panel stack"><h2>תחזית אינה נתון היסטורי</h2><p>השאלות בסט הזה נבחרו לתרגול. אין להציג אותן כהופעות במבחני עבר.</p><a href="analysis.html">ניתוח א׳/ב׳ והראיות לבחירה</a><a href="index.html#stats">סטטיסטיקת מאגר הבחינות</a></div>';return;}''')
 template=template.replace('בוחרים שאלות מתוך ${QS.length} השאלות שנאספו מ-${countExams()} מבחנים, מערבבים, ומתחילים.', '${esc(collectionName)} · ${QS.length} שאלות זמינות. בוחרים מצב, מערבבים ומתחילים. לכל שאלה פתרון מפורט לאחר המענה.')

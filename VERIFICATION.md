@@ -39,6 +39,13 @@ The new reading pages use a document layout and accessible disclosures rather th
 - Submitted a latest-exam question whose correct choice was displayed at B; it was graded correct and retained that position in review. No browser console errors were observed.
 - Automated checks exhaust all 24 permutations and 288 grading cases. Shuffling cannot be disabled by a previous saved preference. Original PDFs retain their original order; generated learning and print views shuffle automatically.
 
-## Content evidence boundaries
+## Forecast review and multiple-choice filtering
+
+- All 30 current forecast questions now contain a derivation, one explanation for the correct option, three explicit distractor explanations and a note on assumptions. Browser inspection found 120 option explanations across the 30 forecast cards. See `FORECAST_REVIEW.md` for the corrected claims and independent calculation checks.
+- In practice mode, the revised fee question appeared with the correct option at D. It was graded correctly, and the expanded solution contained all four explanations identified by option text.
+- The archive filter defaults to “בלי שאלות פתוחות”. Archive document 01 showed 12 multiple-choice sections and hid five open sections. Unchecking revealed all five, and that choice persisted on reload. Re-enabling the filter and opening document 03 showed 12 multiple-choice sections with its four open sections hidden.
+- The same preference appeared checked on the interactive entry page. The archive index displayed multiple-choice counts. At a 390-pixel mobile viewport, the page width was 375 pixels with no horizontal overflow. No console errors were observed in these flows. The preference was restored to multiple-choice-only after testing.
+
+## Earlier historical-answer scope
 
 The 162 imported explanations were mapped by source filename and original question number and retain provenance. Their complete semantics were not independently re-proved one by one in this update. The 20 new exam explanations and ten new forecast variants received targeted content and arithmetic review. Historical broad-topic assignments are coarse; combined questions can test several mechanisms. The old forecast audit is an explicit, conservative manual classification of exercise coverage. No claim is made that the new ranking has a measured out-of-sample predictive accuracy.

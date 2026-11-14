@@ -12,6 +12,10 @@ Open `http://127.0.0.1:8765/`. GitHub Pages serves `main` at the repository root
 
 Edit the sources in `scripts/index.template.html`, `scripts/content.py`, `scripts/forecast.py`, the inherited question bank under `מאגר שאלות`, and the imported source records under `data`. HTML pages and analytical JSON are generated. Do not edit generated output alone.
 
+The reviewed forecast explanations and clarified stems are owned by `scripts/forecast_review.py`. Each option has a structured explanation tied to its text and canonical identity. `scripts/test_forecast_content.py` checks that every forecast question remains single-answer multiple choice and that all four explanations are present; it also independently checks calculations. See `FORECAST_REVIEW.md` for the content-review findings.
+
+The “בלי שאלות פתוחות” preference is shared by the quiz entry page and archive pages through `study.js`. It defaults on and hides archive articles explicitly marked `data-question-type="open"`. The original 2022 open-section headings identify 26 archived occurrences across duplicate documents; all historical interactive questions and all predictions are explicitly typed multiple-choice. Print views respect the active archive filter.
+
 The 182 historical question records represent 186 dated occurrences across 18 exam dates. Duplicate files for one date count once. Seven verified A/B pairs feed the comparison; special sessions and undated sample papers are excluded from pair statistics. The 2022 comparison uses multiple-choice questions only; its open questions remain available in the full solution archive.
 
 Thirty forecast exercises are kept separate from historical statistics. Ten are new variants, and twenty are reused exercises from the October 17 practice set, selected again with updated evidence. Topic rankings are study priorities, not calibrated probabilities. The October forecast audit is an explicit manual coding of skills covered by its 50 exercises, not a claim about a student's expected grade.
