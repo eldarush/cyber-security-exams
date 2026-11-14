@@ -74,6 +74,7 @@ subprocess.run(['node','--check',str(R/'study.js')],check=True,capture_output=Tr
 subprocess.run(['node','--check',str(R/'answer-order.js')],check=True,capture_output=True)
 subprocess.run(['node',str(R/'scripts/test-answer-order.cjs')],check=True)
 subprocess.run(['node',str(R/'scripts/test-exam-flow.cjs')],check=True)
+subprocess.run(['node',str(R/'scripts/test-focused-mock-order.cjs')],check=True)
 subprocess.run([sys.executable,str(R/'scripts/test_forecast_content.py')],check=True)
 subprocess.run([sys.executable,str(R/'scripts/test_confidence.py')],check=True)
 subprocess.run([sys.executable,str(R/'scripts/test_best_mock.py')],check=True)

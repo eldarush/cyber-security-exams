@@ -52,9 +52,21 @@ assert (a, b) == (8, 19)
 shared = pow(b, 6, 23)
 assert shared == pow(a, 15, 23) == 2
 assert QUESTIONS['P09']['options'][0] == str(shared)
+assert [int(option)==shared for option in QUESTIONS['P09']['options']] == [True,False,False,False]
 
 vig = ''.join(chr(65+(ord(p)-65+ord('KEY'[i%3])-65)%26) for i, p in enumerate('HELLO'))
 assert QUESTIONS['P10']['options'][0] == vig == 'RIJVS'
+assert [option==vig for option in QUESTIONS['P10']['options']] == [True,False,False,False]
+
+# P08: deficit catch-up probabilities illustrate why "smaller" is not
+# necessarily "small". Deficit z is NOT automatically the confirmation count.
+for attacker in [.1,.3,.49]:
+    probabilities = [(attacker/(1-attacker))**z for z in range(1,11)]
+    assert all(0<later<earlier<1 for earlier,later in zip(probabilities,probabilities[1:]))
+assert (.49/.51)**6 > .7
+assert 'פוחת' in QUESTIONS['P08']['options'][0]
+assert 'קטן מ-50%' in QUESTIONS['P08']['stem']
+assert 'אינו רשאי לבחור או לשנות' in QUESTIONS['P15']['stem']
 
 # CBC dependency wiring using an invertible toy byte permutation. This checks
 # which blocks change; it does not claim to measure AES's avalanche properties.

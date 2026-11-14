@@ -31,6 +31,8 @@ The new source is `scripts/forecast_review.py`. Twenty question scenarios still 
 
 ## Validation and limits
 
+The focused ten-question mock received a separate second audit, including ambiguity fixes for confirmation risk and the fixed-message hash experiment, explicit issuer-key/raw-DH assumptions, and exhaustive presentation checks using the actual ten records. See [FOCUSED_MOCK_REVIEW.md](FOCUSED_MOCK_REVIEW.md) for every answer, distractor finding, source and test scope.
+
 `scripts/test_forecast_content.py` checks 60 four-option, single-answer questions and 240 matching option explanations. It independently checks all RSA choices, transaction arithmetic, OTP identities over byte-key fixtures, the exact birthday threshold, DH, Vigenère, key counts, hash examples, origin tuples, DNS probability, and actual Merkle-path reconstruction. A toy invertible cipher checks CBC dependency propagation only; it is not an AES security or avalanche test.
 
 Existing ordering tests still cover all 24 permutations and 288 grading cases. Site validation checks generated pages, internal references, and scripts. Human review of the mechanism and stated assumptions complements these checks; tests alone do not establish the correctness of every prose claim or predict the future exam.
