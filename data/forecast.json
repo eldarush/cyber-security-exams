@@ -5273,13 +5273,13 @@
   },
   {
     "id": "P50",
-    "title": "Hash — החלפת מסמך שכבר נקבע",
-    "stem": "תוקף מקבל מסמך מסוים M ואת H(M). מטרתו למצוא M′ שונה מ-M כך ש-H(M′)=H(M). איזו תכונה אמורה להקשות בדיוק על המשימה הזאת?",
+    "title": "Hash — התוקף חופשי לבחור את שני המסמכים",
+    "stem": "תוקף חופשי לבחור מראש שני מסמכים שונים M₁ ו-M₂, ורוצה שיתקיים H(M₁)=H(M₂). שום מסמך או digest אינו מוכתב לו מראש. איזו תכונה מגדירה במדויק את הקושי המבוקש?",
     "options": [
-      "Second-preimage resistance",
-      "Preimage resistance בלבד: לא נתון שום מסמך מקור",
-      "סודיות באמצעות הצפנה",
-      "עמידות נגד שימוש חוזר ב-IV"
+      "Collision resistance",
+      "Second-preimage resistance: המסמך הראשון נתון מראש",
+      "Preimage resistance: נתון רק digest יעד",
+      "סודיות מושלמת של OTP"
     ],
     "topic": "Hash, MAC וסיסמאות",
     "year": "תרגול",
@@ -5315,27 +5315,27 @@
     "reviewed": "2026-11-14",
     "option_explanations": [
       {
-        "option": "Second-preimage resistance",
+        "option": "Collision resistance",
         "correct": true,
-        "reason": "זו ההגדרה המדויקת: נתון קלט ראשון ומחפשים קלט שונה עם אותו פלט. האיסור להחזיר שוב את M הוא חיוני."
+        "reason": "עמידות להתנגשויות מתייחסת בדיוק לקושי למצוא זוג קלטים שונים עם פלט זהה כאשר התוקף רשאי לבחור את שניהם."
       },
       {
-        "option": "Preimage resistance בלבד: לא נתון שום מסמך מקור",
+        "option": "Second-preimage resistance: המסמך הראשון נתון מראש",
         "correct": false,
-        "reason": "האפשרות מתארת ניסוי אחר שבו לא נתון מסמך המקור. בתרחיש הזה M נתון במפורש, ולכן זו אינה ההגדרה המבוקשת."
+        "reason": "ב-second preimage המסמך הראשון מוכתב מראש. כאן הוא אינו נתון לתוקף אלא חלק מהבחירה החופשית שלו, ולכן זו הגדרה אחרת."
       },
       {
-        "option": "סודיות באמצעות הצפנה",
+        "option": "Preimage resistance: נתון רק digest יעד",
         "correct": false,
-        "reason": "פונקציית hash אינה סכמת הצפנה להפיכת מסמך לסודי. הדרישה כאן נוגעת למציאת קלט אחר, ולא לפענוח מידע."
+        "reason": "ב-preimage התוקף מקבל digest יעד ומחפש לו קלט. כאן גם ערך הפלט המשותף אינו מוכתב לו מראש."
       },
       {
-        "option": "עמידות נגד שימוש חוזר ב-IV",
+        "option": "סודיות מושלמת של OTP",
         "correct": false,
-        "reason": "IV שייך למצבי הצפנה מסוימים ואינו הנתון שמגדיר את ניסוי ה-hash כאן. לא נאמר שיש בכלל הצפנה בתרחיש."
+        "reason": "OTP הוא מנגנון הצפנה עם דרישת סודיות, ולא השם לתכונת hash שמקשה על מציאת שני קלטים מתנגשים."
       }
     ],
-    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>המבחן להגדרה הוא מה התוקף מקבל בתחילת הניסוי. כאן המסמך המקורי M כבר נתון וקבוע. התוקף מחפש מסמך אחר שיתאים לאותו digest, ולכן זו בעיית second preimage. בחיפוש התנגשות כללי התוקף בוחר את שני המסמכים; בחיפוש preimage רגיל מקבלים יעד hash בלי מסמך מקור נתון.</p><h3>למה התשובה נכונה ולמה שאר האפשרויות שגויות</h3><p class=\"study-source\">מזהים כל חלופה לפי הטקסט שלה; אותיות התשובות משתנות בערבוב.</p><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — Second-preimage resistance</h4><p>זו ההגדרה המדויקת: נתון קלט ראשון ומחפשים קלט שונה עם אותו פלט. האיסור להחזיר שוב את M הוא חיוני.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — Preimage resistance בלבד: לא נתון שום מסמך מקור</h4><p>האפשרות מתארת ניסוי אחר שבו לא נתון מסמך המקור. בתרחיש הזה M נתון במפורש, ולכן זו אינה ההגדרה המבוקשת.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — סודיות באמצעות הצפנה</h4><p>פונקציית hash אינה סכמת הצפנה להפיכת מסמך לסודי. הדרישה כאן נוגעת למציאת קלט אחר, ולא לפענוח מידע.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — עמידות נגד שימוש חוזר ב-IV</h4><p>IV שייך למצבי הצפנה מסוימים ואינו הנתון שמגדיר את ניסוי ה-hash כאן. לא נאמר שיש בכלל הצפנה בתרחיש.</p></div><h3>דגש והנחות שחשוב לזכור</h3><p>אין לבלבל את שם התכונה עם עצם העובדה שהתוצאה היא זוג מתנגש. שתי הודעות עם אותו hash אכן מהוות התנגשות, אבל במשימת second preimage אחת מהן מוכתבת לתוקף מראש. זהו ההבדל שהחלופות נועדו לבדוק.</p><p class=\"study-source\">מקורות לבדיקת המנגנון: <a href=\"https://csrc.nist.gov/glossary/term/second_preimage\">NIST — second preimage</a> · <a href=\"https://csrc.nist.gov/glossary/term/preimage_resistance\">NIST — preimage resistance</a></p></section>",
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>מזהים מה התוקף רשאי לבחור. כאן הוא בוחר את שני הקלטים ורק נדרש שיהיו שונים וייתנו אותו פלט. זו בעיית התנגשות כללית. אין מסמך ראשון שהניסוי כפה עליו, ואין digest יעד קבוע שעליו להתאים לו קלט. החופש לבחור את שני הצדדים מבדיל את ההגדרה מן השתיים האחרות.</p><h3>למה התשובה נכונה ולמה שאר האפשרויות שגויות</h3><p class=\"study-source\">מזהים כל חלופה לפי הטקסט שלה; אותיות התשובות משתנות בערבוב.</p><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — Collision resistance</h4><p>עמידות להתנגשויות מתייחסת בדיוק לקושי למצוא זוג קלטים שונים עם פלט זהה כאשר התוקף רשאי לבחור את שניהם.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — Second-preimage resistance: המסמך הראשון נתון מראש</h4><p>ב-second preimage המסמך הראשון מוכתב מראש. כאן הוא אינו נתון לתוקף אלא חלק מהבחירה החופשית שלו, ולכן זו הגדרה אחרת.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — Preimage resistance: נתון רק digest יעד</h4><p>ב-preimage התוקף מקבל digest יעד ומחפש לו קלט. כאן גם ערך הפלט המשותף אינו מוכתב לו מראש.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — סודיות מושלמת של OTP</h4><p>OTP הוא מנגנון הצפנה עם דרישת סודיות, ולא השם לתכונת hash שמקשה על מציאת שני קלטים מתנגשים.</p></div><h3>דגש והנחות שחשוב לזכור</h3><p>העובדה שכל זוג מתנגש יכול להיכתב כהודעה ואחרת אינה הופכת את ניסוי החיפוש ל-second preimage. מה שקובע הוא סדר בחירת הנתונים והאילוצים על התוקף. זו וריאציה משלימה לשאלה P15, שבה דווקא המסמך הראשון נקבע מראש.</p><p class=\"study-source\">מקורות לבדיקת המנגנון: <a href=\"https://csrc.nist.gov/glossary/term/second_preimage\">NIST — second preimage</a> · <a href=\"https://csrc.nist.gov/glossary/term/preimage_resistance\">NIST — preimage resistance</a></p></section>",
     "confidence": 76,
     "confidence_kind": "skill-confidence-not-probability",
     "skill": "hash",
