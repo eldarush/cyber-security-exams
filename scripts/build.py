@@ -90,7 +90,9 @@ def page(path,title,body,depth=0):
     nav=''.join(f'<a href="{prefix}{p}">{label}</a>' for p,label in NAV)
     doc=f'''<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{e(title)} · מבחני סייבר</title><link rel="stylesheet" href="{prefix}study.css"><meta name="description" content="מבוא לאבטחת סייבר 689156 — מבחנים, פתרונות מפורטים ותרגול מועד ב׳ עם ניתוח ראיות."></head><body><a class="skip-link" href="#main">דלג לתוכן</a><header class="top"><div class="wrap"><a class="brand" href="{prefix}index.html">מבחני סייבר <small>מבוא לאבטחת סייבר · 689156</small></a></div><nav class="wrap study-nav" aria-label="ניווט ראשי">{nav}</nav></header><main id="main" class="reading"><h1>{e(title)}</h1>{body}<footer class="study-footer">עודכן 14/11/2026 · חומר לימוד עצמאי, לא פתרון רשמי ולא מידע על שאלון עתידי. שאלות הבחינות נשמרות לפי המקורות; הסברים חדשים מסומנים. האתר הוא fork של <a href="https://github.com/salimkh25/cyber-security-exams">salimkh25/cyber-security-exams</a>. <a href="https://github.com/eldarush/cyber-security-exams">קוד האתר</a>.</footer></main><script src="{prefix}study.js" defer></script></body></html>'''
     fonts='<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&family=Suez+One&display=swap">'
-    doc=doc.replace('</head>',fonts+'</head>')
+    doc=doc.replace('</head>',fonts+f'<script src="{prefix}answer-order.js"></script></head>')
+    if 'class="study-options"' in body:
+        doc=doc.replace('<h1>'+e(title)+'</h1>', '<h1>'+e(title)+'</h1><p class="study-source">סדר החלופות מתערבב בכל פתיחת עמוד. המפתח המוצג מתאים לסדר הנוכחי. אותיות בתוך הסברים מיובאים מתייחסות לשאלון המקורי — יש לזהות את התשובה לפי תוכנה.</p>')
     write(path,doc)
 
 def srclinks(q,prefix=''):
@@ -106,12 +108,20 @@ def answer(q,prefix=''):
     a=q['answer_html']
     if prefix:a=a.replace('href="solutions/','href="'+prefix+'solutions/')
     return '<p class="study-source">'+e(q['answer_origin'])+'</p>'+a
-def options(q):return '<ol class="study-options" type="א">'+''.join('<li>'+e(o).replace('\n','<br>')+'</li>' for o in q['options'])+'</ol>'
+def option_order(q):
+    # Varied static fallback; the browser reshuffles independently on each visit.
+    return sorted(range(len(q['options'])),key=lambda i:hashlib.sha256(f'{q["id"]}:{i}'.encode()).digest())
+def options(q):
+    return '<ol class="study-options" style="list-style:none" id="opts-'+q['id']+'" data-accepted="'+e(json.dumps(q['accepted_indices']))+'">'+''.join('<li data-option-index="'+str(i)+'"><b class="option-letter">'+'אבגד'[j]+'. </b><span class="option-text">'+e(q['options'][i]).replace('\n','<br>')+'</span></li>' for j,i in enumerate(option_order(q)))+'</ol>'
+def answer_key(q):
+    keys=['אבגד'[j]+'. '+q['options'][i] for j,i in enumerate(option_order(q)) if i in q['accepted_indices']]
+    label='חלופות שהתקבלו בבדיקה: ' if len(keys)>1 else 'התשובה הנכונה כאן: '
+    return '<p class="correct" data-answer-for="opts-'+q['id']+'">'+e(label+' / '.join(keys))+'</p>'
 for q in qbank+pred:
     body='<p class="muted">'+e(q['id']+' · '+q['topic'])+'</p>'+paragraphs(q['stem'])+options(q)
-    body+='<p class="correct"><strong>התשובה הנכונה:</strong> '+e(q['options'][0])+'</p><p class="muted">בתרגול החלופות מתערבבות. אותיות המוזכרות בפתרון מיובא מתייחסות לשאלון המקורי; יש לזהות את התשובה לפי התוכן.</p>'
+    body+=answer_key(q)
     if len(q['accepted_indices'])>1:
-        body=body.replace('<p class="correct"><strong>התשובה הנכונה:</strong> '+e(q['options'][0])+'</p>', '<p class="study-intro"><strong>שאלה עם הערת בדיקה מקורית:</strong> '+e(q['note'])+'. אין להציג כאן תשובה יחידה ללא ההסתייגות. הפתרון להלן מסביר את ההכרעה המקצועית; הניקוד האינטראקטיבי מכבד את כל החלופות שהתקבלו.</p>')
+        body+='<p class="study-intro">הניקוד מכבד את החלופות שהתקבלו בבדיקה המקורית. הפתרון מסביר את ההסתייגות המקצועית.</p>'
     if q.get('note'):body+='<p class="study-intro">'+e(q['note'])+'</p>'
     body+=answer(q,'../')+'<p>'+srclinks(q,'../')+'</p>'
     if q['id'].startswith('P'):body+='<h2>למה לתרגל?</h2><p>עדיפות: '+q['priority']+' — שילוב של חזרתיות במשפחת הנושא, וריאציות במועדי ב׳ ופערים שנחשפו במועד א׳. אין זו הסתברות להופעת השאלה.</p><p>'+qlinks(q['evidence'],'../')+'</p><p><a href="../predictions.html#'+q['id']+'">חזרה לתחזית</a></p>'
@@ -129,14 +139,17 @@ for i,doc in enumerate(archive,1):
 
 # Frozen historical practice, retained separately from the new ranking.
 for i,(q,a) in enumerate(zip(old['questions'],old['answers']),1):
-    page(f'solutions/old-p{i:02}.html',f'התחזית הישנה · תרגיל {i}', '<p class="study-intro">ארכיון: נכתב 17/10/2026, לפני בחינת 19/10/2026. אינו תחזית מועד ב׳ המעודכנת.</p>'+paragraphs(q['stem'])+'<ol>'+''.join('<li>'+e(o)+'</li>' for o in q['options'])+'</ol>'+clean(a),1)
+    shown=dict(q,id=f'old-p{i:02}',accepted_indices=[q['answer_index']])
+    explanation=re.search(r'<div class="answer-body">(.*)</div><p class="muted">',a,re.S)[1]
+    page(f'solutions/old-p{i:02}.html',f'התחזית הישנה · תרגיל {i}', '<p class="study-intro">ארכיון: נכתב 17/10/2026, לפני בחינת 19/10/2026. אינו תחזית מועד ב׳ המעודכנת.</p>'+paragraphs(q['stem'])+options(shown)+answer_key(shown)+clean(explanation),1)
 report=re.search(r'<body>(.*)</body>',old['report'],re.S)[1]
 report=re.sub(r'<nav\b.*?</nav>','',report,flags=re.S)
 page('old-forecast.html','ארכיון התחזית מ-17/10/2026','<p class="study-intro">הדוח ההיסטורי נשמר להשוואה. הנתונים שבו משקפים את הניתוח הישן בלבד, שלא כלל את אוגוסט 2026. <a href="analysis.html">לבדיקת התחזית מול הבחינה בפועל</a></p>'+clean(report)+'<h2>50 התרגילים המקוריים</h2><ol>'+''.join(f'<li><a href="solutions/old-p{i:02}.html">תרגיל {i}: {e(q["topic"])}</a></li>' for i,q in enumerate(old['questions'],1))+'</ol>')
 
 latest_body='''<p class="sub">19/10/2026 · סמסטר קיץ תשפ״ו · 10 שאלות · 80 דקות · 10 נקודות לשאלה.</p><div class="study-intro">הקובץ שסופק מציין בעמוד 2 שכל תשובות א׳ נכונות. להלן תמלול קריא ופתרון עצמאי לכל שאלה; ה-PDF המקורי הוא המקור הקובע לנוסח. בתרגול הדיגיטלי סדר החלופות מתערבב.</div><div class="study-actions"><a class="primary" href="index.html?set=latest">תרגלו את 10 שאלות מועד א׳</a><a href="2026/File_0_689156_19102026_0.pdf">פתיחת הבחינה המקורית</a><a href="analysis.html">איך התחזית הקודמת התאימה?</a></div>'''
 for q in LATEST:
-    latest_body+=f'<article class="study-card" id="q{q["sources"][0]["num"]}"><h2>שאלה {q["sources"][0]["num"]} · {e(q["title"])}</h2>'+paragraphs(q['stem'])+options(q)+'<details class="answer-detail"><summary>הצגת התשובה וההסבר המפורט</summary>'+answer(q)+'</details><p><a href="'+q['solution']+'">פתרון בעמוד נפרד</a></p></article>'
+    latest_body+=f'<article class="study-card" id="q{q["sources"][0]["num"]}"><h2>שאלה {q["sources"][0]["num"]} · {e(q['title'])}</h2>'+paragraphs(q['stem'])+options(q)+'<details class="answer-detail"><summary>הצגת התשובה וההסבר המפורט</summary>'+answer_key(q)+answer(q)+'</details><p><a href="'+q['solution']+'">פתרון בעמוד נפרד</a></p></article>'
+latest_body=latest_body.replace('בתרגול הדיגיטלי סדר החלופות מתערבב.', 'באתר סדר החלופות מתערבב בכל פתיחת שאלה או ניסיון חדש; האות א׳ שבקובץ אינה מפתח לסדר המוצג כאן.')
 page('latest.html','מועד א׳ האחרון — שאלות ופתרונות',latest_body)
 
 # Use one dated exam-question occurrence regardless of duplicate PDF copies.
@@ -160,10 +173,8 @@ intro+='''<h2>סדר העדיפויות</h2><div class="study-table"><table><the
 intro+='''<h2>איך לעבוד עם התחזית</h2><ol><li>פתרו את מועד א׳ האחרון והסבירו בקול למה כל מסיח שגוי.</li><li>בצעו סימולציה של 10 שאלות בלי לפתוח פתרונות; בחרו במצב ״מבחן דיגיטלי״. לכל שאלה כשמונה דקות.</li><li>קראו הסבר לכל טעות, ואז החליפו מספר או הנחה ופתרו שוב. שינוי מ-OTP חוזר לחד פעמי או מ-CT בלי SCT ל-CT עם SCT משנה את ההסקה.</li><li>המשיכו לסימולציות 2–3 ולמבחני ב׳ ההיסטוריים. הצלחה בסט אחד אינה מדד מספיק לשליטה.</li></ol><p>סימון ״שולט/ת״ נשמר רק בדפדפן הזה. הוא אינו נשלח לשרת.</p><div class="study-filter"><label>חיפוש <input type="search" id="forecast-search" placeholder="למשל RSA או OTP"></label><label>עדיפות <select id="forecast-priority"><option value="">הכל</option><option>ליבה</option><option>משלים</option><option>ממוקד</option><option>רשת ביטחון</option></select></label><label><input type="checkbox" id="forecast-pending"> רק מה שטרם סומן</label><output id="forecast-count" aria-live="polite"></output><button class="btn" id="print-study">הדפסה עם פתרונות</button></div><p id="forecast-empty" hidden>אין שאלות בסינון הזה. נסו חיפוש אחר או הסירו סינון.</p>'''
 for q in pred:
     intro+=f'<article class="study-card forecast-card" id="{q["id"]}" data-priority="{q["priority"]}"><p class="muted">{q["id"]} · סימולציה {q["mock"]} · {q["priority"]} · {e(q["topic"])}</p><h3>{e(q["title"])}</h3>'+paragraphs(q['stem'])
-    # Deliberately rotate static options; store correct answer independently.
-    shift=int(q['id'][1:])%4;opts=q['options'][shift:]+q['options'][:shift];correctidx=opts.index(q['options'][0])
-    intro+='<ol class="study-options">'+''.join('<li>'+e(o)+'</li>' for o in opts)+'</ol>'
-    intro+='<details class="answer-detail"><summary>בדקו תשובה והסבר</summary><p class="correct">התשובה הנכונה כאן: '+str(correctidx+1)+'. '+e(q['options'][0])+'</p>'+answer(q)+'</details>'
+    intro+=options(q)
+    intro+='<details class="answer-detail"><summary>בדקו תשובה והסבר</summary>'+answer_key(q)+answer(q)+'</details>'
     intro+='<p class="study-source">הראיות לבחירה: '+qlinks(q['evidence'])+'</p>'
     intro+=f'<div class="study-controls"><label><input type="checkbox" data-mastered="{q["id"]}"> שולט/ת בשאלה ובנימוק</label><a href="{q["solution"]}">פתרון בעמוד נפרד</a></div></article>'
 page('predictions.html','לקראת מועד ב׳ — תחזית ותרגול',intro)
@@ -207,7 +218,8 @@ const selectedSet = new URLSearchParams(location.search).get('set') || '';
 const isForecast = /^forecast-(1|2|3|all)$/.test(selectedSet);
 const QS = isForecast ? FORECAST.filter(q => selectedSet==='forecast-all' || q.mock===Number(selectedSet.slice(-1))) : BANK.questions.filter(q => !q.exclude && (selectedSet!=='latest' || q.sources.some(s=>s.date==='19/10/2026')));
 const collectionName = isForecast ? 'תרגול תחזית מועד ב׳ — שאלות שחוברו לתרגול' : selectedSet==='latest' ? 'מועד א׳ · 19/10/2026' : 'מאגר הבחינות';''')
-template=template.replace('</head>','<link rel="stylesheet" href="study.css"></head>')
+template=template.replace('</head>','<link rel="stylesheet" href="study.css"><script src="answer-order.js"></script></head>')
+template=template.replace('אותו קוד = אותו מבחן', 'אותו קוד = אותן שאלות; סדר התשובות מתחדש')
 template=template.replace('<main ', '<main ',1)
 template=template.replace('<body>','<body><a class="skip-link" href="#app">דלג לתוכן</a>')
 template=template.replace('</header>','''</header><div class="study-banner"><div class="wrap"><a href="predictions.html">תחזית מועד ב׳ · 30 שאלות ופתרונות</a><a href="latest.html">בחינת אוקטובר 2026</a><a href="analysis.html">בדיקת התחזית הקודמת</a><a href="archive.html">כל הפתרונות</a><a href="index.html#setup">כל מאגר הבחינות</a></div></div>''',1)
@@ -246,6 +258,12 @@ tabFromHash();
 render();''')
 assert template.count('solutionDetails(q)')>=4
 write('index.html',template)
+# Retire inherited HTML copies that could bypass the current answer shuffling.
+# Original source PDFs stay intact as archival evidence.
+legacy_pages=['מאגר שאלות/app.html','מאגר שאלות/exams/answer_key.html','מאגר שאלות/exams/exam_v1.html','מאגר שאלות/exams/exam_v2.html','מאגר שאלות/exams/exam_v3.html','מאגר שאלות/exams/practice/answer_key.html','מאגר שאלות/exams/practice/practice_v1.html']
+for path in legacy_pages:
+    target='../'*(len(Path(path).parts)-1)+'index.html#setup'
+    write(path,'<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url='+target+'"><title>תרגול מעודכן</title></head><body><p>התרגול וההדפסה זמינים בגרסה המעודכנת, עם ערבוב אוטומטי ומפתח תואם.</p><a href="'+target+'">פתיחת התרגול המעודכן</a></body></html>')
 write('.nojekyll','')
 save('data/build-summary.json',dict(actual_questions=len(qbank),dated_occurrences=sum(len(v) for v in bydate.values()),dated_exams=len(bydate),paired_exams=len(pairdata),predicted_questions=len(pred),reused_answers=162,new_answers=20,archive_documents=len(archive),built='2026-11-14'))
 print(json.dumps(load('data/build-summary.json')))

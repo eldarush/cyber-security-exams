@@ -1,4 +1,22 @@
 (() => {
+  const letters = ['א', 'ב', 'ג', 'ד'];
+  document.querySelectorAll('.study-options').forEach(list => {
+    const items = [...list.children];
+    const order = AnswerOrder.indices(items.length);
+    order.forEach(i => list.append(items[i]));
+    [...list.children].forEach((item, i) => {
+      item.querySelector('.option-letter').textContent = letters[i] + '. ';
+    });
+    const accepted = JSON.parse(list.dataset.accepted);
+    const correct = [...list.children].flatMap((item, i) =>
+      accepted.includes(Number(item.dataset.optionIndex))
+        ? [letters[i] + '. ' + item.querySelector('.option-text').textContent] : []);
+    document.querySelectorAll('[data-answer-for]').forEach(key => {
+      if (key.dataset.answerFor === list.id) {
+        key.textContent = (accepted.length > 1 ? 'חלופות שהתקבלו בבדיקה: ' : 'התשובה הנכונה כאן: ') + correct.join(' / ');
+      }
+    });
+  });
   const cards = [...document.querySelectorAll('.forecast-card')];
   const key = 'cyber-study-v2:mastered';
   let mastered = {};

@@ -340,7 +340,7 @@ function renderSetup(app){
         <div class="group"><div class="eyebrow">שנות מבחן</div>
           <div class="chips">${YEARS.map(y=>`<button class="chip" data-year="${y}" aria-pressed="${c.years.includes(y)}">${y} <span class="n">${yc(y)}</span></button>`).join('')}</div></div>
         <div class="row" style="gap:22px">
-          <label class="check"><input type="checkbox" id="f-shuffle" ${c.shuffle?'checked':''}>ערבוב סדר התשובות</label>
+          <p class="sub">סדר התשובות מעורבב אוטומטית בכל ניסיון חדש. הסדר נשמר במהלך המענה ובבדיקת התוצאות.</p>
           <label class="check"><input type="checkbox" id="f-noted" ${c.skipNoted?'checked':''}>בלי שאלות שבוטלו/קיבלו כמה תשובות</label>
           <label class="check" ${histN?'':'title="יופעל אחרי מבחן ראשון"'}><input type="checkbox" id="f-wrong" ${c.wrongOnly?'checked':''} ${histN?'':'disabled'}>רק שאלות שטעיתי בהן</label>
         </div>
@@ -371,7 +371,6 @@ function renderSetup(app){
   app.querySelectorAll('[data-topic]').forEach(b => b.onclick = () => { const t=b.dataset.topic; c.topics = c.topics.includes(t) ? c.topics.filter(x=>x!==t) : [...c.topics, t]; save(); });
   app.querySelectorAll('[data-year]').forEach(b => b.onclick = () => { const y=b.dataset.year; c.years = c.years.includes(y) ? c.years.filter(x=>x!==y) : [...c.years, y]; save(); });
   $('#f-n').onchange = e => { c.n = Math.max(1, Math.min(QS.length, +e.target.value||10)); c.minutes = null; save(); };
-  $('#f-shuffle').onchange = e => { c.shuffle = e.target.checked; save(); };
   $('#f-noted').onchange = e => { c.skipNoted = e.target.checked; save(); };
   $('#f-wrong').onchange = e => { c.wrongOnly = e.target.checked; save(); };
   if ($('#f-min')) $('#f-min').onchange = e => { c.minutes = Math.max(0, +e.target.value||0); save(); };
@@ -383,7 +382,7 @@ function renderSetup(app){
 }
 
 function makeItems(qs, r){
-  return qs.map(q => ({ q, order: (S.cfg.shuffle && !q.fixed_order) ? shuffle(q.options.map((_,i)=>i), r) : q.options.map((_,i)=>i), ans: null, flag: false }));
+  return qs.map(q => ({ q, order: AnswerOrder.indices(q.options.length), ans: null, flag: false }));
 }
 function start(ids){
   const c = S.cfg;
@@ -621,7 +620,7 @@ function renderBank(app){
       <div class="qhead"><span class="row" style="gap:8px"><b class="mono">${q.id}</b><span class="tag">${esc(q.topic)}</span>${q.exam_count>1?`<span class="tag" style="color:var(--accent)">חזרה ב-${q.exam_count} מבחנים</span>`:''}${q.variant_group?`<span class="tag">וריאציה ${q.variant_group}</span>`:''}</span>
         <span class="sub" style="font-size:12.5px;margin:0">${esc(q.sources.map(s=>s.date||'לדוגמא').filter((v,i,a)=>a.indexOf(v)===i).join(' · '))}</span></div>
       <div class="stem" style="font-size:15px">${rich(q.stem)}</div>
-      <div class="opts">${q.options.map((o,i)=>`<div class="opt ${B.show&&i===0?'ok':''}"><span class="bub">${LET[i]}</span><span class="t">${rich(o)}</span></div>`).join('')}</div>
+      <div class="opts">${AnswerOrder.indices(q.options.length).map((oi,i)=>`<div class="opt ${B.show&&isCorrect(q,oi)?'ok':''}"><span class="bub">${LET[i]}</span><span class="t">${rich(q.options[oi])}</span></div>`).join('')}</div>
       ${q.note?`<div class="meta-line">${esc(q.note)}</div>`:''}
     </div>`).join('')}
     ${list.length>60?`<div class="empty">מוצגות 60 הראשונות מתוך ${list.length}. צמצם בחיפוש או בסינון.</div>`:''}

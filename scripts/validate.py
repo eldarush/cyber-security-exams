@@ -71,4 +71,15 @@ with tempfile.TemporaryDirectory() as t:
     p=Path(t)/'inline.js';p.write_text('\n'.join(scripts),encoding='utf-8')
     subprocess.run(['node','--check',str(p)],check=True,capture_output=True)
 subprocess.run(['node','--check',str(R/'study.js')],check=True,capture_output=True)
+subprocess.run(['node','--check',str(R/'answer-order.js')],check=True,capture_output=True)
+subprocess.run(['node',str(R/'scripts/test-answer-order.cjs')],check=True)
+for p in files:
+    doc=p.read_text(encoding='utf-8')
+    for attrs,body in re.findall(r'<ol (class="study-options"[^>]*)>(.*?)</ol>',doc,re.S):
+        assert 'data-accepted=' in attrs and 'id="opts-' in attrs,p
+        assert sorted(map(int,re.findall(r'data-option-index="(\d+)"',body)))==[0,1,2,3],p
+        assert body.count('class="option-letter"')==4,p
+        list_id=re.search(r'id="([^"]+)"',attrs)[1]
+        assert 'data-answer-for="'+list_id+'"' in doc,p
+        assert 'answer-order.js' in doc and 'study.js' in doc,p
 print(json.dumps({'html_pages_checked':len(files),'local_links_checked':links,'past_questions':182,'forecast_questions':30,'pairs':7,'arithmetic':'passed','javascript_syntax':'passed'},indent=2))

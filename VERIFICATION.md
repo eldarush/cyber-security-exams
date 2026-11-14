@@ -30,6 +30,15 @@ Reference: the live upstream `index.html#setup`, retained as the design referenc
 
 The new reading pages use a document layout and accessible disclosures rather than copying the quiz's two-column layout. This is an intentional extension for long explanations. The implementation was checked against the reference design; no material visual mismatch remained in the inspected states. Print CSS and before/after-print handlers are included; a physical printout was not tested.
 
-## Evidence boundaries
+## Mandatory answer-order follow-up
+
+- Reloaded the latest-exam reading page: eight of ten question orders changed in the observed random draw, and all ten displayed answer keys matched their new positions.
+- All 30 forecast reading-page keys matched the shuffled choices. Checked an archived old exercise and Q021 with two accepted alternatives; their letters and answer text matched the displayed order.
+- Checked all 60 visible question-bank cards with answers enabled against source answer identities, including multi-answer questions. Correct choices occupied all four positions. HTML subscript markup was normalized for the comparison.
+- Generated two printable ten-question versions and verified all 20 answer-key entries against the displayed choices and source answers.
+- Submitted a latest-exam question whose correct choice was displayed at B; it was graded correct and retained that position in review. No browser console errors were observed.
+- Automated checks exhaust all 24 permutations and 288 grading cases. Shuffling cannot be disabled by a previous saved preference. Original PDFs retain their original order; generated learning and print views shuffle automatically.
+
+## Content evidence boundaries
 
 The 162 imported explanations were mapped by source filename and original question number and retain provenance. Their complete semantics were not independently re-proved one by one in this update. The 20 new exam explanations and ten new forecast variants received targeted content and arithmetic review. Historical broad-topic assignments are coarse; combined questions can test several mechanisms. The old forecast audit is an explicit, conservative manual classification of exercise coverage. No claim is made that the new ranking has a measured out-of-sample predictive accuracy.
