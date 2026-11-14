@@ -285,15 +285,18 @@ const S = {
   bank: {q:'', topic:'', year:'', show:false}
 };
 
+function wrongQuestionIds(){
+  const latest = new Map();
+  for (const h of store.get('history', [])) for (const a of h.answers) latest.set(a.id, a.ok);
+  return new Set([...latest].filter(([,ok]) => !ok).map(([id]) => id));
+}
 function pool(){
-  const c = S.cfg; const hist = store.get('history', []);
-  const wrong = new Set(); const right = new Set();
-  if (c.wrongOnly) for (const h of hist) for (const a of h.answers){ (a.ok ? right : wrong).add(a.id); }
+  const c = S.cfg, wrong = c.wrongOnly ? wrongQuestionIds() : new Set();
   return QS.filter(q =>
     (!c.onlyMultipleChoice || q.question_type === 'multiple-choice') &&
     (!c.topics.length || c.topics.includes(q.topic)) &&
     (!c.years.length || yearsOf(q).some(y => c.years.includes(y))) &&
-    (!c.skipNoted || !q.note) &&
+    (!c.skipNoted || !q.note || q.id.startsWith('P')) &&
     (!c.wrongOnly || wrong.has(q.id)));
 }
 
@@ -319,12 +322,18 @@ function renderSetup(app){
   const c = S.cfg, P = pool(), n = Math.min(c.n, P.length);
   const tc = t => QS.filter(q => q.topic === t).length;
   const yc = y => QS.filter(q => yearsOf(q).includes(y)).length;
-  const histN = store.get('history', []).length;
+  const wrong = wrongQuestionIds(), wrongN = QS.filter(q => wrong.has(q.id)).length;
   const mins = c.minutes ?? Math.round(n * 8);
   app.innerHTML = `
   <div class="setup">
     <div class="stack">
       <div><h2>מבחן חדש</h2><p class="sub">בוחרים שאלות מתוך ${QS.length} השאלות שנאספו מ-${countExams()} מבחנים, מערבבים, ומתחילים.</p></div>
+      <div class="panel stack">
+        <label class="field">מקור השאלות<select id="f-source">
+          ${[['','מבחני עבר — כל המאגר'],['latest','מועד א׳ · אוקטובר 2026'],['forecast-all','תחזית מועד ב׳ — כל 30 השאלות'],['forecast-1','תחזית מועד ב׳ — סט 1 (10 שאלות)'],['forecast-2','תחזית מועד ב׳ — סט 2 (10 שאלות)'],['forecast-3','תחזית מועד ב׳ — סט 3 (10 שאלות)']].map(([value,label]) => `<option value="${value}" ${selectedSet===value?'selected':''}>${label}</option>`).join('')}
+        </select></label>
+        <p class="sub">בחרו תחזית מועד ב׳ כדי ליצור מבחן משאלות התחזית בלבד. התשובות מעורבבות בכל ניסיון; פתרון מפורט לכל שאלה זמין לאחר ההגשה. התחזית היא חומר לתרגול, ולא בחינה עתידית ידועה.</p>
+      </div>
       <div class="modes" role="radiogroup" aria-label="סוג מבחן">
         ${[['digital','מבחן דיגיטלי','עונים על הכל, מגישים, ומקבלים ציון ופירוט טעויות. עם טיימר.'],
            ['practice','תרגול','משוב מיידי אחרי כל תשובה, עם מקור השאלה.'],
@@ -345,7 +354,8 @@ function renderSetup(app){
           <label class="check"><input type="checkbox" id="f-choice" ${c.onlyMultipleChoice?'checked':''}>בלי שאלות פתוחות</label>
           <p class="sub">המבחן יכלול שאלות שבהן בוחרים תשובה. כרגע כל השאלות במאגר התרגול הן שאלות בחירה; שאלות פתוחות זמינות בארכיון בלבד.</p>
           <label class="check"><input type="checkbox" id="f-noted" ${c.skipNoted?'checked':''}>בלי שאלות שבוטלו/קיבלו כמה תשובות</label>
-          <label class="check" ${histN?'':'title="יופעל אחרי מבחן ראשון"'}><input type="checkbox" id="f-wrong" ${c.wrongOnly?'checked':''} ${histN?'':'disabled'}>רק שאלות שטעיתי בהן</label>
+          <label class="check"><input type="checkbox" id="f-wrong" ${c.wrongOnly?'checked':''} ${wrongN || c.wrongOnly?'':'disabled'}>רק שאלות שטעיתי בהן (${wrongN})</label>
+          <p class="sub">לפי הניסיון האחרון שנשמר לכל שאלה במקור שנבחר. תשובה נכונה בניסיון חוזר מסירה אותה מרשימת הטעויות. שאלות שלא נענו במבחן נכללות; שאלות שלא נענו בתרגול אינן משנות את ההיסטוריה.</p>
         </div>
         ${c.mode==='digital' ? `<div class="row" style="align-items:end"><label class="field">זמן (דקות, 0 = בלי טיימר)<input type="number" id="f-min" min="0" max="600" value="${mins}"></label><span class="sub" style="font-size:13px">במבחן האמיתי: 10 שאלות בשעה ועשרים, כלומר 8 דקות לשאלה</span></div>` : ''}
         ${c.mode==='print' ? `<div class="row" style="gap:20px;align-items:end">
@@ -362,6 +372,7 @@ function renderSetup(app){
         <div class="eyebrow">שאלות זמינות לפי הבחירה</div>
         <div class="big mono">${P.length}<small>שאלות</small></div>
         <div class="sub" style="margin:0">${c.mode==='print' ? `${c.versions} גרסאות × ${n} שאלות` : `במבחן: ${n} שאלות` + (c.mode==='digital' && mins ? ` · ${mins} דקות` : '')}</div>
+        ${!P.length ? '<p class="sub" role="status">אין שאלות שמתאימות לסינון. בטלו את הסינון של טעויות בלבד או הרחיבו את בחירת הנושאים והשנים.</p>' : ''}
         ${c.mode==='print' && c.verMode==='norepeat' && n*c.versions > P.length ? `<div style="color:var(--bad);font-size:13px">אין מספיק שאלות לגרסאות בלי חזרה (צריך ${n*c.versions}).</div>` : ''}
         <button class="btn primary" id="start" ${!P.length || (c.mode==='print' && c.verMode==='norepeat' && n*c.versions > P.length) ? 'disabled':''}>${c.mode==='print' ? 'צור גרסאות' : 'התחל'}</button>
       </div>
@@ -369,6 +380,11 @@ function renderSetup(app){
     </aside>
   </div>`;
   const save = () => { store.set('cfg', S.cfg); renderSetup(app); };
+  $('#f-source').onchange = e => {
+    const url = new URL(location.href);
+    if (e.target.value) url.searchParams.set('set', e.target.value); else url.searchParams.delete('set');
+    url.hash = 'setup'; location.assign(url.href);
+  };
   app.querySelectorAll('[data-mode]').forEach(b => b.onclick = () => { c.mode = b.dataset.mode; save(); });
   app.querySelectorAll('[data-n]').forEach(b => b.onclick = () => { c.n = +b.dataset.n; c.minutes = null; save(); });
   app.querySelectorAll('[data-topic]').forEach(b => b.onclick = () => { const t=b.dataset.topic; c.topics = c.topics.includes(t) ? c.topics.filter(x=>x!==t) : [...c.topics, t]; save(); });
@@ -394,6 +410,7 @@ function start(ids){
   const r = rng(seed);
   const P = Array.isArray(ids) ? QS.filter(q => ids.includes(q.id) && (!c.onlyMultipleChoice || q.question_type === 'multiple-choice')) : pool();
   const n = Array.isArray(ids) ? P.length : Math.min(c.n, P.length);
+  if (!n) return;
   if (c.mode === 'print' && !Array.isArray(ids)){
     const versions = []; let remaining = P.slice(); const base = shuffle(P, r).slice(0, n);
     for (let v=0; v<c.versions; v++){
@@ -503,6 +520,7 @@ function submit(timeUp){
 }
 function finish(timeUp){
   const E = S.exam; E.done = true; clearInterval(timerId);
+  reviewFilter = 'all';
   const secs = Math.round((Date.now()-E.start)/1000);
   const answers = E.items.map(x => ({id: x.q.id, topic: x.q.topic, ok: x.ans !== null && x.order[x.ans] === 0, skipped: x.ans === null}));
   const counted = E.mode === 'practice' ? answers.filter(a => !a.skipped) : answers;
@@ -602,7 +620,13 @@ function historyMini(){
     ${last.map(x => `<div class="row" style="justify-content:space-between;font-size:13.5px"><span>${new Date(x.t).toLocaleDateString('he-IL')} · ${x.mode==='practice'?'תרגול':'מבחן'} · ${x.n} שאלות</span><b class="mono" style="color:${x.score>=60?'var(--good)':'var(--bad)'}">${x.score}</b></div>`).join('')}
     <button class="btn ghost" id="clearhist" style="justify-self:start;padding:2px 0;font-size:12.5px">מחק היסטוריה</button></div>`;
 }
-function bindHistoryMini(app){ const b = $('#clearhist', app); if (b) b.onclick = () => confirmModal('למחוק את כל היסטוריית המבחנים בדפדפן הזה?', 'מחק', () => { store.set('history', []); render(); }); }
+function clearHistory(){
+  store.set('history', []);
+  S.cfg.wrongOnly = false;
+  store.set('cfg', S.cfg);
+  render();
+}
+function bindHistoryMini(app){ const b = $('#clearhist', app); if (b) b.onclick = () => confirmModal('למחוק את היסטוריית המבחנים והטעויות מכל מקורות השאלות בדפדפן הזה? הפעולה אינה ניתנת לביטול.', 'מחק', clearHistory); }
 
 /* ---------- bank browser ---------- */
 function renderBank(app){

@@ -73,6 +73,7 @@ with tempfile.TemporaryDirectory() as t:
 subprocess.run(['node','--check',str(R/'study.js')],check=True,capture_output=True)
 subprocess.run(['node','--check',str(R/'answer-order.js')],check=True,capture_output=True)
 subprocess.run(['node',str(R/'scripts/test-answer-order.cjs')],check=True)
+subprocess.run(['node',str(R/'scripts/test-exam-flow.cjs')],check=True)
 subprocess.run([sys.executable,str(R/'scripts/test_forecast_content.py')],check=True)
 archive_pages=[p for p in files if p.name.startswith('archive-')]
 assert sum(p.read_text(encoding='utf-8').count('data-question-type="open"') for p in archive_pages)==26

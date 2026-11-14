@@ -230,7 +230,8 @@ page('archive.html','ארכיון בחינות ופתרונות מלאים',arch
 template=(R/'scripts/index.template.html').read_text(encoding='utf-8')
 template=template.replace('__BANK_JSON__',json.dumps(original,ensure_ascii=False,separators=(',',':')))
 template=template.replace('const QS = BANK.questions.filter(q => !q.exclude);', '''const FORECAST = '''+json.dumps(pred,ensure_ascii=False,separators=(',',':'))+''';
-const selectedSet = new URLSearchParams(location.search).get('set') || '';
+const requestedSet = new URLSearchParams(location.search).get('set') || '';
+const selectedSet = ['latest','forecast-all','forecast-1','forecast-2','forecast-3'].includes(requestedSet) ? requestedSet : '';
 const isForecast = /^forecast-(1|2|3|all)$/.test(selectedSet);
 const QS = isForecast ? FORECAST.filter(q => q.question_type==='multiple-choice' && (selectedSet==='forecast-all' || q.mock===Number(selectedSet.slice(-1)))) : BANK.questions.filter(q => q.question_type==='multiple-choice' && !q.exclude && (selectedSet!=='latest' || q.sources.some(s=>s.date==='19/10/2026')));
 const collectionName = isForecast ? 'תרגול תחזית מועד ב׳ — שאלות שחוברו לתרגול' : selectedSet==='latest' ? 'מועד א׳ · 19/10/2026' : 'מאגר הבחינות';''')
@@ -270,7 +271,10 @@ template=template.replace("isCorrect(it.q,it.order[it.ans]) ? '✓ נכון.'", 
 template=template.replace("</div>` : ''}\n        <div class=\"qnav\">", "</div>${solutionDetails(q)}` : ''}\n        <div class=\"qnav\">")
 template=template.replace('<span class="mono">${q.id}</span></div>','<span class="mono">${q.id}</span></div>${solutionDetails(q)}')
 template=template.replace("${q.note?`<div class=\"meta-line\">${esc(q.note)}</div>`:''}","${q.note?`<div class=\"meta-line\">${esc(q.note)}</div>`:''}${solutionDetails(q)}")
-template=template.replace('tabFromHash();\nrender();', '''if (selectedSet) { S.cfg = {...S.cfg, mode:'digital',n:Math.min(10,QS.length),topics:[],years:[],wrongOnly:false,skipNoted:false,minutes:80,shuffle:true,onlyMultipleChoice:true}; }
+template=template.replace('tabFromHash();\nrender();', '''if ((S.cfg.collection || '') !== selectedSet) {
+  S.cfg = {...S.cfg, collection:selectedSet, n:Math.min(S.cfg.n,QS.length),topics:[],years:[],wrongOnly:false,skipNoted:false,minutes:null,shuffle:true,onlyMultipleChoice:true};
+  store.set('cfg', S.cfg);
+}
 tabFromHash();
 render();''')
 assert template.count('solutionDetails(q)')>=4
