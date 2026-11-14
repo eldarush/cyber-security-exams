@@ -12,6 +12,7 @@ def write(p,t):
 def save(p,v):write(p,json.dumps(v,ensure_ascii=False,indent=2))
 def e(s):return html.escape(str(s))
 def url(s):return quote(str(s).replace('\\','/'),safe='/#?=&')
+def asset(name):return name+'?v='+hashlib.sha256((R/name).read_bytes()).hexdigest()[:12]
 def clean(t):
     # Source documents contain only study markup. Strip scripts, inline handlers and
     # local document links; canonical source links are emitted separately.
@@ -90,7 +91,8 @@ def page(path,title,body,depth=0):
     nav=''.join(f'<a href="{prefix}{p}">{label}</a>' for p,label in NAV)
     doc=f'''<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{e(title)} · מבחני סייבר</title><link rel="stylesheet" href="{prefix}study.css"><meta name="description" content="מבוא לאבטחת סייבר 689156 — מבחנים, פתרונות מפורטים ותרגול מועד ב׳ עם ניתוח ראיות."></head><body><a class="skip-link" href="#main">דלג לתוכן</a><header class="top"><div class="wrap"><a class="brand" href="{prefix}index.html">מבחני סייבר <small>מבוא לאבטחת סייבר · 689156</small></a></div><nav class="wrap study-nav" aria-label="ניווט ראשי">{nav}</nav></header><main id="main" class="reading"><h1>{e(title)}</h1>{body}<footer class="study-footer">עודכן 14/11/2026 · חומר לימוד עצמאי, לא פתרון רשמי ולא מידע על שאלון עתידי. שאלות הבחינות נשמרות לפי המקורות; הסברים חדשים מסומנים. האתר הוא fork של <a href="https://github.com/salimkh25/cyber-security-exams">salimkh25/cyber-security-exams</a>. <a href="https://github.com/eldarush/cyber-security-exams">קוד האתר</a>.</footer></main><script src="{prefix}study.js" defer></script></body></html>'''
     fonts='<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Hebrew:wght@400;500;600;700&family=Suez+One&display=swap">'
-    doc=doc.replace('</head>',fonts+f'<script src="{prefix}answer-order.js"></script></head>')
+    doc=doc.replace('</head>',fonts+f'<script src="{prefix}{asset("answer-order.js")}"></script></head>')
+    doc=doc.replace('study.js"',asset('study.js')+'"')
     if 'class="study-options"' in body:
         doc=doc.replace('<h1>'+e(title)+'</h1>', '<h1>'+e(title)+'</h1><p class="study-source">סדר החלופות מתערבב בכל פתיחת עמוד. המפתח המוצג מתאים לסדר הנוכחי. אותיות בתוך הסברים מיובאים מתייחסות לשאלון המקורי — יש לזהות את התשובה לפי תוכנה.</p>')
     write(path,doc)
@@ -218,7 +220,7 @@ const selectedSet = new URLSearchParams(location.search).get('set') || '';
 const isForecast = /^forecast-(1|2|3|all)$/.test(selectedSet);
 const QS = isForecast ? FORECAST.filter(q => selectedSet==='forecast-all' || q.mock===Number(selectedSet.slice(-1))) : BANK.questions.filter(q => !q.exclude && (selectedSet!=='latest' || q.sources.some(s=>s.date==='19/10/2026')));
 const collectionName = isForecast ? 'תרגול תחזית מועד ב׳ — שאלות שחוברו לתרגול' : selectedSet==='latest' ? 'מועד א׳ · 19/10/2026' : 'מאגר הבחינות';''')
-template=template.replace('</head>','<link rel="stylesheet" href="study.css"><script src="answer-order.js"></script></head>')
+template=template.replace('</head>','<link rel="stylesheet" href="study.css"><script src="'+asset('answer-order.js')+'"></script></head>')
 template=template.replace('אותו קוד = אותו מבחן', 'אותו קוד = אותן שאלות; סדר התשובות מתחדש')
 template=template.replace('<main ', '<main ',1)
 template=template.replace('<body>','<body><a class="skip-link" href="#app">דלג לתוכן</a>')
