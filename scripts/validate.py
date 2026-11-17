@@ -12,6 +12,19 @@ assert len(bank)==182 and len(forecast)==60 and len(pairs)==7
 from allocation_backtest import evaluate as evaluate_allocation
 allocation=load('data/allocation-backtest.json')
 assert allocation==evaluate_allocation(load('data/forecast-confidence.json'), pairs)
+from skill_backtest import evaluate as evaluate_skill_backtest
+skill_backtest=load('data/skill-backtest.json')
+assert skill_backtest==evaluate_skill_backtest(bank,forecast,pairs,load('data/forecast-confidence.json'))
+from datetime import datetime
+assert len(skill_backtest['folds'])==7
+for row in skill_backtest['folds']:
+    cutoff=datetime.strptime(row['a'],'%d/%m/%Y')
+    assert row['b'] not in row['history_dates'] and row['b'] not in row['prior_b']
+    assert all(datetime.strptime(d,'%d/%m/%Y')<=cutoff for d in row['history_dates'])
+    assert all(datetime.strptime(d,'%d/%m/%Y')<cutoff for d in row['prior_b'])
+assert (skill_backtest['bonus_hits'],skill_backtest['no_bonus_hits'])==(7,9)
+assert all(len(r['bonus_ids'])==len(r['no_bonus_ids'])==10 for r in skill_backtest['folds'])
+assert all(0<=r['bonus_hits']<=10 and 0<=r['no_bonus_hits']<=10 for r in skill_backtest['folds'])
 from audit_skill_evidence import evaluate as evaluate_skills
 skill_audit=load('data/skill-transition-audit.json')
 assert skill_audit==evaluate_skills(bank,pairs,forecast,load('data/forecast-best.json')['question_ids'])

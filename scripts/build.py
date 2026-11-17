@@ -11,7 +11,8 @@ from forecast_presentation import confidence_summary, forecast_intro, confidence
 from forecast_mock import select_mock, mock_page
 from audit_skill_evidence import evaluate as audit_skill_evidence
 from cover_evidence import cover_page
-from backtest_presentation import backtest_page, allocation_section
+from backtest_presentation import backtest_page, allocation_section, skill_section
+from skill_backtest import evaluate as evaluate_skill_backtest
 from allocation_backtest import evaluate as evaluate_allocation
 from sensitivity import allocation_sensitivity, sensitivity_page
 from repeat_audit import repeated_questions, repeat_section
@@ -217,7 +218,9 @@ intro+='</div>'
 page('confidence.html','איך דירגנו את 60 שאלות התחזית?',confidence_page(confidence_report,pred))
 allocation_backtest=evaluate_allocation(confidence_report,load('data/pairs.json'))
 save('data/allocation-backtest.json',allocation_backtest)
-page('backtest.html','בדיקת נושאים מול בחינות עבר',backtest_page(load('data/topic-backtest.json'))+allocation_section(allocation_backtest)+repeat_section(repeat_report))
+skill_backtest=evaluate_skill_backtest(qbank,pred,load('data/pairs.json'),confidence_report)
+save('data/skill-backtest.json',skill_backtest)
+page('backtest.html','בדיקת נושאים מול בחינות עבר',backtest_page(load('data/topic-backtest.json'))+allocation_section(allocation_backtest)+skill_section(skill_backtest)+repeat_section(repeat_report))
 page('operation-changes.html','ממועד א׳ למועד ב׳ — שינויי פעולה לדוגמה',operation_page(qbank,pred))
 syllabus_body=syllabus_intro()+'<article class="study-card" data-question-type="multiple-choice"><h3>שאלה משלימה S01</h3>'+paragraphs(SYLLABUS_QUESTION['stem'])+options(SYLLABUS_QUESTION)+'<details class="answer-detail"><summary>הצגת התשובה וההסבר המפורט</summary>'+answer_key(SYLLABUS_QUESTION)+syllabus_explanation(SYLLABUS_QUESTION)+'</details></article><p><a href="predictions.html">חזרה ל-60 שאלות התחזית</a> · <a href="index.html?set=forecast-best#setup">הסימולציה הממוקדת</a></p>'
 page('syllabus-coverage.html','כיסוי הסילבוס ושאלת השלמה',syllabus_body)
