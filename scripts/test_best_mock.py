@@ -12,7 +12,7 @@ mock = load('forecast-best.json')
 forecast = load('forecast.json')
 lookup = {q['id']: q for q in forecast}
 chosen = [lookup[qid] for qid in mock['question_ids']]
-assert set(mock['question_ids']) == {'P01','P02','P04','P08','P09','P10','P11','P15','P17','P20'}
+assert set(mock['question_ids']) == {'P01','P02','P04','P05','P06','P08','P09','P10','P11','P20'}
 assert len(chosen) == len({q['skill'] for q in chosen}) == 10
 assert all(q['question_type']=='multiple-choice' and len(q['options'])==4 for q in chosen)
 dates = [pair['b'] for pair in load('pairs.json')]

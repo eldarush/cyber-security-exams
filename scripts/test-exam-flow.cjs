@@ -59,7 +59,7 @@ const best = harness('forecast-best', {cfg:{collection:'forecast-all',mode:'prac
 best.run('start()');
 assert.equal(best.run('S.exam.mode'), 'digital');
 assert.equal(best.run('S.exam.limit'), 80*60);
-assert.equal(best.run('S.exam.items.map(x=>x.q.id).sort().join()'), 'P01,P02,P04,P08,P09,P10,P11,P15,P17,P20');
+assert.equal(best.run('S.exam.items.map(x=>x.q.id).sort().join()'), 'P01,P02,P04,P05,P06,P08,P09,P10,P11,P20');
 best.run('S.exam.items.forEach((x,i)=>x.ans=x.order.indexOf(i===0?1:0)); finish(false)');
 assert.equal(best.run('S.result.score'), 90);
 assert.equal(best.run('S.result.exam.items.map(reviewItem).join("").match(/class="option-review"/g).length'), 40);

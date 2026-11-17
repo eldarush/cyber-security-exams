@@ -16,7 +16,9 @@ SKILLS = {
  'otp':('OTP, XOR וגבולות ההגנה','Q013 Q049 Q120 Q121 Q179'),
  'xss-csrf':('XSS מול סשן וטוקן CSRF','Q022 Q076 Q115 Q118 Q157 Q180'),
  'mac':('MAC וסדר הצפנה ואימות','Q015 Q057 Q078 Q116 Q133 Q143 Q153 Q163'),
+ 'mac-composition':('זיהוי סדר שילוב MAC והצפנה','Q057 Q116 Q133 Q143 Q163'),
  'birthday':('התנגשות ו-birthday','Q150 Q169 Q182'),
+ 'birthday-calc':('חישוב הסתברות התנגשות לפי יום הולדת','Q169'),
  'consensus':('אישורים, הוצאה כפולה וכוח כרייה','Q050 Q053 Q137 Q167 Q177'),
  'dh':('Diffie–Hellman: חישוב והנחות אבטחה','Q025 Q036 Q043 Q047 Q056 Q068 Q094 Q099 Q148 Q164'),
  'vigenere':('צופן Vigenère ומפתח חוזר','Q097 Q173'),
@@ -25,7 +27,10 @@ SKILLS = {
  'cbc':('CBC ותלות בין בלוקים','Q168'),
  'merkle':('מרקל: נתיב, שורש והוכחת הכללה','Q106 Q152 Q159 Q165'),
  'hash':('תכונות hash וגבולות התנגשויות','Q067 Q082 Q130 Q140 Q150 Q169 Q182'),
+ 'second-preimage':('קדם־תמונה שנייה: הודעה מקורית נתונה','Q067 Q140'),
+ 'collision':('התנגשות: שתי הודעות שונות עם פלט זהה','Q150 Q182'),
  'csrf':('CSRF: תנאי התקפה ובדיקות שרת','Q004 Q022 Q074 Q076 Q091 Q111 Q157 Q180'),
+ 'csrf-cross-site':('CSRF חוצה אתרים: עוגיות, בקשה ואמצעי הגנה','Q004 Q022 Q074 Q091 Q111'),
  'p2pkh':('P2PKH והרשאת הוצאה','Q058 Q087 Q162'),
  'tls':('TLS: תמליל, חילוף וסודות','Q003 Q005 Q033 Q061 Q107 Q110 Q124 Q134 Q144 Q158'),
  'arp':('ARP, תיווך וגבולות היכולת','Q031 Q062 Q075 Q125 Q154 Q171'),
@@ -45,11 +50,11 @@ SKILLS = {
  'substitution':('צופן החלפה ותבניות חזרות','Q055 Q096 Q142'),
  'dom':('XSS והקשר פירוש הקלט','Q006 Q109 Q118 Q135 Q145'),
 }
-KEYS = ('rsa-sign chain utxo otp xss-csrf mac birthday consensus dh vigenere '
-        'ct ocsp cbc merkle hash rsa-gen csrf p2pkh tls arp '
+KEYS = ('rsa-sign chain utxo otp xss-csrf mac-composition birthday-calc consensus dh vigenere '
+        'ct ocsp cbc merkle second-preimage rsa-gen csrf-cross-site p2pkh tls arp '
         'key-count ecb toy-hash password sop hsts csp sql dns dos '
         'rsa-sign rsa-gen key-roles rsa-gen chain chain ocsp ct ct utxo '
-        'utxo escrow pow merkle otp cbc 3des substitution vigenere hash '
+        'utxo escrow pow merkle otp cbc 3des substitution vigenere collision '
         'toy-hash hash mac password dh xss-csrf dom sql csrf tls').split()
 # Explicit editorial deduction for a wider extrapolation of a documented skill.
 EXTENSIONS = {32,36,38,39,41,43,52,53,54,57,59,60}
@@ -100,7 +105,7 @@ def annotate(questions, bank, pairs):
             f"נמשכה מא׳ לב׳ ב-{t['both']}/{t['a']} זוגות שבהם הופיעה בא׳; "
             f"במועדי ב׳ של קיץ: {t['summer_b']}/{len(summer)}. "
             f"למיומנות המתועדת יש סימוכין ב-{len(support)} תאריכים שונים. "
-            +('המיומנות מתועדת גם באוקטובר 2026. ' if '19/10/2026' in support else 'אין סימוכין ישירים למיומנות הזו באוקטובר 2026 במיפוי. ')
+            +('משפחת המיומנות ממופה גם באוקטובר 2026; יש לבדוק את השאלה המקורית כדי להבחין בין פעולה זהה למושג קרוב. ' if '19/10/2026' in support else 'אין סימוכין למיומנות הזו באוקטובר 2026 במיפוי המסוים. ')
             +(f'הופחתו {deduction} נקודות כי השאלה מרחיבה את המיומנות למקרה שלא תועד באותו אופן בבחינות.' if deduction else 'השאלה מתרגלת וריאציה של מיומנות מתועדת; המספר אינו סיכוי לניסוח המדויק.'))
     return dict(version='2026-11-14-60',kind='heuristic-study-confidence-not-probability',
         weights=dict(all_exams=15,b_exams=25,a_to_b=15,summer_b=15,skill_support=20,latest_a=10),

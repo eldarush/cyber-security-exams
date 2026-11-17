@@ -1,0 +1,3578 @@
+{
+  "description": "Retrospective partial manual evidence mapping. An absent mapping does not prove the skill was absent from the exam; counts are lower bounds and may be biased.",
+  "focused": [
+    {
+      "id": "P01",
+      "skill": "rsa-sign",
+      "score": 76,
+      "a": 1,
+      "b": 2,
+      "both": 1,
+      "latest_a_ids": [
+        "Q175"
+      ]
+    },
+    {
+      "id": "P02",
+      "skill": "chain",
+      "score": 90,
+      "a": 1,
+      "b": 4,
+      "both": 1,
+      "latest_a_ids": [
+        "Q174"
+      ]
+    },
+    {
+      "id": "P04",
+      "skill": "otp",
+      "score": 80,
+      "a": 0,
+      "b": 3,
+      "both": 0,
+      "latest_a_ids": [
+        "Q179"
+      ]
+    },
+    {
+      "id": "P05",
+      "skill": "xss-csrf",
+      "score": 77,
+      "a": 1,
+      "b": 3,
+      "both": 0,
+      "latest_a_ids": [
+        "Q180"
+      ]
+    },
+    {
+      "id": "P06",
+      "skill": "mac-composition",
+      "score": 63,
+      "a": 1,
+      "b": 3,
+      "both": 0,
+      "latest_a_ids": []
+    },
+    {
+      "id": "P08",
+      "skill": "consensus",
+      "score": 88,
+      "a": 0,
+      "b": 3,
+      "both": 0,
+      "latest_a_ids": [
+        "Q177"
+      ]
+    },
+    {
+      "id": "P09",
+      "skill": "dh",
+      "score": 57,
+      "a": 1,
+      "b": 4,
+      "both": 1,
+      "latest_a_ids": []
+    },
+    {
+      "id": "P10",
+      "skill": "vigenere",
+      "score": 73,
+      "a": 0,
+      "b": 0,
+      "both": 0,
+      "latest_a_ids": [
+        "Q173"
+      ]
+    },
+    {
+      "id": "P11",
+      "skill": "ct",
+      "score": 90,
+      "a": 4,
+      "b": 4,
+      "both": 2,
+      "latest_a_ids": [
+        "Q181"
+      ]
+    },
+    {
+      "id": "P20",
+      "skill": "arp",
+      "score": 67,
+      "a": 3,
+      "b": 3,
+      "both": 2,
+      "latest_a_ids": []
+    }
+  ],
+  "skills": [
+    {
+      "skill": "rsa-sign",
+      "label": "חתימות RSA: יצירה ואימות",
+      "latest_a_ids": [
+        "Q175"
+      ],
+      "latest_a_present": true,
+      "a_appearances": 1,
+      "b_appearances": 2,
+      "continued": 1,
+      "b_after_absent_a": 1,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [
+            "Q020"
+          ],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "04/12/2022"
+          ]
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "04/12/2022"
+          ]
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "04/12/2022"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [
+            "Q105"
+          ],
+          "b_ids": [
+            "Q113"
+          ],
+          "prior_support_dates": [
+            "06/11/2022",
+            "04/12/2022",
+            "24/11/2024"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "04/12/2022",
+            "24/11/2024",
+            "21/07/2025",
+            "21/08/2025"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "04/12/2022",
+            "24/11/2024",
+            "21/07/2025",
+            "21/08/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "rsa-gen",
+      "label": "RSA: פרמטרים, הופכי ומעריכים",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 2,
+      "b_appearances": 1,
+      "continued": 0,
+      "b_after_absent_a": 1,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [
+            "Q104"
+          ],
+          "b_ids": [],
+          "prior_support_dates": [
+            "24/11/2024"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [
+            "Q138"
+          ],
+          "prior_support_dates": [
+            "24/11/2024",
+            "21/07/2025"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [
+            "Q155"
+          ],
+          "b_ids": [],
+          "prior_support_dates": [
+            "24/11/2024",
+            "21/07/2025",
+            "02/11/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "key-roles",
+      "label": "תפקידי מפתחות: סודיות, חתימה ואמון",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 4,
+      "b_appearances": 1,
+      "continued": 0,
+      "b_after_absent_a": 1,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [
+            "Q009"
+          ],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [
+            "Q044"
+          ],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022"
+          ]
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022",
+            "07/07/2023"
+          ]
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [
+            "Q092"
+          ],
+          "prior_support_dates": [
+            "07/10/2022",
+            "07/07/2023"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [
+            "Q112"
+          ],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022",
+            "07/07/2023",
+            "20/10/2024"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [
+            "Q123",
+            "Q128"
+          ],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022",
+            "07/07/2023",
+            "20/10/2024",
+            "21/07/2025"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022",
+            "07/07/2023",
+            "20/10/2024",
+            "21/07/2025",
+            "05/10/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "chain",
+      "label": "אימות תעודות ושרשרת אמון",
+      "latest_a_ids": [
+        "Q174"
+      ],
+      "latest_a_present": true,
+      "a_appearances": 1,
+      "b_appearances": 4,
+      "continued": 1,
+      "b_after_absent_a": 3,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [
+            "Q010"
+          ],
+          "b_ids": [
+            "Q023"
+          ],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [
+            "Q051"
+          ],
+          "prior_support_dates": [
+            "07/10/2022",
+            "06/11/2022"
+          ]
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [
+            "Q070"
+          ],
+          "prior_support_dates": [
+            "07/10/2022",
+            "06/11/2022",
+            "08/08/2023"
+          ]
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022",
+            "06/11/2022",
+            "08/08/2023",
+            "04/07/2024"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [
+            "Q114"
+          ],
+          "prior_support_dates": [
+            "07/10/2022",
+            "06/11/2022",
+            "08/08/2023",
+            "04/07/2024"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022",
+            "06/11/2022",
+            "08/08/2023",
+            "04/07/2024",
+            "21/08/2025"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022",
+            "06/11/2022",
+            "08/08/2023",
+            "04/07/2024",
+            "21/08/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "utxo",
+      "label": "UTXO, פלטים ותוקף הוצאה",
+      "latest_a_ids": [
+        "Q176"
+      ],
+      "latest_a_present": true,
+      "a_appearances": 2,
+      "b_appearances": 1,
+      "continued": 0,
+      "b_after_absent_a": 1,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [
+            "Q058"
+          ],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "31/05/2024"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [
+            "Q117"
+          ],
+          "prior_support_dates": [
+            "31/05/2024"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "31/05/2024",
+            "21/08/2025"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [
+            "Q162"
+          ],
+          "b_ids": [],
+          "prior_support_dates": [
+            "31/05/2024",
+            "21/08/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "otp",
+      "label": "OTP, XOR וגבולות ההגנה",
+      "latest_a_ids": [
+        "Q179"
+      ],
+      "latest_a_present": true,
+      "a_appearances": 0,
+      "b_appearances": 3,
+      "continued": 0,
+      "b_after_absent_a": 3,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [
+            "Q013"
+          ],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [
+            "Q049"
+          ],
+          "prior_support_dates": [
+            "06/11/2022"
+          ]
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "08/08/2023"
+          ]
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "08/08/2023"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [
+            "Q120",
+            "Q121"
+          ],
+          "prior_support_dates": [
+            "06/11/2022",
+            "08/08/2023"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "08/08/2023",
+            "21/08/2025"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "08/08/2023",
+            "21/08/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "xss-csrf",
+      "label": "XSS מול סשן וטוקן CSRF",
+      "latest_a_ids": [
+        "Q180"
+      ],
+      "latest_a_present": true,
+      "a_appearances": 1,
+      "b_appearances": 3,
+      "continued": 0,
+      "b_after_absent_a": 3,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [
+            "Q022"
+          ],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022"
+          ]
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [
+            "Q076"
+          ],
+          "prior_support_dates": [
+            "06/11/2022"
+          ]
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "04/07/2024"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [
+            "Q115",
+            "Q118"
+          ],
+          "prior_support_dates": [
+            "06/11/2022",
+            "04/07/2024"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "04/07/2024",
+            "21/08/2025"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [
+            "Q157"
+          ],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "04/07/2024",
+            "21/08/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "mac",
+      "label": "MAC וסדר הצפנה ואימות",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 3,
+      "b_appearances": 4,
+      "continued": 1,
+      "b_after_absent_a": 3,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [
+            "Q015"
+          ],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022"
+          ]
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [
+            "Q057"
+          ],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022"
+          ]
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [
+            "Q078"
+          ],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "31/05/2024"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [
+            "Q116"
+          ],
+          "prior_support_dates": [
+            "06/11/2022",
+            "31/05/2024",
+            "17/09/2024"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [
+            "Q133"
+          ],
+          "prior_support_dates": [
+            "06/11/2022",
+            "31/05/2024",
+            "17/09/2024",
+            "21/08/2025"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [
+            "Q153"
+          ],
+          "b_ids": [
+            "Q163"
+          ],
+          "prior_support_dates": [
+            "06/11/2022",
+            "31/05/2024",
+            "17/09/2024",
+            "21/08/2025",
+            "02/11/2025",
+            "30/11/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "mac-composition",
+      "label": "זיהוי סדר שילוב MAC והצפנה",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 1,
+      "b_appearances": 3,
+      "continued": 0,
+      "b_after_absent_a": 3,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [
+            "Q057"
+          ],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "31/05/2024"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [
+            "Q116"
+          ],
+          "prior_support_dates": [
+            "31/05/2024"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [
+            "Q133"
+          ],
+          "prior_support_dates": [
+            "31/05/2024",
+            "21/08/2025"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [
+            "Q163"
+          ],
+          "prior_support_dates": [
+            "31/05/2024",
+            "21/08/2025",
+            "02/11/2025",
+            "30/11/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "birthday",
+      "label": "התנגשות ו-birthday",
+      "latest_a_ids": [
+        "Q182"
+      ],
+      "latest_a_present": true,
+      "a_appearances": 0,
+      "b_appearances": 1,
+      "continued": 0,
+      "b_after_absent_a": 1,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [
+            "Q169"
+          ],
+          "prior_support_dates": [
+            "30/11/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "birthday-calc",
+      "label": "חישוב הסתברות התנגשות לפי יום הולדת",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 0,
+      "b_appearances": 1,
+      "continued": 0,
+      "b_after_absent_a": 1,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [
+            "Q169"
+          ],
+          "prior_support_dates": []
+        }
+      ]
+    },
+    {
+      "skill": "consensus",
+      "label": "אישורים, הוצאה כפולה וכוח כרייה",
+      "latest_a_ids": [
+        "Q177"
+      ],
+      "latest_a_present": true,
+      "a_appearances": 0,
+      "b_appearances": 3,
+      "continued": 0,
+      "b_after_absent_a": 3,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [
+            "Q050",
+            "Q053"
+          ],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "08/08/2023"
+          ]
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "08/08/2023"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "08/08/2023",
+            "24/11/2024"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [
+            "Q137"
+          ],
+          "prior_support_dates": [
+            "08/08/2023",
+            "24/11/2024"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [
+            "Q167"
+          ],
+          "prior_support_dates": [
+            "08/08/2023",
+            "24/11/2024",
+            "02/11/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "dh",
+      "label": "Diffie–Hellman: חישוב והנחות אבטחה",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 1,
+      "b_appearances": 4,
+      "continued": 1,
+      "b_after_absent_a": 3,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [
+            "Q043"
+          ],
+          "b_ids": [
+            "Q047",
+            "Q056"
+          ],
+          "prior_support_dates": [
+            "04/12/2022"
+          ]
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [
+            "Q068"
+          ],
+          "prior_support_dates": [
+            "04/12/2022",
+            "07/07/2023",
+            "08/08/2023"
+          ]
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [
+            "Q094"
+          ],
+          "prior_support_dates": [
+            "04/12/2022",
+            "07/07/2023",
+            "08/08/2023",
+            "04/07/2024"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "04/12/2022",
+            "07/07/2023",
+            "08/08/2023",
+            "04/07/2024",
+            "20/10/2024",
+            "24/11/2024"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "04/12/2022",
+            "07/07/2023",
+            "08/08/2023",
+            "04/07/2024",
+            "20/10/2024",
+            "24/11/2024"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [
+            "Q164"
+          ],
+          "prior_support_dates": [
+            "04/12/2022",
+            "07/07/2023",
+            "08/08/2023",
+            "04/07/2024",
+            "20/10/2024",
+            "24/11/2024",
+            "30/11/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "vigenere",
+      "label": "צופן Vigenère ומפתח חוזר",
+      "latest_a_ids": [
+        "Q173"
+      ],
+      "latest_a_present": true,
+      "a_appearances": 0,
+      "b_appearances": 0,
+      "continued": 0,
+      "b_after_absent_a": 0,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "24/11/2024"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "24/11/2024"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "24/11/2024"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "ct",
+      "label": "Certificate Transparency ותפקידי הלוג",
+      "latest_a_ids": [
+        "Q181"
+      ],
+      "latest_a_present": true,
+      "a_appearances": 4,
+      "b_appearances": 4,
+      "continued": 2,
+      "b_after_absent_a": 2,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [
+            "Q024"
+          ],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [
+            "Q048"
+          ],
+          "prior_support_dates": [
+            "06/11/2022"
+          ]
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [
+            "Q063"
+          ],
+          "b_ids": [
+            "Q073"
+          ],
+          "prior_support_dates": [
+            "06/11/2022",
+            "08/08/2023"
+          ]
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [
+            "Q077"
+          ],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "08/08/2023",
+            "31/05/2024",
+            "04/07/2024"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "08/08/2023",
+            "31/05/2024",
+            "04/07/2024",
+            "17/09/2024",
+            "24/11/2024"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [
+            "Q129"
+          ],
+          "b_ids": [
+            "Q139"
+          ],
+          "prior_support_dates": [
+            "06/11/2022",
+            "08/08/2023",
+            "31/05/2024",
+            "04/07/2024",
+            "17/09/2024",
+            "24/11/2024"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [
+            "Q156"
+          ],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "08/08/2023",
+            "31/05/2024",
+            "04/07/2024",
+            "17/09/2024",
+            "24/11/2024",
+            "05/10/2025",
+            "02/11/2025",
+            "30/11/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "ocsp",
+      "label": "סטטוס תעודה, ביטול ו-OCSP",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 2,
+      "b_appearances": 4,
+      "continued": 2,
+      "b_after_absent_a": 2,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [
+            "Q021"
+          ],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022"
+          ]
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [
+            "Q059"
+          ],
+          "b_ids": [
+            "Q073"
+          ],
+          "prior_support_dates": [
+            "06/11/2022"
+          ]
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "31/05/2024",
+            "04/07/2024"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [
+            "Q108",
+            "Q110"
+          ],
+          "b_ids": [
+            "Q119"
+          ],
+          "prior_support_dates": [
+            "06/11/2022",
+            "31/05/2024",
+            "04/07/2024",
+            "24/11/2024"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "31/05/2024",
+            "04/07/2024",
+            "24/11/2024",
+            "21/07/2025",
+            "21/08/2025"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [
+            "Q170"
+          ],
+          "prior_support_dates": [
+            "06/11/2022",
+            "31/05/2024",
+            "04/07/2024",
+            "24/11/2024",
+            "21/07/2025",
+            "21/08/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "cbc",
+      "label": "CBC ותלות בין בלוקים",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 0,
+      "b_appearances": 1,
+      "continued": 0,
+      "b_after_absent_a": 1,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [
+            "Q168"
+          ],
+          "prior_support_dates": []
+        }
+      ]
+    },
+    {
+      "skill": "merkle",
+      "label": "מרקל: נתיב, שורש והוכחת הכללה",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 2,
+      "b_appearances": 1,
+      "continued": 1,
+      "b_after_absent_a": 0,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [
+            "Q106"
+          ],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "21/07/2025"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [
+            "Q159"
+          ],
+          "b_ids": [
+            "Q165"
+          ],
+          "prior_support_dates": [
+            "21/07/2025",
+            "30/11/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "hash",
+      "label": "תכונות hash וגבולות התנגשויות",
+      "latest_a_ids": [
+        "Q182"
+      ],
+      "latest_a_present": true,
+      "a_appearances": 2,
+      "b_appearances": 3,
+      "continued": 1,
+      "b_after_absent_a": 2,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [
+            "Q067"
+          ],
+          "prior_support_dates": []
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [
+            "Q082"
+          ],
+          "b_ids": [],
+          "prior_support_dates": [
+            "04/07/2024"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "04/07/2024",
+            "17/09/2024"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [
+            "Q130"
+          ],
+          "b_ids": [
+            "Q140"
+          ],
+          "prior_support_dates": [
+            "04/07/2024",
+            "17/09/2024"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [
+            "Q169"
+          ],
+          "prior_support_dates": [
+            "04/07/2024",
+            "17/09/2024",
+            "05/10/2025",
+            "02/11/2025",
+            "30/11/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "second-preimage",
+      "label": "קדם־תמונה שנייה: הודעה מקורית נתונה",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 0,
+      "b_appearances": 2,
+      "continued": 0,
+      "b_after_absent_a": 2,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [
+            "Q067"
+          ],
+          "prior_support_dates": []
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "04/07/2024"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "04/07/2024"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [
+            "Q140"
+          ],
+          "prior_support_dates": [
+            "04/07/2024"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "04/07/2024",
+            "02/11/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "collision",
+      "label": "התנגשות: שתי הודעות שונות עם פלט זהה",
+      "latest_a_ids": [
+        "Q182"
+      ],
+      "latest_a_present": true,
+      "a_appearances": 0,
+      "b_appearances": 0,
+      "continued": 0,
+      "b_after_absent_a": 0,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "30/11/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "csrf",
+      "label": "CSRF: תנאי התקפה ובדיקות שרת",
+      "latest_a_ids": [
+        "Q180"
+      ],
+      "latest_a_present": true,
+      "a_appearances": 3,
+      "b_appearances": 3,
+      "continued": 1,
+      "b_after_absent_a": 2,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [
+            "Q004"
+          ],
+          "b_ids": [
+            "Q022"
+          ],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022",
+            "06/11/2022"
+          ]
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [
+            "Q074",
+            "Q076"
+          ],
+          "prior_support_dates": [
+            "07/10/2022",
+            "06/11/2022"
+          ]
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [
+            "Q091"
+          ],
+          "prior_support_dates": [
+            "07/10/2022",
+            "06/11/2022",
+            "04/07/2024"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [
+            "Q111"
+          ],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022",
+            "06/11/2022",
+            "04/07/2024",
+            "20/10/2024"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022",
+            "06/11/2022",
+            "04/07/2024",
+            "20/10/2024",
+            "21/07/2025"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [
+            "Q157"
+          ],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022",
+            "06/11/2022",
+            "04/07/2024",
+            "20/10/2024",
+            "21/07/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "csrf-cross-site",
+      "label": "CSRF חוצה אתרים: עוגיות, בקשה ואמצעי הגנה",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 2,
+      "b_appearances": 3,
+      "continued": 1,
+      "b_after_absent_a": 2,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [
+            "Q004"
+          ],
+          "b_ids": [
+            "Q022"
+          ],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022",
+            "06/11/2022"
+          ]
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [
+            "Q074"
+          ],
+          "prior_support_dates": [
+            "07/10/2022",
+            "06/11/2022"
+          ]
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [
+            "Q091"
+          ],
+          "prior_support_dates": [
+            "07/10/2022",
+            "06/11/2022",
+            "04/07/2024"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [
+            "Q111"
+          ],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022",
+            "06/11/2022",
+            "04/07/2024",
+            "20/10/2024"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022",
+            "06/11/2022",
+            "04/07/2024",
+            "20/10/2024",
+            "21/07/2025"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022",
+            "06/11/2022",
+            "04/07/2024",
+            "20/10/2024",
+            "21/07/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "p2pkh",
+      "label": "P2PKH והרשאת הוצאה",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 2,
+      "b_appearances": 1,
+      "continued": 0,
+      "b_after_absent_a": 1,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [
+            "Q058"
+          ],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [
+            "Q087"
+          ],
+          "prior_support_dates": [
+            "31/05/2024"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "31/05/2024",
+            "20/10/2024"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "31/05/2024",
+            "20/10/2024"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [
+            "Q162"
+          ],
+          "b_ids": [],
+          "prior_support_dates": [
+            "31/05/2024",
+            "20/10/2024"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "tls",
+      "label": "TLS: תמליל, חילוף וסודות",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 5,
+      "b_appearances": 1,
+      "continued": 1,
+      "b_after_absent_a": 0,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [
+            "Q003",
+            "Q005"
+          ],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022",
+            "04/12/2022"
+          ]
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [
+            "Q061"
+          ],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022",
+            "04/12/2022"
+          ]
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022",
+            "04/12/2022",
+            "31/05/2024"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [
+            "Q107",
+            "Q110"
+          ],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022",
+            "04/12/2022",
+            "31/05/2024"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [
+            "Q124"
+          ],
+          "b_ids": [
+            "Q134"
+          ],
+          "prior_support_dates": [
+            "07/10/2022",
+            "04/12/2022",
+            "31/05/2024",
+            "21/07/2025"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [
+            "Q158"
+          ],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022",
+            "04/12/2022",
+            "31/05/2024",
+            "21/07/2025",
+            "05/10/2025",
+            "02/11/2025",
+            "30/11/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "arp",
+      "label": "ARP, תיווך וגבולות היכולת",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 3,
+      "b_appearances": 3,
+      "continued": 2,
+      "b_after_absent_a": 1,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "04/12/2022"
+          ]
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [
+            "Q062"
+          ],
+          "b_ids": [
+            "Q075"
+          ],
+          "prior_support_dates": [
+            "04/12/2022"
+          ]
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [
+            "Q062"
+          ],
+          "prior_support_dates": [
+            "04/12/2022",
+            "31/05/2024",
+            "04/07/2024"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "04/12/2022",
+            "31/05/2024",
+            "04/07/2024",
+            "20/10/2024"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [
+            "Q125"
+          ],
+          "b_ids": [],
+          "prior_support_dates": [
+            "04/12/2022",
+            "31/05/2024",
+            "04/07/2024",
+            "20/10/2024"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [
+            "Q154"
+          ],
+          "b_ids": [
+            "Q171"
+          ],
+          "prior_support_dates": [
+            "04/12/2022",
+            "31/05/2024",
+            "04/07/2024",
+            "20/10/2024",
+            "05/10/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "key-count",
+      "label": "ספירת מפתחות לכל זוג עובדים",
+      "latest_a_ids": [
+        "Q178"
+      ],
+      "latest_a_present": true,
+      "a_appearances": 0,
+      "b_appearances": 0,
+      "continued": 0,
+      "b_after_absent_a": 0,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        }
+      ]
+    },
+    {
+      "skill": "ecb",
+      "label": "ECB ודפוסי בלוקים חוזרים",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 1,
+      "b_appearances": 2,
+      "continued": 0,
+      "b_after_absent_a": 2,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [
+            "Q064"
+          ],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [
+            "Q064"
+          ],
+          "prior_support_dates": [
+            "31/05/2024"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "31/05/2024",
+            "20/10/2024"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "31/05/2024",
+            "20/10/2024"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [
+            "Q166"
+          ],
+          "prior_support_dates": [
+            "31/05/2024",
+            "20/10/2024"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "toy-hash",
+      "label": "מציאת התנגשות מבנית ב-hash חלש",
+      "latest_a_ids": [
+        "Q182"
+      ],
+      "latest_a_present": true,
+      "a_appearances": 0,
+      "b_appearances": 0,
+      "continued": 0,
+      "b_after_absent_a": 0,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        }
+      ]
+    },
+    {
+      "skill": "password",
+      "label": "אחסון סיסמאות, salt ו-pepper",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 2,
+      "b_appearances": 3,
+      "continued": 0,
+      "b_after_absent_a": 3,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [
+            "Q014"
+          ],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022"
+          ]
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [
+            "Q069"
+          ],
+          "prior_support_dates": [
+            "06/11/2022"
+          ]
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [
+            "Q085"
+          ],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "04/07/2024"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [
+            "Q103"
+          ],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "04/07/2024",
+            "17/09/2024"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [
+            "Q136"
+          ],
+          "prior_support_dates": [
+            "06/11/2022",
+            "04/07/2024",
+            "17/09/2024",
+            "21/07/2025"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "04/07/2024",
+            "17/09/2024",
+            "21/07/2025",
+            "02/11/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "sop",
+      "label": "Same Origin Policy והפרדת מקורות",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 2,
+      "b_appearances": 1,
+      "continued": 1,
+      "b_after_absent_a": 0,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [
+            "Q007"
+          ],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022",
+            "04/12/2022"
+          ]
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022",
+            "04/12/2022"
+          ]
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022",
+            "04/12/2022"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022",
+            "04/12/2022"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [
+            "Q126"
+          ],
+          "b_ids": [
+            "Q135"
+          ],
+          "prior_support_dates": [
+            "07/10/2022",
+            "04/12/2022"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022",
+            "04/12/2022",
+            "05/10/2025",
+            "02/11/2025",
+            "30/11/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "hsts",
+      "label": "HSTS וביקור ראשון",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 1,
+      "b_appearances": 1,
+      "continued": 0,
+      "b_after_absent_a": 1,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [
+            "Q141"
+          ],
+          "prior_support_dates": []
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [
+            "Q160"
+          ],
+          "b_ids": [],
+          "prior_support_dates": [
+            "02/11/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "csp",
+      "label": "CSP והרשאת משאבים וסקריפטים",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 4,
+      "b_appearances": 0,
+      "continued": 0,
+      "b_after_absent_a": 0,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [
+            "Q038"
+          ],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [
+            "Q065"
+          ],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/07/2023"
+          ]
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/07/2023",
+            "31/05/2024"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/07/2023",
+            "31/05/2024"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [
+            "Q131"
+          ],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/07/2023",
+            "31/05/2024"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [
+            "Q161"
+          ],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/07/2023",
+            "31/05/2024",
+            "05/10/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "sql",
+      "label": "SQL injection והפרדה בין קוד לנתון",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 1,
+      "b_appearances": 1,
+      "continued": 0,
+      "b_after_absent_a": 1,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [
+            "Q017"
+          ],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "04/12/2022"
+          ]
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [
+            "Q060"
+          ],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "04/12/2022"
+          ]
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "04/12/2022",
+            "31/05/2024"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "04/12/2022",
+            "31/05/2024",
+            "24/11/2024"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "04/12/2022",
+            "31/05/2024",
+            "24/11/2024"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "04/12/2022",
+            "31/05/2024",
+            "24/11/2024"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "dns",
+      "label": "DNS, ניחוש ושינוי תשובות",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 1,
+      "b_appearances": 3,
+      "continued": 1,
+      "b_after_absent_a": 2,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [
+            "Q016",
+            "Q019"
+          ],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [
+            "Q037"
+          ],
+          "b_ids": [
+            "Q052"
+          ],
+          "prior_support_dates": [
+            "06/11/2022",
+            "04/12/2022"
+          ]
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "04/12/2022",
+            "07/07/2023",
+            "08/08/2023"
+          ]
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "04/12/2022",
+            "07/07/2023",
+            "08/08/2023"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "04/12/2022",
+            "07/07/2023",
+            "08/08/2023"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "04/12/2022",
+            "07/07/2023",
+            "08/08/2023"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [
+            "Q171"
+          ],
+          "prior_support_dates": [
+            "06/11/2022",
+            "04/12/2022",
+            "07/07/2023",
+            "08/08/2023"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "dos",
+      "label": "DoS והתשת משאבים",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 2,
+      "b_appearances": 2,
+      "continued": 1,
+      "b_after_absent_a": 1,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [
+            "Q002"
+          ],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [
+            "Q041"
+          ],
+          "b_ids": [
+            "Q054"
+          ],
+          "prior_support_dates": [
+            "07/10/2022",
+            "04/12/2022"
+          ]
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022",
+            "04/12/2022",
+            "07/07/2023",
+            "08/08/2023"
+          ]
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022",
+            "04/12/2022",
+            "07/07/2023",
+            "08/08/2023"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022",
+            "04/12/2022",
+            "07/07/2023",
+            "08/08/2023"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022",
+            "04/12/2022",
+            "07/07/2023",
+            "08/08/2023"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [
+            "Q172"
+          ],
+          "prior_support_dates": [
+            "07/10/2022",
+            "04/12/2022",
+            "07/07/2023",
+            "08/08/2023"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "escrow",
+      "label": "Escrow וספי חתימות",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 0,
+      "b_appearances": 1,
+      "continued": 0,
+      "b_after_absent_a": 1,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [
+            "Q018"
+          ],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022"
+          ]
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022"
+          ]
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "30/11/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "pow",
+      "label": "כרייה ו-Proof of Work",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 1,
+      "b_appearances": 1,
+      "continued": 0,
+      "b_after_absent_a": 1,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [
+            "Q042",
+            "Q046"
+          ],
+          "b_ids": [],
+          "prior_support_dates": [
+            "04/12/2022"
+          ]
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [
+            "Q072"
+          ],
+          "prior_support_dates": [
+            "04/12/2022",
+            "07/07/2023"
+          ]
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "04/12/2022",
+            "07/07/2023",
+            "04/07/2024"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "04/12/2022",
+            "07/07/2023",
+            "04/07/2024"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "04/12/2022",
+            "07/07/2023",
+            "04/07/2024"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "04/12/2022",
+            "07/07/2023",
+            "04/07/2024"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "3des",
+      "label": "הרכבת הצפנה ופענוח ב-3DES",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 0,
+      "b_appearances": 1,
+      "continued": 0,
+      "b_after_absent_a": 1,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [
+            "Q071"
+          ],
+          "prior_support_dates": []
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "04/07/2024"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "04/07/2024"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "04/07/2024"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "04/07/2024",
+            "30/11/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "substitution",
+      "label": "צופן החלפה ותבניות חזרות",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 0,
+      "b_appearances": 2,
+      "continued": 0,
+      "b_after_absent_a": 2,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [
+            "Q055"
+          ],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "08/08/2023"
+          ]
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "08/08/2023"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "08/08/2023",
+            "24/11/2024"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [
+            "Q142"
+          ],
+          "prior_support_dates": [
+            "08/08/2023",
+            "24/11/2024"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "08/08/2023",
+            "24/11/2024",
+            "02/11/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "dom",
+      "label": "XSS והקשר פירוש הקלט",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 2,
+      "b_appearances": 2,
+      "continued": 1,
+      "b_after_absent_a": 1,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [
+            "Q006"
+          ],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022"
+          ]
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022"
+          ]
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [
+            "Q109"
+          ],
+          "b_ids": [
+            "Q118"
+          ],
+          "prior_support_dates": [
+            "07/10/2022"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [
+            "Q135"
+          ],
+          "prior_support_dates": [
+            "07/10/2022",
+            "21/07/2025",
+            "21/08/2025"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "07/10/2022",
+            "21/07/2025",
+            "21/08/2025",
+            "02/11/2025",
+            "30/11/2025"
+          ]
+        }
+      ]
+    }
+  ]
+}

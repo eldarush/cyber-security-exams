@@ -1,0 +1,199 @@
+{
+  "description": "Exploratory chronological broad-topic ranking; not a frozen prospective forecast or skill-level validation.",
+  "rules": "Only exams strictly before the A date are used as historical data; A itself is known. Top five topic slots; ties fractionally averaged. Primary-topic labels were assigned retrospectively.",
+  "folds": [
+    {
+      "a": "07/10/2022",
+      "b": "06/11/2022",
+      "prior_exams": 0,
+      "prior_b": 0,
+      "target_topics": 7,
+      "metrics": {
+        "past_all": {
+          "topic_recall": 0.555556,
+          "question_coverage": 0.555556
+        },
+        "past_b": {
+          "topic_recall": 0.555556,
+          "question_coverage": 0.555556
+        },
+        "current_a": {
+          "topic_recall": 0.571429,
+          "question_coverage": 0.666667
+        },
+        "hybrid": {
+          "topic_recall": 0.571429,
+          "question_coverage": 0.666667
+        }
+      }
+    },
+    {
+      "a": "07/07/2023",
+      "b": "08/08/2023",
+      "prior_exams": 3,
+      "prior_b": 1,
+      "target_topics": 5,
+      "metrics": {
+        "past_all": {
+          "topic_recall": 0.466667,
+          "question_coverage": 0.466667
+        },
+        "past_b": {
+          "topic_recall": 0.571429,
+          "question_coverage": 0.571429
+        },
+        "current_a": {
+          "topic_recall": 0.666667,
+          "question_coverage": 0.666667
+        },
+        "hybrid": {
+          "topic_recall": 0.6,
+          "question_coverage": 0.6
+        }
+      }
+    },
+    {
+      "a": "31/05/2024",
+      "b": "04/07/2024",
+      "prior_exams": 5,
+      "prior_b": 2,
+      "target_topics": 7,
+      "metrics": {
+        "past_all": {
+          "topic_recall": 0.571429,
+          "question_coverage": 0.533333
+        },
+        "past_b": {
+          "topic_recall": 0.678571,
+          "question_coverage": 0.625
+        },
+        "current_a": {
+          "topic_recall": 0.612245,
+          "question_coverage": 0.642857
+        },
+        "hybrid": {
+          "topic_recall": 0.714286,
+          "question_coverage": 0.7
+        }
+      }
+    },
+    {
+      "a": "17/09/2024",
+      "b": "20/10/2024",
+      "prior_exams": 7,
+      "prior_b": 3,
+      "target_topics": 7,
+      "metrics": {
+        "past_all": {
+          "topic_recall": 0.714286,
+          "question_coverage": 0.8
+        },
+        "past_b": {
+          "topic_recall": 0.666667,
+          "question_coverage": 0.7
+        },
+        "current_a": {
+          "topic_recall": 0.47619,
+          "question_coverage": 0.5
+        },
+        "hybrid": {
+          "topic_recall": 0.571429,
+          "question_coverage": 0.6
+        }
+      }
+    },
+    {
+      "a": "21/07/2025",
+      "b": "21/08/2025",
+      "prior_exams": 10,
+      "prior_b": 4,
+      "target_topics": 6,
+      "metrics": {
+        "past_all": {
+          "topic_recall": 0.666667,
+          "question_coverage": 0.7
+        },
+        "past_b": {
+          "topic_recall": 0.583333,
+          "question_coverage": 0.6
+        },
+        "current_a": {
+          "topic_recall": 0.694444,
+          "question_coverage": 0.666667
+        },
+        "hybrid": {
+          "topic_recall": 0.833333,
+          "question_coverage": 0.8
+        }
+      }
+    },
+    {
+      "a": "05/10/2025",
+      "b": "02/11/2025",
+      "prior_exams": 12,
+      "prior_b": 5,
+      "target_topics": 7,
+      "metrics": {
+        "past_all": {
+          "topic_recall": 0.571429,
+          "question_coverage": 0.4
+        },
+        "past_b": {
+          "topic_recall": 0.571429,
+          "question_coverage": 0.4
+        },
+        "current_a": {
+          "topic_recall": 0.625,
+          "question_coverage": 0.625
+        },
+        "hybrid": {
+          "topic_recall": 0.571429,
+          "question_coverage": 0.4
+        }
+      }
+    },
+    {
+      "a": "12/07/2026",
+      "b": "09/08/2026",
+      "prior_exams": 15,
+      "prior_b": 6,
+      "target_topics": 6,
+      "metrics": {
+        "past_all": {
+          "topic_recall": 0.5,
+          "question_coverage": 0.5
+        },
+        "past_b": {
+          "topic_recall": 0.611111,
+          "question_coverage": 0.633333
+        },
+        "current_a": {
+          "topic_recall": 0.47619,
+          "question_coverage": 0.5
+        },
+        "hybrid": {
+          "topic_recall": 0.5,
+          "question_coverage": 0.5
+        }
+      }
+    }
+  ],
+  "macro_means": {
+    "past_all": {
+      "topic_recall": 0.578,
+      "question_coverage": 0.5651
+    },
+    "past_b": {
+      "topic_recall": 0.6054,
+      "question_coverage": 0.5836
+    },
+    "current_a": {
+      "topic_recall": 0.5889,
+      "question_coverage": 0.6097
+    },
+    "hybrid": {
+      "topic_recall": 0.6231,
+      "question_coverage": 0.6095
+    }
+  }
+}

@@ -1,5 +1,11 @@
 # Focused mock: content and shuffled-answer audit
 
+## Update: 17 November 2026
+
+The focused set changed after a more specific mapping of hash and Web evidence. P05 and P06 replaced P15 and P17; their question IDs and the earlier review below remain relevant in the wider forecast bank. P05 asks about same-origin XSS reading a DOM token: the correct option is conditional (“may”), while the three alternatives overstate CSRF token protection, same-origin isolation, or limits on XSS. Q157 and Q180 test closely related XSS/token behavior. P06 describes authenticating ciphertext before decryption, which uniquely identifies Encrypt-then-MAC among its alternatives; Q133 and Q163 test the same construction. The separate four-option explanations have been reviewed, and `scripts/test-focused-mock-order.cjs` runs against the currently selected ten rather than an old fixed list.
+
+These changes reduce a documented mismatch in the scoring inputs; the numerical model and the new set have not been prospectively validated and the change does not prove improved exam accuracy.
+
 Reviewed 14 November 2026. Scope: the ten canonical questions in `data/forecast-best.json`, all 40 answer options, their derivations, distractor explanations, assumptions, and generated views. This audit checks answers; it does not validate prediction accuracy.
 
 | Question | Single correct answer, identified by content | Review and distractor findings |

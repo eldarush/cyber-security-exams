@@ -19,6 +19,12 @@ for date,questions in records.items():
     assert report['exam_topics'][date]==dict(Counter(q['topic'] for q in questions.values()))
 assert sum(report['weights'].values())==100
 assert len(report['questions'])==len(forecast)==60
+by_forecast={q['id']:q for q in forecast}
+assert by_forecast['P15']['skill']=='second-preimage' and 'Q182' not in report['skills']['second-preimage']['evidence']
+assert by_forecast['P17']['skill']=='csrf-cross-site' and 'Q180' not in report['skills']['csrf-cross-site']['evidence']
+assert not by_forecast['P15']['confidence_basis']['latest_a_skill']
+assert not by_forecast['P17']['confidence_basis']['latest_a_skill']
+assert by_forecast['P05']['confidence_basis']['latest_a_skill']
 q_report={q['id']:q for q in report['questions']}
 topics={date:{q['topic'] for q in questions.values()} for date,questions in records.items()}
 summer=[pair for pair in pairs if 'קיץ' in pair['label']]

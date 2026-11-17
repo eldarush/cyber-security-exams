@@ -342,12 +342,28 @@
         "Q163"
       ]
     },
+    "mac-composition": {
+      "label": "זיהוי סדר שילוב MAC והצפנה",
+      "evidence": [
+        "Q057",
+        "Q116",
+        "Q133",
+        "Q143",
+        "Q163"
+      ]
+    },
     "birthday": {
       "label": "התנגשות ו-birthday",
       "evidence": [
         "Q150",
         "Q169",
         "Q182"
+      ]
+    },
+    "birthday-calc": {
+      "label": "חישוב הסתברות התנגשות לפי יום הולדת",
+      "evidence": [
+        "Q169"
       ]
     },
     "consensus": {
@@ -438,6 +454,20 @@
         "Q182"
       ]
     },
+    "second-preimage": {
+      "label": "קדם־תמונה שנייה: הודעה מקורית נתונה",
+      "evidence": [
+        "Q067",
+        "Q140"
+      ]
+    },
+    "collision": {
+      "label": "התנגשות: שתי הודעות שונות עם פלט זהה",
+      "evidence": [
+        "Q150",
+        "Q182"
+      ]
+    },
     "csrf": {
       "label": "CSRF: תנאי התקפה ובדיקות שרת",
       "evidence": [
@@ -449,6 +479,16 @@
         "Q111",
         "Q157",
         "Q180"
+      ]
+    },
+    "csrf-cross-site": {
+      "label": "CSRF חוצה אתרים: עוגיות, בקשה ואמצעי הגנה",
+      "evidence": [
+        "Q004",
+        "Q022",
+        "Q074",
+        "Q091",
+        "Q111"
       ]
     },
     "p2pkh": {
@@ -823,8 +863,8 @@
     },
     {
       "id": "P06",
-      "score": 66,
-      "skill": "mac",
+      "score": 63,
+      "skill": "mac-composition",
       "basis": {
         "topic_counts": {
           "exams": 12,
@@ -837,23 +877,17 @@
         "total_pairs": 7,
         "summer_pairs": 3,
         "skill_dates": [
-          "06/11/2022",
           "31/05/2024",
-          "17/09/2024",
           "21/08/2025",
           "02/11/2025",
           "30/11/2025",
-          "12/07/2026",
           "09/08/2026"
         ],
         "skill_evidence": [
-          "Q015",
           "Q057",
-          "Q078",
           "Q116",
           "Q133",
           "Q143",
-          "Q153",
           "Q163"
         ],
         "latest_a_skill": false,
@@ -862,7 +896,7 @@
           "b_exams": 16.6667,
           "a_to_b": 10.7143,
           "summer_b": 9.0,
-          "skill_support": 20,
+          "skill_support": 16.6667,
           "latest_a": 0
         },
         "extension_deduction": 0
@@ -870,8 +904,8 @@
     },
     {
       "id": "P07",
-      "score": 66,
-      "skill": "birthday",
+      "score": 49,
+      "skill": "birthday-calc",
       "basis": {
         "topic_counts": {
           "exams": 12,
@@ -884,23 +918,19 @@
         "total_pairs": 7,
         "summer_pairs": 3,
         "skill_dates": [
-          "30/11/2025",
-          "09/08/2026",
-          "19/10/2026"
+          "09/08/2026"
         ],
         "skill_evidence": [
-          "Q150",
-          "Q169",
-          "Q182"
+          "Q169"
         ],
-        "latest_a_skill": true,
+        "latest_a_skill": false,
         "components": {
           "all_exams": 9.75,
           "b_exams": 16.6667,
           "a_to_b": 10.7143,
           "summer_b": 9.0,
-          "skill_support": 10.0,
-          "latest_a": 10
+          "skill_support": 3.3333,
+          "latest_a": 0
         },
         "extension_deduction": 0
       }
@@ -1203,8 +1233,8 @@
     },
     {
       "id": "P15",
-      "score": 76,
-      "skill": "hash",
+      "score": 53,
+      "skill": "second-preimage",
       "basis": {
         "topic_counts": {
           "exams": 12,
@@ -1218,30 +1248,20 @@
         "summer_pairs": 3,
         "skill_dates": [
           "04/07/2024",
-          "17/09/2024",
-          "05/10/2025",
-          "02/11/2025",
-          "30/11/2025",
-          "09/08/2026",
-          "19/10/2026"
+          "02/11/2025"
         ],
         "skill_evidence": [
           "Q067",
-          "Q082",
-          "Q130",
-          "Q140",
-          "Q150",
-          "Q169",
-          "Q182"
+          "Q140"
         ],
-        "latest_a_skill": true,
+        "latest_a_skill": false,
         "components": {
           "all_exams": 9.75,
           "b_exams": 16.6667,
           "a_to_b": 10.7143,
           "summer_b": 9.0,
-          "skill_support": 20,
-          "latest_a": 10
+          "skill_support": 6.6667,
+          "latest_a": 0
         },
         "extension_deduction": 0
       }
@@ -1287,8 +1307,8 @@
     },
     {
       "id": "P17",
-      "score": 80,
-      "skill": "csrf",
+      "score": 67,
+      "skill": "csrf-cross-site",
       "basis": {
         "topic_counts": {
           "exams": 15,
@@ -1305,28 +1325,23 @@
           "06/11/2022",
           "04/07/2024",
           "20/10/2024",
-          "21/07/2025",
-          "12/07/2026",
-          "19/10/2026"
+          "21/07/2025"
         ],
         "skill_evidence": [
           "Q004",
           "Q022",
           "Q074",
-          "Q076",
           "Q091",
-          "Q111",
-          "Q157",
-          "Q180"
+          "Q111"
         ],
-        "latest_a_skill": true,
+        "latest_a_skill": false,
         "components": {
           "all_exams": 12.0,
           "b_exams": 16.6667,
           "a_to_b": 9.375,
           "summer_b": 12.0,
-          "skill_support": 20,
-          "latest_a": 10
+          "skill_support": 16.6667,
+          "latest_a": 0
         },
         "extension_deduction": 0
       }
@@ -2615,8 +2630,8 @@
     },
     {
       "id": "P50",
-      "score": 76,
-      "skill": "hash",
+      "score": 63,
+      "skill": "collision",
       "basis": {
         "topic_counts": {
           "exams": 12,
@@ -2629,21 +2644,11 @@
         "total_pairs": 7,
         "summer_pairs": 3,
         "skill_dates": [
-          "04/07/2024",
-          "17/09/2024",
-          "05/10/2025",
-          "02/11/2025",
           "30/11/2025",
-          "09/08/2026",
           "19/10/2026"
         ],
         "skill_evidence": [
-          "Q067",
-          "Q082",
-          "Q130",
-          "Q140",
           "Q150",
-          "Q169",
           "Q182"
         ],
         "latest_a_skill": true,
@@ -2652,7 +2657,7 @@
           "b_exams": 16.6667,
           "a_to_b": 10.7143,
           "summer_b": 9.0,
-          "skill_support": 20,
+          "skill_support": 6.6667,
           "latest_a": 10
         },
         "extension_deduction": 0
