@@ -31,13 +31,13 @@ function harness(set = '', initial = {}) {
   return {context, storage, button, run: expression => vm.runInContext(expression, context)};
 }
 
-for (const [set, count] of [['',182], ['latest',10], ['forecast-all',60], ['forecast-focus',20], ['forecast-best',10], ['forecast-1',10], ['forecast-2',10], ['forecast-3',10], ['forecast-4',10], ['forecast-5',10], ['forecast-6',10]]) {
+for (const [set, count] of [['',182], ['latest',10], ['forecast-all',60], ['forecast-focus',20], ['forecast-best',10], ['forecast-lecture',6], ['forecast-1',10], ['forecast-2',10], ['forecast-3',10], ['forecast-4',10], ['forecast-5',10], ['forecast-6',10]]) {
   const h = harness(set, { cfg: {collection: 'old-source', years:['2022'], topics:['old-topic'], skipNoted:true, wrongOnly:true, n:10} });
   assert.equal(h.run('QS.length'), count);
   assert.equal(h.run('pool().length'), count);
   assert.equal(h.run('S.cfg.onlyMultipleChoice'), true);
   h.run('start()');
-  assert.equal(h.run('S.exam.items.length'), 10);
+  assert.equal(h.run('S.exam.items.length'), Math.min(count, 10));
   assert.equal(h.run('S.exam.items.every(x => x.order.length===4 && new Set(x.order).size===4)'), true);
   if (set.startsWith('forecast')) {
     assert.equal(h.run('S.exam.items.every(x=>x.q.id.startsWith("P"))'), true);
@@ -48,6 +48,9 @@ for (const [set, count] of [['',182], ['latest',10], ['forecast-all',60], ['fore
       assert.equal(h.run('QS.map(q=>q.id).join() === [...FORECAST].sort((a,b)=>b.confidence-a.confidence || a.id.localeCompare(b.id)).slice(0,20).map(q=>q.id).join()'), true);
     } else if (set === 'forecast-best') {
       assert.equal(h.run('QS.map(q=>q.id).join() === BEST_MOCK.question_ids.join()'), true);
+    } else if (set === 'forecast-lecture') {
+      assert.equal(h.run('QS.map(q=>q.id).sort().join()'), 'P26,P29,P30,P38,P39,P55');
+      assert.equal(h.run('QS.every(q=>q.lecture_evidence)'), true);
     } else if (/forecast-[1-6]$/.test(set)) {
       assert.equal(h.run(`QS.every(q=>q.mock===${Number(set.slice(-1))})`), true);
     }
@@ -68,6 +71,17 @@ best.run('S.cfg.wrongOnly=true');
 assert.equal(best.run('pool().map(q=>q.id).join()'), bestWrong);
 best.run('start(); S.exam.items[0].ans=S.exam.items[0].order.indexOf(0); finish(false)');
 assert.equal(best.run('pool().length'), 0);
+
+// Switching to the lecture-backed set starts all six in a timed, shuffled exam.
+const lecture = harness('forecast-lecture', {cfg:{collection:'forecast-all',mode:'practice',n:2,topics:['old'],wrongOnly:true,minutes:5}});
+lecture.run('start()');
+assert.equal(lecture.run('S.exam.mode'), 'digital');
+assert.equal(lecture.run('S.exam.limit'), 48*60);
+assert.equal(lecture.run('S.exam.items.length'), 6);
+lecture.run('S.exam.items.forEach((x,i)=>x.ans=x.order.indexOf(i===0?1:0)); finish(false)');
+assert.equal(lecture.run('S.result.score'), 83);
+assert.equal(lecture.run('S.result.exam.items.map(reviewItem).join("").match(/class="option-review"/g).length'), 24);
+assert.equal(lecture.run('S.result.exam.items.map(reviewItem).join("").match(/<details class="answer-detail">/g).length'), 6);
 
 const h = harness('forecast-all');
 h.run('S.cfg.n=2; start(); S.exam.items[0].ans=S.exam.items[0].order.indexOf(0); S.exam.items[1].ans=S.exam.items[1].order.indexOf(1); finish(false);');
@@ -112,4 +126,4 @@ assert.equal(mixed.storage.get('cyber-study-v2:history'), '[]');
 assert.equal(JSON.parse(mixed.storage.get('cyber-study-v2:cfg')).wrongOnly, false);
 assert.equal(mixed.run('pool().length'), 60);
 assert.equal(mixed.run('wrongQuestionIds().size'), 0);
-console.log('Exam flow: eleven sources; full balanced mock; shuffled grading and explanations; wrong-only latest results; reload; clear-history confirmation and recovery passed.');
+console.log('Exam flow: twelve sources; lecture-backed set; full balanced mock; shuffled grading and explanations; wrong-only latest results; reload; clear-history confirmation and recovery passed.');
