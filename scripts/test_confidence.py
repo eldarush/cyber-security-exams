@@ -33,6 +33,9 @@ assert report['skills']['service-name']['evidence']==[]
 assert report['skills']['utxo-change']['evidence']==['Q176']
 assert report['skills']['utxo-validity']['evidence']==['Q050','Q176']
 assert report['skills']['utxo-outpoint']['evidence']==[]
+assert report['skills']['confirmation-risk']['evidence']==['Q137','Q177']
+assert by_forecast['P08']['skill']=='confirmation-risk'
+assert by_forecast['P08']['confidence_basis']['skill_dates']==['02/11/2025','19/10/2026']
 assert by_forecast['P03']['skill']=='utxo-change'
 assert by_forecast['P40']['skill']=='utxo-validity'
 assert by_forecast['P41']['skill']=='utxo-outpoint'

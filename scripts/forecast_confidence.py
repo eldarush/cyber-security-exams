@@ -31,6 +31,7 @@ SKILLS = {
  'birthday':('התנגשות ו-birthday','Q150 Q169 Q182'),
  'birthday-calc':('חישוב הסתברות התנגשות לפי יום הולדת','Q169'),
  'consensus':('אישורים, הוצאה כפולה וכוח כרייה','Q050 Q053 Q137 Q167 Q177'),
+ 'confirmation-risk':('אישורים והפחתת סיכון להוצאה כפולה','Q137 Q177'),
  'dh':('Diffie–Hellman: חישוב והנחות אבטחה','Q025 Q036 Q043 Q047 Q056 Q068 Q094 Q099 Q148 Q164'),
  'dh-calculation':('חישוב סוד משותף ב-Diffie–Hellman','Q036 Q068 Q099 Q148 Q164'),
  'dh-active':('תיווך פעיל ב-Diffie–Hellman לא מאומת — ללא סימוכין ישירים ממופים מבחינות עבר',''),
@@ -69,7 +70,7 @@ SKILLS = {
  'substitution':('צופן החלפה ותבניות חזרות','Q055 Q096 Q142'),
  'dom':('XSS והקשר פירוש הקלט','Q006 Q109 Q118 Q135 Q145'),
 }
-KEYS = ('rsa-verify chain utxo-change otp-malleability xss-token mac-composition birthday-calc consensus dh-calculation vigenere '
+KEYS = ('rsa-verify chain utxo-change otp-malleability xss-token mac-composition birthday-calc confirmation-risk dh-calculation vigenere '
         'ct-policy ocsp cbc merkle second-preimage rsa-gen csrf-cross-site p2pkh tls arp-mitm '
         'key-count ecb toy-hash password sop hsts csp sql dns-guess slowloris '
         'rsa-create rsa-gen key-roles rsa-gen service-name ca-constraints ocsp ct-promise ct-split-view utxo-validity '

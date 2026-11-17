@@ -443,6 +443,13 @@
         "Q177"
       ]
     },
+    "confirmation-risk": {
+      "label": "אישורים והפחתת סיכון להוצאה כפולה",
+      "evidence": [
+        "Q137",
+        "Q177"
+      ]
+    },
     "dh": {
       "label": "Diffie–Hellman: חישוב והנחות אבטחה",
       "evidence": [
@@ -1036,8 +1043,8 @@
     },
     {
       "id": "P08",
-      "score": 88,
-      "skill": "consensus",
+      "score": 78,
+      "skill": "confirmation-risk",
       "basis": {
         "topic_counts": {
           "exams": 17,
@@ -1050,17 +1057,11 @@
         "total_pairs": 7,
         "summer_pairs": 3,
         "skill_dates": [
-          "08/08/2023",
-          "24/11/2024",
           "02/11/2025",
-          "09/08/2026",
           "19/10/2026"
         ],
         "skill_evidence": [
-          "Q050",
-          "Q053",
           "Q137",
-          "Q167",
           "Q177"
         ],
         "latest_a_skill": true,
@@ -1069,7 +1070,7 @@
           "b_exams": 22.2222,
           "a_to_b": 13.125,
           "summer_b": 12.0,
-          "skill_support": 16.6667,
+          "skill_support": 6.6667,
           "latest_a": 10
         },
         "extension_deduction": 0
