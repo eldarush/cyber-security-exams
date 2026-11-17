@@ -4,6 +4,8 @@ Pages are PDF page numbers, not slide numbers. The files are not published and
 their edition or complete correspondence to the current semester is unverified.
 """
 LECTURES={
+ 'P10':dict(file='Crypto1.pdf',pages='95, 99',relation='השקופיות מתארות חזרה על המפתח והזזת אותיות לפי המפתח, ומציגות את מספור האותיות; המילים והחישוב בשאלה חדשים.'),
+ 'P45':dict(file='Crypto1.pdf',pages='127, 145, 151',relation='המצגת מגדירה OTP עם XOR ומפתח לשימוש אחד ומציגה את בעיית השימוש החוזר; שחזור הבית בהינתן הודעה ידועה הוא תרגיל נוסף.'),
  'P26':dict(file='6_1_PKI.pdf',pages='124–125',relation='השקופיות מציגות את בעיית הביקור הראשון ואת HSTS preload; אין בכך הוכחה ששאלת מועד ב׳ תעסוק בכך.'),
  'P29':dict(file='Network_security (2) (1).pdf',pages='37–42',relation='השקופיות מתארות התאמת TXID בגודל 16 ביט ופורט מקור במענה DNS. התרגיל מציב במפורש ניחוש יחיד ופורט ידוע.'),
  'P30':dict(file='Network_security (2) (1).pdf',pages='66–67',relation='השקופיות מתארות Slowloris וחיבורי HTTP איטיים; התרגיל מוסיף גם בחירת אמצעי הגנה.'),
