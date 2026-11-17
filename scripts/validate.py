@@ -34,6 +34,19 @@ assert len(allocation['folds'])==6
 assert [len(row['training_b']) for row in allocation['folds']]==[1,2,3,4,5,6]
 assert all(sum(q.values())==10 for row in allocation['folds'] for q in row['quotas'].values())
 assert allocation['means']['history']==0.683333 and allocation['means']['combined']==0.716667
+# Source slots drive the topic matrix: duplicate files may repeat one canonical
+# record, but different records must never overwrite the same dated slot.
+slots = {}
+for q in bank:
+    for source in q['sources']:
+        if source.get('date'):
+            key = (source['date'], source['num'])
+            assert slots.setdefault(key, q['id']) == q['id'], ('conflicting source slot', key)
+dates = {date for date, _ in slots}
+assert len(dates) == 18 and len(slots) == 186
+for date in dates:
+    expected = 12 if date.endswith('/2022') else 10
+    assert {number for d, number in slots if d == date} == set(range(1, expected+1)), date
 assert len({q['id'] for q in bank+forecast})==242
 assert all(sum(q['mock']==n for q in forecast)==10 for n in range(1,7))
 assert all(len(q['options'])==4 and len(set(q['options']))==4 for q in bank+forecast)
