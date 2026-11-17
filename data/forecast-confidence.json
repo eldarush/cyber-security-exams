@@ -268,6 +268,15 @@
         "Q175"
       ]
     },
+    "rsa-verify": {
+      "label": "אימות חתימה והתאמתה להודעה",
+      "evidence": [
+        "Q020",
+        "Q034",
+        "Q113",
+        "Q175"
+      ]
+    },
     "rsa-create": {
       "label": "חישוב חתימת textbook RSA במפתח פרטי",
       "evidence": [
@@ -349,6 +358,12 @@
         "Q179"
       ]
     },
+    "otp-malleability": {
+      "label": "שינוי מבוקר של מסר OTP ידוע",
+      "evidence": [
+        "Q179"
+      ]
+    },
     "otp-reuse": {
       "label": "סיכון שימוש חוזר במפתח OTP",
       "evidence": [
@@ -361,6 +376,14 @@
         "Q022",
         "Q076",
         "Q115",
+        "Q118",
+        "Q157",
+        "Q180"
+      ]
+    },
+    "xss-token": {
+      "label": "XSS וקריאת טוקן מתוך הדף",
+      "evidence": [
         "Q118",
         "Q157",
         "Q180"
@@ -733,8 +756,8 @@
   "questions": [
     {
       "id": "P01",
-      "score": 76,
-      "skill": "rsa-sign",
+      "score": 69,
+      "skill": "rsa-verify",
       "basis": {
         "topic_counts": {
           "exams": 13,
@@ -749,16 +772,12 @@
         "skill_dates": [
           "06/11/2022",
           "04/12/2022",
-          "24/11/2024",
-          "21/07/2025",
           "21/08/2025",
           "19/10/2026"
         ],
         "skill_evidence": [
           "Q020",
           "Q034",
-          "Q100",
-          "Q105",
           "Q113",
           "Q175"
         ],
@@ -768,7 +787,7 @@
           "b_exams": 13.8889,
           "a_to_b": 9.375,
           "summer_b": 12.0,
-          "skill_support": 20.0,
+          "skill_support": 13.3333,
           "latest_a": 10
         },
         "extension_deduction": 0
@@ -850,8 +869,8 @@
     },
     {
       "id": "P04",
-      "score": 80,
-      "skill": "otp",
+      "score": 70,
+      "skill": "otp-malleability",
       "basis": {
         "topic_counts": {
           "exams": 13,
@@ -864,16 +883,9 @@
         "total_pairs": 7,
         "summer_pairs": 3,
         "skill_dates": [
-          "06/11/2022",
-          "08/08/2023",
-          "21/08/2025",
           "19/10/2026"
         ],
         "skill_evidence": [
-          "Q013",
-          "Q049",
-          "Q120",
-          "Q121",
           "Q179"
         ],
         "latest_a_skill": true,
@@ -882,7 +894,7 @@
           "b_exams": 22.2222,
           "a_to_b": 12.0,
           "summer_b": 12.0,
-          "skill_support": 13.3333,
+          "skill_support": 3.3333,
           "latest_a": 10
         },
         "extension_deduction": 0
@@ -890,8 +902,8 @@
     },
     {
       "id": "P05",
-      "score": 77,
-      "skill": "xss-csrf",
+      "score": 70,
+      "skill": "xss-token",
       "basis": {
         "topic_counts": {
           "exams": 15,
@@ -904,16 +916,11 @@
         "total_pairs": 7,
         "summer_pairs": 3,
         "skill_dates": [
-          "06/11/2022",
-          "04/07/2024",
           "21/08/2025",
           "12/07/2026",
           "19/10/2026"
         ],
         "skill_evidence": [
-          "Q022",
-          "Q076",
-          "Q115",
           "Q118",
           "Q157",
           "Q180"
@@ -924,7 +931,7 @@
           "b_exams": 16.6667,
           "a_to_b": 9.375,
           "summer_b": 12.0,
-          "skill_support": 16.6667,
+          "skill_support": 10.0,
           "latest_a": 10
         },
         "extension_deduction": 0

@@ -3,11 +3,11 @@
   "focused": [
     {
       "id": "P01",
-      "skill": "rsa-sign",
-      "score": 76,
-      "a": 1,
+      "skill": "rsa-verify",
+      "score": 69,
+      "a": 0,
       "b": 2,
-      "both": 1,
+      "both": 0,
       "latest_a_ids": [
         "Q175"
       ]
@@ -25,10 +25,10 @@
     },
     {
       "id": "P04",
-      "skill": "otp",
-      "score": 80,
+      "skill": "otp-malleability",
+      "score": 70,
       "a": 0,
-      "b": 3,
+      "b": 0,
       "both": 0,
       "latest_a_ids": [
         "Q179"
@@ -36,10 +36,10 @@
     },
     {
       "id": "P05",
-      "skill": "xss-csrf",
-      "score": 77,
+      "skill": "xss-token",
+      "score": 70,
       "a": 1,
-      "b": 3,
+      "b": 1,
       "both": 0,
       "latest_a_ids": [
         "Q180"
@@ -196,6 +196,93 @@
             "04/12/2022",
             "24/11/2024",
             "21/07/2025",
+            "21/08/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "rsa-verify",
+      "label": "אימות חתימה והתאמתה להודעה",
+      "latest_a_ids": [
+        "Q175"
+      ],
+      "latest_a_present": true,
+      "a_appearances": 0,
+      "b_appearances": 2,
+      "continued": 0,
+      "b_after_absent_a": 2,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [
+            "Q020"
+          ],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "04/12/2022"
+          ]
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "04/12/2022"
+          ]
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "04/12/2022"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [
+            "Q113"
+          ],
+          "prior_support_dates": [
+            "06/11/2022",
+            "04/12/2022"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "04/12/2022",
+            "21/08/2025"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "06/11/2022",
+            "04/12/2022",
             "21/08/2025"
           ]
         }
@@ -1031,6 +1118,69 @@
       ]
     },
     {
+      "skill": "otp-malleability",
+      "label": "שינוי מבוקר של מסר OTP ידוע",
+      "latest_a_ids": [
+        "Q179"
+      ],
+      "latest_a_present": true,
+      "a_appearances": 0,
+      "b_appearances": 0,
+      "continued": 0,
+      "b_after_absent_a": 0,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        }
+      ]
+    },
+    {
       "skill": "otp-reuse",
       "label": "סיכון שימוש חוזר במפתח OTP",
       "latest_a_ids": [],
@@ -1188,6 +1338,77 @@
           "prior_support_dates": [
             "06/11/2022",
             "04/07/2024",
+            "21/08/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "xss-token",
+      "label": "XSS וקריאת טוקן מתוך הדף",
+      "latest_a_ids": [
+        "Q180"
+      ],
+      "latest_a_present": true,
+      "a_appearances": 1,
+      "b_appearances": 1,
+      "continued": 0,
+      "b_after_absent_a": 1,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [
+            "Q118"
+          ],
+          "prior_support_dates": []
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "21/08/2025"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [
+            "Q157"
+          ],
+          "b_ids": [],
+          "prior_support_dates": [
             "21/08/2025"
           ]
         }

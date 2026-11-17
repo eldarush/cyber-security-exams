@@ -9,6 +9,7 @@ from datetime import datetime
 
 SKILLS = {
  'rsa-sign':('חתימות RSA: יצירה ואימות','Q020 Q034 Q100 Q105 Q113 Q175'),
+ 'rsa-verify':('אימות חתימה והתאמתה להודעה','Q020 Q034 Q113 Q175'),
  'rsa-create':('חישוב חתימת textbook RSA במפתח פרטי','Q100 Q105'),
  'rsa-gen':('RSA: פרמטרים, הופכי ומעריכים','Q100 Q104 Q138 Q155'),
  'key-roles':('תפקידי מפתחות: סודיות, חתימה ואמון','Q009 Q044 Q092 Q112 Q123 Q128'),
@@ -20,8 +21,10 @@ SKILLS = {
  'utxo-validity':('תוקף טרנזקציה וכללי הוצאה','Q050 Q176'),
  'utxo-outpoint':('זיהוי פלט לפי מזהה טרנזקציה ואינדקס — ללא סימוכין ישירים ממופים',''),
  'otp':('OTP, XOR וגבולות ההגנה','Q013 Q049 Q120 Q121 Q179'),
+ 'otp-malleability':('שינוי מבוקר של מסר OTP ידוע','Q179'),
  'otp-reuse':('סיכון שימוש חוזר במפתח OTP','Q049'),
  'xss-csrf':('XSS מול סשן וטוקן CSRF','Q022 Q076 Q115 Q118 Q157 Q180'),
+ 'xss-token':('XSS וקריאת טוקן מתוך הדף','Q118 Q157 Q180'),
  'cookie-flags':('מאפייני cookie: HttpOnly לעומת Secure','Q115 Q180'),
  'mac':('MAC וסדר הצפנה ואימות','Q015 Q057 Q078 Q116 Q133 Q143 Q153 Q163'),
  'mac-composition':('זיהוי סדר שילוב MAC והצפנה','Q057 Q116 Q133 Q143 Q163'),
@@ -63,7 +66,7 @@ SKILLS = {
  'substitution':('צופן החלפה ותבניות חזרות','Q055 Q096 Q142'),
  'dom':('XSS והקשר פירוש הקלט','Q006 Q109 Q118 Q135 Q145'),
 }
-KEYS = ('rsa-sign chain utxo-change otp xss-csrf mac-composition birthday-calc consensus dh-calculation vigenere '
+KEYS = ('rsa-verify chain utxo-change otp-malleability xss-token mac-composition birthday-calc consensus dh-calculation vigenere '
         'ct-policy ocsp cbc merkle second-preimage rsa-gen csrf-cross-site p2pkh tls arp '
         'key-count ecb toy-hash password sop hsts csp sql dns dos '
         'rsa-create rsa-gen key-roles rsa-gen service-name ca-constraints ocsp ct-promise ct-split-view utxo-validity '

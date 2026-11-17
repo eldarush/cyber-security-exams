@@ -43,6 +43,12 @@ assert report['skills']['dh-calculation']['evidence']==['Q036','Q068','Q099','Q1
 assert by_forecast['P09']['skill']=='dh-calculation' and not by_forecast['P09']['confidence_basis']['latest_a_skill']
 assert by_forecast['P55']['skill']=='dh-active' and report['skills']['dh-active']['evidence']==[]
 assert by_forecast['P55']['confidence_basis']['extension_deduction']==20
+assert by_forecast['P01']['skill']=='rsa-verify'
+assert report['skills']['rsa-verify']['evidence']==['Q020','Q034','Q113','Q175']
+assert by_forecast['P04']['skill']=='otp-malleability'
+assert report['skills']['otp-malleability']['evidence']==['Q179']
+assert by_forecast['P05']['skill']=='xss-token'
+assert report['skills']['xss-token']['evidence']==['Q118','Q157','Q180']
 for qid,skill in [('P36','ca-constraints'),('P38','ct-promise'),('P39','ct-split-view')]:
     assert by_forecast[qid]['skill']==skill and report['skills'][skill]['evidence']==[]
     assert not by_forecast[qid]['confidence_basis']['latest_a_skill']
