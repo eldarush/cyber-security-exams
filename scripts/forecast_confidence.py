@@ -9,12 +9,16 @@ from datetime import datetime
 
 SKILLS = {
  'rsa-sign':('חתימות RSA: יצירה ואימות','Q020 Q034 Q100 Q105 Q113 Q175'),
+ 'rsa-create':('חישוב חתימת textbook RSA במפתח פרטי','Q100 Q105'),
  'rsa-gen':('RSA: פרמטרים, הופכי ומעריכים','Q100 Q104 Q138 Q155'),
  'key-roles':('תפקידי מפתחות: סודיות, חתימה ואמון','Q009 Q044 Q092 Q112 Q123 Q128'),
  'chain':('אימות תעודות ושרשרת אמון','Q010 Q023 Q051 Q070 Q114 Q174'),
+ 'service-name':('התאמת שם השירות לתעודה — ללא סימוכין ישירים ממופים',''),
  'utxo':('UTXO, פלטים ותוקף הוצאה','Q058 Q117 Q162 Q176'),
  'otp':('OTP, XOR וגבולות ההגנה','Q013 Q049 Q120 Q121 Q179'),
+ 'otp-reuse':('סיכון שימוש חוזר במפתח OTP','Q049'),
  'xss-csrf':('XSS מול סשן וטוקן CSRF','Q022 Q076 Q115 Q118 Q157 Q180'),
+ 'cookie-flags':('מאפייני cookie: HttpOnly לעומת Secure','Q115 Q180'),
  'mac':('MAC וסדר הצפנה ואימות','Q015 Q057 Q078 Q116 Q133 Q143 Q153 Q163'),
  'mac-composition':('זיהוי סדר שילוב MAC והצפנה','Q057 Q116 Q133 Q143 Q163'),
  'birthday':('התנגשות ו-birthday','Q150 Q169 Q182'),
@@ -53,11 +57,11 @@ SKILLS = {
 KEYS = ('rsa-sign chain utxo otp xss-csrf mac-composition birthday-calc consensus dh vigenere '
         'ct ocsp cbc merkle second-preimage rsa-gen csrf-cross-site p2pkh tls arp '
         'key-count ecb toy-hash password sop hsts csp sql dns dos '
-        'rsa-sign rsa-gen key-roles rsa-gen chain chain ocsp ct ct utxo '
-        'utxo escrow pow merkle otp cbc 3des substitution vigenere collision '
-        'toy-hash hash mac password dh xss-csrf dom sql csrf tls').split()
+        'rsa-create rsa-gen key-roles rsa-gen service-name chain ocsp ct ct utxo '
+        'utxo escrow pow merkle otp-reuse cbc 3des substitution vigenere collision '
+        'toy-hash hash mac password dh cookie-flags dom sql csrf tls').split()
 # Explicit editorial deduction for a wider extrapolation of a documented skill.
-EXTENSIONS = {32,36,38,39,41,43,52,53,54,57,59,60}
+EXTENSIONS = {32,35,36,38,39,40,41,43,45,49,52,53,54,56,57,59,60}
 EXTENSION_DEDUCTION = 20
 
 def annotate(questions, bank, pairs):

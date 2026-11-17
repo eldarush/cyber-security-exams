@@ -25,6 +25,11 @@ assert by_forecast['P17']['skill']=='csrf-cross-site' and 'Q180' not in report['
 assert not by_forecast['P15']['confidence_basis']['latest_a_skill']
 assert not by_forecast['P17']['confidence_basis']['latest_a_skill']
 assert by_forecast['P05']['confidence_basis']['latest_a_skill']
+for qid in ['P31','P35','P45']:
+    assert not by_forecast[qid]['confidence_basis']['latest_a_skill'], qid
+for qid in ['P35','P40','P45','P49','P56']:
+    assert by_forecast[qid]['confidence_basis']['extension_deduction']==20, qid
+assert report['skills']['service-name']['evidence']==[]
 q_report={q['id']:q for q in report['questions']}
 topics={date:{q['topic'] for q in questions.values()} for date,questions in records.items()}
 summer=[pair for pair in pairs if 'קיץ' in pair['label']]
