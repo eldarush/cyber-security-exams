@@ -140,6 +140,12 @@ from fractions import Fraction
 p=Fraction(sum(h<128 for h in range(256)),256)
 p_small=Fraction(sum(h<8 for h in range(256)),256)
 assert (1/p_small)/(1/p)==16
+# For every valid small target, exact output counts give the 16:1 ratio.
+for bits in range(4, 10):
+    for target in range(16, 2**bits + 1, 16):
+        old_successes = sum(h < target for h in range(2**bits))
+        new_successes = sum(h < target//16 for h in range(2**bits))
+        assert old_successes == 16 * new_successes and new_successes > 0
 assert QUESTIONS['P43']['options'][0]=='גדל פי 16'
 
 def merkle_levels(leaves):
