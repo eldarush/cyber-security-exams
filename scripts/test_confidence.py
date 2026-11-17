@@ -36,6 +36,12 @@ assert report['skills']['utxo-outpoint']['evidence']==[]
 assert report['skills']['confirmation-risk']['evidence']==['Q137','Q177']
 assert by_forecast['P08']['skill']=='confirmation-risk'
 assert by_forecast['P08']['confidence_basis']['skill_dates']==['02/11/2025','19/10/2026']
+assert report['skills']['issuer-key']['evidence']==['Q174']
+assert report['skills']['vigenere-encryption']['evidence']==['Q173']
+assert report['skills']['ocsp-stapling-benefits']['evidence']==['Q073','Q101','Q170']
+assert report['skills']['ocsp-forgery']['evidence']==['Q059','Q119']
+for qid,skill in [('P02','issuer-key'),('P10','vigenere-encryption'),('P12','ocsp-stapling-benefits'),('P37','ocsp-forgery')]:
+    assert by_forecast[qid]['skill']==skill
 assert by_forecast['P03']['skill']=='utxo-change'
 assert by_forecast['P40']['skill']=='utxo-validity'
 assert by_forecast['P41']['skill']=='utxo-outpoint'

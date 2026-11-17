@@ -14,11 +14,11 @@
     },
     {
       "id": "P02",
-      "skill": "chain",
-      "score": 87,
-      "a": 1,
-      "b": 3,
-      "both": 1,
+      "skill": "issuer-key",
+      "score": 73,
+      "a": 0,
+      "b": 0,
+      "both": 0,
       "latest_a_ids": [
         "Q174"
       ]
@@ -76,8 +76,8 @@
     },
     {
       "id": "P10",
-      "skill": "vigenere",
-      "score": 73,
+      "skill": "vigenere-encryption",
+      "score": 70,
       "a": 0,
       "b": 0,
       "both": 0,
@@ -691,6 +691,69 @@
             "04/07/2024",
             "21/08/2025"
           ]
+        }
+      ]
+    },
+    {
+      "skill": "issuer-key",
+      "label": "בחירת מפתח מנפיק לאימות חתימת תעודה",
+      "latest_a_ids": [
+        "Q174"
+      ],
+      "latest_a_present": true,
+      "a_appearances": 0,
+      "b_appearances": 0,
+      "continued": 0,
+      "b_after_absent_a": 0,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
         }
       ]
     },
@@ -2333,6 +2396,69 @@
       ]
     },
     {
+      "skill": "vigenere-encryption",
+      "label": "חישוב הצפנת Vigenère במפתח חוזר",
+      "latest_a_ids": [
+        "Q173"
+      ],
+      "latest_a_present": true,
+      "a_appearances": 0,
+      "b_appearances": 0,
+      "continued": 0,
+      "b_after_absent_a": 0,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        }
+      ]
+    },
+    {
       "skill": "ct",
       "label": "Certificate Transparency ותפקידי הלוג",
       "latest_a_ids": [
@@ -2749,6 +2875,157 @@
             "04/07/2024",
             "24/11/2024",
             "21/07/2025",
+            "21/08/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "ocsp-stapling-benefits",
+      "label": "יתרונות OCSP stapling לעומת פנייה ישירה",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 0,
+      "b_appearances": 2,
+      "continued": 0,
+      "b_after_absent_a": 2,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [
+            "Q073"
+          ],
+          "prior_support_dates": []
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "04/07/2024"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "04/07/2024",
+            "24/11/2024"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "04/07/2024",
+            "24/11/2024"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [
+            "Q170"
+          ],
+          "prior_support_dates": [
+            "04/07/2024",
+            "24/11/2024"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "ocsp-forgery",
+      "label": "גניבת מפתח שרת לעומת זיוף תשובת OCSP",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 1,
+      "b_appearances": 1,
+      "continued": 0,
+      "b_after_absent_a": 1,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [
+            "Q059"
+          ],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "31/05/2024"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [
+            "Q119"
+          ],
+          "prior_support_dates": [
+            "31/05/2024"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "31/05/2024",
+            "21/08/2025"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "31/05/2024",
             "21/08/2025"
           ]
         }

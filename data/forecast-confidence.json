@@ -321,6 +321,12 @@
         "Q174"
       ]
     },
+    "issuer-key": {
+      "label": "בחירת מפתח מנפיק לאימות חתימת תעודה",
+      "evidence": [
+        "Q174"
+      ]
+    },
     "ca-constraints": {
       "label": "הרשאת CA בתעודת ביניים — ללא סימוכין ישירים ממופים מבחינות עבר",
       "evidence": []
@@ -493,6 +499,12 @@
         "Q173"
       ]
     },
+    "vigenere-encryption": {
+      "label": "חישוב הצפנת Vigenère במפתח חוזר",
+      "evidence": [
+        "Q173"
+      ]
+    },
     "ct": {
       "label": "Certificate Transparency ותפקידי הלוג",
       "evidence": [
@@ -539,6 +551,21 @@
         "Q110",
         "Q119",
         "Q170"
+      ]
+    },
+    "ocsp-stapling-benefits": {
+      "label": "יתרונות OCSP stapling לעומת פנייה ישירה",
+      "evidence": [
+        "Q073",
+        "Q101",
+        "Q170"
+      ]
+    },
+    "ocsp-forgery": {
+      "label": "גניבת מפתח שרת לעומת זיוף תשובת OCSP",
+      "evidence": [
+        "Q059",
+        "Q119"
       ]
     },
     "cbc": {
@@ -828,8 +855,8 @@
     },
     {
       "id": "P02",
-      "score": 87,
-      "skill": "chain",
+      "score": 73,
+      "skill": "issuer-key",
       "basis": {
         "topic_counts": {
           "exams": 16,
@@ -842,17 +869,9 @@
         "total_pairs": 7,
         "summer_pairs": 3,
         "skill_dates": [
-          "07/10/2022",
-          "06/11/2022",
-          "04/07/2024",
-          "21/08/2025",
           "19/10/2026"
         ],
         "skill_evidence": [
-          "Q010",
-          "Q023",
-          "Q070",
-          "Q114",
           "Q174"
         ],
         "latest_a_skill": true,
@@ -861,7 +880,7 @@
           "b_exams": 22.2222,
           "a_to_b": 13.125,
           "summer_b": 12.0,
-          "skill_support": 16.6667,
+          "skill_support": 3.3333,
           "latest_a": 10
         },
         "extension_deduction": 0
@@ -1122,8 +1141,8 @@
     },
     {
       "id": "P10",
-      "score": 73,
-      "skill": "vigenere",
+      "score": 70,
+      "skill": "vigenere-encryption",
       "basis": {
         "topic_counts": {
           "exams": 13,
@@ -1136,11 +1155,9 @@
         "total_pairs": 7,
         "summer_pairs": 3,
         "skill_dates": [
-          "24/11/2024",
           "19/10/2026"
         ],
         "skill_evidence": [
-          "Q097",
           "Q173"
         ],
         "latest_a_skill": true,
@@ -1149,7 +1166,7 @@
           "b_exams": 22.2222,
           "a_to_b": 12.0,
           "summer_b": 12.0,
-          "skill_support": 6.6667,
+          "skill_support": 3.3333,
           "latest_a": 10
         },
         "extension_deduction": 0
@@ -1200,8 +1217,8 @@
     },
     {
       "id": "P12",
-      "score": 80,
-      "skill": "ocsp",
+      "score": 70,
+      "skill": "ocsp-stapling-benefits",
       "basis": {
         "topic_counts": {
           "exams": 16,
@@ -1214,22 +1231,13 @@
         "total_pairs": 7,
         "summer_pairs": 3,
         "skill_dates": [
-          "06/11/2022",
-          "31/05/2024",
           "04/07/2024",
           "24/11/2024",
-          "21/07/2025",
-          "21/08/2025",
           "09/08/2026"
         ],
         "skill_evidence": [
-          "Q021",
-          "Q059",
           "Q073",
           "Q101",
-          "Q108",
-          "Q110",
-          "Q119",
           "Q170"
         ],
         "latest_a_skill": false,
@@ -1238,7 +1246,7 @@
           "b_exams": 22.2222,
           "a_to_b": 13.125,
           "summer_b": 12.0,
-          "skill_support": 20,
+          "skill_support": 10.0,
           "latest_a": 0
         },
         "extension_deduction": 0
@@ -2139,8 +2147,8 @@
     },
     {
       "id": "P37",
-      "score": 80,
-      "skill": "ocsp",
+      "score": 67,
+      "skill": "ocsp-forgery",
       "basis": {
         "topic_counts": {
           "exams": 16,
@@ -2153,23 +2161,12 @@
         "total_pairs": 7,
         "summer_pairs": 3,
         "skill_dates": [
-          "06/11/2022",
           "31/05/2024",
-          "04/07/2024",
-          "24/11/2024",
-          "21/07/2025",
-          "21/08/2025",
-          "09/08/2026"
+          "21/08/2025"
         ],
         "skill_evidence": [
-          "Q021",
           "Q059",
-          "Q073",
-          "Q101",
-          "Q108",
-          "Q110",
-          "Q119",
-          "Q170"
+          "Q119"
         ],
         "latest_a_skill": false,
         "components": {
@@ -2177,7 +2174,7 @@
           "b_exams": 22.2222,
           "a_to_b": 13.125,
           "summer_b": 12.0,
-          "skill_support": 20,
+          "skill_support": 6.6667,
           "latest_a": 0
         },
         "extension_deduction": 0
