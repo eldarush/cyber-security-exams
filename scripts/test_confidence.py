@@ -46,7 +46,9 @@ assert report['skills']['dh-calculation']['evidence']==['Q036','Q068','Q099','Q1
 assert by_forecast['P09']['skill']=='dh-calculation' and not by_forecast['P09']['confidence_basis']['latest_a_skill']
 assert by_forecast['P55']['skill']=='dh-active' and report['skills']['dh-active']['evidence']==[]
 assert by_forecast['P55']['confidence_basis']['extension_deduction']==20
-assert by_forecast['P01']['skill']=='rsa-verify'
+assert by_forecast['P01']['skill']=='rsa-verify-numeric'
+assert report['skills']['rsa-verify-numeric']['evidence']==['Q113','Q175']
+assert by_forecast['P01']['confidence_basis']['skill_dates']==['21/08/2025','19/10/2026']
 assert report['skills']['rsa-verify']['evidence']==['Q020','Q034','Q113','Q175']
 assert by_forecast['P04']['skill']=='otp-malleability'
 assert report['skills']['otp-malleability']['evidence']==['Q179']

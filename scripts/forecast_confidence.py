@@ -10,6 +10,7 @@ from datetime import datetime
 SKILLS = {
  'rsa-sign':('חתימות RSA: יצירה ואימות','Q020 Q034 Q100 Q105 Q113 Q175'),
  'rsa-verify':('אימות חתימה והתאמתה להודעה','Q020 Q034 Q113 Q175'),
+ 'rsa-verify-numeric':('חישוב אימות או שחזור הודעה ב-textbook RSA','Q113 Q175'),
  'rsa-create':('חישוב חתימת textbook RSA במפתח פרטי','Q100 Q105'),
  'rsa-gen':('RSA: פרמטרים, הופכי ומעריכים','Q100 Q104 Q138 Q155'),
  'key-roles':('תפקידי מפתחות: סודיות, חתימה ואמון','Q009 Q044 Q092 Q112 Q123 Q128'),
@@ -70,7 +71,7 @@ SKILLS = {
  'substitution':('צופן החלפה ותבניות חזרות','Q055 Q096 Q142'),
  'dom':('XSS והקשר פירוש הקלט','Q006 Q109 Q118 Q135 Q145'),
 }
-KEYS = ('rsa-verify chain utxo-change otp-malleability xss-token mac-composition birthday-calc confirmation-risk dh-calculation vigenere '
+KEYS = ('rsa-verify-numeric chain utxo-change otp-malleability xss-token mac-composition birthday-calc confirmation-risk dh-calculation vigenere '
         'ct-policy ocsp cbc merkle second-preimage rsa-gen csrf-cross-site p2pkh tls arp-mitm '
         'key-count ecb toy-hash password sop hsts csp sql dns-guess slowloris '
         'rsa-create rsa-gen key-roles rsa-gen service-name ca-constraints ocsp ct-promise ct-split-view utxo-validity '

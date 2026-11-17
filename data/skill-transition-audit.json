@@ -3,10 +3,10 @@
   "focused": [
     {
       "id": "P01",
-      "skill": "rsa-verify",
-      "score": 69,
+      "skill": "rsa-verify-numeric",
+      "score": 62,
       "a": 0,
-      "b": 2,
+      "b": 1,
       "both": 0,
       "latest_a_ids": [
         "Q175"
@@ -283,6 +283,75 @@
           "prior_support_dates": [
             "06/11/2022",
             "04/12/2022",
+            "21/08/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "rsa-verify-numeric",
+      "label": "חישוב אימות או שחזור הודעה ב-textbook RSA",
+      "latest_a_ids": [
+        "Q175"
+      ],
+      "latest_a_present": true,
+      "a_appearances": 0,
+      "b_appearances": 1,
+      "continued": 0,
+      "b_after_absent_a": 1,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [
+            "Q113"
+          ],
+          "prior_support_dates": []
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "21/08/2025"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
             "21/08/2025"
           ]
         }

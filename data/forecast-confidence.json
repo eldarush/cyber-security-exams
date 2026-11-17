@@ -277,6 +277,13 @@
         "Q175"
       ]
     },
+    "rsa-verify-numeric": {
+      "label": "חישוב אימות או שחזור הודעה ב-textbook RSA",
+      "evidence": [
+        "Q113",
+        "Q175"
+      ]
+    },
     "rsa-create": {
       "label": "חישוב חתימת textbook RSA במפתח פרטי",
       "evidence": [
@@ -786,8 +793,8 @@
   "questions": [
     {
       "id": "P01",
-      "score": 69,
-      "skill": "rsa-verify",
+      "score": 62,
+      "skill": "rsa-verify-numeric",
       "basis": {
         "topic_counts": {
           "exams": 13,
@@ -800,14 +807,10 @@
         "total_pairs": 7,
         "summer_pairs": 3,
         "skill_dates": [
-          "06/11/2022",
-          "04/12/2022",
           "21/08/2025",
           "19/10/2026"
         ],
         "skill_evidence": [
-          "Q020",
-          "Q034",
           "Q113",
           "Q175"
         ],
@@ -817,7 +820,7 @@
           "b_exams": 13.8889,
           "a_to_b": 9.375,
           "summer_b": 12.0,
-          "skill_support": 13.3333,
+          "skill_support": 6.6667,
           "latest_a": 10
         },
         "extension_deduction": 0
