@@ -288,7 +288,10 @@ const S = {
 
 function wrongQuestionIds(){
   const latest = new Map();
-  for (const h of store.get('history', [])) for (const a of h.answers) latest.set(a.id, a.ok);
+  const currentRevisions = new Map(QS.map(q => [q.id, q.revision || 1]));
+  for (const h of store.get('history', [])) for (const a of h.answers) {
+    if ((a.revision || 1) === (currentRevisions.get(a.id) || 1)) latest.set(a.id, a.ok);
+  }
   return new Set([...latest].filter(([,ok]) => !ok).map(([id]) => id));
 }
 function pool(){
@@ -534,7 +537,7 @@ function finish(timeUp){
   const E = S.exam; E.done = true; clearInterval(timerId);
   reviewFilter = 'all';
   const secs = Math.round((Date.now()-E.start)/1000);
-  const answers = E.items.map(x => ({id: x.q.id, topic: x.q.topic, ok: x.ans !== null && x.order[x.ans] === 0, skipped: x.ans === null}));
+  const answers = E.items.map(x => ({id: x.q.id, revision: x.q.revision || 1, topic: x.q.topic, ok: x.ans !== null && x.order[x.ans] === 0, skipped: x.ans === null}));
   const counted = E.mode === 'practice' ? answers.filter(a => !a.skipped) : answers;
   const correct = counted.filter(a => a.ok).length;
   const score = counted.length ? Math.round(correct / counted.length * 100) : 0;
@@ -630,6 +633,7 @@ function historyMini(){
   const last = h.slice(-5).reverse();
   return `<div class="panel stack" style="gap:8px"><div class="eyebrow">מבחנים אחרונים</div>
     ${last.map(x => `<div class="row" style="justify-content:space-between;font-size:13.5px"><span>${new Date(x.t).toLocaleDateString('he-IL')} · ${x.mode==='practice'?'תרגול':'מבחן'} · ${x.n} שאלות</span><b class="mono" style="color:${x.score>=60?'var(--good)':'var(--bad)'}">${x.score}</b></div>`).join('')}
+    ${h.some(x => x.answers.some(a => a.id==='P09' && (a.revision || 1)<2)) ? '<p class="sub">שאלה P09 עודכנה: תשובות קודמות ללא ציון גרסה אינן משויכות לגרסה הנוכחית במסנן הטעויות. תוצאות המבחנים הישנות נשמרות.</p>' : ''}
     <button class="btn ghost" id="clearhist" style="justify-self:start;padding:2px 0;font-size:12.5px">מחק היסטוריה</button></div>`;
 }
 function clearHistory(){

@@ -412,6 +412,7 @@ def apply_reviews(questions):
         if q['id'] in TITLES:
             q['title'] = TITLES[q['id']]
         if q['id'] == 'P09':
+            q['revision'] = 2
             q.pop('old_number', None)
             q['answer_origin'] = 'תרגיל מעובד על בסיס Q148 ו-Q164; הנוסח והפתרון נערכו מחדש ב-17/11/2026'
         q['reviewed'] = '2026-11-17' if q['id'] == 'P09' else '2026-11-14'
