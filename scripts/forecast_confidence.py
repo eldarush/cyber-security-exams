@@ -15,6 +15,9 @@ SKILLS = {
  'chain':('אימות תעודות ושרשרת אמון','Q010 Q023 Q051 Q070 Q114 Q174'),
  'service-name':('התאמת שם השירות לתעודה — ללא סימוכין ישירים ממופים',''),
  'utxo':('UTXO, פלטים ותוקף הוצאה','Q058 Q117 Q162 Q176'),
+ 'utxo-change':('חישוב פלט עודף ועמלה','Q176'),
+ 'utxo-validity':('תוקף טרנזקציה וכללי הוצאה','Q050 Q176'),
+ 'utxo-outpoint':('זיהוי פלט לפי מזהה טרנזקציה ואינדקס — ללא סימוכין ישירים ממופים',''),
  'otp':('OTP, XOR וגבולות ההגנה','Q013 Q049 Q120 Q121 Q179'),
  'otp-reuse':('סיכון שימוש חוזר במפתח OTP','Q049'),
  'xss-csrf':('XSS מול סשן וטוקן CSRF','Q022 Q076 Q115 Q118 Q157 Q180'),
@@ -54,11 +57,11 @@ SKILLS = {
  'substitution':('צופן החלפה ותבניות חזרות','Q055 Q096 Q142'),
  'dom':('XSS והקשר פירוש הקלט','Q006 Q109 Q118 Q135 Q145'),
 }
-KEYS = ('rsa-sign chain utxo otp xss-csrf mac-composition birthday-calc consensus dh vigenere '
+KEYS = ('rsa-sign chain utxo-change otp xss-csrf mac-composition birthday-calc consensus dh vigenere '
         'ct ocsp cbc merkle second-preimage rsa-gen csrf-cross-site p2pkh tls arp '
         'key-count ecb toy-hash password sop hsts csp sql dns dos '
-        'rsa-create rsa-gen key-roles rsa-gen service-name chain ocsp ct ct utxo '
-        'utxo escrow pow merkle otp-reuse cbc 3des substitution vigenere collision '
+        'rsa-create rsa-gen key-roles rsa-gen service-name chain ocsp ct ct utxo-validity '
+        'utxo-outpoint escrow pow merkle otp-reuse cbc 3des substitution vigenere collision '
         'toy-hash hash mac password dh cookie-flags dom sql csrf tls').split()
 # Explicit editorial deduction for a wider extrapolation of a documented skill.
 EXTENSIONS = {32,35,36,38,39,40,41,43,45,49,52,53,54,56,57,59,60}

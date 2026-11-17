@@ -30,6 +30,13 @@ for qid in ['P31','P35','P45']:
 for qid in ['P35','P40','P45','P49','P56']:
     assert by_forecast[qid]['confidence_basis']['extension_deduction']==20, qid
 assert report['skills']['service-name']['evidence']==[]
+assert report['skills']['utxo-change']['evidence']==['Q176']
+assert report['skills']['utxo-validity']['evidence']==['Q050','Q176']
+assert report['skills']['utxo-outpoint']['evidence']==[]
+assert by_forecast['P03']['skill']=='utxo-change'
+assert by_forecast['P40']['skill']=='utxo-validity'
+assert by_forecast['P41']['skill']=='utxo-outpoint'
+assert not by_forecast['P41']['confidence_basis']['latest_a_skill']
 q_report={q['id']:q for q in report['questions']}
 topics={date:{q['topic'] for q in questions.values()} for date,questions in records.items()}
 summer=[pair for pair in pairs if 'קיץ' in pair['label']]

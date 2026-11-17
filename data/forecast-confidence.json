@@ -319,6 +319,23 @@
         "Q176"
       ]
     },
+    "utxo-change": {
+      "label": "חישוב פלט עודף ועמלה",
+      "evidence": [
+        "Q176"
+      ]
+    },
+    "utxo-validity": {
+      "label": "תוקף טרנזקציה וכללי הוצאה",
+      "evidence": [
+        "Q050",
+        "Q176"
+      ]
+    },
+    "utxo-outpoint": {
+      "label": "זיהוי פלט לפי מזהה טרנזקציה ואינדקס — ללא סימוכין ישירים ממופים",
+      "evidence": []
+    },
     "otp": {
       "label": "OTP, XOR וגבולות ההגנה",
       "evidence": [
@@ -766,8 +783,8 @@
     },
     {
       "id": "P03",
-      "score": 84,
-      "skill": "utxo",
+      "score": 74,
+      "skill": "utxo-change",
       "basis": {
         "topic_counts": {
           "exams": 17,
@@ -780,15 +797,9 @@
         "total_pairs": 7,
         "summer_pairs": 3,
         "skill_dates": [
-          "31/05/2024",
-          "21/08/2025",
-          "12/07/2026",
           "19/10/2026"
         ],
         "skill_evidence": [
-          "Q058",
-          "Q117",
-          "Q162",
           "Q176"
         ],
         "latest_a_skill": true,
@@ -797,7 +808,7 @@
           "b_exams": 22.2222,
           "a_to_b": 13.125,
           "summer_b": 12.0,
-          "skill_support": 13.3333,
+          "skill_support": 3.3333,
           "latest_a": 10
         },
         "extension_deduction": 0
@@ -2262,8 +2273,8 @@
     },
     {
       "id": "P40",
-      "score": 64,
-      "skill": "utxo",
+      "score": 61,
+      "skill": "utxo-validity",
       "basis": {
         "topic_counts": {
           "exams": 17,
@@ -2276,15 +2287,12 @@
         "total_pairs": 7,
         "summer_pairs": 3,
         "skill_dates": [
-          "31/05/2024",
-          "21/08/2025",
-          "12/07/2026",
+          "08/08/2023",
+          "24/11/2024",
           "19/10/2026"
         ],
         "skill_evidence": [
-          "Q058",
-          "Q117",
-          "Q162",
+          "Q050",
           "Q176"
         ],
         "latest_a_skill": true,
@@ -2293,7 +2301,7 @@
           "b_exams": 22.2222,
           "a_to_b": 13.125,
           "summer_b": 12.0,
-          "skill_support": 13.3333,
+          "skill_support": 10.0,
           "latest_a": 10
         },
         "extension_deduction": 20
@@ -2301,8 +2309,8 @@
     },
     {
       "id": "P41",
-      "score": 64,
-      "skill": "utxo",
+      "score": 41,
+      "skill": "utxo-outpoint",
       "basis": {
         "topic_counts": {
           "exams": 17,
@@ -2314,26 +2322,16 @@
         "total_exams": 18,
         "total_pairs": 7,
         "summer_pairs": 3,
-        "skill_dates": [
-          "31/05/2024",
-          "21/08/2025",
-          "12/07/2026",
-          "19/10/2026"
-        ],
-        "skill_evidence": [
-          "Q058",
-          "Q117",
-          "Q162",
-          "Q176"
-        ],
-        "latest_a_skill": true,
+        "skill_dates": [],
+        "skill_evidence": [],
+        "latest_a_skill": false,
         "components": {
           "all_exams": 13.5,
           "b_exams": 22.2222,
           "a_to_b": 13.125,
           "summer_b": 12.0,
-          "skill_support": 13.3333,
-          "latest_a": 10
+          "skill_support": 0.0,
+          "latest_a": 0
         },
         "extension_deduction": 20
       }

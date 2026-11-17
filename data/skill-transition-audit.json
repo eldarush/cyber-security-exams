@@ -686,6 +686,208 @@
       ]
     },
     {
+      "skill": "utxo-change",
+      "label": "חישוב פלט עודף ועמלה",
+      "latest_a_ids": [
+        "Q176"
+      ],
+      "latest_a_present": true,
+      "a_appearances": 0,
+      "b_appearances": 0,
+      "continued": 0,
+      "b_after_absent_a": 0,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        }
+      ]
+    },
+    {
+      "skill": "utxo-validity",
+      "label": "תוקף טרנזקציה וכללי הוצאה",
+      "latest_a_ids": [
+        "Q176"
+      ],
+      "latest_a_present": true,
+      "a_appearances": 0,
+      "b_appearances": 1,
+      "continued": 0,
+      "b_after_absent_a": 1,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [
+            "Q050"
+          ],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "08/08/2023"
+          ]
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "08/08/2023"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "08/08/2023",
+            "24/11/2024"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "08/08/2023",
+            "24/11/2024"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "08/08/2023",
+            "24/11/2024"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "utxo-outpoint",
+      "label": "זיהוי פלט לפי מזהה טרנזקציה ואינדקס — ללא סימוכין ישירים ממופים",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 0,
+      "b_appearances": 0,
+      "continued": 0,
+      "b_after_absent_a": 0,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        }
+      ]
+    },
+    {
       "skill": "otp",
       "label": "OTP, XOR וגבולות ההגנה",
       "latest_a_ids": [
