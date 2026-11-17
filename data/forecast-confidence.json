@@ -494,6 +494,14 @@
         "Q099"
       ]
     },
+    "dh-public-values": {
+      "label": "חישוב סוד DH מתוך ערכים פומביים בקבוצה קטנה",
+      "evidence": [
+        "Q068",
+        "Q148",
+        "Q164"
+      ]
+    },
     "dh-active": {
       "label": "תיווך פעיל ב-Diffie–Hellman לא מאומת — ללא סימוכין ישירים ממופים מבחינות עבר",
       "evidence": []
@@ -1106,8 +1114,8 @@
     },
     {
       "id": "P09",
-      "score": 40,
-      "skill": "dh-known-exponents",
+      "score": 47,
+      "skill": "dh-public-values",
       "basis": {
         "topic_counts": {
           "exams": 8,
@@ -1120,10 +1128,14 @@
         "total_pairs": 7,
         "summer_pairs": 3,
         "skill_dates": [
-          "24/11/2024"
+          "04/07/2024",
+          "30/11/2025",
+          "09/08/2026"
         ],
         "skill_evidence": [
-          "Q099"
+          "Q068",
+          "Q148",
+          "Q164"
         ],
         "latest_a_skill": false,
         "components": {
@@ -1131,7 +1143,7 @@
           "b_exams": 13.8889,
           "a_to_b": 10.0,
           "summer_b": 6.0,
-          "skill_support": 3.3333,
+          "skill_support": 10.0,
           "latest_a": 0
         },
         "extension_deduction": 0

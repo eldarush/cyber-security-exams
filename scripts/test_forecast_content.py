@@ -15,7 +15,7 @@ for q in QUESTIONS.values():
     assert q['question_type'] == 'multiple-choice'
     assert q['accepted_indices'] == [0]
     assert len(q['options']) == len(set(q['options'])) == 4
-    assert q['reviewed'] == '2026-11-14'
+    assert q['reviewed'] == ('2026-11-17' if q['id']=='P09' else '2026-11-14')
     reasons = q['option_explanations']
     assert [r['option'] for r in reasons] == q['options'], q['id']
     assert [r['correct'] for r in reasons] == [True, False, False, False]
@@ -47,12 +47,14 @@ assert prob(4822) < .5 <= prob(4823)
 assert round(math.sqrt(2*math.log(2)*n)) == 4823
 assert QUESTIONS['P07']['options'][0] == 'כ-4,823'
 
-a, b = pow(5, 6, 23), pow(5, 15, 23)
-assert (a, b) == (8, 19)
-shared = pow(b, 6, 23)
-assert shared == pow(a, 15, 23) == 2
-assert QUESTIONS['P09']['options'][0] == str(shared)
-assert [int(option)==shared for option in QUESTIONS['P09']['options']] == [True,False,False,False]
+# Every exponent matching either public value gives the same shared secret.
+a_candidates = [x for x in range(1, 23) if pow(3, x, 23) == 13]
+b_candidates = [x for x in range(1, 23) if pow(3, x, 23) == 4]
+assert a_candidates and b_candidates
+shared_values = {pow(4, x, 23) for x in a_candidates} | {pow(13, x, 23) for x in b_candidates}
+assert shared_values == {12}
+assert QUESTIONS['P09']['options'][0] == '12'
+assert [int(option) in shared_values for option in QUESTIONS['P09']['options']] == [True,False,False,False]
 
 vig = ''.join(chr(65+(ord(p)-65+ord('KEY'[i%3])-65)%26) for i, p in enumerate('HELLO'))
 assert QUESTIONS['P10']['options'][0] == vig == 'RIJVS'

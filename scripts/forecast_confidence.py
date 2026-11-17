@@ -37,6 +37,7 @@ SKILLS = {
  'dh':('Diffie–Hellman: חישוב והנחות אבטחה','Q025 Q036 Q043 Q047 Q056 Q068 Q094 Q099 Q148 Q164'),
  'dh-calculation':('חישוב סוד משותף ב-Diffie–Hellman','Q036 Q068 Q099 Q148 Q164'),
  'dh-known-exponents':('חישוב סוד DH מעריכים פרטיים נתונים','Q099'),
+ 'dh-public-values':('חישוב סוד DH מתוך ערכים פומביים בקבוצה קטנה','Q068 Q148 Q164'),
  'dh-active':('תיווך פעיל ב-Diffie–Hellman לא מאומת — ללא סימוכין ישירים ממופים מבחינות עבר',''),
  'vigenere':('צופן Vigenère ומפתח חוזר','Q097 Q173'),
  'vigenere-encryption':('חישוב הצפנת Vigenère במפתח חוזר','Q173'),
@@ -76,7 +77,7 @@ SKILLS = {
  'substitution':('צופן החלפה ותבניות חזרות','Q055 Q096 Q142'),
  'dom':('XSS והקשר פירוש הקלט','Q006 Q109 Q118 Q135 Q145'),
 }
-KEYS = ('rsa-verify-numeric issuer-key utxo-change otp-malleability xss-token mac-composition birthday-calc confirmation-risk dh-known-exponents vigenere-encryption '
+KEYS = ('rsa-verify-numeric issuer-key utxo-change otp-malleability xss-token mac-composition birthday-calc confirmation-risk dh-public-values vigenere-encryption '
         'ct-policy ocsp-stapling-benefits cbc merkle second-preimage rsa-gen csrf-cross-site p2pkh tls arp-mitm '
         'key-count ecb toy-hash password sop hsts csp sql dns-guess slowloris '
         'rsa-create rsa-gen key-roles rsa-gen service-name ca-constraints ocsp-forgery ct-promise ct-split-view utxo-validity '
