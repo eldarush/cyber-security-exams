@@ -4,6 +4,7 @@ Pages are PDF page numbers, not slide numbers. The files are not published and
 their edition or complete correspondence to the current semester is unverified.
 """
 LECTURES={
+ 'P09':dict(file='R (1) (1) (2).pdf',pages='30–31',relation='במצגת התרגול מופיע חישוב סוד DH מתוך מעריכים פרטיים נתונים, עם פרמטרים אחרים ופתרון 16. תאריך המצגת והתאמתה לסמסטר הנוכחי לא אומתו.'),
  'P10':dict(file='Crypto1.pdf',pages='95, 99',relation='השקופיות מתארות חזרה על המפתח והזזת אותיות לפי המפתח, ומציגות את מספור האותיות; המילים והחישוב בשאלה חדשים.'),
  'P45':dict(file='Crypto1.pdf',pages='127, 145, 151',relation='המצגת מגדירה OTP עם XOR ומפתח לשימוש אחד ומציגה את בעיית השימוש החוזר; שחזור הבית בהינתן הודעה ידועה הוא תרגיל נוסף.'),
  'P26':dict(file='6_1_PKI.pdf',pages='124–125',relation='השקופיות מציגות את בעיית הביקור הראשון ואת HSTS preload; אין בכך הוכחה ששאלת מועד ב׳ תעסוק בכך.'),

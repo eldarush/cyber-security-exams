@@ -31,7 +31,7 @@ function harness(set = '', initial = {}) {
   return {context, storage, button, run: expression => vm.runInContext(expression, context)};
 }
 
-for (const [set, count] of [['',182], ['latest',10], ['forecast-all',60], ['forecast-focus',20], ['forecast-best',10], ['forecast-lecture',8], ['forecast-1',10], ['forecast-2',10], ['forecast-3',10], ['forecast-4',10], ['forecast-5',10], ['forecast-6',10]]) {
+for (const [set, count] of [['',182], ['latest',10], ['forecast-all',60], ['forecast-focus',20], ['forecast-best',10], ['forecast-lecture',9], ['forecast-1',10], ['forecast-2',10], ['forecast-3',10], ['forecast-4',10], ['forecast-5',10], ['forecast-6',10]]) {
   const h = harness(set, { cfg: {collection: 'old-source', years:['2022'], topics:['old-topic'], skipNoted:true, wrongOnly:true, n:10} });
   assert.equal(h.run('QS.length'), count);
   assert.equal(h.run('pool().length'), count);
@@ -49,7 +49,7 @@ for (const [set, count] of [['',182], ['latest',10], ['forecast-all',60], ['fore
     } else if (set === 'forecast-best') {
       assert.equal(h.run('QS.map(q=>q.id).join() === BEST_MOCK.question_ids.join()'), true);
     } else if (set === 'forecast-lecture') {
-      assert.equal(h.run('QS.map(q=>q.id).sort().join()'), 'P10,P26,P29,P30,P38,P39,P45,P55');
+      assert.equal(h.run('QS.map(q=>q.id).sort().join()'), 'P09,P10,P26,P29,P30,P38,P39,P45,P55');
       assert.equal(h.run('QS.every(q=>q.lecture_evidence)'), true);
     } else if (/forecast-[1-6]$/.test(set)) {
       assert.equal(h.run(`QS.every(q=>q.mock===${Number(set.slice(-1))})`), true);
@@ -72,16 +72,16 @@ assert.equal(best.run('pool().map(q=>q.id).join()'), bestWrong);
 best.run('start(); S.exam.items[0].ans=S.exam.items[0].order.indexOf(0); finish(false)');
 assert.equal(best.run('pool().length'), 0);
 
-// Switching to the lecture-backed set starts all eight in a timed, shuffled exam.
+// Switching to the lecture-backed set starts all nine in a timed, shuffled exam.
 const lecture = harness('forecast-lecture', {cfg:{collection:'forecast-all',mode:'practice',n:2,topics:['old'],wrongOnly:true,minutes:5}});
 lecture.run('start()');
 assert.equal(lecture.run('S.exam.mode'), 'digital');
-assert.equal(lecture.run('S.exam.limit'), 64*60);
-assert.equal(lecture.run('S.exam.items.length'), 8);
+assert.equal(lecture.run('S.exam.limit'), 72*60);
+assert.equal(lecture.run('S.exam.items.length'), 9);
 lecture.run('S.exam.items.forEach((x,i)=>x.ans=x.order.indexOf(i===0?1:0)); finish(false)');
-assert.equal(lecture.run('S.result.score'), 88);
-assert.equal(lecture.run('S.result.exam.items.map(reviewItem).join("").match(/class="option-review"/g).length'), 32);
-assert.equal(lecture.run('S.result.exam.items.map(reviewItem).join("").match(/<details class="answer-detail">/g).length'), 8);
+assert.equal(lecture.run('S.result.score'), 89);
+assert.equal(lecture.run('S.result.exam.items.map(reviewItem).join("").match(/class="option-review"/g).length'), 36);
+assert.equal(lecture.run('S.result.exam.items.map(reviewItem).join("").match(/<details class="answer-detail">/g).length'), 9);
 
 const h = harness('forecast-all');
 h.run('S.cfg.n=2; start(); S.exam.items[0].ans=S.exam.items[0].order.indexOf(0); S.exam.items[1].ans=S.exam.items[1].order.indexOf(1); finish(false);');
