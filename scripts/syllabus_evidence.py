@@ -4,6 +4,7 @@ The source PDF is private and is not copied into the public build. The syllabus
 is course scope, not a retake-specific exclusion list or prediction frequency.
 """
 from html import escape
+from lecture_evidence import LECTURES
 
 QUESTION = {
     'id':'S01', 'accepted_indices':[0],
@@ -33,6 +34,10 @@ def syllabus_intro():
 <tr><td>Web: עוגיות, SOP, SQL injection, XSS, XSRF ו-clickjacking</td><td><a href="predictions.html#P05">P05</a> · <a href="predictions.html#P17">P17</a> · <a href="predictions.html#P28">P28</a> · שאלה משלימה בהמשך</td><td>clickjacking מופיע במפורש בסילבוס; בבנק ההיסטורי שמופה אין שאלה ייעודית מזוהה עליו.</td></tr>
 <tr><td>ARP, DNS, TCP, DoS/DDoS, botnets וכלים</td><td><a href="predictions.html#P20">P20</a> · <a href="predictions.html#P29">P29</a> · <a href="predictions.html#P30">P30</a></td><td>התרגול אינו מכסה בהכרח כל כלי או וריאציה, כולל הנושאים המוזכרים בסילבוס.</td></tr>
 </tbody></table></div>
+<h2 id="lecture-evidence">סימוכין במצגות מהתיקייה המקומית</h2><p>הקבצים הבאים נמצאו בתיקייה שסופקה. מספרי העמודים הם עמודי PDF, לא מספרי שקופית. מהדורת המצגות והתאמתן המלאה לסמסטר הנוכחי לא אומתו. המצגות נשארות מקומיות ואינן מועלות לאתר. הן ראיה לכך שהנושא מופיע בחומר, לא הופעה בבחינת עבר ולא תדירות צפויה; ציוני הבחינות לא שונו על בסיסן.</p><ul>'''+''.join(
+    '<li><a href="predictions.html#'+escape(qid)+'">'+escape(qid)+'</a> — '+escape(item['file'])+' · עמ׳ PDF '+escape(item['pages'])+' — '+escape(item['relation'])+'</li>'
+    for qid,item in LECTURES.items())+'''</ul>
+<p>בפרט, ציון נמוך של שאלה מפני שלא מופתה לה הופעה ישירה בבחינות אינו אומר שהיא מחוץ לחומר. לא נבדקו כך כל המצגות או כל 60 השאלות.</p>
 <h2>השלמת פער: Clickjacking</h2><p>זו שאלת בחירה משלימה שנכתבה לפי נושא המופיע בסילבוס, מעבר ל-60 התחזיות. אין לה ציון ביטחון מספרי: הסילבוס מאשר נושא לימוד בלבד, ולא תדירות או סיכוי להופעה. במאגר הבחינות Q022 ו-Q102 מזכירות X-Frame-Options בהקשר של SQL injection, אך אינן שואלות ישירות על מניעת clickjacking.</p>'''
 
 def explanation(q):

@@ -1,10 +1,13 @@
 from html import escape as e
 
 def confidence_summary(q, prefix=''):
+    lecture=q.get('lecture_evidence')
+    detail=(f'<p class="study-source">חומר מהתיקייה: {e(lecture["file"])} · עמ׳ PDF {e(lecture["pages"])}. '
+            f'{e(lecture["relation"])} <a href="{prefix}syllabus-coverage.html#lecture-evidence">מקורות ומגבלות</a></p>') if lecture else ''
     return (f'<p class="study-intro"><strong>ביטחון במיומנות: {q["confidence"]}/100</strong> · '
         'מדד שיפוטי, לא אחוז הסתברות לניסוח הזה. '
         f'<a href="{prefix}confidence.html">איך חושב הציון?</a></p>'
-        f'<p class="study-source">מיומנות: {e(q["skill_label"])}. {e(q["confidence_reason"])}</p>')
+        f'<p class="study-source">מיומנות: {e(q["skill_label"])}. {e(q["confidence_reason"])}</p>'+detail)
 
 def forecast_intro(pred):
     ranked=sorted(pred,key=lambda q:(-q['confidence'],q['id']))

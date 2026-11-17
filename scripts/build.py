@@ -15,6 +15,7 @@ from sensitivity import allocation_sensitivity, sensitivity_page
 from repeat_audit import repeated_questions, repeat_section
 from operation_evidence import operation_page
 from syllabus_evidence import QUESTION as SYLLABUS_QUESTION, syllabus_intro, explanation as syllabus_explanation
+from lecture_evidence import attach as attach_lectures
 
 R=Path(__file__).resolve().parents[1]
 def load(p):return json.loads((R/p).read_text(encoding='utf-8'))
@@ -79,6 +80,7 @@ for i,(key,priority,ev) in enumerate(PLAN,1):
 pred.extend(EXTRA)
 apply_reviews(pred)
 confidence_report=annotate(pred,qbank,PAIRS)
+attach_lectures(pred)
 save('data/forecast-confidence.json',confidence_report)
 best_mock=select_mock(pred,confidence_report,PAIRS)
 save('data/forecast-best.json',best_mock)
@@ -279,7 +281,7 @@ template=template.replace("/* ---------- seeded random ---------- */",'''functio
 /* ---------- seeded random ---------- */''')
 template=template.replace('function solutionDetails(q){', '''function isCorrect(q,index){return (q.accepted_indices || [0]).includes(index);}
 function correctLetters(item){return item.order.map((oi,j)=>isCorrect(item.q,oi)?LET[j]:null).filter(Boolean).join(' / ');}
-function confidenceBadge(q){return q.confidence ? `<p class="study-source"><b>ביטחון במיומנות: ${q.confidence}/100</b> · מדד שיפוטי, לא הסתברות לניסוח המדויק · <a href="confidence.html" target="_blank" rel="noopener">שיטת הדירוג</a></p>` : '';}
+function confidenceBadge(q){return q.confidence ? `<p class="study-source"><b>ביטחון במיומנות: ${q.confidence}/100</b> · מדד שיפוטי, לא הסתברות לניסוח המדויק · <a href="confidence.html" target="_blank" rel="noopener">שיטת הדירוג</a></p>${q.lecture_evidence ? `<p class="study-source">חומר מהתיקייה: ${esc(q.lecture_evidence.file)}, עמ׳ PDF ${esc(q.lecture_evidence.pages)} · <a href="syllabus-coverage.html#lecture-evidence" target="_blank" rel="noopener">פירוט ומגבלות</a></p>` : ''}` : '';}
 function solutionDetails(q){''')
 template=template.replace('<p class="correct"><b>התשובה הנכונה:</b> ${esc(q.options[0])}</p>', '<p class="correct">${q.accepted_indices?.length>1 ? `<b>הערת בדיקה: ${esc(q.note)}</b> · ההסבר מפרט את ההסתייגות; הניקוד מכבד את החלופות שהתקבלו.` : `<b>התשובה הנכונה:</b> ${esc(q.options[0])}`}</p>')
 for oldexpr,newexpr in [

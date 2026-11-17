@@ -2707,6 +2707,11 @@
       "extension_deduction": 0
     },
     "confidence_reason": "משפחת הנושא הופיעה ב-9/18 מועדים וב-1/7 מועדי ב׳; נמשכה מא׳ לב׳ ב-1/6 זוגות שבהם הופיעה בא׳; במועדי ב׳ של קיץ: 1/3. למיומנות המתועדת יש סימוכין ב-2 תאריכים שונים. אין סימוכין למיומנות הזו באוקטובר 2026 במיפוי המסוים. השאלה מתרגלת וריאציה של מיומנות מתועדת; המספר אינו סיכוי לניסוח המדויק.",
+    "lecture_evidence": {
+      "file": "6_1_PKI.pdf",
+      "pages": "124–125",
+      "relation": "השקופיות מציגות את בעיית הביקור הראשון ואת HSTS preload; אין בכך הוכחה ששאלת מועד ב׳ תעסוק בכך."
+    },
     "question_type": "multiple-choice",
     "solution": "solutions/P26.html"
   },
@@ -3018,6 +3023,11 @@
       "extension_deduction": 20
     },
     "confidence_reason": "משפחת הנושא הופיעה ב-12/18 מועדים וב-5/7 מועדי ב׳; נמשכה מא׳ לב׳ ב-5/6 זוגות שבהם הופיעה בא׳; במועדי ב׳ של קיץ: 2/3. למיומנות המתועדת יש סימוכין ב-2 תאריכים שונים. אין סימוכין למיומנות הזו באוקטובר 2026 במיפוי המסוים. הופחתו 20 נקודות כי השאלה מרחיבה את המיומנות למקרה שלא תועד באותו אופן בבחינות.",
+    "lecture_evidence": {
+      "file": "Network_security (2) (1).pdf",
+      "pages": "37–42",
+      "relation": "השקופיות מתארות התאמת TXID בגודל 16 ביט ופורט מקור במענה DNS. התרגיל מציב במפורש ניחוש יחיד ופורט ידוע."
+    },
     "question_type": "multiple-choice",
     "solution": "solutions/P29.html"
   },
@@ -3115,6 +3125,11 @@
       "extension_deduction": 20
     },
     "confidence_reason": "משפחת הנושא הופיעה ב-12/18 מועדים וב-5/7 מועדי ב׳; נמשכה מא׳ לב׳ ב-5/6 זוגות שבהם הופיעה בא׳; במועדי ב׳ של קיץ: 2/3. למיומנות המתועדת יש סימוכין ב-1 תאריכים שונים. אין סימוכין למיומנות הזו באוקטובר 2026 במיפוי המסוים. הופחתו 20 נקודות כי השאלה מרחיבה את המיומנות למקרה שלא תועד באותו אופן בבחינות.",
+    "lecture_evidence": {
+      "file": "Network_security (2) (1).pdf",
+      "pages": "66–67",
+      "relation": "השקופיות מתארות Slowloris וחיבורי HTTP איטיים; התרגיל מוסיף גם בחירת אמצעי הגנה."
+    },
     "question_type": "multiple-choice",
     "solution": "solutions/P30.html"
   },
@@ -3604,7 +3619,7 @@
     "confidence": 40,
     "confidence_kind": "skill-confidence-not-probability",
     "skill": "service-name",
-    "skill_label": "התאמת שם השירות לתעודה — ללא סימוכין ישירים ממופים",
+    "skill_label": "התאמת שם השירות לתעודה — ללא סימוכין ישירים ממופים מבחינות עבר",
     "confidence_basis": {
       "topic_counts": {
         "exams": 16,
@@ -3696,7 +3711,7 @@
     "confidence": 40,
     "confidence_kind": "skill-confidence-not-probability",
     "skill": "ca-constraints",
-    "skill_label": "הרשאת CA בתעודת ביניים — ללא סימוכין ישירים ממופים",
+    "skill_label": "הרשאת CA בתעודת ביניים — ללא סימוכין ישירים ממופים מבחינות עבר",
     "confidence_basis": {
       "topic_counts": {
         "exams": 16,
@@ -3908,7 +3923,7 @@
     "confidence": 40,
     "confidence_kind": "skill-confidence-not-probability",
     "skill": "ct-promise",
-    "skill_label": "SCT: התחייבות להכללה בתוך זמן — ללא סימוכין ישירים ממופים",
+    "skill_label": "SCT: התחייבות להכללה בתוך זמן — ללא סימוכין ישירים ממופים מבחינות עבר",
     "confidence_basis": {
       "topic_counts": {
         "exams": 16,
@@ -3934,6 +3949,11 @@
       "extension_deduction": 20
     },
     "confidence_reason": "משפחת הנושא הופיעה ב-16/18 מועדים וב-7/7 מועדי ב׳; נמשכה מא׳ לב׳ ב-6/6 זוגות שבהם הופיעה בא׳; במועדי ב׳ של קיץ: 3/3. למיומנות המתועדת יש סימוכין ב-0 תאריכים שונים. אין סימוכין למיומנות הזו באוקטובר 2026 במיפוי המסוים. הופחתו 20 נקודות כי השאלה מרחיבה את המיומנות למקרה שלא תועד באותו אופן בבחינות.",
+    "lecture_evidence": {
+      "file": "6_1_PKI.pdf",
+      "pages": "135–137",
+      "relation": "השקופיות מגדירות SCT כהתחייבות להוסיף תעודה לעץ בתוך Maximum Merge Delay. זה מקור ללימוד המנגנון, לא הופעה ממופה בבחינת עבר."
+    },
     "question_type": "multiple-choice",
     "solution": "solutions/P38.html"
   },
@@ -4001,7 +4021,7 @@
     "confidence": 40,
     "confidence_kind": "skill-confidence-not-probability",
     "skill": "ct-split-view",
-    "skill_label": "CT: ראיה לשתי תצוגות סותרות — ללא סימוכין ישירים ממופים",
+    "skill_label": "CT: ראיה לשתי תצוגות סותרות — ללא סימוכין ישירים ממופים מבחינות עבר",
     "confidence_basis": {
       "topic_counts": {
         "exams": 16,
@@ -4027,6 +4047,11 @@
       "extension_deduction": 20
     },
     "confidence_reason": "משפחת הנושא הופיעה ב-16/18 מועדים וב-7/7 מועדי ב׳; נמשכה מא׳ לב׳ ב-6/6 זוגות שבהם הופיעה בא׳; במועדי ב׳ של קיץ: 3/3. למיומנות המתועדת יש סימוכין ב-0 תאריכים שונים. אין סימוכין למיומנות הזו באוקטובר 2026 במיפוי המסוים. הופחתו 20 נקודות כי השאלה מרחיבה את המיומנות למקרה שלא תועד באותו אופן בבחינות.",
+    "lecture_evidence": {
+      "file": "6_1_PKI.pdf",
+      "pages": "187–193",
+      "relation": "השקופיות מציגות Split World עם תצוגות לוג שונות. התרגיל מוסיף במפורש ראשי עץ באותו גודל והנחת היעדר התנגשות."
+    },
     "question_type": "multiple-choice",
     "solution": "solutions/P39.html"
   },
@@ -4195,7 +4220,7 @@
     "confidence": 41,
     "confidence_kind": "skill-confidence-not-probability",
     "skill": "utxo-outpoint",
-    "skill_label": "זיהוי פלט לפי מזהה טרנזקציה ואינדקס — ללא סימוכין ישירים ממופים",
+    "skill_label": "זיהוי פלט לפי מזהה טרנזקציה ואינדקס — ללא סימוכין ישירים ממופים מבחינות עבר",
     "confidence_basis": {
       "topic_counts": {
         "exams": 17,
@@ -5623,7 +5648,7 @@
     "confidence": 17,
     "confidence_kind": "skill-confidence-not-probability",
     "skill": "dh-active",
-    "skill_label": "תיווך פעיל ב-Diffie–Hellman לא מאומת — ללא סימוכין ישירים ממופים",
+    "skill_label": "תיווך פעיל ב-Diffie–Hellman לא מאומת — ללא סימוכין ישירים ממופים מבחינות עבר",
     "confidence_basis": {
       "topic_counts": {
         "exams": 8,
@@ -5649,6 +5674,11 @@
       "extension_deduction": 20
     },
     "confidence_reason": "משפחת הנושא הופיעה ב-8/18 מועדים וב-4/7 מועדי ב׳; נמשכה מא׳ לב׳ ב-1/1 זוגות שבהם הופיעה בא׳; במועדי ב׳ של קיץ: 1/3. למיומנות המתועדת יש סימוכין ב-0 תאריכים שונים. אין סימוכין למיומנות הזו באוקטובר 2026 במיפוי המסוים. הופחתו 20 נקודות כי השאלה מרחיבה את המיומנות למקרה שלא תועד באותו אופן בבחינות.",
+    "lecture_evidence": {
+      "file": "3_1_Asymmetric_cryptography.pdf",
+      "pages": "122, 126",
+      "relation": "השקופיות מציינות רגישות ל-MITM ומציגות חילוף Diffie–Hellman עם תוקף פעיל. לא מופה תרגיל בחינה ישיר זהה."
+    },
     "question_type": "multiple-choice",
     "solution": "solutions/P55.html"
   },

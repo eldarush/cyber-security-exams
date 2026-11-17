@@ -88,6 +88,12 @@ assert all(q['question_type']=='multiple-choice' for q in bank+forecast)
 from syllabus_evidence import QUESTION as supplemental
 assert supplemental['accepted_indices']==[0] and len(set(supplemental['options']))==len(supplemental['reasons'])==4
 assert (R/'syllabus-coverage.html').read_text(encoding='utf-8').count('class="option-review"')==4
+from lecture_evidence import LECTURES
+assert {q['id'] for q in forecast if q.get('lecture_evidence')}==set(LECTURES)
+for q in forecast:
+    if q['id'] in LECTURES:
+        assert q['lecture_evidence']==LECTURES[q['id']]
+        assert 'syllabus-coverage.html#lecture-evidence' in (R/q['solution']).read_text(encoding='utf-8')
 for p in files:
     doc=p.read_text(encoding='utf-8')
     for attrs,body in re.findall(r'<ol (class="study-options"[^>]*)>(.*?)</ol>',doc,re.S):
