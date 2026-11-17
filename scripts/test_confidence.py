@@ -37,6 +37,12 @@ assert by_forecast['P03']['skill']=='utxo-change'
 assert by_forecast['P40']['skill']=='utxo-validity'
 assert by_forecast['P41']['skill']=='utxo-outpoint'
 assert not by_forecast['P41']['confidence_basis']['latest_a_skill']
+assert 'Q051' not in report['skills']['chain']['evidence']
+assert by_forecast['P11']['skill']=='ct-policy' and by_forecast['P11']['confidence_basis']['latest_a_skill']
+for qid,skill in [('P36','ca-constraints'),('P38','ct-promise'),('P39','ct-split-view')]:
+    assert by_forecast[qid]['skill']==skill and report['skills'][skill]['evidence']==[]
+    assert not by_forecast[qid]['confidence_basis']['latest_a_skill']
+    assert by_forecast[qid]['confidence_basis']['extension_deduction']==20
 q_report={q['id']:q for q in report['questions']}
 topics={date:{q['topic'] for q in questions.values()} for date,questions in records.items()}
 summer=[pair for pair in pairs if 'קיץ' in pair['label']]

@@ -15,9 +15,9 @@
     {
       "id": "P02",
       "skill": "chain",
-      "score": 90,
+      "score": 87,
       "a": 1,
-      "b": 4,
+      "b": 3,
       "both": 1,
       "latest_a_ids": [
         "Q174"
@@ -87,11 +87,11 @@
     },
     {
       "id": "P11",
-      "skill": "ct",
+      "skill": "ct-policy",
       "score": 90,
       "a": 4,
-      "b": 4,
-      "both": 2,
+      "b": 1,
+      "both": 1,
       "latest_a_ids": [
         "Q181"
       ]
@@ -451,9 +451,9 @@
       ],
       "latest_a_present": true,
       "a_appearances": 1,
-      "b_appearances": 4,
+      "b_appearances": 3,
       "continued": 1,
-      "b_after_absent_a": 3,
+      "b_after_absent_a": 2,
       "transitions": [
         {
           "a": "07/10/2022",
@@ -470,9 +470,7 @@
           "a": "07/07/2023",
           "b": "08/08/2023",
           "a_ids": [],
-          "b_ids": [
-            "Q051"
-          ],
+          "b_ids": [],
           "prior_support_dates": [
             "07/10/2022",
             "06/11/2022"
@@ -487,8 +485,7 @@
           ],
           "prior_support_dates": [
             "07/10/2022",
-            "06/11/2022",
-            "08/08/2023"
+            "06/11/2022"
           ]
         },
         {
@@ -499,7 +496,6 @@
           "prior_support_dates": [
             "07/10/2022",
             "06/11/2022",
-            "08/08/2023",
             "04/07/2024"
           ]
         },
@@ -513,7 +509,6 @@
           "prior_support_dates": [
             "07/10/2022",
             "06/11/2022",
-            "08/08/2023",
             "04/07/2024"
           ]
         },
@@ -525,7 +520,6 @@
           "prior_support_dates": [
             "07/10/2022",
             "06/11/2022",
-            "08/08/2023",
             "04/07/2024",
             "21/08/2025"
           ]
@@ -538,10 +532,70 @@
           "prior_support_dates": [
             "07/10/2022",
             "06/11/2022",
-            "08/08/2023",
             "04/07/2024",
             "21/08/2025"
           ]
+        }
+      ]
+    },
+    {
+      "skill": "ca-constraints",
+      "label": "הרשאת CA בתעודת ביניים — ללא סימוכין ישירים ממופים",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 0,
+      "b_appearances": 0,
+      "continued": 0,
+      "b_after_absent_a": 0,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
         }
       ]
     },
@@ -1885,6 +1939,214 @@
             "02/11/2025",
             "30/11/2025"
           ]
+        }
+      ]
+    },
+    {
+      "skill": "ct-policy",
+      "label": "CT: שקיפות הנפקות ותנאי SCT בדפדפן",
+      "latest_a_ids": [
+        "Q181"
+      ],
+      "latest_a_present": true,
+      "a_appearances": 4,
+      "b_appearances": 1,
+      "continued": 1,
+      "b_after_absent_a": 0,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [
+            "Q063"
+          ],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [
+            "Q077"
+          ],
+          "b_ids": [],
+          "prior_support_dates": [
+            "31/05/2024"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "31/05/2024",
+            "17/09/2024"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [
+            "Q129"
+          ],
+          "b_ids": [
+            "Q139"
+          ],
+          "prior_support_dates": [
+            "31/05/2024",
+            "17/09/2024"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [
+            "Q156"
+          ],
+          "b_ids": [],
+          "prior_support_dates": [
+            "31/05/2024",
+            "17/09/2024",
+            "05/10/2025",
+            "02/11/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "ct-promise",
+      "label": "SCT: התחייבות להכללה בתוך זמן — ללא סימוכין ישירים ממופים",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 0,
+      "b_appearances": 0,
+      "continued": 0,
+      "b_after_absent_a": 0,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        }
+      ]
+    },
+    {
+      "skill": "ct-split-view",
+      "label": "CT: ראיה לשתי תצוגות סותרות — ללא סימוכין ישירים ממופים",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 0,
+      "b_appearances": 0,
+      "continued": 0,
+      "b_after_absent_a": 0,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
         }
       ]
     },

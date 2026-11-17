@@ -12,7 +12,8 @@ SKILLS = {
  'rsa-create':('חישוב חתימת textbook RSA במפתח פרטי','Q100 Q105'),
  'rsa-gen':('RSA: פרמטרים, הופכי ומעריכים','Q100 Q104 Q138 Q155'),
  'key-roles':('תפקידי מפתחות: סודיות, חתימה ואמון','Q009 Q044 Q092 Q112 Q123 Q128'),
- 'chain':('אימות תעודות ושרשרת אמון','Q010 Q023 Q051 Q070 Q114 Q174'),
+ 'chain':('אימות תעודות ושרשרת אמון','Q010 Q023 Q070 Q114 Q174'),
+ 'ca-constraints':('הרשאת CA בתעודת ביניים — ללא סימוכין ישירים ממופים',''),
  'service-name':('התאמת שם השירות לתעודה — ללא סימוכין ישירים ממופים',''),
  'utxo':('UTXO, פלטים ותוקף הוצאה','Q058 Q117 Q162 Q176'),
  'utxo-change':('חישוב פלט עודף ועמלה','Q176'),
@@ -30,6 +31,9 @@ SKILLS = {
  'dh':('Diffie–Hellman: חישוב והנחות אבטחה','Q025 Q036 Q043 Q047 Q056 Q068 Q094 Q099 Q148 Q164'),
  'vigenere':('צופן Vigenère ומפתח חוזר','Q097 Q173'),
  'ct':('Certificate Transparency ותפקידי הלוג','Q024 Q048 Q063 Q073 Q077 Q098 Q129 Q139 Q149 Q156 Q181'),
+ 'ct-policy':('CT: שקיפות הנפקות ותנאי SCT בדפדפן','Q063 Q077 Q129 Q139 Q156 Q181'),
+ 'ct-promise':('SCT: התחייבות להכללה בתוך זמן — ללא סימוכין ישירים ממופים',''),
+ 'ct-split-view':('CT: ראיה לשתי תצוגות סותרות — ללא סימוכין ישירים ממופים',''),
  'ocsp':('סטטוס תעודה, ביטול ו-OCSP','Q021 Q059 Q073 Q101 Q108 Q110 Q119 Q170'),
  'cbc':('CBC ותלות בין בלוקים','Q168'),
  'merkle':('מרקל: נתיב, שורש והוכחת הכללה','Q106 Q152 Q159 Q165'),
@@ -58,9 +62,9 @@ SKILLS = {
  'dom':('XSS והקשר פירוש הקלט','Q006 Q109 Q118 Q135 Q145'),
 }
 KEYS = ('rsa-sign chain utxo-change otp xss-csrf mac-composition birthday-calc consensus dh vigenere '
-        'ct ocsp cbc merkle second-preimage rsa-gen csrf-cross-site p2pkh tls arp '
+        'ct-policy ocsp cbc merkle second-preimage rsa-gen csrf-cross-site p2pkh tls arp '
         'key-count ecb toy-hash password sop hsts csp sql dns dos '
-        'rsa-create rsa-gen key-roles rsa-gen service-name chain ocsp ct ct utxo-validity '
+        'rsa-create rsa-gen key-roles rsa-gen service-name ca-constraints ocsp ct-promise ct-split-view utxo-validity '
         'utxo-outpoint escrow pow merkle otp-reuse cbc 3des substitution vigenere collision '
         'toy-hash hash mac password dh cookie-flags dom sql csrf tls').split()
 # Explicit editorial deduction for a wider extrapolation of a documented skill.
