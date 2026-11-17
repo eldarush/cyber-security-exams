@@ -17,6 +17,7 @@ def forecast_intro(pred):
 <p><strong>מה אומר הציון?</strong> ביטחון יחסי, בסולם 1–100, שכדאי להתכונן למיומנות דומה. 80/100 אינו טענה לסיכוי 80% שהשאלה תופיע. אין לנו את הבחינה העתידית, והציון לא כויל מול תחזיות קפואות ממחזורים קודמים.</p></div>
 <div class="study-actions"><a class="primary" href="index.html?set=forecast-best#setup">הסימולציה הממוקדת — 10 שאלות בתמהיל היסטורי</a>
 <a href="best-mock.html">הנימוק לבחירת הסימולציה</a>
+<a href="syllabus-coverage.html">כיסוי הסילבוס ושאלת clickjacking משלימה</a>
 <a href="index.html?set=forecast-focus">תרגול מתוך 20 השאלות המדורגות ראשונות</a>
 <a href="index.html?set=forecast-all">יצירת מבחן מתוך כל 60 השאלות</a>'''+links+'''
 <a href="confidence.html">חישוב הציונים וראיות מכל השנים</a><a href="analysis.html">השוואת א׳/ב׳ ובדיקת התחזית הקודמת</a></div>

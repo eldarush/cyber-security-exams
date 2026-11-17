@@ -51,7 +51,7 @@ class Links(HTMLParser):
         for attr in ['href','src']:
             if attr in attrs:self.links.append(attrs[attr])
 
-files=[R/f for f in ['index.html','latest.html','predictions.html','analysis.html','confidence.html','backtest.html','sensitivity.html','best-mock.html','exam-covers.html','operation-changes.html','archive.html','old-forecast.html']]+list((R/'solutions').glob('*.html'))
+files=[R/f for f in ['index.html','latest.html','predictions.html','analysis.html','confidence.html','backtest.html','sensitivity.html','best-mock.html','exam-covers.html','operation-changes.html','syllabus-coverage.html','archive.html','old-forecast.html']]+list((R/'solutions').glob('*.html'))
 parsed={}
 for p in files:
     h=Links();h.feed(p.read_text(encoding='utf-8'));parsed[p.resolve()]=h
@@ -85,6 +85,9 @@ archive_pages=[p for p in files if p.name.startswith('archive-')]
 assert sum(p.read_text(encoding='utf-8').count('data-question-type="open"') for p in archive_pages)==26
 assert all('id="only-multiple-choice" checked' in p.read_text(encoding='utf-8') for p in archive_pages)
 assert all(q['question_type']=='multiple-choice' for q in bank+forecast)
+from syllabus_evidence import QUESTION as supplemental
+assert supplemental['accepted_indices']==[0] and len(set(supplemental['options']))==len(supplemental['reasons'])==4
+assert (R/'syllabus-coverage.html').read_text(encoding='utf-8').count('class="option-review"')==4
 for p in files:
     doc=p.read_text(encoding='utf-8')
     for attrs,body in re.findall(r'<ol (class="study-options"[^>]*)>(.*?)</ol>',doc,re.S):

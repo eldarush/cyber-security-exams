@@ -14,6 +14,7 @@ from backtest_presentation import backtest_page
 from sensitivity import allocation_sensitivity, sensitivity_page
 from repeat_audit import repeated_questions, repeat_section
 from operation_evidence import operation_page
+from syllabus_evidence import QUESTION as SYLLABUS_QUESTION, syllabus_intro, explanation as syllabus_explanation
 
 R=Path(__file__).resolve().parents[1]
 def load(p):return json.loads((R/p).read_text(encoding='utf-8'))
@@ -212,6 +213,8 @@ intro+='</div>'
 page('confidence.html','איך דירגנו את 60 שאלות התחזית?',confidence_page(confidence_report,pred))
 page('backtest.html','בדיקת נושאים מול בחינות עבר',backtest_page(load('data/topic-backtest.json'))+repeat_section(repeat_report))
 page('operation-changes.html','ממועד א׳ למועד ב׳ — שינויי פעולה לדוגמה',operation_page(qbank,pred))
+syllabus_body=syllabus_intro()+'<article class="study-card" data-question-type="multiple-choice"><h3>שאלה משלימה S01</h3>'+paragraphs(SYLLABUS_QUESTION['stem'])+options(SYLLABUS_QUESTION)+'<details class="answer-detail"><summary>הצגת התשובה וההסבר המפורט</summary>'+answer_key(SYLLABUS_QUESTION)+syllabus_explanation(SYLLABUS_QUESTION)+'</details></article><p><a href="predictions.html">חזרה ל-60 שאלות התחזית</a> · <a href="index.html?set=forecast-best#setup">הסימולציה הממוקדת</a></p>'
+page('syllabus-coverage.html','כיסוי הסילבוס ושאלת השלמה',syllabus_body)
 page('sensitivity.html','רגישות הסימולציה לתמהיל הבחינות',sensitivity_page(sensitivity,pred))
 page('exam-covers.html','אימות מועדי א׳ וב׳ מול מסמכי המקור',cover_page(PAIRS,R))
 page('best-mock.html','הסימולציה הממוקדת למועד ב׳ — 10 שאלות',mock_page(best_mock,pred))

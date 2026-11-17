@@ -112,3 +112,27 @@ assert.equal(printed,240);
 assert.equal(readingOrders,480);
 assert.equal(practiceRendered,960);
 console.log(`Focused mock: ${graded} actual-answer grading cases, ${rendered} result and ${practiceRendered} practice explanation renders, ${printed} print keys, ${readingOrders} reading-page shuffles passed (all 24 orders for all ten questions).`);
+
+// The syllabus supplement is intentionally outside the 60-question forecast,
+// but its displayed answer key must follow the same real page shuffle.
+const supplemental = read('syllabus-coverage.html');
+const supplementalList = supplemental.match(/<ol [^>]*id="opts-S01"[^>]*>(.*?)<\/ol>/s);
+assert(supplementalList);
+const supplementalRecords = [...supplementalList[1].matchAll(/<li data-option-index="(\d)"><b class="option-letter">(.*?)<\/b><span class="option-text">(.*?)<\/span><\/li>/gs)];
+assert.equal(supplementalRecords.length,4);
+assert.equal((supplemental.match(/class="option-review"/g)||[]).length,4);
+const supplementalCorrect=text(supplementalRecords.find(r=>r[1]==='0')[3]);
+for (const order of orders) {
+  const items=supplementalRecords.map(r=>{
+    const letter={textContent:text(r[2])},option={textContent:text(r[3])};
+    return {dataset:{optionIndex:r[1]},querySelector:s=>s==='.option-letter'?letter:option};
+  });
+  const list={id:'opts-S01',dataset:{accepted:'[0]'},children:[...items],append(item){this.children=this.children.filter(x=>x!==item);this.children.push(item);}};
+  const key={dataset:{answerFor:list.id},textContent:''};
+  const study=read('study.js');
+  vm.runInNewContext(study.slice(study.indexOf('  const letters ='),study.indexOf('  const cards =')),
+    {AnswerOrder:{indices:()=>order},document:{querySelectorAll:s=>s==='.study-options'?[list]:[key]}});
+  const position=list.children.findIndex(item=>item.dataset.optionIndex==='0');
+  assert.equal(key.textContent,'התשובה הנכונה כאן: '+'אבגד'[position]+'. '+supplementalCorrect);
+}
+console.log('Syllabus supplement: all 24 displayed answer orders have the matching answer key and four option explanations.');
