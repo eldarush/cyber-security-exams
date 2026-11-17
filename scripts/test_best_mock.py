@@ -65,4 +65,11 @@ assert len(sensitivity['refits'])==7
 for row in sensitivity['refits']:
     assert len(row['scores'])==60 and len(row['removed'])==len(row['added'])
     assert row['changed_score_count']==sum(row['scores'][q['id']]!=q['confidence'] for q in forecast)
+assert [row['omitted_component'] for row in sensitivity['weight_tests']]==['latest_a','summer_b','skill_support']
+for row in sensitivity['weight_tests']:
+    assert len(row['scores'])==60 and len(row['removed'])==len(row['added'])
+    for q in forecast:
+        components=q['confidence_basis']['components']
+        expected=round(sum(v for k,v in components.items() if k!=row['omitted_component'])*100/(100-row['old_weight'])-q['confidence_basis']['extension_deduction'])
+        assert row['scores'][q['id']]==max(1,min(100,expected))
 print('Sensitivity: seven omitted exams checked with fixed scores and with recalculated scores; three-summer-exam allocation checked with fixed scores.')

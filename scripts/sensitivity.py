@@ -36,7 +36,23 @@ def allocation_sensitivity(questions, report, pairs, bank):
         refits.append(dict(omitted_b=excluded,removed=sorted(set(base['question_ids'])-set(alternate['question_ids'])),
             added=sorted(set(alternate['question_ids'])-set(base['question_ids'])),
             scores=new_scores,changed_score_count=sum(new_scores[k]!=old_scores[k] for k in new_scores)))
-    return dict(base=base['question_ids'],scenarios=output,refits=refits,
+    # Exploratory weight perturbation: remove one component and rescale the
+    # others proportionally to sum to 100; keep the extension penalty unchanged.
+    # Components were saved to four decimal places by the production model.
+    weight_tests=[]
+    for component in ('latest_a','summer_b','skill_support'):
+        weight=report['weights'][component]
+        alternate_questions=deepcopy(questions)
+        for q in alternate_questions:
+            basis=q['confidence_basis']
+            retained=sum(value for key,value in basis['components'].items() if key!=component)
+            q['confidence']=max(1,min(100,round(retained*100/(100-weight)-basis['extension_deduction'])))
+        alternate=select_mock(alternate_questions,report,pairs)
+        weight_tests.append(dict(omitted_component=component,old_weight=weight,
+            removed=sorted(set(base['question_ids'])-set(alternate['question_ids'])),
+            added=sorted(set(alternate['question_ids'])-set(base['question_ids'])),
+            scores={q['id']:q['confidence'] for q in alternate_questions}))
+    return dict(base=base['question_ids'],scenarios=output,refits=refits,weight_tests=weight_tests,
         scope='Topic allocation only; current question scores, mappings and historical counts used in scores are held fixed. Not a full refit.')
 
 
@@ -54,5 +70,10 @@ def sensitivity_page(data,questions):
 <div class="study-table"><table><thead><tr><th>מועד ב׳ שהוסר גם מהציונים</th><th>שאלות שהוחלפו</th><th>שאלות שנוספו</th><th>ציונים שהשתנו מתוך 60</th></tr></thead><tbody>'''
     for row in data['refits']:
         body+=f'<tr><td>{escape(row["omitted_b"])}</td><td>{linked(row["removed"])}</td><td>{linked(row["added"])}</td><td>{row["changed_score_count"]}</td></tr>'
-    return body+'''</tbody></table></div><p>החלופות הן אפשרויות תרגול נוספות, לא הוכחה שתמהיל חלופי עדיף. גם יציבות בשני סוגי הבדיקה אינה מבטיחה שהבחינה תדמה לסימולציה; משקלים אחרים, תיוג אחר ושינויים בבחינה יכולים לשנות את הבחירה.</p>
+    body+='''</tbody></table></div><h2>מה אם משנים את משקלי הציון?</h2><p>כדי לבדוק תלות בהנחות, הסרנו בכל פעם רכיב אחד מהציון וחילקנו מחדש את משקלו בין יתר הרכיבים באופן יחסי, כך שסך המשקלים נשאר 100. השתמשנו ברכיבי הציון שנשמרו בארבע ספרות אחרי הנקודה; ניכוי ההרחבה נשאר כפי שהיה. תמהיל הנושאים ושאר הנתונים נשארו קבועים. אלו שלושה תרחישים לדוגמה, לא חיפוש ממצה של כל המשקלים האפשריים.</p>
+<div class="study-table"><table><thead><tr><th>רכיב שהוסר מהציון</th><th>מחוץ לסט החלופי</th><th>נוסף לסט החלופי</th></tr></thead><tbody>'''
+    names={'latest_a':'בונוס מועד א׳ האחרון','summer_b':'שכיחות בשלושת מועדי ב׳ בקיץ','skill_support':'מספר תאריכי הסימוכין למיומנות'}
+    for row in data['weight_tests']:
+        body+=f'<tr><td>{escape(names[row["omitted_component"]])}</td><td>{linked(row["removed"])}</td><td>{linked(row["added"])}</td></tr>'
+    return body+'''</tbody></table></div><p>התרחישים אינם מראים איזה משקל נכון יותר או מנבאים ציון בחינה. השאלות שמוחלפות הן אפשרויות גיבוי ללמידה. גם יציבות בבדיקות אלה אינה מבטיחה שהבחינה תדמה לסימולציה; תיוג אחר, משקלים נוספים או שינוי בבחינה יכולים לשנות את הבחירה.</p>
 <p><a href="best-mock.html">הסימולציה הממוקדת ומקורותיה</a> · <a href="backtest.html">בדיקה בדיעבד לפי נושאים</a> · <a href="data/mock-sensitivity.json">נתוני התרחישים (JSON)</a></p>'''
