@@ -15,7 +15,7 @@ for q in QUESTIONS.values():
     assert q['question_type'] == 'multiple-choice'
     assert q['accepted_indices'] == [0]
     assert len(q['options']) == len(set(q['options'])) == 4
-    assert q['reviewed'] == ('2026-11-17' if q['id'] in ('P09','P47','P52') else '2026-11-14')
+    assert q['reviewed'] == ('2026-11-17' if q['id'] in ('P09','P13','P47','P52','P57') else '2026-11-14')
     reasons = q['option_explanations']
     assert [r['option'] for r in reasons] == q['options'], q['id']
     assert [r['correct'] for r in reasons] == [True, False, False, False]
@@ -87,6 +87,18 @@ for bit in range(8):
     assert [i+1 for i, (x,y) in enumerate(zip(plain,recovered)) if x != y] == [4,5]
     assert recovered[4] == plain[4] ^ (1 << bit)
 assert 'לפחות חמישה בלוקים' in QUESTIONS['P13']['stem']
+assert 'בלפחות ביט אחד' in QUESTIONS['P13']['options'][0]
+assert 'div' in QUESTIONS['P57']['stem'] and 'textContent' in QUESTIONS['P57']['options'][0]
+# An identity permutation is insecure, but proves CBC does not guarantee
+# multiple changed bits in P4 merely from the permutation property.
+plain_identity, cipher_identity = [1, 2, 3, 4, 5], []
+previous = 0
+for value in plain_identity:
+    previous = value ^ previous
+    cipher_identity.append(previous)
+cipher_identity[3] ^= 1
+recovered_identity = [value ^ (0 if i == 0 else cipher_identity[i-1]) for i, value in enumerate(cipher_identity)]
+assert recovered_identity == [1, 2, 3, 5, 4]
 
 # Build actual Merkle paths; each sibling list has 11 hashes and reconstructs
 # the trusted root. An altered sibling fails the check.
