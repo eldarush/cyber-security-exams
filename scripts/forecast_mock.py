@@ -50,7 +50,7 @@ def select_mock(questions, report, pairs):
                        'highest confidence per topic with distinct skills; ID breaks ties.')
 
 
-def mock_page(mock, questions):
+def mock_page(mock, questions, skill_audit):
     lookup = {q['id']: q for q in questions}
     body = '''<p class="study-intro"><strong>סימולציה אחת של 10 שאלות — התחזית הממוקדת שלי למועד ב׳.</strong>
 השאלות נבחרו לפי ציוני הביטחון, בתוך תמהיל נושאים שמבוסס על מועדי ב׳ קודמים. זו בחירה לימודית מנומקת, לא ידיעה של השאלון העתידי.</p>
@@ -69,4 +69,11 @@ def mock_page(mock, questions):
         references = ' · '.join(f'<a href="solutions/{source}.html">{source}</a>' for source in sources)
         body += f'<li><a href="predictions.html#{qid}">{qid} — {escape(q["title"])}</a> · <strong>{q["confidence"]}/100</strong> · {escape(q["topic"])}<p>{escape(explanation)} סימוכין: {references}.</p></li>'
     body += '</ol><p>מועדי ב׳ שנכללו: ' + ' · '.join(mock['b_dates']) + '.</p>'
+    body += '''<h2>מה מצא מיפוי המיומנויות בשבעת הזוגות?</h2><p>הטבלה מציגה את מפת הסימוכין הידנית והחלקית של המיומנות שהוקצתה לכל שאלה. ״גם בא׳ וגם בב׳״ פירושו שנמצא במיפוי לפחות מקור אחד בכל אחד משני המועדים של אותו זוג. אפס פירושו שלא מופתה התאמה, לא הוכחה שהמיומנות נעדרה; המקורות נבחרו בדיעבד והמיומנויות שונות ברוחבן.</p><p>עמודת אוקטובר מתייחסת למועד א׳ האחרון, שאינו חלק משבעת הזוגות ההיסטוריים. הנוסחה מוסיפה 10 נקודות אם המיומנות מופתה שם, אך הנתונים הקטנים והחלקיים האלה אינם מוכיחים שהבונוס או גודלו משפרים ניבוי.</p><div class="study-table"><table><thead><tr><th>תחזית</th><th>זוגות עם מיפוי בא׳</th><th>זוגות עם מיפוי בב׳</th><th>זוגות עם מיפוי בשניהם</th><th>מיפוי בא׳ אוקטובר 2026</th></tr></thead><tbody>'''
+    rows = {row['id']: row for row in skill_audit['focused']}
+    for qid in mock['question_ids']:
+        row = rows[qid]
+        latest = ' · '.join(f'<a href="solutions/{x}.html">{x}</a>' for x in row['latest_a_ids']) or 'לא מופתה התאמה'
+        body += f'<tr><td><a href="predictions.html#{qid}">{qid}</a></td><td>{row["a"]}/7</td><td>{row["b"]}/7</td><td>{row["both"]}/7</td><td>{latest}</td></tr>'
+    body += '''</tbody></table></div><p><a href="data/skill-transition-audit.json">מיפוי, מקורות ותאריכים לכל מיומנות וזוג</a>. התוצאות אינן ניבוי מאומת או הסתברות לחזרה על שאלה.</p>'''
     return body + '''<p><a href="backtest.html#allocation-backtest">בדיקה כרונולוגית של תמהיל הנושאים</a> · <a href="sensitivity.html">מה משתנה אם מסירים מועד אחד מהתמהיל?</a> · <a href="confidence.html">שיטת ציוני הביטחון והראיות</a> · <a href="analysis.html">זוגות א׳/ב׳ וההשוואה</a> · <a href="data/forecast-best.json">נתוני הבחירה והתמהיל</a></p>'''

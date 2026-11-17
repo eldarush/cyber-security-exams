@@ -9,6 +9,7 @@ from forecast_expansion import EXTRA
 from forecast_confidence import annotate
 from forecast_presentation import confidence_summary, forecast_intro, confidence_page
 from forecast_mock import select_mock, mock_page
+from audit_skill_evidence import evaluate as audit_skill_evidence
 from cover_evidence import cover_page
 from backtest_presentation import backtest_page, allocation_section
 from allocation_backtest import evaluate as evaluate_allocation
@@ -222,7 +223,9 @@ syllabus_body=syllabus_intro()+'<article class="study-card" data-question-type="
 page('syllabus-coverage.html','כיסוי הסילבוס ושאלת השלמה',syllabus_body)
 page('sensitivity.html','רגישות הסימולציה לתמהיל הבחינות',sensitivity_page(sensitivity,pred))
 page('exam-covers.html','אימות מועדי א׳ וב׳ מול מסמכי המקור',cover_page(PAIRS,R))
-page('best-mock.html','הסימולציה הממוקדת למועד ב׳ — 10 שאלות',mock_page(best_mock,pred))
+skill_audit=audit_skill_evidence(qbank,load('data/pairs.json'),pred,best_mock['question_ids'])
+save('data/skill-transition-audit.json',skill_audit)
+page('best-mock.html','הסימולציה הממוקדת למועד ב׳ — 10 שאלות',mock_page(best_mock,pred,skill_audit))
 page('predictions.html','לקראת מועד ב׳ — תחזית ותרגול',intro)
 
 audit='''<p class="sub">בדיקה בדיעבד של התחזית הישנה, ואחריה ניתוח א׳→ב׳ לצורך תכנון הלמידה הבא.</p><div class="study-intro"><strong>לא נחשב ״דיוק״ לפי שם הנושא בלבד.</strong><p>ב-50 התרגילים שנכתבו לפני אוקטובר מצאנו 2 התאמות קרובות, 3 התאמות חלקיות ו-5 פערים ביחס ל-10 שאלות הבחינה. זהו סיווג ידני של כיסוי מיומנות, לא ציון צפוי ולא אומדן סטטיסטי של דיוק. תחזית רחבה של 50 שאלות אינה שקולה לניבוי של מבחן בן 10.</p></div><p><a href="old-forecast.html">התחזית הישנה והתרגילים המקוריים</a> · <a href="latest.html">בחינת אוקטובר בפועל</a></p><h2>התחזית מול כל שאלה בפועל</h2><p>״קרוב״: מנגנון הפתרון המרכזי תורגל במפורש. ״חלקי״: אותה משפחת מושגים, אך פעולה או הנחה חשובה השתנתה. ״פער״: אין תרגיל ישיר במיומנות בסט הישן. חומר הסבר רחב עשוי להזכיר יותר נושאים; הטבלה אינה טוענת שהמושג נעדר מכל מסמך בתיקייה.</p><div class="study-table"><table><thead><tr><th>שאלה בפועל</th><th>סיווג</th><th>תרגול ישן</th><th>מה למדנו</th></tr></thead><tbody>'''

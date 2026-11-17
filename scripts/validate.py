@@ -12,6 +12,11 @@ assert len(bank)==182 and len(forecast)==60 and len(pairs)==7
 from allocation_backtest import evaluate as evaluate_allocation
 allocation=load('data/allocation-backtest.json')
 assert allocation==evaluate_allocation(load('data/forecast-confidence.json'), pairs)
+from audit_skill_evidence import evaluate as evaluate_skills
+skill_audit=load('data/skill-transition-audit.json')
+assert skill_audit==evaluate_skills(bank,pairs,forecast,load('data/forecast-best.json')['question_ids'])
+assert len(skill_audit['focused'])==10
+assert all(0<=row['both']<=min(row['a'],row['b'])<=7 for row in skill_audit['focused'])
 assert len(allocation['folds'])==6
 assert [len(row['training_b']) for row in allocation['folds']]==[1,2,3,4,5,6]
 assert all(sum(q.values())==10 for row in allocation['folds'] for q in row['quotas'].values())
