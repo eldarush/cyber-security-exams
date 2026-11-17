@@ -11,6 +11,7 @@ from forecast_presentation import confidence_summary, forecast_intro, confidence
 from forecast_mock import select_mock, mock_page
 from cover_evidence import cover_page
 from backtest_presentation import backtest_page
+from sensitivity import allocation_sensitivity, sensitivity_page
 
 R=Path(__file__).resolve().parents[1]
 def load(p):return json.loads((R/p).read_text(encoding='utf-8'))
@@ -78,6 +79,8 @@ confidence_report=annotate(pred,qbank,PAIRS)
 save('data/forecast-confidence.json',confidence_report)
 best_mock=select_mock(pred,confidence_report,PAIRS)
 save('data/forecast-best.json',best_mock)
+sensitivity=allocation_sensitivity(pred,confidence_report,PAIRS)
+save('data/mock-sensitivity.json',sensitivity)
 for q in qbank+pred:
     q['question_type']='multiple-choice'
     q['solution']='solutions/'+q['id']+'.html'
@@ -204,6 +207,7 @@ for q in sorted(pred,key=lambda q:(-q['confidence'],q['id'])):
 intro+='</div>'
 page('confidence.html','איך דירגנו את 60 שאלות התחזית?',confidence_page(confidence_report,pred))
 page('backtest.html','בדיקת נושאים מול בחינות עבר',backtest_page(load('data/topic-backtest.json')))
+page('sensitivity.html','רגישות הסימולציה לתמהיל הבחינות',sensitivity_page(sensitivity,pred))
 page('exam-covers.html','אימות מועדי א׳ וב׳ מול מסמכי המקור',cover_page(PAIRS,R))
 page('best-mock.html','הסימולציה הממוקדת למועד ב׳ — 10 שאלות',mock_page(best_mock,pred))
 page('predictions.html','לקראת מועד ב׳ — תחזית ותרגול',intro)

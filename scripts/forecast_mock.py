@@ -69,4 +69,4 @@ def mock_page(mock, questions):
         references = ' · '.join(f'<a href="solutions/{source}.html">{source}</a>' for source in sources)
         body += f'<li><a href="predictions.html#{qid}">{qid} — {escape(q["title"])}</a> · <strong>{q["confidence"]}/100</strong> · {escape(q["topic"])}<p>{escape(explanation)} סימוכין: {references}.</p></li>'
     body += '</ol><p>מועדי ב׳ שנכללו: ' + ' · '.join(mock['b_dates']) + '.</p>'
-    return body + '''<p><a href="confidence.html">שיטת ציוני הביטחון והראיות</a> · <a href="analysis.html">זוגות א׳/ב׳ וההשוואה</a> · <a href="data/forecast-best.json">נתוני הבחירה והתמהיל</a></p>'''
+    return body + '''<p><a href="sensitivity.html">מה משתנה אם מסירים מועד אחד מהתמהיל?</a> · <a href="confidence.html">שיטת ציוני הביטחון והראיות</a> · <a href="analysis.html">זוגות א׳/ב׳ וההשוואה</a> · <a href="data/forecast-best.json">נתוני הבחירה והתמהיל</a></p>'''

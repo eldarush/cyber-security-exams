@@ -48,7 +48,7 @@ class Links(HTMLParser):
         for attr in ['href','src']:
             if attr in attrs:self.links.append(attrs[attr])
 
-files=[R/f for f in ['index.html','latest.html','predictions.html','analysis.html','confidence.html','backtest.html','best-mock.html','exam-covers.html','archive.html','old-forecast.html']]+list((R/'solutions').glob('*.html'))
+files=[R/f for f in ['index.html','latest.html','predictions.html','analysis.html','confidence.html','backtest.html','sensitivity.html','best-mock.html','exam-covers.html','archive.html','old-forecast.html']]+list((R/'solutions').glob('*.html'))
 parsed={}
 for p in files:
     h=Links();h.feed(p.read_text(encoding='utf-8'));parsed[p.resolve()]=h

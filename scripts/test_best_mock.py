@@ -45,3 +45,19 @@ for topic, quota in quotas.items():
     expected = sorted(best_by_skill.values(),key=lambda q:(-q['confidence'],q['id']))[:quota]
     assert {q['id'] for q in chosen if q['topic']==topic} == {q['id'] for q in expected}
 print('Balanced mock: 10 fixed, distinct skills; seven B exams independently normalized; topic quotas and highest-confidence choices verified.')
+
+# Recalculate every reduced sample independently; scores intentionally stay fixed.
+from sensitivity import allocation_sensitivity
+from forecast import PAIRS
+report=load('forecast-confidence.json')
+sensitivity=load('mock-sensitivity.json')
+assert sensitivity == allocation_sensitivity(forecast,report,PAIRS)
+assert len(sensitivity['scenarios']) == 8
+for scenario in sensitivity['scenarios']:
+    assert sum(scenario['quotas'].values()) == 10
+    assert len(scenario['removed']) == len(scenario['added'])
+    assert set(scenario['removed']).issubset(mock['question_ids'])
+    assert not set(scenario['added']).intersection(mock['question_ids'])
+assert all(len(scenario['b_dates'])==6 for scenario in sensitivity['scenarios'][:7])
+assert len(sensitivity['scenarios'][-1]['b_dates'])==3
+print('Sensitivity: seven omitted exams and three-summer-exam allocation checked; existing scores held fixed.')
