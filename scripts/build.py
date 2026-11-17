@@ -10,6 +10,7 @@ from forecast_confidence import annotate
 from forecast_presentation import confidence_summary, forecast_intro, confidence_page
 from forecast_mock import select_mock, mock_page
 from cover_evidence import cover_page
+from backtest_presentation import backtest_page
 
 R=Path(__file__).resolve().parents[1]
 def load(p):return json.loads((R/p).read_text(encoding='utf-8'))
@@ -202,6 +203,7 @@ for q in sorted(pred,key=lambda q:(-q['confidence'],q['id'])):
     intro+=f'<div class="study-controls"><label><input type="checkbox" data-mastered="{q["id"]}"> שולט/ת בשאלה ובנימוק</label><a href="{q["solution"]}">פתרון בעמוד נפרד</a></div></article>'
 intro+='</div>'
 page('confidence.html','איך דירגנו את 60 שאלות התחזית?',confidence_page(confidence_report,pred))
+page('backtest.html','בדיקת נושאים מול בחינות עבר',backtest_page(load('data/topic-backtest.json')))
 page('exam-covers.html','אימות מועדי א׳ וב׳ מול מסמכי המקור',cover_page(PAIRS,R))
 page('best-mock.html','הסימולציה הממוקדת למועד ב׳ — 10 שאלות',mock_page(best_mock,pred))
 page('predictions.html','לקראת מועד ב׳ — תחזית ותרגול',intro)
