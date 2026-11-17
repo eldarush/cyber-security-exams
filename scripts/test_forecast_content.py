@@ -15,7 +15,7 @@ for q in QUESTIONS.values():
     assert q['question_type'] == 'multiple-choice'
     assert q['accepted_indices'] == [0]
     assert len(q['options']) == len(set(q['options'])) == 4
-    assert q['reviewed'] == ('2026-11-17' if q['id'] in ('P09','P52') else '2026-11-14')
+    assert q['reviewed'] == ('2026-11-17' if q['id'] in ('P09','P47','P52') else '2026-11-14')
     reasons = q['option_explanations']
     assert [r['option'] for r in reasons] == q['options'], q['id']
     assert [r['correct'] for r in reasons] == [True, False, False, False]
@@ -179,6 +179,17 @@ for bit in range(8):
     assert decoded==[plain[0]^(1<<bit),*plain[1:]]
 for message in range(256):
     assert enc(dec(enc(message)))==enc(message) # EDE equal-key identity
+# A self-inverse cipher shows why E(M) and D(M) need not be distinct.
+weak_encrypt=lambda x: 255-x
+weak_decrypt=lambda x: 255-x
+assert all(weak_decrypt(weak_encrypt(x))==x for x in range(256))
+assert all(weak_encrypt(x)==weak_decrypt(x) for x in range(256))
+assert weak_encrypt(0)!=0
+# A three-cycle supplies an example satisfying both stated inequalities.
+e=lambda x:(x+1)%3
+d=lambda x:(x-1)%3
+assert len({e(0),d(0),0})==3 and e(d(e(0)))==e(0)
+assert 'שונה גם מ-M וגם מ-D_K(M)' in QUESTIONS['P47']['stem']
 def pattern(s):
     return tuple(s.index(ch) for ch in s)
 assert [pattern(x)==pattern('ABBA') for x in QUESTIONS['P48']['options']]==[True,False,False,False]

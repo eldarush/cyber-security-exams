@@ -1,11 +1,11 @@
-// Exercise the focused mock plus the corrected P52 through the generated functions.
+// Exercise the focused mock plus corrected P47 and P52 through the generated functions.
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const root = path.join(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
-const ids = [...JSON.parse(read('data/forecast-best.json')).question_ids, 'P52'];
+const ids = [...JSON.parse(read('data/forecast-best.json')).question_ids, 'P47', 'P52'];
 const questions = JSON.parse(read('data/forecast.json')).filter(q => ids.includes(q.id));
 const source = read('index.html');
 const slice = (from, to) => {
@@ -27,7 +27,7 @@ vm.runInContext(slice('function isCorrect(', '/* ---------- seeded random') +
   slice('function renderExam(', "document.addEventListener('keydown'") +
   slice('function finish(', '/* ---------- results') +
   slice('function reviewItem(', '/* ---------- history'), context);
-assert.equal(questions.length, 11);
+assert.equal(questions.length, 12);
 let graded = 0, rendered = 0, practiceRendered = 0, printed = 0, readingOrders = 0;
 for (const q of questions) {
   assert.deepEqual(q.accepted_indices, [0], q.id);
@@ -107,11 +107,11 @@ for (const q of questions) {
     }
   }
 }
-assert.equal(graded,1056);
-assert.equal(printed,264);
-assert.equal(readingOrders,528);
-assert.equal(practiceRendered,1056);
-console.log(`Focused mock and P52: ${graded} actual-answer grading cases, ${rendered} result and ${practiceRendered} practice explanation renders, ${printed} print keys, ${readingOrders} reading-page shuffles passed (all 24 orders for eleven questions).`);
+assert.equal(graded,1152);
+assert.equal(printed,288);
+assert.equal(readingOrders,576);
+assert.equal(practiceRendered,1152);
+console.log(`Focused mock, P47 and P52: ${graded} actual-answer grading cases, ${rendered} result and ${practiceRendered} practice explanation renders, ${printed} print keys, ${readingOrders} reading-page shuffles passed (all 24 orders for twelve questions).`);
 
 // The syllabus supplement is intentionally outside the 60-question forecast,
 // but its displayed answer key must follow the same real page shuffle.

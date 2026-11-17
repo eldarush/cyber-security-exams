@@ -8,6 +8,7 @@ from html import escape
 from forecast_expansion import REVIEWS as EXTRA_REVIEWS
 
 SOURCES = {
+    'des-weak': ('RFC 3961 — DES weak keys', 'https://www.rfc-editor.org/rfc/rfc3961.html'),
     'bitcoin-risk': ('Bitcoin whitepaper — section 11: attacker catch-up probability', 'https://bitcoin.org/bitcoin.pdf'),
     'tls-security': ('RFC 8446 — TLS security properties', 'https://www.rfc-editor.org/rfc/rfc8446.html#appendix-E.1'),
     'identity': ('RFC 9525 — service identity', 'https://www.rfc-editor.org/rfc/rfc9525.html#section-6'),
@@ -411,18 +412,18 @@ def apply_reviews(questions):
             q['options'][index] = text
         if q['id'] in TITLES:
             q['title'] = TITLES[q['id']]
-        if q['id'] == 'P52':
+        if q['id'] in ('P47','P52'):
             q['revision'] = 2
         if q['id'] == 'P09':
             q['revision'] = 2
             q.pop('old_number', None)
             q['answer_origin'] = 'תרגיל מעובד על בסיס Q148 ו-Q164; הנוסח והפתרון נערכו מחדש ב-17/11/2026'
-        q['reviewed'] = '2026-11-17' if q['id'] in ('P09','P52') else '2026-11-14'
+        q['reviewed'] = '2026-11-17' if q['id'] in ('P09','P47','P52') else '2026-11-14'
         q['option_explanations'] = [
             dict(option=option, correct=i in q['accepted_indices'], reason=reasons[i])
             for i, option in enumerate(q['options'])
         ]
-        q['answer_origin'] += (' · ההסבר נבדק ונערך מחדש ב-17/11/2026, כולל כל ארבע החלופות' if q['id'] in ('P09','P52') else ' · ההסבר נבדק ונערך מחדש ב-14/11/2026, כולל כל ארבע החלופות')
+        q['answer_origin'] += (' · ההסבר נבדק ונערך מחדש ב-17/11/2026, כולל כל ארבע החלופות' if q['id'] in ('P09','P47','P52') else ' · ההסבר נבדק ונערך מחדש ב-14/11/2026, כולל כל ארבע החלופות')
         body = '<section class="forecast-review"><h3>דרך הפתרון</h3><p>'+escape(derivation)+'</p>'
         if working:
             body += '<pre>'+escape(working)+'</pre>'

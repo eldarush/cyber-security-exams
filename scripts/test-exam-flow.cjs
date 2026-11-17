@@ -116,7 +116,7 @@ assert.equal(reload.run('pool().length'), 0);
 assert.equal(reload.run('const completed=S.exam; start(); S.exam===completed'), true);
 
 // Attempts for the former P09 must not become attempts for the revised question.
-const revisions = harness('forecast-all', {history:[{t:1,answers:[{id:'P09',ok:false},{id:'P52',ok:false},{id:'P01',ok:false}]}]});
+const revisions = harness('forecast-all', {history:[{t:1,answers:[{id:'P09',ok:false},{id:'P47',ok:false},{id:'P52',ok:false},{id:'P01',ok:false}]}]});
 revisions.run('S.cfg.wrongOnly=true');
 assert.equal(revisions.run('pool().map(q=>q.id).join()'), 'P01');
 const preserved = revisions.storage.get('cyber-study-v2:history');
@@ -129,6 +129,9 @@ revisions.run('start(["P09"]); S.exam.items[0].ans=S.exam.items[0].order.indexOf
 assert.equal(revisions.run('pool().map(q=>q.id).join()'), 'P01');
 revisions.run('S.cfg.wrongOnly=false; start(["P52"]); S.exam.items[0].ans=S.exam.items[0].order.indexOf(1); finish(false); S.cfg.wrongOnly=true');
 assert.equal(revisions.run('pool().map(q=>q.id).join()'), 'P01,P52');
+assert.equal(JSON.parse(revisions.storage.get('cyber-study-v2:history')).at(-1).answers[0].revision, 2);
+revisions.run('S.cfg.wrongOnly=false; start(["P47"]); S.exam.items[0].ans=S.exam.items[0].order.indexOf(1); finish(false); S.cfg.wrongOnly=true');
+assert.equal(revisions.run('pool().map(q=>q.id).join()'), 'P01,P47,P52');
 assert.equal(JSON.parse(revisions.storage.get('cyber-study-v2:history')).at(-1).answers[0].revision, 2);
 
 // Last result wins, collections remain separate, skipped practice is ignored.
