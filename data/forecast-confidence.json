@@ -625,6 +625,16 @@
         "Q171"
       ]
     },
+    "arp-mitm": {
+      "label": "הרעלת ARP ועמדת תיווך ברשת",
+      "evidence": [
+        "Q031",
+        "Q062",
+        "Q075",
+        "Q125",
+        "Q154"
+      ]
+    },
     "key-count": {
       "label": "ספירת מפתחות לכל זוג עובדים",
       "evidence": [
@@ -700,6 +710,13 @@
         "Q171"
       ]
     },
+    "dns-guess": {
+      "label": "ניחוש מזהים ופורטים במענה DNS",
+      "evidence": [
+        "Q030",
+        "Q052"
+      ]
+    },
     "dos": {
       "label": "DoS והתשת משאבים",
       "evidence": [
@@ -709,6 +726,12 @@
         "Q041",
         "Q054",
         "Q172"
+      ]
+    },
+    "slowloris": {
+      "label": "החזקת חיבורי HTTP פתוחים באיטיות",
+      "evidence": [
+        "Q002"
       ]
     },
     "escrow": {
@@ -1492,8 +1515,8 @@
     },
     {
       "id": "P20",
-      "score": 67,
-      "skill": "arp",
+      "score": 47,
+      "skill": "arp-mitm",
       "basis": {
         "topic_counts": {
           "exams": 12,
@@ -1511,16 +1534,14 @@
           "04/07/2024",
           "20/10/2024",
           "05/10/2025",
-          "12/07/2026",
-          "09/08/2026"
+          "12/07/2026"
         ],
         "skill_evidence": [
           "Q031",
           "Q062",
           "Q075",
           "Q125",
-          "Q154",
-          "Q171"
+          "Q154"
         ],
         "latest_a_skill": false,
         "components": {
@@ -1528,10 +1549,10 @@
           "b_exams": 16.6667,
           "a_to_b": 11.25,
           "summer_b": 9.0,
-          "skill_support": 20,
+          "skill_support": 20.0,
           "latest_a": 0
         },
-        "extension_deduction": 0
+        "extension_deduction": 20
       }
     },
     {
@@ -1833,8 +1854,8 @@
     },
     {
       "id": "P29",
-      "score": 63,
-      "skill": "dns",
+      "score": 33,
+      "skill": "dns-guess",
       "basis": {
         "topic_counts": {
           "exams": 12,
@@ -1847,19 +1868,12 @@
         "total_pairs": 7,
         "summer_pairs": 3,
         "skill_dates": [
-          "06/11/2022",
           "04/12/2022",
-          "07/07/2023",
-          "08/08/2023",
-          "09/08/2026"
+          "08/08/2023"
         ],
         "skill_evidence": [
-          "Q016",
-          "Q019",
           "Q030",
-          "Q037",
-          "Q052",
-          "Q171"
+          "Q052"
         ],
         "latest_a_skill": false,
         "components": {
@@ -1867,16 +1881,16 @@
           "b_exams": 16.6667,
           "a_to_b": 11.25,
           "summer_b": 9.0,
-          "skill_support": 16.6667,
+          "skill_support": 6.6667,
           "latest_a": 0
         },
-        "extension_deduction": 0
+        "extension_deduction": 20
       }
     },
     {
       "id": "P30",
-      "score": 63,
-      "skill": "dos",
+      "score": 30,
+      "skill": "slowloris",
       "basis": {
         "topic_counts": {
           "exams": 12,
@@ -1889,19 +1903,10 @@
         "total_pairs": 7,
         "summer_pairs": 3,
         "skill_dates": [
-          "07/10/2022",
-          "04/12/2022",
-          "07/07/2023",
-          "08/08/2023",
-          "09/08/2026"
+          "07/10/2022"
         ],
         "skill_evidence": [
-          "Q002",
-          "Q028",
-          "Q032",
-          "Q041",
-          "Q054",
-          "Q172"
+          "Q002"
         ],
         "latest_a_skill": false,
         "components": {
@@ -1909,10 +1914,10 @@
           "b_exams": 16.6667,
           "a_to_b": 11.25,
           "summer_b": 9.0,
-          "skill_support": 16.6667,
+          "skill_support": 3.3333,
           "latest_a": 0
         },
-        "extension_deduction": 0
+        "extension_deduction": 20
       }
     },
     {

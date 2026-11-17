@@ -49,6 +49,11 @@ assert by_forecast['P04']['skill']=='otp-malleability'
 assert report['skills']['otp-malleability']['evidence']==['Q179']
 assert by_forecast['P05']['skill']=='xss-token'
 assert report['skills']['xss-token']['evidence']==['Q118','Q157','Q180']
+assert by_forecast['P20']['skill']=='arp-mitm' and 'Q154' in report['skills']['arp-mitm']['evidence']
+assert report['skills']['dns-guess']['evidence']==['Q030','Q052']
+assert report['skills']['slowloris']['evidence']==['Q002']
+for qid in ['P20','P29','P30']:
+    assert by_forecast[qid]['confidence_basis']['extension_deduction']==20
 for qid,skill in [('P36','ca-constraints'),('P38','ct-promise'),('P39','ct-split-view')]:
     assert by_forecast[qid]['skill']==skill and report['skills'][skill]['evidence']==[]
     assert not by_forecast[qid]['confidence_basis']['latest_a_skill']

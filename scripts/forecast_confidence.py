@@ -50,6 +50,7 @@ SKILLS = {
  'p2pkh':('P2PKH והרשאת הוצאה','Q058 Q087 Q162'),
  'tls':('TLS: תמליל, חילוף וסודות','Q003 Q005 Q033 Q061 Q107 Q110 Q124 Q134 Q144 Q158'),
  'arp':('ARP, תיווך וגבולות היכולת','Q031 Q062 Q075 Q125 Q154 Q171'),
+ 'arp-mitm':('הרעלת ARP ועמדת תיווך ברשת','Q031 Q062 Q075 Q125 Q154'),
  'key-count':('ספירת מפתחות לכל זוג עובדים','Q178'),
  'ecb':('ECB ודפוסי בלוקים חוזרים','Q064 Q166'),
  'toy-hash':('מציאת התנגשות מבנית ב-hash חלש','Q182'),
@@ -59,7 +60,9 @@ SKILLS = {
  'csp':('CSP והרשאת משאבים וסקריפטים','Q038 Q065 Q131 Q161'),
  'sql':('SQL injection והפרדה בין קוד לנתון','Q017 Q035 Q060 Q095'),
  'dns':('DNS, ניחוש ושינוי תשובות','Q016 Q019 Q030 Q037 Q052 Q171'),
+ 'dns-guess':('ניחוש מזהים ופורטים במענה DNS','Q030 Q052'),
  'dos':('DoS והתשת משאבים','Q002 Q028 Q032 Q041 Q054 Q172'),
+ 'slowloris':('החזקת חיבורי HTTP פתוחים באיטיות','Q002'),
  'escrow':('Escrow וספי חתימות','Q018 Q147'),
  'pow':('כרייה ו-Proof of Work','Q029 Q042 Q046 Q072'),
  '3des':('הרכבת הצפנה ופענוח ב-3DES','Q071 Q151'),
@@ -67,13 +70,13 @@ SKILLS = {
  'dom':('XSS והקשר פירוש הקלט','Q006 Q109 Q118 Q135 Q145'),
 }
 KEYS = ('rsa-verify chain utxo-change otp-malleability xss-token mac-composition birthday-calc consensus dh-calculation vigenere '
-        'ct-policy ocsp cbc merkle second-preimage rsa-gen csrf-cross-site p2pkh tls arp '
-        'key-count ecb toy-hash password sop hsts csp sql dns dos '
+        'ct-policy ocsp cbc merkle second-preimage rsa-gen csrf-cross-site p2pkh tls arp-mitm '
+        'key-count ecb toy-hash password sop hsts csp sql dns-guess slowloris '
         'rsa-create rsa-gen key-roles rsa-gen service-name ca-constraints ocsp ct-promise ct-split-view utxo-validity '
         'utxo-outpoint escrow pow merkle otp-reuse cbc 3des substitution vigenere collision '
         'toy-hash hash mac password dh-active cookie-flags dom sql csrf tls').split()
 # Explicit editorial deduction for a wider extrapolation of a documented skill.
-EXTENSIONS = {32,35,36,38,39,40,41,43,45,49,52,53,54,55,56,57,59,60}
+EXTENSIONS = {20,29,30,32,35,36,38,39,40,41,43,45,49,52,53,54,55,56,57,59,60}
 EXTENSION_DEDUCTION = 20
 
 def annotate(questions, bank, pairs):
