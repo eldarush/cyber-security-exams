@@ -13,6 +13,7 @@ from cover_evidence import cover_page
 from backtest_presentation import backtest_page
 from sensitivity import allocation_sensitivity, sensitivity_page
 from repeat_audit import repeated_questions, repeat_section
+from operation_evidence import operation_page
 
 R=Path(__file__).resolve().parents[1]
 def load(p):return json.loads((R/p).read_text(encoding='utf-8'))
@@ -210,6 +211,7 @@ for q in sorted(pred,key=lambda q:(-q['confidence'],q['id'])):
 intro+='</div>'
 page('confidence.html','איך דירגנו את 60 שאלות התחזית?',confidence_page(confidence_report,pred))
 page('backtest.html','בדיקת נושאים מול בחינות עבר',backtest_page(load('data/topic-backtest.json'))+repeat_section(repeat_report))
+page('operation-changes.html','ממועד א׳ למועד ב׳ — שינויי פעולה לדוגמה',operation_page(qbank,pred))
 page('sensitivity.html','רגישות הסימולציה לתמהיל הבחינות',sensitivity_page(sensitivity,pred))
 page('exam-covers.html','אימות מועדי א׳ וב׳ מול מסמכי המקור',cover_page(PAIRS,R))
 page('best-mock.html','הסימולציה הממוקדת למועד ב׳ — 10 שאלות',mock_page(best_mock,pred))
@@ -238,7 +240,7 @@ summertext='<h2>מה רואים דווקא בסמסטר קיץ?</h2><p>הבחי�
 assert len(summer)==3
 assert all(all(TOPICS[i] in p['b_topics'] for i in [0,1,4,6,8]) for p in summer)
 audit=audit.replace('<h2>מגבלות והסקה</h2>',summertext+'<h2>מגבלות והסקה</h2>')
-page('analysis.html','בדיקת התחזית וניתוח מועדי א׳/ב׳','<p><a href="confidence.html">חדש: ציוני ביטחון ל-60 שאלות, עם ראיות מכל 18 המועדים</a></p>'+audit)
+page('analysis.html','בדיקת התחזית וניתוח מועדי א׳/ב׳','<p><a href="confidence.html">ציוני ביטחון ל-60 שאלות, עם ראיות מכל 18 המועדים</a> · <a href="operation-changes.html">דוגמאות לשינויי פעולה בין א׳ לב׳</a></p>'+audit)
 save('data/topic-stats.json',topicstats)
 
 arch='<p>כל 182 שאלות המאגר מקושרות לפתרון מפורט. 162 פתרונות מבוססים על קובצי התיקייה שסופקה; נוספו 10 פתרונות לאוגוסט 2026 ו-10 לאוקטובר 2026. הסעיפים הפתוחים של 2022 זמינים גם הם במסמכים המלאים למטה. הפתרונות הם חומר לימוד עצמאי, גם כאשר מפתח התשובות מגיע מהבחינה.</p><div class="study-actions"><a href="index.html#bank">חיפוש במאגר</a><a href="latest.html">אוקטובר 2026</a><a href="old-forecast.html">תחזית אוקטובר המקורית</a></div><h2>לפי מועד — ללא כפילות קבצים</h2>'
