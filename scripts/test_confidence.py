@@ -49,7 +49,9 @@ assert not by_forecast['P41']['confidence_basis']['latest_a_skill']
 assert 'Q051' not in report['skills']['chain']['evidence']
 assert by_forecast['P11']['skill']=='ct-policy' and by_forecast['P11']['confidence_basis']['latest_a_skill']
 assert report['skills']['dh-calculation']['evidence']==['Q036','Q068','Q099','Q148','Q164']
-assert by_forecast['P09']['skill']=='dh-calculation' and not by_forecast['P09']['confidence_basis']['latest_a_skill']
+assert by_forecast['P09']['skill']=='dh-known-exponents' and not by_forecast['P09']['confidence_basis']['latest_a_skill']
+assert report['skills']['dh-known-exponents']['evidence']==['Q099']
+assert by_forecast['P09']['confidence_basis']['skill_dates']==['24/11/2024']
 assert by_forecast['P55']['skill']=='dh-active' and report['skills']['dh-active']['evidence']==[]
 assert by_forecast['P55']['confidence_basis']['extension_deduction']==20
 assert by_forecast['P01']['skill']=='rsa-verify-numeric'

@@ -823,10 +823,8 @@
     "exam_count": 0,
     "in_sample_exam": false,
     "variant_group": null,
-    "priority": "ממוקד",
+    "priority": "רשת ביטחון",
     "evidence": [
-      "Q036",
-      "Q068",
       "Q099",
       "Q148",
       "Q164"
@@ -859,10 +857,10 @@
         "reason": "21 הוא a+b, אבל בחילוף DH המעריכים מוכפלים דרך חזקה של חזקה. אין כלל שמגדיר את המפתח כסכום המעריכים."
       }
     ],
-    "confidence": 53,
+    "confidence": 40,
     "confidence_kind": "skill-confidence-not-probability",
-    "skill": "dh-calculation",
-    "skill_label": "חישוב סוד משותף ב-Diffie–Hellman",
+    "skill": "dh-known-exponents",
+    "skill_label": "חישוב סוד DH מעריכים פרטיים נתונים",
     "confidence_basis": {
       "topic_counts": {
         "exams": 8,
@@ -875,18 +873,10 @@
       "total_pairs": 7,
       "summer_pairs": 3,
       "skill_dates": [
-        "04/12/2022",
-        "04/07/2024",
-        "24/11/2024",
-        "30/11/2025",
-        "09/08/2026"
+        "24/11/2024"
       ],
       "skill_evidence": [
-        "Q036",
-        "Q068",
-        "Q099",
-        "Q148",
-        "Q164"
+        "Q099"
       ],
       "latest_a_skill": false,
       "components": {
@@ -894,12 +884,12 @@
         "b_exams": 13.8889,
         "a_to_b": 10.0,
         "summer_b": 6.0,
-        "skill_support": 16.6667,
+        "skill_support": 3.3333,
         "latest_a": 0
       },
       "extension_deduction": 0
     },
-    "confidence_reason": "משפחת הנושא הופיעה ב-8/18 מועדים וב-4/7 מועדי ב׳; נמשכה מא׳ לב׳ ב-1/1 זוגות שבהם הופיעה בא׳; במועדי ב׳ של קיץ: 1/3. למיומנות המתועדת יש סימוכין ב-5 תאריכים שונים. אין סימוכין למיומנות הזו באוקטובר 2026 במיפוי המסוים. השאלה מתרגלת וריאציה של מיומנות מתועדת; המספר אינו סיכוי לניסוח המדויק.",
+    "confidence_reason": "משפחת הנושא הופיעה ב-8/18 מועדים וב-4/7 מועדי ב׳; נמשכה מא׳ לב׳ ב-1/1 זוגות שבהם הופיעה בא׳; במועדי ב׳ של קיץ: 1/3. למיומנות המתועדת יש סימוכין ב-1 תאריכים שונים. אין סימוכין למיומנות הזו באוקטובר 2026 במיפוי המסוים. השאלה מתרגלת וריאציה של מיומנות מתועדת; המספר אינו סיכוי לניסוח המדויק.",
     "question_type": "multiple-choice",
     "solution": "solutions/P09.html"
   },
