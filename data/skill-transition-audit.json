@@ -67,11 +67,11 @@
     },
     {
       "id": "P09",
-      "skill": "dh",
-      "score": 57,
-      "a": 1,
-      "b": 4,
-      "both": 1,
+      "skill": "dh-calculation",
+      "score": 53,
+      "a": 0,
+      "b": 2,
+      "both": 0,
       "latest_a_ids": []
     },
     {
@@ -1757,6 +1757,152 @@
             "24/11/2024",
             "30/11/2025"
           ]
+        }
+      ]
+    },
+    {
+      "skill": "dh-calculation",
+      "label": "חישוב סוד משותף ב-Diffie–Hellman",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 0,
+      "b_appearances": 2,
+      "continued": 0,
+      "b_after_absent_a": 2,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "04/12/2022"
+          ]
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [
+            "Q068"
+          ],
+          "prior_support_dates": [
+            "04/12/2022"
+          ]
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "04/12/2022",
+            "04/07/2024"
+          ]
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "04/12/2022",
+            "04/07/2024",
+            "24/11/2024"
+          ]
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": [
+            "04/12/2022",
+            "04/07/2024",
+            "24/11/2024"
+          ]
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [
+            "Q164"
+          ],
+          "prior_support_dates": [
+            "04/12/2022",
+            "04/07/2024",
+            "24/11/2024",
+            "30/11/2025"
+          ]
+        }
+      ]
+    },
+    {
+      "skill": "dh-active",
+      "label": "תיווך פעיל ב-Diffie–Hellman לא מאומת — ללא סימוכין ישירים ממופים",
+      "latest_a_ids": [],
+      "latest_a_present": false,
+      "a_appearances": 0,
+      "b_appearances": 0,
+      "continued": 0,
+      "b_after_absent_a": 0,
+      "transitions": [
+        {
+          "a": "07/10/2022",
+          "b": "06/11/2022",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "07/07/2023",
+          "b": "08/08/2023",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "31/05/2024",
+          "b": "04/07/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "17/09/2024",
+          "b": "20/10/2024",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "21/07/2025",
+          "b": "21/08/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "05/10/2025",
+          "b": "02/11/2025",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
+        },
+        {
+          "a": "12/07/2026",
+          "b": "09/08/2026",
+          "a_ids": [],
+          "b_ids": [],
+          "prior_support_dates": []
         }
       ]
     },

@@ -435,6 +435,20 @@
         "Q164"
       ]
     },
+    "dh-calculation": {
+      "label": "חישוב סוד משותף ב-Diffie–Hellman",
+      "evidence": [
+        "Q036",
+        "Q068",
+        "Q099",
+        "Q148",
+        "Q164"
+      ]
+    },
+    "dh-active": {
+      "label": "תיווך פעיל ב-Diffie–Hellman לא מאומת — ללא סימוכין ישירים ממופים",
+      "evidence": []
+    },
     "vigenere": {
       "label": "צופן Vigenère ומפתח חוזר",
       "evidence": [
@@ -1033,8 +1047,8 @@
     },
     {
       "id": "P09",
-      "score": 57,
-      "skill": "dh",
+      "score": 53,
+      "skill": "dh-calculation",
       "basis": {
         "topic_counts": {
           "exams": 8,
@@ -1048,22 +1062,14 @@
         "summer_pairs": 3,
         "skill_dates": [
           "04/12/2022",
-          "07/07/2023",
-          "08/08/2023",
           "04/07/2024",
-          "20/10/2024",
           "24/11/2024",
           "30/11/2025",
           "09/08/2026"
         ],
         "skill_evidence": [
-          "Q025",
           "Q036",
-          "Q043",
-          "Q047",
-          "Q056",
           "Q068",
-          "Q094",
           "Q099",
           "Q148",
           "Q164"
@@ -1074,7 +1080,7 @@
           "b_exams": 13.8889,
           "a_to_b": 10.0,
           "summer_b": 6.0,
-          "skill_support": 20,
+          "skill_support": 16.6667,
           "latest_a": 0
         },
         "extension_deduction": 0
@@ -2772,8 +2778,8 @@
     },
     {
       "id": "P55",
-      "score": 57,
-      "skill": "dh",
+      "score": 17,
+      "skill": "dh-active",
       "basis": {
         "topic_counts": {
           "exams": 8,
@@ -2785,38 +2791,18 @@
         "total_exams": 18,
         "total_pairs": 7,
         "summer_pairs": 3,
-        "skill_dates": [
-          "04/12/2022",
-          "07/07/2023",
-          "08/08/2023",
-          "04/07/2024",
-          "20/10/2024",
-          "24/11/2024",
-          "30/11/2025",
-          "09/08/2026"
-        ],
-        "skill_evidence": [
-          "Q025",
-          "Q036",
-          "Q043",
-          "Q047",
-          "Q056",
-          "Q068",
-          "Q094",
-          "Q099",
-          "Q148",
-          "Q164"
-        ],
+        "skill_dates": [],
+        "skill_evidence": [],
         "latest_a_skill": false,
         "components": {
           "all_exams": 6.75,
           "b_exams": 13.8889,
           "a_to_b": 10.0,
           "summer_b": 6.0,
-          "skill_support": 20,
+          "skill_support": 0.0,
           "latest_a": 0
         },
-        "extension_deduction": 0
+        "extension_deduction": 20
       }
     },
     {
