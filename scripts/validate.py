@@ -9,6 +9,13 @@ R=Path(__file__).resolve().parents[1]
 def load(p):return json.loads((R/p).read_text(encoding='utf-8'))
 bank=load('data/bank.json')['questions'];forecast=load('data/forecast.json');pairs=load('data/pairs.json')
 assert len(bank)==182 and len(forecast)==60 and len(pairs)==7
+from allocation_backtest import evaluate as evaluate_allocation
+allocation=load('data/allocation-backtest.json')
+assert allocation==evaluate_allocation(load('data/forecast-confidence.json'), pairs)
+assert len(allocation['folds'])==6
+assert [len(row['training_b']) for row in allocation['folds']]==[1,2,3,4,5,6]
+assert all(sum(q.values())==10 for row in allocation['folds'] for q in row['quotas'].values())
+assert allocation['means']['history']==0.683333 and allocation['means']['combined']==0.716667
 assert len({q['id'] for q in bank+forecast})==242
 assert all(sum(q['mock']==n for q in forecast)==10 for n in range(1,7))
 assert all(len(q['options'])==4 and len(set(q['options']))==4 for q in bank+forecast)

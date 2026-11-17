@@ -10,7 +10,8 @@ from forecast_confidence import annotate
 from forecast_presentation import confidence_summary, forecast_intro, confidence_page
 from forecast_mock import select_mock, mock_page
 from cover_evidence import cover_page
-from backtest_presentation import backtest_page
+from backtest_presentation import backtest_page, allocation_section
+from allocation_backtest import evaluate as evaluate_allocation
 from sensitivity import allocation_sensitivity, sensitivity_page
 from repeat_audit import repeated_questions, repeat_section
 from operation_evidence import operation_page
@@ -213,7 +214,9 @@ for q in sorted(pred,key=lambda q:(-q['confidence'],q['id'])):
     intro+=f'<div class="study-controls"><label><input type="checkbox" data-mastered="{q["id"]}"> שולט/ת בשאלה ובנימוק</label><a href="{q["solution"]}">פתרון בעמוד נפרד</a></div></article>'
 intro+='</div>'
 page('confidence.html','איך דירגנו את 60 שאלות התחזית?',confidence_page(confidence_report,pred))
-page('backtest.html','בדיקת נושאים מול בחינות עבר',backtest_page(load('data/topic-backtest.json'))+repeat_section(repeat_report))
+allocation_backtest=evaluate_allocation(confidence_report,load('data/pairs.json'))
+save('data/allocation-backtest.json',allocation_backtest)
+page('backtest.html','בדיקת נושאים מול בחינות עבר',backtest_page(load('data/topic-backtest.json'))+allocation_section(allocation_backtest)+repeat_section(repeat_report))
 page('operation-changes.html','ממועד א׳ למועד ב׳ — שינויי פעולה לדוגמה',operation_page(qbank,pred))
 syllabus_body=syllabus_intro()+'<article class="study-card" data-question-type="multiple-choice"><h3>שאלה משלימה S01</h3>'+paragraphs(SYLLABUS_QUESTION['stem'])+options(SYLLABUS_QUESTION)+'<details class="answer-detail"><summary>הצגת התשובה וההסבר המפורט</summary>'+answer_key(SYLLABUS_QUESTION)+syllabus_explanation(SYLLABUS_QUESTION)+'</details></article><p><a href="predictions.html">חזרה ל-60 שאלות התחזית</a> · <a href="index.html?set=forecast-best#setup">הסימולציה הממוקדת</a></p>'
 page('syllabus-coverage.html','כיסוי הסילבוס ושאלת השלמה',syllabus_body)
