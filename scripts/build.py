@@ -12,6 +12,7 @@ from forecast_mock import select_mock, mock_page
 from cover_evidence import cover_page
 from backtest_presentation import backtest_page
 from sensitivity import allocation_sensitivity, sensitivity_page
+from repeat_audit import repeated_questions, repeat_section
 
 R=Path(__file__).resolve().parents[1]
 def load(p):return json.loads((R/p).read_text(encoding='utf-8'))
@@ -195,6 +196,8 @@ for label,a,b,note in PAIRS:
     exact=[q['id'] for q in bq if norm(q) in {norm(x) for x in aq}]
     pairdata.append(dict(label=label,a=a,b=b,a_count=len(aq),b_count=len(bq),a_topics=sorted(at),b_topics=sorted(bt),shared=sorted(at&bt),b_in_a=sum(q['topic'] in at for q in bq),exact=exact,note=note))
 save('data/pairs.json',pairdata)
+repeat_report=repeated_questions(qbank,PAIRS)
+save('data/repeat-audit.json',repeat_report)
 save('data/forecast-audit.json',AUDIT)
 
 intro=forecast_intro(pred)+'<div id="forecast-questions">'
@@ -206,7 +209,7 @@ for q in sorted(pred,key=lambda q:(-q['confidence'],q['id'])):
     intro+=f'<div class="study-controls"><label><input type="checkbox" data-mastered="{q["id"]}"> שולט/ת בשאלה ובנימוק</label><a href="{q["solution"]}">פתרון בעמוד נפרד</a></div></article>'
 intro+='</div>'
 page('confidence.html','איך דירגנו את 60 שאלות התחזית?',confidence_page(confidence_report,pred))
-page('backtest.html','בדיקת נושאים מול בחינות עבר',backtest_page(load('data/topic-backtest.json')))
+page('backtest.html','בדיקת נושאים מול בחינות עבר',backtest_page(load('data/topic-backtest.json'))+repeat_section(repeat_report))
 page('sensitivity.html','רגישות הסימולציה לתמהיל הבחינות',sensitivity_page(sensitivity,pred))
 page('exam-covers.html','אימות מועדי א׳ וב׳ מול מסמכי המקור',cover_page(PAIRS,R))
 page('best-mock.html','הסימולציה הממוקדת למועד ב׳ — 10 שאלות',mock_page(best_mock,pred))

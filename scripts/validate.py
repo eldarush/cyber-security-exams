@@ -22,6 +22,9 @@ assert all(not s.get('date') for q in forecast for s in q['sources'])
 assert [p['b_in_a'] for p in pairs]==[8,8,9,6,8,10,7]
 assert {q['id']:q['accepted_indices'] for q in bank if len(q['accepted_indices'])>1}=={'Q013':[0,1,2,3],'Q021':[0,1],'Q038':[0,1],'Q055':[0,1]}
 assert sum(len(p['exact']) for p in pairs)==0
+repeat=load('data/repeat-audit.json')
+assert repeat['count']==72 and repeat['match_count']==2
+assert {x['id'] for fold in repeat['folds'] for x in fold['matches']}=={'Q062','Q064'}
 assert {k:sum(x['status']==k for x in load('data/forecast-audit.json')) for k in ['קרוב','חלקי','פער']}=={'קרוב':2,'חלקי':3,'פער':5}
 
 def vig(p,k):return ''.join(chr((ord(ch)-65+ord(k[i%len(k)])-65)%26+65) for i,ch in enumerate(p))
