@@ -266,11 +266,12 @@ template=template.replace('__BANK_JSON__',json.dumps(original,ensure_ascii=False
 template=template.replace('__BEST_MOCK_JSON__',json.dumps(best_mock,ensure_ascii=False,separators=(',',':')))
 template=template.replace('const QS = BANK.questions.filter(q => !q.exclude);', '''const FORECAST = '''+json.dumps(pred,ensure_ascii=False,separators=(',',':'))+''';
 const requestedSet = new URLSearchParams(location.search).get('set') || '';
-const selectedSet = ['latest','forecast-all','forecast-focus','forecast-best','forecast-lecture',...Array.from({length:6},(_,i)=>'forecast-'+(i+1))].includes(requestedSet) ? requestedSet : '';
-const isForecast = /^forecast-([1-6]|all|focus|best|lecture)$/.test(selectedSet);
+const selectedSet = ['latest','forecast-all','forecast-focus','forecast-best','forecast-lecture','forecast-no-latest',...Array.from({length:6},(_,i)=>'forecast-'+(i+1))].includes(requestedSet) ? requestedSet : '';
+const isForecast = /^forecast-([1-6]|all|focus|best|lecture|no-latest)$/.test(selectedSet);
+const NO_LATEST_IDS = '''+json.dumps(next(x['added'] for x in sensitivity['weight_tests'] if x['omitted_component']=='latest_a'),ensure_ascii=False)+''';
 const rankedForecast = [...FORECAST].sort((a,b)=>b.confidence-a.confidence || a.id.localeCompare(b.id));
-const QS = selectedSet==='forecast-lecture' ? FORECAST.filter(q=>q.question_type==='multiple-choice' && q.lecture_evidence) : selectedSet==='forecast-best' ? BEST_MOCK.question_ids.map(id=>FORECAST.find(q=>q.id===id)) : isForecast ? (selectedSet==='forecast-focus' ? rankedForecast.slice(0,20) : FORECAST.filter(q => q.question_type==='multiple-choice' && (selectedSet==='forecast-all' || q.mock===Number(selectedSet.slice(-1))))) : BANK.questions.filter(q => q.question_type==='multiple-choice' && !q.exclude && (selectedSet!=='latest' || q.sources.some(s=>s.date==='19/10/2026')));
-const collectionName = selectedSet==='forecast-lecture' ? 'תרגול תחזיות עם סימוכין במצגות' : selectedSet==='forecast-best' ? 'הסימולציה הממוקדת למועד ב׳ — 10 שאלות בתמהיל היסטורי' : isForecast ? 'תרגול תחזית מועד ב׳ — שאלות שחוברו לתרגול' : selectedSet==='latest' ? 'מועד א׳ · 19/10/2026' : 'מאגר הבחינות';''')
+const QS = selectedSet==='forecast-no-latest' ? NO_LATEST_IDS.map(id=>FORECAST.find(q=>q.id===id)) : selectedSet==='forecast-lecture' ? FORECAST.filter(q=>q.question_type==='multiple-choice' && q.lecture_evidence) : selectedSet==='forecast-best' ? BEST_MOCK.question_ids.map(id=>FORECAST.find(q=>q.id===id)) : isForecast ? (selectedSet==='forecast-focus' ? rankedForecast.slice(0,20) : FORECAST.filter(q => q.question_type==='multiple-choice' && (selectedSet==='forecast-all' || q.mock===Number(selectedSet.slice(-1))))) : BANK.questions.filter(q => q.question_type==='multiple-choice' && !q.exclude && (selectedSet!=='latest' || q.sources.some(s=>s.date==='19/10/2026')));
+const collectionName = selectedSet==='forecast-no-latest' ? 'תרגול חלופות ללא בונוס מועד א׳' : selectedSet==='forecast-lecture' ? 'תרגול תחזיות עם סימוכין במצגות' : selectedSet==='forecast-best' ? 'הסימולציה הממוקדת למועד ב׳ — 10 שאלות בתמהיל היסטורי' : isForecast ? 'תרגול תחזית מועד ב׳ — שאלות שחוברו לתרגול' : selectedSet==='latest' ? 'מועד א׳ · 19/10/2026' : 'מאגר הבחינות';''')
 template=template.replace('</head>','<link rel="stylesheet" href="'+asset('study.css')+'"><script src="'+asset('answer-order.js')+'"></script></head>')
 template=template.replace('אותו קוד = אותו מבחן', 'אותו קוד = אותן שאלות; סדר התשובות מתחדש')
 template=template.replace('</body>', '<script src="'+asset('study.js')+'" defer></script></body>')
@@ -309,7 +310,7 @@ template=template.replace("</div>` : ''}\n        <div class=\"qnav\">", "</div>
 template=template.replace('<span class="mono">${q.id}</span></div>','<span class="mono">${q.id}</span></div>${solutionDetails(q)}')
 template=template.replace("${q.note?`<div class=\"meta-line\">${esc(q.note)}</div>`:''}","${q.note?`<div class=\"meta-line\">${esc(q.note)}</div>`:''}${solutionDetails(q)}")
 template=template.replace('tabFromHash();\nrender();', '''if ((S.cfg.collection || '') !== selectedSet) {
-  S.cfg = {...S.cfg, collection:selectedSet, mode:['forecast-best','forecast-lecture'].includes(selectedSet)?'digital':S.cfg.mode, n:selectedSet==='forecast-best'?10:selectedSet==='forecast-lecture'?QS.length:Math.min(S.cfg.n,QS.length),topics:[],years:[],wrongOnly:false,skipNoted:false,minutes:null,shuffle:true,onlyMultipleChoice:true};
+  S.cfg = {...S.cfg, collection:selectedSet, mode:['forecast-best','forecast-lecture','forecast-no-latest'].includes(selectedSet)?'digital':S.cfg.mode, n:selectedSet==='forecast-best'?10:['forecast-lecture','forecast-no-latest'].includes(selectedSet)?QS.length:Math.min(S.cfg.n,QS.length),topics:[],years:[],wrongOnly:false,skipNoted:false,minutes:null,shuffle:true,onlyMultipleChoice:true};
   store.set('cfg', S.cfg);
 }
 tabFromHash();

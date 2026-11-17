@@ -31,7 +31,7 @@ function harness(set = '', initial = {}) {
   return {context, storage, button, run: expression => vm.runInContext(expression, context)};
 }
 
-for (const [set, count] of [['',182], ['latest',10], ['forecast-all',60], ['forecast-focus',20], ['forecast-best',10], ['forecast-lecture',10], ['forecast-1',10], ['forecast-2',10], ['forecast-3',10], ['forecast-4',10], ['forecast-5',10], ['forecast-6',10]]) {
+for (const [set, count] of [['',182], ['latest',10], ['forecast-all',60], ['forecast-focus',20], ['forecast-best',10], ['forecast-lecture',10], ['forecast-no-latest',6], ['forecast-1',10], ['forecast-2',10], ['forecast-3',10], ['forecast-4',10], ['forecast-5',10], ['forecast-6',10]]) {
   const h = harness(set, { cfg: {collection: 'old-source', years:['2022'], topics:['old-topic'], skipNoted:true, wrongOnly:true, n:10} });
   assert.equal(h.run('QS.length'), count);
   assert.equal(h.run('pool().length'), count);
@@ -51,11 +51,24 @@ for (const [set, count] of [['',182], ['latest',10], ['forecast-all',60], ['fore
     } else if (set === 'forecast-lecture') {
       assert.equal(h.run('QS.map(q=>q.id).sort().join()'), 'P06,P09,P10,P26,P29,P30,P38,P39,P45,P55');
       assert.equal(h.run('QS.every(q=>q.lecture_evidence)'), true);
+    } else if (set === 'forecast-no-latest') {
+      const expected = JSON.parse(fs.readFileSync(path.join(root, 'data/mock-sensitivity.json'), 'utf8')).weight_tests.find(x => x.omitted_component==='latest_a').added;
+      assert.equal(h.run('QS.map(q=>q.id).join()'), expected.join());
+      assert.equal(h.run('QS.every(q=>!BEST_MOCK.question_ids.includes(q.id))'), true);
     } else if (/forecast-[1-6]$/.test(set)) {
       assert.equal(h.run(`QS.every(q=>q.mock===${Number(set.slice(-1))})`), true);
     }
   }
 }
+
+// Sensitivity alternatives reset the source configuration and grade by shuffled index.
+const alternative = harness('forecast-no-latest', {cfg:{collection:'forecast-best',mode:'practice',n:2,wrongOnly:true,minutes:5}});
+alternative.run('start()');
+assert.equal(alternative.run('S.exam.mode'), 'digital');
+assert.equal(alternative.run('S.exam.limit'), 48*60);
+alternative.run('S.exam.items.forEach((x,i)=>x.ans=x.order.indexOf(i===0?1:0)); finish(false)');
+assert.equal(alternative.run('S.result.score'), 83);
+assert.equal(alternative.run('S.result.exam.items.map(reviewItem).join("").match(/class="option-review"/g).length'), 24);
 
 // A saved short practice configuration must not turn the fixed mock into two questions.
 const best = harness('forecast-best', {cfg:{collection:'forecast-all',mode:'practice',n:2,topics:['old'],years:['2022'],wrongOnly:true,minutes:5}});
@@ -126,4 +139,4 @@ assert.equal(mixed.storage.get('cyber-study-v2:history'), '[]');
 assert.equal(JSON.parse(mixed.storage.get('cyber-study-v2:cfg')).wrongOnly, false);
 assert.equal(mixed.run('pool().length'), 60);
 assert.equal(mixed.run('wrongQuestionIds().size'), 0);
-console.log('Exam flow: twelve sources; lecture-backed set; full balanced mock; shuffled grading and explanations; wrong-only latest results; reload; clear-history confirmation and recovery passed.');
+console.log('Exam flow: thirteen sources; lecture-backed set; full balanced mock; shuffled grading and explanations; wrong-only latest results; reload; clear-history confirmation and recovery passed.');
