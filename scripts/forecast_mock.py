@@ -2,6 +2,20 @@
 from fractions import Fraction
 from html import escape
 
+# Editorial comparisons distinguish a similar operation from a broad family.
+# They are not independently scored or claims of future recurrence.
+FOCUSED_EVIDENCE = {
+    'P01': ('אימות חתימה מספרית דומה הופיע בא׳ האחרון; שאר המקורות כוללים גם יצירת חתימה והסברים כלליים.', ['Q175','Q105']),
+    'P02': ('בחירת מפתח המנפיק הופיעה בא׳ האחרון; שאר המקורות עוסקים בשרשרת או במידע בתעודה, ולא כולם באותה פעולה.', ['Q174','Q114']),
+    'P04': ('שינוי מבוקר של OTP כשהמסר ידוע הופיע בא׳ האחרון. חומרי OTP היסטוריים אחרים כוללים סודיות וחילוף מסרים, ואינם כולם אותה התקפה.', ['Q179','Q120']),
+    'P05': ('שילוב XSS וקריאת טוקן הופיע בא׳ האחרון ובמועד א׳ מיולי 2026; לא הוכח שיחזור בב׳ הקרוב.', ['Q180','Q157']),
+    'P06': ('זיהוי Encrypt-then-MAC הופיע בב׳ בנובמבר 2025 ובב׳ באוגוסט 2026; המיפוי כולל גם סדרי שילוב אחרים.', ['Q133','Q163']),
+    'P08': ('אישורים והוצאה כפולה הופיעו בא׳ האחרון ובב׳ בנובמבר 2025; מקורות אחרים דנים בכללי שרשרת או ב-51%.', ['Q177','Q137']),
+    'P09': ('אותם פרמטרים ותוצאת DH הופיעו ב-24/11/2024, מועד מיוחד — לא מועד ב׳; מספרים זהים בעבר אינם ראיה שיחזרו.', ['Q099']),
+    'P10': ('חישוב Vigenère הופיע בא׳ האחרון; מקור קודם בוחן הסתברות בצופן ולא חישוב ciphertext זהה.', ['Q173','Q097']),
+    'P11': ('א׳ האחרון בחן היעדר SCT; כאן נבדק מה CT אינו מבטיח כאשר SCT קיים. קיץ 2025 מדגים מעבר ממטרת CT לאכיפת SCT.', ['Q181','Q129','Q139']),
+    'P20': ('התקפת ARP ועמדת MITM נבחנו בעבר; שאלת התחזית מוסיפה את מגבלת פענוח TLS.', ['Q125','Q154']),
+}
 
 def select_mock(questions, report, pairs):
     # Equal weight per B exam; normalize the 12-choice 2022 paper to ten.
@@ -51,6 +65,8 @@ def mock_page(mock, questions):
 <h2>עשר השאלות שנבחרו</h2><p>זהו סט קבוע: סדר השאלות והתשובות מתערבב בכל ניסיון. המבחן המלא כולל את כל העשר, 80 דקות כברירת מחדל ופתרונות מפורטים לאחר ההגשה. בחירת פחות שאלות או סינון נושאים/טעויות יוצרים תרגול חלקי שאינו שומר על התמהיל המלא.</p><ol>'''
     for qid in mock['question_ids']:
         q = lookup[qid]
-        body += f'<li><a href="predictions.html#{qid}">{qid} — {escape(q["title"])}</a> · <strong>{q["confidence"]}/100</strong> · {escape(q["topic"])}</li>'
+        explanation, sources = FOCUSED_EVIDENCE[qid]
+        references = ' · '.join(f'<a href="solutions/{source}.html">{source}</a>' for source in sources)
+        body += f'<li><a href="predictions.html#{qid}">{qid} — {escape(q["title"])}</a> · <strong>{q["confidence"]}/100</strong> · {escape(q["topic"])}<p>{escape(explanation)} סימוכין: {references}.</p></li>'
     body += '</ol><p>מועדי ב׳ שנכללו: ' + ' · '.join(mock['b_dates']) + '.</p>'
     return body + '''<p><a href="confidence.html">שיטת ציוני הביטחון והראיות</a> · <a href="analysis.html">זוגות א׳/ב׳ וההשוואה</a> · <a href="data/forecast-best.json">נתוני הבחירה והתמהיל</a></p>'''
