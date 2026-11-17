@@ -15,7 +15,7 @@ for q in QUESTIONS.values():
     assert q['question_type'] == 'multiple-choice'
     assert q['accepted_indices'] == [0]
     assert len(q['options']) == len(set(q['options'])) == 4
-    assert q['reviewed'] == ('2026-11-17' if q['id']=='P09' else '2026-11-14')
+    assert q['reviewed'] == ('2026-11-17' if q['id'] in ('P09','P52') else '2026-11-14')
     reasons = q['option_explanations']
     assert [r['option'] for r in reasons] == q['options'], q['id']
     assert [r['correct'] for r in reasons] == [True, False, False, False]
@@ -186,7 +186,14 @@ def encrypt_vigenere(plain,key):
     return ''.join(chr(65+(ord(c)-65+ord(key[i%len(key)])-65)%26) for i,c in enumerate(plain))
 assert [encrypt_vigenere('ATTACK',key)=='DHZDQQ' for key in QUESTIONS['P49']['options']]==[True,False,False,False]
 assert [int(x)%256==42 for x in QUESTIONS['P51']['options']]==[True,False,False,False]
-assert 2**40>2**24
+assert 2**40 > 2**24
+# Exhaust every five-input function with four possible outputs: by the fifth
+# distinct input at latest, a repeated output must be present.
+from itertools import product
+for outputs in product(range(4), repeat=5):
+    assert len(set(outputs)) < len(outputs)
+assert QUESTIONS['P52']['options'][0] == 'קיימים לפחות שני קלטים שונים שנותנים אותו פלט'
+assert '2^24+1' in QUESTIONS['P52']['answer_html']
 import hmac
 tag=hmac.digest(b'example-test-key',b'command','sha256')
 assert hmac.compare_digest(tag,hmac.digest(b'example-test-key',b'command','sha256'))

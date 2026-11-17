@@ -633,7 +633,7 @@ function historyMini(){
   const last = h.slice(-5).reverse();
   return `<div class="panel stack" style="gap:8px"><div class="eyebrow">מבחנים אחרונים</div>
     ${last.map(x => `<div class="row" style="justify-content:space-between;font-size:13.5px"><span>${new Date(x.t).toLocaleDateString('he-IL')} · ${x.mode==='practice'?'תרגול':'מבחן'} · ${x.n} שאלות</span><b class="mono" style="color:${x.score>=60?'var(--good)':'var(--bad)'}">${x.score}</b></div>`).join('')}
-    ${h.some(x => x.answers.some(a => a.id==='P09' && (a.revision || 1)<2)) ? '<p class="sub">שאלה P09 עודכנה: תשובות קודמות ללא ציון גרסה אינן משויכות לגרסה הנוכחית במסנן הטעויות. תוצאות המבחנים הישנות נשמרות.</p>' : ''}
+    ${h.some(x => x.answers.some(a => QS.some(q => q.id===a.id && (a.revision || 1)!==(q.revision || 1)))) ? '<p class="sub">חלק מהשאלות עודכנו: תשובות לגרסאות קודמות אינן משויכות לגרסאות הנוכחיות במסנן הטעויות. תוצאות המבחנים הישנות נשמרות.</p>' : ''}
     <button class="btn ghost" id="clearhist" style="justify-self:start;padding:2px 0;font-size:12.5px">מחק היסטוריה</button></div>`;
 }
 function clearHistory(){

@@ -411,16 +411,18 @@ def apply_reviews(questions):
             q['options'][index] = text
         if q['id'] in TITLES:
             q['title'] = TITLES[q['id']]
+        if q['id'] == 'P52':
+            q['revision'] = 2
         if q['id'] == 'P09':
             q['revision'] = 2
             q.pop('old_number', None)
             q['answer_origin'] = 'תרגיל מעובד על בסיס Q148 ו-Q164; הנוסח והפתרון נערכו מחדש ב-17/11/2026'
-        q['reviewed'] = '2026-11-17' if q['id'] == 'P09' else '2026-11-14'
+        q['reviewed'] = '2026-11-17' if q['id'] in ('P09','P52') else '2026-11-14'
         q['option_explanations'] = [
             dict(option=option, correct=i in q['accepted_indices'], reason=reasons[i])
             for i, option in enumerate(q['options'])
         ]
-        q['answer_origin'] += (' · ההסבר נבדק ונערך מחדש ב-17/11/2026, כולל כל ארבע החלופות' if q['id']=='P09' else ' · ההסבר נבדק ונערך מחדש ב-14/11/2026, כולל כל ארבע החלופות')
+        q['answer_origin'] += (' · ההסבר נבדק ונערך מחדש ב-17/11/2026, כולל כל ארבע החלופות' if q['id'] in ('P09','P52') else ' · ההסבר נבדק ונערך מחדש ב-14/11/2026, כולל כל ארבע החלופות')
         body = '<section class="forecast-review"><h3>דרך הפתרון</h3><p>'+escape(derivation)+'</p>'
         if working:
             body += '<pre>'+escape(working)+'</pre>'
