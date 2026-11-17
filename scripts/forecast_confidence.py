@@ -78,7 +78,9 @@ def annotate(questions, bank, pairs):
             b=sum(topic in matrix[b] for _,a,b,_ in pairs),
             both=sum(topic in matrix[a] and topic in matrix[b] for _,a,b,_ in pairs),
             summer_b=sum(topic in matrix[b] for _,a,b,_ in summer))
-    assert len(questions)==len(KEYS)==60 and len(dates)==18
+    # Sensitivity analyses remove a dated sitting and its pair; the production
+    # build validates the 18-date corpus separately.
+    assert len(questions)==len(KEYS)==60 and len(dates)>0 and len(pairs)>0
     for i,(q,key) in enumerate(zip(questions,KEYS),1):
         name,ids=SKILLS[key]; ids=ids.split()
         evidence=sorted(set(ids+q['evidence']))

@@ -79,7 +79,7 @@ confidence_report=annotate(pred,qbank,PAIRS)
 save('data/forecast-confidence.json',confidence_report)
 best_mock=select_mock(pred,confidence_report,PAIRS)
 save('data/forecast-best.json',best_mock)
-sensitivity=allocation_sensitivity(pred,confidence_report,PAIRS)
+sensitivity=allocation_sensitivity(pred,confidence_report,PAIRS,qbank)
 save('data/mock-sensitivity.json',sensitivity)
 for q in qbank+pred:
     q['question_type']='multiple-choice'

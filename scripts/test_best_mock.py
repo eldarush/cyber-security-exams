@@ -51,7 +51,8 @@ from sensitivity import allocation_sensitivity
 from forecast import PAIRS
 report=load('forecast-confidence.json')
 sensitivity=load('mock-sensitivity.json')
-assert sensitivity == allocation_sensitivity(forecast,report,PAIRS)
+bank=load('bank.json')['questions']
+assert sensitivity == allocation_sensitivity(forecast,report,PAIRS,bank)
 assert len(sensitivity['scenarios']) == 8
 for scenario in sensitivity['scenarios']:
     assert sum(scenario['quotas'].values()) == 10
@@ -60,4 +61,8 @@ for scenario in sensitivity['scenarios']:
     assert not set(scenario['added']).intersection(mock['question_ids'])
 assert all(len(scenario['b_dates'])==6 for scenario in sensitivity['scenarios'][:7])
 assert len(sensitivity['scenarios'][-1]['b_dates'])==3
-print('Sensitivity: seven omitted exams and three-summer-exam allocation checked; existing scores held fixed.')
+assert len(sensitivity['refits'])==7
+for row in sensitivity['refits']:
+    assert len(row['scores'])==60 and len(row['removed'])==len(row['added'])
+    assert row['changed_score_count']==sum(row['scores'][q['id']]!=q['confidence'] for q in forecast)
+print('Sensitivity: seven omitted exams checked with fixed scores and with recalculated scores; three-summer-exam allocation checked with fixed scores.')

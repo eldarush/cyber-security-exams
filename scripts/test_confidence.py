@@ -48,4 +48,25 @@ for q in forecast:
     assert all(datetime.strptime(d,'%d/%m/%Y')<=datetime(2026,10,19) for d in dates)
     assert f'{q["confidence"]}/100' in (R/q['solution']).read_text(encoding='utf-8')
 assert all(sum(q['mock']==n for q in forecast)==10 for n in range(1,7))
+# Independently reconstruct each reduced score from the original bank rather
+# than using annotate(): no omitted date may contribute to any component.
+for refit in load('data/mock-sensitivity.json')['refits']:
+    omitted=refit['omitted_b']
+    reduced_topics={d:t for d,t in topics.items() if d!=omitted}
+    reduced_pairs=[p for p in pairs if p['b']!=omitted]
+    reduced_summer=[p for p in reduced_pairs if 'קיץ' in p['label']]
+    assert len(reduced_topics)==17 and len(reduced_pairs)==6
+    for q in forecast:
+        topic=q['topic']
+        n_all=sum(topic in t for t in reduced_topics.values())
+        n_a=sum(topic in reduced_topics[p['a']] for p in reduced_pairs)
+        n_b=sum(topic in reduced_topics[p['b']] for p in reduced_pairs)
+        n_both=sum(topic in reduced_topics[p['a']] and topic in reduced_topics[p['b']] for p in reduced_pairs)
+        n_summer=sum(topic in reduced_topics[p['b']] for p in reduced_summer)
+        support={s['date'] for qid in report['skills'][q['skill']]['evidence'] for s in by_id[qid]['sources']
+                 if s.get('date') and s['date']!=omitted}
+        score=round(15*(n_all+1)/(len(reduced_topics)+2) + 25*(n_b+1)/(len(reduced_pairs)+2)
+            +15*(n_both+1)/(n_a+2)+15*(n_summer+1)/(len(reduced_summer)+2)
+            +20*min(len(support)/6,1)+10*('19/10/2026' in support)-q['confidence_basis']['extension_deduction'])
+        assert refit['scores'][q['id']]==max(1,min(100,score)),(omitted,q['id'])
 print('Confidence: all 60 scores independently recomputed; 18 unique dates, 186 occurrences, seven pairs, three summer pairs verified.')
