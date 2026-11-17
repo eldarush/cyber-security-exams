@@ -20,6 +20,11 @@ for date,questions in records.items():
 assert sum(report['weights'].values())==100
 assert len(report['questions'])==len(forecast)==60
 by_forecast={q['id']:q for q in forecast}
+q141=by_id['Q141']
+assert 'HSTS preload' in q141['options'][0] and 'מעולם לא גלשו' in q141['stem']
+assert any(s.get('date')=='02/11/2025' for s in q141['sources'])
+assert any(p['b']=='02/11/2025' and 'קיץ' in p['label'] for p in pairs)
+assert 'Q141' in by_forecast['P26']['confidence_basis']['skill_evidence']
 assert by_forecast['P15']['skill']=='second-preimage' and 'Q182' not in report['skills']['second-preimage']['evidence']
 assert by_forecast['P17']['skill']=='csrf-cross-site' and 'Q180' not in report['skills']['csrf-cross-site']['evidence']
 assert not by_forecast['P15']['confidence_basis']['latest_a_skill']
