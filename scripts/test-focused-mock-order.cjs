@@ -6,7 +6,7 @@ const vm = require('node:vm');
 const root = path.join(__dirname, '..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
 const ids = [...JSON.parse(read('data/forecast-best.json')).question_ids, 'P47', 'P52', 'P13', 'P57'];
-const questions = JSON.parse(read('data/forecast.json')).filter(q => ids.includes(q.id));
+const questions = JSON.parse(read('data/forecast.json')).filter(q => ids.includes(q.id)).concat(JSON.parse(read('data/forecast-set2.json')));
 const source = read('index.html');
 const slice = (from, to) => {
   const start = source.indexOf(from), end = source.indexOf(to, start);
@@ -27,7 +27,7 @@ vm.runInContext(slice('function isCorrect(', '/* ---------- seeded random') +
   slice('function renderExam(', "document.addEventListener('keydown'") +
   slice('function finish(', '/* ---------- results') +
   slice('function reviewItem(', '/* ---------- history'), context);
-assert.equal(questions.length, 14);
+assert.equal(questions.length, 74);
 let graded = 0, rendered = 0, practiceRendered = 0, printed = 0, readingOrders = 0;
 for (const q of questions) {
   assert.deepEqual(q.accepted_indices, [0], q.id);
@@ -76,13 +76,13 @@ for (const q of questions) {
     context.S.print = {seed:123,versions:[[{q,order,ans:null}]]};
     context.app = {};
     vm.runInContext('renderPrint(app)',context);
-    const key = context.app.innerHTML.match(/<td><b>(.*?)<\/b> <span[^>]*>(P\d+)<\/span><\/td>/);
+    const key = context.app.innerHTML.match(/<td><b>(.*?)<\/b> <span[^>]*>(P\d+|B2-\d+)<\/span><\/td>/);
     assert.equal(key[1], 'אבגד'[order.indexOf(0)]);
     assert.equal(key[2], q.id);
     printed++;
   }
   // Run study.js's real reading-page shuffle over both generated surfaces.
-  for (const file of ['predictions.html','solutions/'+q.id+'.html']) {
+  for (const file of [q.parent_id ? 'predictions-2.html' : 'predictions.html','solutions/'+q.id+'.html']) {
     const html = read(file);
     assert(html.includes(q.answer_html), file+' explanation differs from canonical record');
     const listMatch = html.match(new RegExp('<ol [^>]*id="opts-'+q.id+'"[^>]*>(.*?)</ol>','s'));
@@ -107,11 +107,11 @@ for (const q of questions) {
     }
   }
 }
-assert.equal(graded,1344);
-assert.equal(printed,336);
-assert.equal(readingOrders,672);
-assert.equal(practiceRendered,1344);
-console.log(`Focused mock and four reviewed questions: ${graded} actual-answer grading cases, ${rendered} result and ${practiceRendered} practice explanation renders, ${printed} print keys, ${readingOrders} reading-page shuffles passed (all 24 orders for fourteen questions).`);
+assert.equal(graded,7104);
+assert.equal(printed,1776);
+assert.equal(readingOrders,3552);
+assert.equal(practiceRendered,7104);
+console.log(`Focused mock, four reviewed questions and Set 2: ${graded} actual-answer grading cases, ${rendered} result and ${practiceRendered} practice explanation renders, ${printed} print keys, ${readingOrders} reading-page shuffles passed (all 24 orders for 74 questions).`);
 
 // The syllabus supplement is intentionally outside the 60-question forecast,
 // but its displayed answer key must follow the same real page shuffle.

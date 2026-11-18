@@ -1,0 +1,4393 @@
+[
+  {
+    "id": "B2-01",
+    "title": "אימות חתימת RSA",
+    "stem": "ב-textbook RSA ללא hash, המפתח הפומבי הוא (n=77, e=7). עבור ההודעה m=60, איזו חתימה σ עוברת אימות?",
+    "options": [
+      "4",
+      "2",
+      "3",
+      "8"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "4",
+        "correct": true,
+        "reason": "עבור σ=4 מתקבל 4^7 mod 77 = 60, בדיוק ערך ההודעה."
+      },
+      {
+        "option": "2",
+        "correct": false,
+        "reason": "עבור σ=2 מתקבל 2^7 mod 77 = 51, בעוד שערך ההודעה הוא 60."
+      },
+      {
+        "option": "3",
+        "correct": false,
+        "reason": "עבור σ=3 מתקבל 3^7 mod 77 = 31, בעוד שערך ההודעה הוא 60."
+      },
+      {
+        "option": "8",
+        "correct": false,
+        "reason": "עבור σ=8 מתקבל 8^7 mod 77 = 57, בעוד שערך ההודעה הוא 60."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>באימות מחשבים σ^7 mod 77 ומשווים את התוצאה ל-60. אין צורך במפתח הפרטי או בחישוב d.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — 4</h4><p>עבור σ=4 מתקבל 4^7 mod 77 = 60, בדיוק ערך ההודעה.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — 2</h4><p>עבור σ=2 מתקבל 2^7 mod 77 = 51, בעוד שערך ההודעה הוא 60.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — 3</h4><p>עבור σ=3 מתקבל 3^7 mod 77 = 31, בעוד שערך ההודעה הוא 60.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — 8</h4><p>עבור σ=8 מתקבל 8^7 mod 77 = 57, בעוד שערך ההודעה הוא 60.</p></div></section>",
+    "topic": "RSA, מפתח ציבורי וחתימות",
+    "skill": "rsa-verify-numeric",
+    "parent_id": "P01",
+    "history_ids": [
+      "P01",
+      "Q113",
+      "Q175"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "19/10/2026",
+      "21/08/2025"
+    ],
+    "recent_b_dates": [
+      "21/08/2025"
+    ],
+    "skill_transitions": [],
+    "latest_a_skill": true,
+    "topic_transitions": 4,
+    "confidence": 62,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 69,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 1
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-01.html"
+  },
+  {
+    "id": "B2-02",
+    "title": "אימות חתימת RSA",
+    "stem": "ב-textbook RSA ללא hash, המפתח הפומבי הוא (n=55, e=3). עבור ההודעה m=51, איזו חתימה σ עוברת אימות?",
+    "options": [
+      "6",
+      "4",
+      "7",
+      "11"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "6",
+        "correct": true,
+        "reason": "עבור σ=6 מתקבל 6^3 mod 55 = 51, בדיוק ערך ההודעה."
+      },
+      {
+        "option": "4",
+        "correct": false,
+        "reason": "עבור σ=4 מתקבל 4^3 mod 55 = 9, בעוד שערך ההודעה הוא 51."
+      },
+      {
+        "option": "7",
+        "correct": false,
+        "reason": "עבור σ=7 מתקבל 7^3 mod 55 = 13, בעוד שערך ההודעה הוא 51."
+      },
+      {
+        "option": "11",
+        "correct": false,
+        "reason": "עבור σ=11 מתקבל 11^3 mod 55 = 11, בעוד שערך ההודעה הוא 51."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>באימות מחשבים σ^3 mod 55 ומשווים את התוצאה ל-51. אין צורך במפתח הפרטי או בחישוב d.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — 6</h4><p>עבור σ=6 מתקבל 6^3 mod 55 = 51, בדיוק ערך ההודעה.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — 4</h4><p>עבור σ=4 מתקבל 4^3 mod 55 = 9, בעוד שערך ההודעה הוא 51.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — 7</h4><p>עבור σ=7 מתקבל 7^3 mod 55 = 13, בעוד שערך ההודעה הוא 51.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — 11</h4><p>עבור σ=11 מתקבל 11^3 mod 55 = 11, בעוד שערך ההודעה הוא 51.</p></div></section>",
+    "topic": "RSA, מפתח ציבורי וחתימות",
+    "skill": "rsa-verify-numeric",
+    "parent_id": "P01",
+    "history_ids": [
+      "P01",
+      "Q113",
+      "Q175"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "19/10/2026",
+      "21/08/2025"
+    ],
+    "recent_b_dates": [
+      "21/08/2025"
+    ],
+    "skill_transitions": [],
+    "latest_a_skill": true,
+    "topic_transitions": 4,
+    "confidence": 62,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 69,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 2
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-02.html"
+  },
+  {
+    "id": "B2-03",
+    "title": "אימות חתימת RSA",
+    "stem": "ב-textbook RSA ללא hash, המפתח הפומבי הוא (n=91, e=5). עבור ההודעה m=8, איזו חתימה σ עוברת אימות?",
+    "options": [
+      "8",
+      "2",
+      "5",
+      "6"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "8",
+        "correct": true,
+        "reason": "עבור σ=8 מתקבל 8^5 mod 91 = 8, בדיוק ערך ההודעה."
+      },
+      {
+        "option": "2",
+        "correct": false,
+        "reason": "עבור σ=2 מתקבל 2^5 mod 91 = 32, בעוד שערך ההודעה הוא 8."
+      },
+      {
+        "option": "5",
+        "correct": false,
+        "reason": "עבור σ=5 מתקבל 5^5 mod 91 = 31, בעוד שערך ההודעה הוא 8."
+      },
+      {
+        "option": "6",
+        "correct": false,
+        "reason": "עבור σ=6 מתקבל 6^5 mod 91 = 41, בעוד שערך ההודעה הוא 8."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>באימות מחשבים σ^5 mod 91 ומשווים את התוצאה ל-8. אין צורך במפתח הפרטי או בחישוב d.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — 8</h4><p>עבור σ=8 מתקבל 8^5 mod 91 = 8, בדיוק ערך ההודעה.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — 2</h4><p>עבור σ=2 מתקבל 2^5 mod 91 = 32, בעוד שערך ההודעה הוא 8.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — 5</h4><p>עבור σ=5 מתקבל 5^5 mod 91 = 31, בעוד שערך ההודעה הוא 8.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — 6</h4><p>עבור σ=6 מתקבל 6^5 mod 91 = 41, בעוד שערך ההודעה הוא 8.</p></div></section>",
+    "topic": "RSA, מפתח ציבורי וחתימות",
+    "skill": "rsa-verify-numeric",
+    "parent_id": "P01",
+    "history_ids": [
+      "P01",
+      "Q113",
+      "Q175"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "19/10/2026",
+      "21/08/2025"
+    ],
+    "recent_b_dates": [
+      "21/08/2025"
+    ],
+    "skill_transitions": [],
+    "latest_a_skill": true,
+    "topic_transitions": 4,
+    "confidence": 62,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 69,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 3
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-03.html"
+  },
+  {
+    "id": "B2-04",
+    "title": "אימות חתימת RSA",
+    "stem": "ב-textbook RSA ללא hash, המפתח הפומבי הוא (n=143, e=7). עבור ההודעה m=42, איזו חתימה σ עוברת אימות?",
+    "options": [
+      "3",
+      "4",
+      "5",
+      "9"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "3",
+        "correct": true,
+        "reason": "עבור σ=3 מתקבל 3^7 mod 143 = 42, בדיוק ערך ההודעה."
+      },
+      {
+        "option": "4",
+        "correct": false,
+        "reason": "עבור σ=4 מתקבל 4^7 mod 143 = 82, בעוד שערך ההודעה הוא 42."
+      },
+      {
+        "option": "5",
+        "correct": false,
+        "reason": "עבור σ=5 מתקבל 5^7 mod 143 = 47, בעוד שערך ההודעה הוא 42."
+      },
+      {
+        "option": "9",
+        "correct": false,
+        "reason": "עבור σ=9 מתקבל 9^7 mod 143 = 48, בעוד שערך ההודעה הוא 42."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>באימות מחשבים σ^7 mod 143 ומשווים את התוצאה ל-42. אין צורך במפתח הפרטי או בחישוב d.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — 3</h4><p>עבור σ=3 מתקבל 3^7 mod 143 = 42, בדיוק ערך ההודעה.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — 4</h4><p>עבור σ=4 מתקבל 4^7 mod 143 = 82, בעוד שערך ההודעה הוא 42.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — 5</h4><p>עבור σ=5 מתקבל 5^7 mod 143 = 47, בעוד שערך ההודעה הוא 42.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — 9</h4><p>עבור σ=9 מתקבל 9^7 mod 143 = 48, בעוד שערך ההודעה הוא 42.</p></div></section>",
+    "topic": "RSA, מפתח ציבורי וחתימות",
+    "skill": "rsa-verify-numeric",
+    "parent_id": "P01",
+    "history_ids": [
+      "P01",
+      "Q113",
+      "Q175"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "19/10/2026",
+      "21/08/2025"
+    ],
+    "recent_b_dates": [
+      "21/08/2025"
+    ],
+    "skill_transitions": [],
+    "latest_a_skill": true,
+    "topic_transitions": 4,
+    "confidence": 62,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 69,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 4
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-04.html"
+  },
+  {
+    "id": "B2-05",
+    "title": "הצפנה בצופן Vigenère",
+    "stem": "מצפינים את MAPLE בצופן Vigenère עם המפתח SUN, לפי A=0, B=1, …, Z=25. מתחילים באות הראשונה של המפתח. מהו הצופן?",
+    "options": [
+      "EUCDY",
+      "UGCTK",
+      "ESHDW",
+      "GNHFR"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "EUCDY",
+        "correct": true,
+        "reason": "החיבור בעמדה i נותן (Pᵢ+Kᵢ) mod 26. לאחר המרה לאותיות מתקבל EUCDY."
+      },
+      {
+        "option": "UGCTK",
+        "correct": false,
+        "reason": "חיסור תווי המפתח מתאים לכיוון פענוח, בעוד שבשאלה התבקש להצפין."
+      },
+      {
+        "option": "ESHDW",
+        "correct": false,
+        "reason": "שימוש חוזר באות הראשונה בלבד הופך את כל ההזזות לזהות ומאבד את המחזור של המפתח."
+      },
+      {
+        "option": "GNHFR",
+        "correct": false,
+        "reason": "האפשרות מזיזה את נקודת ההתחלה לאות השנייה של המפתח, בניגוד ליישור שנקבע בשאלה."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>מרחיבים את המפתח עד לאורך ההודעה ומחברים מודולו 26 בכל עמדה. ערכי הטקסט הם [12, 0, 15, 11, 4] וערכי המפתח המורחב הם [18, 20, 13, 18, 20].</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — EUCDY</h4><p>החיבור בעמדה i נותן (Pᵢ+Kᵢ) mod 26. לאחר המרה לאותיות מתקבל EUCDY.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — UGCTK</h4><p>חיסור תווי המפתח מתאים לכיוון פענוח, בעוד שבשאלה התבקש להצפין.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — ESHDW</h4><p>שימוש חוזר באות הראשונה בלבד הופך את כל ההזזות לזהות ומאבד את המחזור של המפתח.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — GNHFR</h4><p>האפשרות מזיזה את נקודת ההתחלה לאות השנייה של המפתח, בניגוד ליישור שנקבע בשאלה.</p></div></section>",
+    "topic": "הצפנה סימטרית וצפנים קלאסיים",
+    "skill": "vigenere-encryption",
+    "parent_id": "P10",
+    "history_ids": [
+      "P10",
+      "Q173"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "19/10/2026"
+    ],
+    "recent_b_dates": [],
+    "skill_transitions": [],
+    "latest_a_skill": true,
+    "topic_transitions": 3,
+    "confidence": 70,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 74,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 5
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-05.html"
+  },
+  {
+    "id": "B2-06",
+    "title": "הצפנה בצופן Vigenère",
+    "stem": "מצפינים את VECTOR בצופן Vigenère עם המפתח MATH, לפי A=0, B=1, …, Z=25. מתחילים באות הראשונה של המפתח. מהו הצופן?",
+    "options": [
+      "HEVAAR",
+      "JEJMCR",
+      "HQOFAD",
+      "VXJFOK"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "HEVAAR",
+        "correct": true,
+        "reason": "החיבור בעמדה i נותן (Pᵢ+Kᵢ) mod 26. לאחר המרה לאותיות מתקבל HEVAAR."
+      },
+      {
+        "option": "JEJMCR",
+        "correct": false,
+        "reason": "חיסור תווי המפתח מתאים לכיוון פענוח, בעוד שבשאלה התבקש להצפין."
+      },
+      {
+        "option": "HQOFAD",
+        "correct": false,
+        "reason": "שימוש חוזר באות הראשונה בלבד הופך את כל ההזזות לזהות ומאבד את המחזור של המפתח."
+      },
+      {
+        "option": "VXJFOK",
+        "correct": false,
+        "reason": "האפשרות מזיזה את נקודת ההתחלה לאות השנייה של המפתח, בניגוד ליישור שנקבע בשאלה."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>מרחיבים את המפתח עד לאורך ההודעה ומחברים מודולו 26 בכל עמדה. ערכי הטקסט הם [21, 4, 2, 19, 14, 17] וערכי המפתח המורחב הם [12, 0, 19, 7, 12, 0].</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — HEVAAR</h4><p>החיבור בעמדה i נותן (Pᵢ+Kᵢ) mod 26. לאחר המרה לאותיות מתקבל HEVAAR.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — JEJMCR</h4><p>חיסור תווי המפתח מתאים לכיוון פענוח, בעוד שבשאלה התבקש להצפין.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — HQOFAD</h4><p>שימוש חוזר באות הראשונה בלבד הופך את כל ההזזות לזהות ומאבד את המחזור של המפתח.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — VXJFOK</h4><p>האפשרות מזיזה את נקודת ההתחלה לאות השנייה של המפתח, בניגוד ליישור שנקבע בשאלה.</p></div></section>",
+    "topic": "הצפנה סימטרית וצפנים קלאסיים",
+    "skill": "vigenere-encryption",
+    "parent_id": "P10",
+    "history_ids": [
+      "P10",
+      "Q173"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "19/10/2026"
+    ],
+    "recent_b_dates": [],
+    "skill_transitions": [],
+    "latest_a_skill": true,
+    "topic_transitions": 3,
+    "confidence": 70,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 74,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 6
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-06.html"
+  },
+  {
+    "id": "B2-07",
+    "title": "הצפנה בצופן Vigenère",
+    "stem": "מצפינים את BINARY בצופן Vigenère עם המפתח CODE, לפי A=0, B=1, …, Z=25. מתחילים באות הראשונה של המפתח. מהו הצופן?",
+    "options": [
+      "DWQETM",
+      "ZUKWPK",
+      "DKPCTA",
+      "PLRCFB"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "DWQETM",
+        "correct": true,
+        "reason": "החיבור בעמדה i נותן (Pᵢ+Kᵢ) mod 26. לאחר המרה לאותיות מתקבל DWQETM."
+      },
+      {
+        "option": "ZUKWPK",
+        "correct": false,
+        "reason": "חיסור תווי המפתח מתאים לכיוון פענוח, בעוד שבשאלה התבקש להצפין."
+      },
+      {
+        "option": "DKPCTA",
+        "correct": false,
+        "reason": "שימוש חוזר באות הראשונה בלבד הופך את כל ההזזות לזהות ומאבד את המחזור של המפתח."
+      },
+      {
+        "option": "PLRCFB",
+        "correct": false,
+        "reason": "האפשרות מזיזה את נקודת ההתחלה לאות השנייה של המפתח, בניגוד ליישור שנקבע בשאלה."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>מרחיבים את המפתח עד לאורך ההודעה ומחברים מודולו 26 בכל עמדה. ערכי הטקסט הם [1, 8, 13, 0, 17, 24] וערכי המפתח המורחב הם [2, 14, 3, 4, 2, 14].</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — DWQETM</h4><p>החיבור בעמדה i נותן (Pᵢ+Kᵢ) mod 26. לאחר המרה לאותיות מתקבל DWQETM.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — ZUKWPK</h4><p>חיסור תווי המפתח מתאים לכיוון פענוח, בעוד שבשאלה התבקש להצפין.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — DKPCTA</h4><p>שימוש חוזר באות הראשונה בלבד הופך את כל ההזזות לזהות ומאבד את המחזור של המפתח.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — PLRCFB</h4><p>האפשרות מזיזה את נקודת ההתחלה לאות השנייה של המפתח, בניגוד ליישור שנקבע בשאלה.</p></div></section>",
+    "topic": "הצפנה סימטרית וצפנים קלאסיים",
+    "skill": "vigenere-encryption",
+    "parent_id": "P10",
+    "history_ids": [
+      "P10",
+      "Q173"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "19/10/2026"
+    ],
+    "recent_b_dates": [],
+    "skill_transitions": [],
+    "latest_a_skill": true,
+    "topic_transitions": 3,
+    "confidence": 70,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 74,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 7
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-07.html"
+  },
+  {
+    "id": "B2-08",
+    "title": "הצפנה בצופן Vigenère",
+    "stem": "מצפינים את CIPHER בצופן Vigenère עם המפתח DOG, לפי A=0, B=1, …, Z=25. מתחילים באות הראשונה של המפתח. מהו הצופן?",
+    "options": [
+      "FWVKSX",
+      "ZUJEQL",
+      "FLSKHU",
+      "QOSVKU"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "FWVKSX",
+        "correct": true,
+        "reason": "החיבור בעמדה i נותן (Pᵢ+Kᵢ) mod 26. לאחר המרה לאותיות מתקבל FWVKSX."
+      },
+      {
+        "option": "ZUJEQL",
+        "correct": false,
+        "reason": "חיסור תווי המפתח מתאים לכיוון פענוח, בעוד שבשאלה התבקש להצפין."
+      },
+      {
+        "option": "FLSKHU",
+        "correct": false,
+        "reason": "שימוש חוזר באות הראשונה בלבד הופך את כל ההזזות לזהות ומאבד את המחזור של המפתח."
+      },
+      {
+        "option": "QOSVKU",
+        "correct": false,
+        "reason": "האפשרות מזיזה את נקודת ההתחלה לאות השנייה של המפתח, בניגוד ליישור שנקבע בשאלה."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>מרחיבים את המפתח עד לאורך ההודעה ומחברים מודולו 26 בכל עמדה. ערכי הטקסט הם [2, 8, 15, 7, 4, 17] וערכי המפתח המורחב הם [3, 14, 6, 3, 14, 6].</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — FWVKSX</h4><p>החיבור בעמדה i נותן (Pᵢ+Kᵢ) mod 26. לאחר המרה לאותיות מתקבל FWVKSX.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — ZUJEQL</h4><p>חיסור תווי המפתח מתאים לכיוון פענוח, בעוד שבשאלה התבקש להצפין.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — FLSKHU</h4><p>שימוש חוזר באות הראשונה בלבד הופך את כל ההזזות לזהות ומאבד את המחזור של המפתח.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — QOSVKU</h4><p>האפשרות מזיזה את נקודת ההתחלה לאות השנייה של המפתח, בניגוד ליישור שנקבע בשאלה.</p></div></section>",
+    "topic": "הצפנה סימטרית וצפנים קלאסיים",
+    "skill": "vigenere-encryption",
+    "parent_id": "P10",
+    "history_ids": [
+      "P10",
+      "Q173"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "19/10/2026"
+    ],
+    "recent_b_dates": [],
+    "skill_transitions": [],
+    "latest_a_skill": true,
+    "topic_transitions": 3,
+    "confidence": 70,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 74,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 8
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-08.html"
+  },
+  {
+    "id": "B2-09",
+    "title": "הצפנה בצופן Vigenère",
+    "stem": "מצפינים את MATRIX בצופן Vigenère עם המפתח KEYS, לפי A=0, B=1, …, Z=25. מתחילים באות הראשונה של המפתח. מהו הצופן?",
+    "options": [
+      "WERJSB",
+      "CWVZYT",
+      "WKDBSH",
+      "QYLBMV"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "WERJSB",
+        "correct": true,
+        "reason": "החיבור בעמדה i נותן (Pᵢ+Kᵢ) mod 26. לאחר המרה לאותיות מתקבל WERJSB."
+      },
+      {
+        "option": "CWVZYT",
+        "correct": false,
+        "reason": "חיסור תווי המפתח מתאים לכיוון פענוח, בעוד שבשאלה התבקש להצפין."
+      },
+      {
+        "option": "WKDBSH",
+        "correct": false,
+        "reason": "שימוש חוזר באות הראשונה בלבד הופך את כל ההזזות לזהות ומאבד את המחזור של המפתח."
+      },
+      {
+        "option": "QYLBMV",
+        "correct": false,
+        "reason": "האפשרות מזיזה את נקודת ההתחלה לאות השנייה של המפתח, בניגוד ליישור שנקבע בשאלה."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>מרחיבים את המפתח עד לאורך ההודעה ומחברים מודולו 26 בכל עמדה. ערכי הטקסט הם [12, 0, 19, 17, 8, 23] וערכי המפתח המורחב הם [10, 4, 24, 18, 10, 4].</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — WERJSB</h4><p>החיבור בעמדה i נותן (Pᵢ+Kᵢ) mod 26. לאחר המרה לאותיות מתקבל WERJSB.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — CWVZYT</h4><p>חיסור תווי המפתח מתאים לכיוון פענוח, בעוד שבשאלה התבקש להצפין.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — WKDBSH</h4><p>שימוש חוזר באות הראשונה בלבד הופך את כל ההזזות לזהות ומאבד את המחזור של המפתח.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — QYLBMV</h4><p>האפשרות מזיזה את נקודת ההתחלה לאות השנייה של המפתח, בניגוד ליישור שנקבע בשאלה.</p></div></section>",
+    "topic": "הצפנה סימטרית וצפנים קלאסיים",
+    "skill": "vigenere-encryption",
+    "parent_id": "P10",
+    "history_ids": [
+      "P10",
+      "Q173"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "19/10/2026"
+    ],
+    "recent_b_dates": [],
+    "skill_transitions": [],
+    "latest_a_skill": true,
+    "topic_transitions": 3,
+    "confidence": 70,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 74,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 9
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-09.html"
+  },
+  {
+    "id": "B2-10",
+    "title": "פלט תשלום ופלט עודף",
+    "stem": "בטרנזקציית ביטקוין רגילה נצרכים שני UTXO בסך 240 ו-170 סאטושי. התשלום הוא 300, העמלה 6, וכל העודף חוזר לשולח. מהו סכום פלט העודף?",
+    "options": [
+      "104 סאטושי",
+      "110 סאטושי",
+      "116 סאטושי",
+      "404 סאטושי"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "104 סאטושי",
+        "correct": true,
+        "reason": "התשלום והעודף מסתכמים ל-404, כך שהפרש הקלטים והפלטים הוא העמלה המבוקשת."
+      },
+      {
+        "option": "110 סאטושי",
+        "correct": false,
+        "reason": "החישוב מפחית את התשלום אך משאיר את העמלה בעודף. הפלטים היו צורכים את מלוא הקלטים."
+      },
+      {
+        "option": "116 סאטושי",
+        "correct": false,
+        "reason": "החישוב מוסיף את העמלה לעודף במקום לשמור אותה כהפרש. במקרה זה סכום הפלטים היה אף גדול מסכום הקלטים."
+      },
+      {
+        "option": "404 סאטושי",
+        "correct": false,
+        "reason": "זהו סכום שני הפלטים, כולל פלט התשלום למקבל. נשאל רק על פלט העודף."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>סכום הקלטים הוא 410. סכום הפלטים הוא 404. מפלטים אלה 300 מיועדים למקבל, ולכן העודף הוא 404−300=104.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — 104 סאטושי</h4><p>התשלום והעודף מסתכמים ל-404, כך שהפרש הקלטים והפלטים הוא העמלה המבוקשת.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — 110 סאטושי</h4><p>החישוב מפחית את התשלום אך משאיר את העמלה בעודף. הפלטים היו צורכים את מלוא הקלטים.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — 116 סאטושי</h4><p>החישוב מוסיף את העמלה לעודף במקום לשמור אותה כהפרש. במקרה זה סכום הפלטים היה אף גדול מסכום הקלטים.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — 404 סאטושי</h4><p>זהו סכום שני הפלטים, כולל פלט התשלום למקבל. נשאל רק על פלט העודף.</p></div></section>",
+    "topic": "ביטקוין ובלוקצ׳יין",
+    "skill": "utxo-change",
+    "parent_id": "P03",
+    "history_ids": [
+      "P03",
+      "Q176"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "19/10/2026"
+    ],
+    "recent_b_dates": [],
+    "skill_transitions": [],
+    "latest_a_skill": true,
+    "topic_transitions": 6,
+    "confidence": 74,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 78,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 10
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-10.html"
+  },
+  {
+    "id": "B2-11",
+    "title": "פלט תשלום ופלט עודף",
+    "stem": "בטרנזקציית ביטקוין רגילה נצרכים שני UTXO בסך 350 ו-280 סאטושי. התשלום הוא 500, העמלה 12, וכל העודף חוזר לשולח. מהו סכום פלט העודף?",
+    "options": [
+      "118 סאטושי",
+      "130 סאטושי",
+      "142 סאטושי",
+      "618 סאטושי"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "118 סאטושי",
+        "correct": true,
+        "reason": "התשלום והעודף מסתכמים ל-618, כך שהפרש הקלטים והפלטים הוא העמלה המבוקשת."
+      },
+      {
+        "option": "130 סאטושי",
+        "correct": false,
+        "reason": "החישוב מפחית את התשלום אך משאיר את העמלה בעודף. הפלטים היו צורכים את מלוא הקלטים."
+      },
+      {
+        "option": "142 סאטושי",
+        "correct": false,
+        "reason": "החישוב מוסיף את העמלה לעודף במקום לשמור אותה כהפרש. במקרה זה סכום הפלטים היה אף גדול מסכום הקלטים."
+      },
+      {
+        "option": "618 סאטושי",
+        "correct": false,
+        "reason": "זהו סכום שני הפלטים, כולל פלט התשלום למקבל. נשאל רק על פלט העודף."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>סכום הקלטים הוא 630. סכום הפלטים הוא 618. מפלטים אלה 500 מיועדים למקבל, ולכן העודף הוא 618−500=118.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — 118 סאטושי</h4><p>התשלום והעודף מסתכמים ל-618, כך שהפרש הקלטים והפלטים הוא העמלה המבוקשת.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — 130 סאטושי</h4><p>החישוב מפחית את התשלום אך משאיר את העמלה בעודף. הפלטים היו צורכים את מלוא הקלטים.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — 142 סאטושי</h4><p>החישוב מוסיף את העמלה לעודף במקום לשמור אותה כהפרש. במקרה זה סכום הפלטים היה אף גדול מסכום הקלטים.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — 618 סאטושי</h4><p>זהו סכום שני הפלטים, כולל פלט התשלום למקבל. נשאל רק על פלט העודף.</p></div></section>",
+    "topic": "ביטקוין ובלוקצ׳יין",
+    "skill": "utxo-change",
+    "parent_id": "P03",
+    "history_ids": [
+      "P03",
+      "Q176"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "19/10/2026"
+    ],
+    "recent_b_dates": [],
+    "skill_transitions": [],
+    "latest_a_skill": true,
+    "topic_transitions": 6,
+    "confidence": 74,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 78,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 11
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-11.html"
+  },
+  {
+    "id": "B2-12",
+    "title": "פלט תשלום ופלט עודף",
+    "stem": "בטרנזקציית ביטקוין רגילה נצרכים שני UTXO בסך 200 ו-125 סאטושי. התשלום הוא 280, העמלה 5, וכל העודף חוזר לשולח. מהו סכום פלט העודף?",
+    "options": [
+      "40 סאטושי",
+      "45 סאטושי",
+      "50 סאטושי",
+      "320 סאטושי"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "40 סאטושי",
+        "correct": true,
+        "reason": "התשלום והעודף מסתכמים ל-320, כך שהפרש הקלטים והפלטים הוא העמלה המבוקשת."
+      },
+      {
+        "option": "45 סאטושי",
+        "correct": false,
+        "reason": "החישוב מפחית את התשלום אך משאיר את העמלה בעודף. הפלטים היו צורכים את מלוא הקלטים."
+      },
+      {
+        "option": "50 סאטושי",
+        "correct": false,
+        "reason": "החישוב מוסיף את העמלה לעודף במקום לשמור אותה כהפרש. במקרה זה סכום הפלטים היה אף גדול מסכום הקלטים."
+      },
+      {
+        "option": "320 סאטושי",
+        "correct": false,
+        "reason": "זהו סכום שני הפלטים, כולל פלט התשלום למקבל. נשאל רק על פלט העודף."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>סכום הקלטים הוא 325. סכום הפלטים הוא 320. מפלטים אלה 280 מיועדים למקבל, ולכן העודף הוא 320−280=40.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — 40 סאטושי</h4><p>התשלום והעודף מסתכמים ל-320, כך שהפרש הקלטים והפלטים הוא העמלה המבוקשת.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — 45 סאטושי</h4><p>החישוב מפחית את התשלום אך משאיר את העמלה בעודף. הפלטים היו צורכים את מלוא הקלטים.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — 50 סאטושי</h4><p>החישוב מוסיף את העמלה לעודף במקום לשמור אותה כהפרש. במקרה זה סכום הפלטים היה אף גדול מסכום הקלטים.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — 320 סאטושי</h4><p>זהו סכום שני הפלטים, כולל פלט התשלום למקבל. נשאל רק על פלט העודף.</p></div></section>",
+    "topic": "ביטקוין ובלוקצ׳יין",
+    "skill": "utxo-change",
+    "parent_id": "P03",
+    "history_ids": [
+      "P03",
+      "Q176"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "19/10/2026"
+    ],
+    "recent_b_dates": [],
+    "skill_transitions": [],
+    "latest_a_skill": true,
+    "topic_transitions": 6,
+    "confidence": 74,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 78,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 12
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-12.html"
+  },
+  {
+    "id": "B2-13",
+    "title": "פלט תשלום ופלט עודף",
+    "stem": "בטרנזקציית ביטקוין רגילה נצרכים שני UTXO בסך 480 ו-260 סאטושי. התשלום הוא 700, העמלה 15, וכל העודף חוזר לשולח. מהו סכום פלט העודף?",
+    "options": [
+      "25 סאטושי",
+      "40 סאטושי",
+      "55 סאטושי",
+      "725 סאטושי"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "25 סאטושי",
+        "correct": true,
+        "reason": "התשלום והעודף מסתכמים ל-725, כך שהפרש הקלטים והפלטים הוא העמלה המבוקשת."
+      },
+      {
+        "option": "40 סאטושי",
+        "correct": false,
+        "reason": "החישוב מפחית את התשלום אך משאיר את העמלה בעודף. הפלטים היו צורכים את מלוא הקלטים."
+      },
+      {
+        "option": "55 סאטושי",
+        "correct": false,
+        "reason": "החישוב מוסיף את העמלה לעודף במקום לשמור אותה כהפרש. במקרה זה סכום הפלטים היה אף גדול מסכום הקלטים."
+      },
+      {
+        "option": "725 סאטושי",
+        "correct": false,
+        "reason": "זהו סכום שני הפלטים, כולל פלט התשלום למקבל. נשאל רק על פלט העודף."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>סכום הקלטים הוא 740. סכום הפלטים הוא 725. מפלטים אלה 700 מיועדים למקבל, ולכן העודף הוא 725−700=25.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — 25 סאטושי</h4><p>התשלום והעודף מסתכמים ל-725, כך שהפרש הקלטים והפלטים הוא העמלה המבוקשת.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — 40 סאטושי</h4><p>החישוב מפחית את התשלום אך משאיר את העמלה בעודף. הפלטים היו צורכים את מלוא הקלטים.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — 55 סאטושי</h4><p>החישוב מוסיף את העמלה לעודף במקום לשמור אותה כהפרש. במקרה זה סכום הפלטים היה אף גדול מסכום הקלטים.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — 725 סאטושי</h4><p>זהו סכום שני הפלטים, כולל פלט התשלום למקבל. נשאל רק על פלט העודף.</p></div></section>",
+    "topic": "ביטקוין ובלוקצ׳יין",
+    "skill": "utxo-change",
+    "parent_id": "P03",
+    "history_ids": [
+      "P03",
+      "Q176"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "19/10/2026"
+    ],
+    "recent_b_dates": [],
+    "skill_transitions": [],
+    "latest_a_skill": true,
+    "topic_transitions": 6,
+    "confidence": 74,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 78,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 13
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-13.html"
+  },
+  {
+    "id": "B2-14",
+    "title": "פלט תשלום ופלט עודף",
+    "stem": "בטרנזקציית ביטקוין רגילה נצרכים שני UTXO בסך 310 ו-470 סאטושי. התשלום הוא 600, העמלה 9, וכל העודף חוזר לשולח. מהו סכום פלט העודף?",
+    "options": [
+      "171 סאטושי",
+      "180 סאטושי",
+      "189 סאטושי",
+      "771 סאטושי"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "171 סאטושי",
+        "correct": true,
+        "reason": "התשלום והעודף מסתכמים ל-771, כך שהפרש הקלטים והפלטים הוא העמלה המבוקשת."
+      },
+      {
+        "option": "180 סאטושי",
+        "correct": false,
+        "reason": "החישוב מפחית את התשלום אך משאיר את העמלה בעודף. הפלטים היו צורכים את מלוא הקלטים."
+      },
+      {
+        "option": "189 סאטושי",
+        "correct": false,
+        "reason": "החישוב מוסיף את העמלה לעודף במקום לשמור אותה כהפרש. במקרה זה סכום הפלטים היה אף גדול מסכום הקלטים."
+      },
+      {
+        "option": "771 סאטושי",
+        "correct": false,
+        "reason": "זהו סכום שני הפלטים, כולל פלט התשלום למקבל. נשאל רק על פלט העודף."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>סכום הקלטים הוא 780. סכום הפלטים הוא 771. מפלטים אלה 600 מיועדים למקבל, ולכן העודף הוא 771−600=171.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — 171 סאטושי</h4><p>התשלום והעודף מסתכמים ל-771, כך שהפרש הקלטים והפלטים הוא העמלה המבוקשת.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — 180 סאטושי</h4><p>החישוב מפחית את התשלום אך משאיר את העמלה בעודף. הפלטים היו צורכים את מלוא הקלטים.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — 189 סאטושי</h4><p>החישוב מוסיף את העמלה לעודף במקום לשמור אותה כהפרש. במקרה זה סכום הפלטים היה אף גדול מסכום הקלטים.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — 771 סאטושי</h4><p>זהו סכום שני הפלטים, כולל פלט התשלום למקבל. נשאל רק על פלט העודף.</p></div></section>",
+    "topic": "ביטקוין ובלוקצ׳יין",
+    "skill": "utxo-change",
+    "parent_id": "P03",
+    "history_ids": [
+      "P03",
+      "Q176"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "19/10/2026"
+    ],
+    "recent_b_dates": [],
+    "skill_transitions": [],
+    "latest_a_skill": true,
+    "topic_transitions": 6,
+    "confidence": 74,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 78,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 14
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-14.html"
+  },
+  {
+    "id": "B2-15",
+    "title": "הוכחת הכללה בעץ Merkle",
+    "stem": "עץ Merkle בינארי מושלם מכיל 32 עלים ממוספרים מ-0. המאמת מכיר את שורש העץ ואת הנתון בעלה 0. כמה ערכי hash של צמתים אחים צריך למסור כדי לאמת הכללה במסלול הרגיל?",
+    "options": [
+      "5",
+      "6",
+      "16",
+      "31"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "5",
+        "correct": true,
+        "reason": "צריך אח אחד לכל אחת מ-5 העליות בעץ."
+      },
+      {
+        "option": "6",
+        "correct": false,
+        "reason": "ספירה זו כוללת ערך נוסף כגון העלה או השורש. העלה ניתן לחישוב והשורש כבר ידוע."
+      },
+      {
+        "option": "16",
+        "correct": false,
+        "reason": "זה מספר זוגות העלים בשכבה התחתונה. נתיב הוכחה צריך רק את האח בענף שבו הוא נמצא בכל רמה."
+      },
+      {
+        "option": "31",
+        "correct": false,
+        "reason": "זה מספר העלים האחרים. אפשר לייצג כל תת-עץ אח בערך hash אחד במקום למסור את כל עליו."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>מספר הרמות מהעלה לשורש הוא log₂(32)=5. בכל מעבר מחברים את ערך הצומת שכבר חושב ל-hash של האח בסדר שנקבע לפי המיקום.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — 5</h4><p>צריך אח אחד לכל אחת מ-5 העליות בעץ.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — 6</h4><p>ספירה זו כוללת ערך נוסף כגון העלה או השורש. העלה ניתן לחישוב והשורש כבר ידוע.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — 16</h4><p>זה מספר זוגות העלים בשכבה התחתונה. נתיב הוכחה צריך רק את האח בענף שבו הוא נמצא בכל רמה.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — 31</h4><p>זה מספר העלים האחרים. אפשר לייצג כל תת-עץ אח בערך hash אחד במקום למסור את כל עליו.</p></div></section>",
+    "topic": "ביטקוין ובלוקצ׳יין",
+    "skill": "merkle",
+    "parent_id": "P14",
+    "history_ids": [
+      "P14",
+      "Q106",
+      "Q152",
+      "Q159",
+      "Q165"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "09/08/2026",
+      "12/07/2026",
+      "21/07/2025",
+      "30/11/2025"
+    ],
+    "recent_b_dates": [
+      "09/08/2026"
+    ],
+    "skill_transitions": [
+      [
+        "12/07/2026",
+        "09/08/2026"
+      ]
+    ],
+    "latest_a_skill": false,
+    "topic_transitions": 6,
+    "confidence": 74,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 82,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 15
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-15.html"
+  },
+  {
+    "id": "B2-16",
+    "title": "הוכחת הכללה בעץ Merkle",
+    "stem": "עץ Merkle בינארי מושלם מכיל 128 עלים ממוספרים מ-0. המאמת מכיר את שורש העץ ואת הנתון בעלה 47. כמה ערכי hash של צמתים אחים צריך למסור כדי לאמת הכללה במסלול הרגיל?",
+    "options": [
+      "7",
+      "8",
+      "64",
+      "127"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "7",
+        "correct": true,
+        "reason": "צריך אח אחד לכל אחת מ-7 העליות בעץ."
+      },
+      {
+        "option": "8",
+        "correct": false,
+        "reason": "ספירה זו כוללת ערך נוסף כגון העלה או השורש. העלה ניתן לחישוב והשורש כבר ידוע."
+      },
+      {
+        "option": "64",
+        "correct": false,
+        "reason": "זה מספר זוגות העלים בשכבה התחתונה. נתיב הוכחה צריך רק את האח בענף שבו הוא נמצא בכל רמה."
+      },
+      {
+        "option": "127",
+        "correct": false,
+        "reason": "זה מספר העלים האחרים. אפשר לייצג כל תת-עץ אח בערך hash אחד במקום למסור את כל עליו."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>מספר הרמות מהעלה לשורש הוא log₂(128)=7. בכל מעבר מחברים את ערך הצומת שכבר חושב ל-hash של האח בסדר שנקבע לפי המיקום.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — 7</h4><p>צריך אח אחד לכל אחת מ-7 העליות בעץ.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — 8</h4><p>ספירה זו כוללת ערך נוסף כגון העלה או השורש. העלה ניתן לחישוב והשורש כבר ידוע.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — 64</h4><p>זה מספר זוגות העלים בשכבה התחתונה. נתיב הוכחה צריך רק את האח בענף שבו הוא נמצא בכל רמה.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — 127</h4><p>זה מספר העלים האחרים. אפשר לייצג כל תת-עץ אח בערך hash אחד במקום למסור את כל עליו.</p></div></section>",
+    "topic": "ביטקוין ובלוקצ׳יין",
+    "skill": "merkle",
+    "parent_id": "P14",
+    "history_ids": [
+      "P14",
+      "Q106",
+      "Q152",
+      "Q159",
+      "Q165"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "09/08/2026",
+      "12/07/2026",
+      "21/07/2025",
+      "30/11/2025"
+    ],
+    "recent_b_dates": [
+      "09/08/2026"
+    ],
+    "skill_transitions": [
+      [
+        "12/07/2026",
+        "09/08/2026"
+      ]
+    ],
+    "latest_a_skill": false,
+    "topic_transitions": 6,
+    "confidence": 74,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 82,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 16
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-16.html"
+  },
+  {
+    "id": "B2-17",
+    "title": "הוכחת הכללה בעץ Merkle",
+    "stem": "עץ Merkle בינארי מושלם מכיל 256 עלים ממוספרים מ-0. המאמת מכיר את שורש העץ ואת הנתון בעלה 88. כמה ערכי hash של צמתים אחים צריך למסור כדי לאמת הכללה במסלול הרגיל?",
+    "options": [
+      "8",
+      "9",
+      "128",
+      "255"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "8",
+        "correct": true,
+        "reason": "צריך אח אחד לכל אחת מ-8 העליות בעץ."
+      },
+      {
+        "option": "9",
+        "correct": false,
+        "reason": "ספירה זו כוללת ערך נוסף כגון העלה או השורש. העלה ניתן לחישוב והשורש כבר ידוע."
+      },
+      {
+        "option": "128",
+        "correct": false,
+        "reason": "זה מספר זוגות העלים בשכבה התחתונה. נתיב הוכחה צריך רק את האח בענף שבו הוא נמצא בכל רמה."
+      },
+      {
+        "option": "255",
+        "correct": false,
+        "reason": "זה מספר העלים האחרים. אפשר לייצג כל תת-עץ אח בערך hash אחד במקום למסור את כל עליו."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>מספר הרמות מהעלה לשורש הוא log₂(256)=8. בכל מעבר מחברים את ערך הצומת שכבר חושב ל-hash של האח בסדר שנקבע לפי המיקום.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — 8</h4><p>צריך אח אחד לכל אחת מ-8 העליות בעץ.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — 9</h4><p>ספירה זו כוללת ערך נוסף כגון העלה או השורש. העלה ניתן לחישוב והשורש כבר ידוע.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — 128</h4><p>זה מספר זוגות העלים בשכבה התחתונה. נתיב הוכחה צריך רק את האח בענף שבו הוא נמצא בכל רמה.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — 255</h4><p>זה מספר העלים האחרים. אפשר לייצג כל תת-עץ אח בערך hash אחד במקום למסור את כל עליו.</p></div></section>",
+    "topic": "ביטקוין ובלוקצ׳יין",
+    "skill": "merkle",
+    "parent_id": "P14",
+    "history_ids": [
+      "P14",
+      "Q106",
+      "Q152",
+      "Q159",
+      "Q165"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "09/08/2026",
+      "12/07/2026",
+      "21/07/2025",
+      "30/11/2025"
+    ],
+    "recent_b_dates": [
+      "09/08/2026"
+    ],
+    "skill_transitions": [
+      [
+        "12/07/2026",
+        "09/08/2026"
+      ]
+    ],
+    "latest_a_skill": false,
+    "topic_transitions": 6,
+    "confidence": 74,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 82,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 17
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-17.html"
+  },
+  {
+    "id": "B2-18",
+    "title": "הוכחת הכללה בעץ Merkle",
+    "stem": "עץ Merkle בינארי מושלם מכיל 4096 עלים ממוספרים מ-0. המאמת מכיר את שורש העץ ואת הנתון בעלה 109. כמה ערכי hash של צמתים אחים צריך למסור כדי לאמת הכללה במסלול הרגיל?",
+    "options": [
+      "12",
+      "13",
+      "2048",
+      "4095"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "12",
+        "correct": true,
+        "reason": "צריך אח אחד לכל אחת מ-12 העליות בעץ."
+      },
+      {
+        "option": "13",
+        "correct": false,
+        "reason": "ספירה זו כוללת ערך נוסף כגון העלה או השורש. העלה ניתן לחישוב והשורש כבר ידוע."
+      },
+      {
+        "option": "2048",
+        "correct": false,
+        "reason": "זה מספר זוגות העלים בשכבה התחתונה. נתיב הוכחה צריך רק את האח בענף שבו הוא נמצא בכל רמה."
+      },
+      {
+        "option": "4095",
+        "correct": false,
+        "reason": "זה מספר העלים האחרים. אפשר לייצג כל תת-עץ אח בערך hash אחד במקום למסור את כל עליו."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>מספר הרמות מהעלה לשורש הוא log₂(4096)=12. בכל מעבר מחברים את ערך הצומת שכבר חושב ל-hash של האח בסדר שנקבע לפי המיקום.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — 12</h4><p>צריך אח אחד לכל אחת מ-12 העליות בעץ.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — 13</h4><p>ספירה זו כוללת ערך נוסף כגון העלה או השורש. העלה ניתן לחישוב והשורש כבר ידוע.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — 2048</h4><p>זה מספר זוגות העלים בשכבה התחתונה. נתיב הוכחה צריך רק את האח בענף שבו הוא נמצא בכל רמה.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — 4095</h4><p>זה מספר העלים האחרים. אפשר לייצג כל תת-עץ אח בערך hash אחד במקום למסור את כל עליו.</p></div></section>",
+    "topic": "ביטקוין ובלוקצ׳יין",
+    "skill": "merkle",
+    "parent_id": "P14",
+    "history_ids": [
+      "P14",
+      "Q106",
+      "Q152",
+      "Q159",
+      "Q165"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "09/08/2026",
+      "12/07/2026",
+      "21/07/2025",
+      "30/11/2025"
+    ],
+    "recent_b_dates": [
+      "09/08/2026"
+    ],
+    "skill_transitions": [
+      [
+        "12/07/2026",
+        "09/08/2026"
+      ]
+    ],
+    "latest_a_skill": false,
+    "topic_transitions": 6,
+    "confidence": 74,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 82,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 18
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-18.html"
+  },
+  {
+    "id": "B2-19",
+    "title": "זיהוי התנגשות ב-hash צעצוע",
+    "stem": "נתונה פונקציית הגיבוב h(x,y)=(2x+y) mod 11. איזו חלופה מציגה שני קלטים שונים עם אותו פלט?",
+    "options": [
+      "(2, 5) ו-(3, 3)",
+      "(2, 5) ו-(3, 4)",
+      "(2, 5) ו-(2, 6)",
+      "(2, 5) ו-(1, 5)"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "(2, 5) ו-(3, 3)",
+        "correct": true,
+        "reason": "ערך הגיבוב של (2, 5) הוא 9 ושל (3, 3) הוא 9. הקלטים שונים והפלטים זהים."
+      },
+      {
+        "option": "(2, 5) ו-(3, 4)",
+        "correct": false,
+        "reason": "ערך הגיבוב של (2, 5) הוא 9 ושל (3, 4) הוא 10. ערכי הפלט שונים ולכן זו אינה התנגשות."
+      },
+      {
+        "option": "(2, 5) ו-(2, 6)",
+        "correct": false,
+        "reason": "ערך הגיבוב של (2, 5) הוא 9 ושל (2, 6) הוא 10. ערכי הפלט שונים ולכן זו אינה התנגשות."
+      },
+      {
+        "option": "(2, 5) ו-(1, 5)",
+        "correct": false,
+        "reason": "ערך הגיבוב של (2, 5) הוא 9 ושל (1, 5) הוא 7. ערכי הפלט שונים ולכן זו אינה התנגשות."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>התנגשות דורשת שוויון בפלטים עבור קלטים שונים. הזזת x ב-1 והפחתת 2 מ-y משאירות את הסכום 2x+y קבוע. שוויון כזה נשמר גם אחרי השארית.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — (2, 5) ו-(3, 3)</h4><p>ערך הגיבוב של (2, 5) הוא 9 ושל (3, 3) הוא 9. הקלטים שונים והפלטים זהים.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — (2, 5) ו-(3, 4)</h4><p>ערך הגיבוב של (2, 5) הוא 9 ושל (3, 4) הוא 10. ערכי הפלט שונים ולכן זו אינה התנגשות.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — (2, 5) ו-(2, 6)</h4><p>ערך הגיבוב של (2, 5) הוא 9 ושל (2, 6) הוא 10. ערכי הפלט שונים ולכן זו אינה התנגשות.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — (2, 5) ו-(1, 5)</h4><p>ערך הגיבוב של (2, 5) הוא 9 ושל (1, 5) הוא 7. ערכי הפלט שונים ולכן זו אינה התנגשות.</p></div></section>",
+    "topic": "Hash, MAC וסיסמאות",
+    "skill": "collision",
+    "parent_id": "P50",
+    "history_ids": [
+      "P50",
+      "Q150",
+      "Q182"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "19/10/2026",
+      "30/11/2025"
+    ],
+    "recent_b_dates": [],
+    "skill_transitions": [],
+    "latest_a_skill": true,
+    "topic_transitions": 4,
+    "confidence": 63,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 68,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 19
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-19.html"
+  },
+  {
+    "id": "B2-20",
+    "title": "זיהוי התנגשות ב-hash צעצוע",
+    "stem": "נתונה פונקציית הגיבוב h(x,y)=(3x+y) mod 13. איזו חלופה מציגה שני קלטים שונים עם אותו פלט?",
+    "options": [
+      "(3, 6) ו-(4, 3)",
+      "(3, 6) ו-(4, 4)",
+      "(3, 6) ו-(3, 7)",
+      "(3, 6) ו-(2, 7)"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "(3, 6) ו-(4, 3)",
+        "correct": true,
+        "reason": "ערך הגיבוב של (3, 6) הוא 2 ושל (4, 3) הוא 2. הקלטים שונים והפלטים זהים."
+      },
+      {
+        "option": "(3, 6) ו-(4, 4)",
+        "correct": false,
+        "reason": "ערך הגיבוב של (3, 6) הוא 2 ושל (4, 4) הוא 3. ערכי הפלט שונים ולכן זו אינה התנגשות."
+      },
+      {
+        "option": "(3, 6) ו-(3, 7)",
+        "correct": false,
+        "reason": "ערך הגיבוב של (3, 6) הוא 2 ושל (3, 7) הוא 3. ערכי הפלט שונים ולכן זו אינה התנגשות."
+      },
+      {
+        "option": "(3, 6) ו-(2, 7)",
+        "correct": false,
+        "reason": "ערך הגיבוב של (3, 6) הוא 2 ושל (2, 7) הוא 0. ערכי הפלט שונים ולכן זו אינה התנגשות."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>התנגשות דורשת שוויון בפלטים עבור קלטים שונים. הזזת x ב-1 והפחתת 3 מ-y משאירות את הסכום 3x+y קבוע. שוויון כזה נשמר גם אחרי השארית.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — (3, 6) ו-(4, 3)</h4><p>ערך הגיבוב של (3, 6) הוא 2 ושל (4, 3) הוא 2. הקלטים שונים והפלטים זהים.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — (3, 6) ו-(4, 4)</h4><p>ערך הגיבוב של (3, 6) הוא 2 ושל (4, 4) הוא 3. ערכי הפלט שונים ולכן זו אינה התנגשות.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — (3, 6) ו-(3, 7)</h4><p>ערך הגיבוב של (3, 6) הוא 2 ושל (3, 7) הוא 3. ערכי הפלט שונים ולכן זו אינה התנגשות.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — (3, 6) ו-(2, 7)</h4><p>ערך הגיבוב של (3, 6) הוא 2 ושל (2, 7) הוא 0. ערכי הפלט שונים ולכן זו אינה התנגשות.</p></div></section>",
+    "topic": "Hash, MAC וסיסמאות",
+    "skill": "collision",
+    "parent_id": "P50",
+    "history_ids": [
+      "P50",
+      "Q150",
+      "Q182"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "19/10/2026",
+      "30/11/2025"
+    ],
+    "recent_b_dates": [],
+    "skill_transitions": [],
+    "latest_a_skill": true,
+    "topic_transitions": 4,
+    "confidence": 63,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 68,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 20
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-20.html"
+  },
+  {
+    "id": "B2-21",
+    "title": "זיהוי התנגשות ב-hash צעצוע",
+    "stem": "נתונה פונקציית הגיבוב h(x,y)=(4x+y) mod 17. איזו חלופה מציגה שני קלטים שונים עם אותו פלט?",
+    "options": [
+      "(4, 8) ו-(5, 4)",
+      "(4, 8) ו-(5, 5)",
+      "(4, 8) ו-(4, 9)",
+      "(4, 8) ו-(3, 10)"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "(4, 8) ו-(5, 4)",
+        "correct": true,
+        "reason": "ערך הגיבוב של (4, 8) הוא 7 ושל (5, 4) הוא 7. הקלטים שונים והפלטים זהים."
+      },
+      {
+        "option": "(4, 8) ו-(5, 5)",
+        "correct": false,
+        "reason": "ערך הגיבוב של (4, 8) הוא 7 ושל (5, 5) הוא 8. ערכי הפלט שונים ולכן זו אינה התנגשות."
+      },
+      {
+        "option": "(4, 8) ו-(4, 9)",
+        "correct": false,
+        "reason": "ערך הגיבוב של (4, 8) הוא 7 ושל (4, 9) הוא 8. ערכי הפלט שונים ולכן זו אינה התנגשות."
+      },
+      {
+        "option": "(4, 8) ו-(3, 10)",
+        "correct": false,
+        "reason": "ערך הגיבוב של (4, 8) הוא 7 ושל (3, 10) הוא 5. ערכי הפלט שונים ולכן זו אינה התנגשות."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>התנגשות דורשת שוויון בפלטים עבור קלטים שונים. הזזת x ב-1 והפחתת 4 מ-y משאירות את הסכום 4x+y קבוע. שוויון כזה נשמר גם אחרי השארית.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — (4, 8) ו-(5, 4)</h4><p>ערך הגיבוב של (4, 8) הוא 7 ושל (5, 4) הוא 7. הקלטים שונים והפלטים זהים.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — (4, 8) ו-(5, 5)</h4><p>ערך הגיבוב של (4, 8) הוא 7 ושל (5, 5) הוא 8. ערכי הפלט שונים ולכן זו אינה התנגשות.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — (4, 8) ו-(4, 9)</h4><p>ערך הגיבוב של (4, 8) הוא 7 ושל (4, 9) הוא 8. ערכי הפלט שונים ולכן זו אינה התנגשות.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — (4, 8) ו-(3, 10)</h4><p>ערך הגיבוב של (4, 8) הוא 7 ושל (3, 10) הוא 5. ערכי הפלט שונים ולכן זו אינה התנגשות.</p></div></section>",
+    "topic": "Hash, MAC וסיסמאות",
+    "skill": "collision",
+    "parent_id": "P50",
+    "history_ids": [
+      "P50",
+      "Q150",
+      "Q182"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "19/10/2026",
+      "30/11/2025"
+    ],
+    "recent_b_dates": [],
+    "skill_transitions": [],
+    "latest_a_skill": true,
+    "topic_transitions": 4,
+    "confidence": 63,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 68,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 21
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-21.html"
+  },
+  {
+    "id": "B2-22",
+    "title": "זיהוי התנגשות ב-hash צעצוע",
+    "stem": "נתונה פונקציית הגיבוב h(x,y)=(5x+y) mod 19. איזו חלופה מציגה שני קלטים שונים עם אותו פלט?",
+    "options": [
+      "(5, 9) ו-(6, 4)",
+      "(5, 9) ו-(6, 5)",
+      "(5, 9) ו-(5, 10)",
+      "(5, 9) ו-(4, 12)"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "(5, 9) ו-(6, 4)",
+        "correct": true,
+        "reason": "ערך הגיבוב של (5, 9) הוא 15 ושל (6, 4) הוא 15. הקלטים שונים והפלטים זהים."
+      },
+      {
+        "option": "(5, 9) ו-(6, 5)",
+        "correct": false,
+        "reason": "ערך הגיבוב של (5, 9) הוא 15 ושל (6, 5) הוא 16. ערכי הפלט שונים ולכן זו אינה התנגשות."
+      },
+      {
+        "option": "(5, 9) ו-(5, 10)",
+        "correct": false,
+        "reason": "ערך הגיבוב של (5, 9) הוא 15 ושל (5, 10) הוא 16. ערכי הפלט שונים ולכן זו אינה התנגשות."
+      },
+      {
+        "option": "(5, 9) ו-(4, 12)",
+        "correct": false,
+        "reason": "ערך הגיבוב של (5, 9) הוא 15 ושל (4, 12) הוא 13. ערכי הפלט שונים ולכן זו אינה התנגשות."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>התנגשות דורשת שוויון בפלטים עבור קלטים שונים. הזזת x ב-1 והפחתת 5 מ-y משאירות את הסכום 5x+y קבוע. שוויון כזה נשמר גם אחרי השארית.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — (5, 9) ו-(6, 4)</h4><p>ערך הגיבוב של (5, 9) הוא 15 ושל (6, 4) הוא 15. הקלטים שונים והפלטים זהים.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — (5, 9) ו-(6, 5)</h4><p>ערך הגיבוב של (5, 9) הוא 15 ושל (6, 5) הוא 16. ערכי הפלט שונים ולכן זו אינה התנגשות.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — (5, 9) ו-(5, 10)</h4><p>ערך הגיבוב של (5, 9) הוא 15 ושל (5, 10) הוא 16. ערכי הפלט שונים ולכן זו אינה התנגשות.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — (5, 9) ו-(4, 12)</h4><p>ערך הגיבוב של (5, 9) הוא 15 ושל (4, 12) הוא 13. ערכי הפלט שונים ולכן זו אינה התנגשות.</p></div></section>",
+    "topic": "Hash, MAC וסיסמאות",
+    "skill": "collision",
+    "parent_id": "P50",
+    "history_ids": [
+      "P50",
+      "Q150",
+      "Q182"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "19/10/2026",
+      "30/11/2025"
+    ],
+    "recent_b_dates": [],
+    "skill_transitions": [],
+    "latest_a_skill": true,
+    "topic_transitions": 4,
+    "confidence": 63,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 68,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 22
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-22.html"
+  },
+  {
+    "id": "B2-23",
+    "title": "זמינות בחתימת סף",
+    "stem": "פלט נשלט באמצעות כלל 2-מתוך-4. כל משתתף מחזיק מפתח נפרד וזמין או שאינו זמין כלל. כמה משתתפים לכל היותר יכולים להיות לא זמינים ועדיין תתאפשר הוצאה בהסכמת כל הזמינים?",
+    "options": [
+      "2",
+      "3",
+      "1",
+      "4"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "2",
+        "correct": true,
+        "reason": "נשארים בדיוק 2 משתתפים זמינים, וזה הסף הנדרש."
+      },
+      {
+        "option": "3",
+        "correct": false,
+        "reason": "נשארים 1 זמינים בלבד. חסרה חתימה אחת."
+      },
+      {
+        "option": "1",
+        "correct": false,
+        "reason": "כמות זו משאירה 3 זמינים, כך שאפשר לאבד עוד משתתף ועדיין לעמוד בסף."
+      },
+      {
+        "option": "4",
+        "correct": false,
+        "reason": "לא יישאר אף מפתח זמין ולכן אי אפשר להגיע לסף חיובי של חתימות."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>נדרשות לפחות 2 חתימות ממפתחות שונים. אם x בעלי מפתחות אינם זמינים, יש 4−x חתימות אפשריות. לכן x≤4−2=2.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — 2</h4><p>נשארים בדיוק 2 משתתפים זמינים, וזה הסף הנדרש.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — 3</h4><p>נשארים 1 זמינים בלבד. חסרה חתימה אחת.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — 1</h4><p>כמות זו משאירה 3 זמינים, כך שאפשר לאבד עוד משתתף ועדיין לעמוד בסף.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — 4</h4><p>לא יישאר אף מפתח זמין ולכן אי אפשר להגיע לסף חיובי של חתימות.</p></div></section>",
+    "topic": "ביטקוין ובלוקצ׳יין",
+    "skill": "escrow",
+    "parent_id": "P42",
+    "history_ids": [
+      "P42",
+      "Q018",
+      "Q147"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "30/11/2025"
+    ],
+    "recent_b_dates": [],
+    "skill_transitions": [],
+    "latest_a_skill": false,
+    "topic_transitions": 6,
+    "confidence": 68,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 69,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 23
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-23.html"
+  },
+  {
+    "id": "B2-24",
+    "title": "זמינות בחתימת סף",
+    "stem": "פלט נשלט באמצעות כלל 3-מתוך-5. כל משתתף מחזיק מפתח נפרד וזמין או שאינו זמין כלל. כמה משתתפים לכל היותר יכולים להיות לא זמינים ועדיין תתאפשר הוצאה בהסכמת כל הזמינים?",
+    "options": [
+      "2",
+      "3",
+      "1",
+      "5"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "2",
+        "correct": true,
+        "reason": "נשארים בדיוק 3 משתתפים זמינים, וזה הסף הנדרש."
+      },
+      {
+        "option": "3",
+        "correct": false,
+        "reason": "נשארים 2 זמינים בלבד. חסרה חתימה אחת."
+      },
+      {
+        "option": "1",
+        "correct": false,
+        "reason": "כמות זו משאירה 4 זמינים, כך שאפשר לאבד עוד משתתף ועדיין לעמוד בסף."
+      },
+      {
+        "option": "5",
+        "correct": false,
+        "reason": "לא יישאר אף מפתח זמין ולכן אי אפשר להגיע לסף חיובי של חתימות."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>נדרשות לפחות 3 חתימות ממפתחות שונים. אם x בעלי מפתחות אינם זמינים, יש 5−x חתימות אפשריות. לכן x≤5−3=2.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — 2</h4><p>נשארים בדיוק 3 משתתפים זמינים, וזה הסף הנדרש.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — 3</h4><p>נשארים 2 זמינים בלבד. חסרה חתימה אחת.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — 1</h4><p>כמות זו משאירה 4 זמינים, כך שאפשר לאבד עוד משתתף ועדיין לעמוד בסף.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — 5</h4><p>לא יישאר אף מפתח זמין ולכן אי אפשר להגיע לסף חיובי של חתימות.</p></div></section>",
+    "topic": "ביטקוין ובלוקצ׳יין",
+    "skill": "escrow",
+    "parent_id": "P42",
+    "history_ids": [
+      "P42",
+      "Q018",
+      "Q147"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "30/11/2025"
+    ],
+    "recent_b_dates": [],
+    "skill_transitions": [],
+    "latest_a_skill": false,
+    "topic_transitions": 6,
+    "confidence": 68,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 69,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 24
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-24.html"
+  },
+  {
+    "id": "B2-25",
+    "title": "זמינות בחתימת סף",
+    "stem": "פלט נשלט באמצעות כלל 4-מתוך-6. כל משתתף מחזיק מפתח נפרד וזמין או שאינו זמין כלל. כמה משתתפים לכל היותר יכולים להיות לא זמינים ועדיין תתאפשר הוצאה בהסכמת כל הזמינים?",
+    "options": [
+      "2",
+      "3",
+      "1",
+      "6"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "2",
+        "correct": true,
+        "reason": "נשארים בדיוק 4 משתתפים זמינים, וזה הסף הנדרש."
+      },
+      {
+        "option": "3",
+        "correct": false,
+        "reason": "נשארים 3 זמינים בלבד. חסרה חתימה אחת."
+      },
+      {
+        "option": "1",
+        "correct": false,
+        "reason": "כמות זו משאירה 5 זמינים, כך שאפשר לאבד עוד משתתף ועדיין לעמוד בסף."
+      },
+      {
+        "option": "6",
+        "correct": false,
+        "reason": "לא יישאר אף מפתח זמין ולכן אי אפשר להגיע לסף חיובי של חתימות."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>נדרשות לפחות 4 חתימות ממפתחות שונים. אם x בעלי מפתחות אינם זמינים, יש 6−x חתימות אפשריות. לכן x≤6−4=2.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — 2</h4><p>נשארים בדיוק 4 משתתפים זמינים, וזה הסף הנדרש.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — 3</h4><p>נשארים 3 זמינים בלבד. חסרה חתימה אחת.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — 1</h4><p>כמות זו משאירה 5 זמינים, כך שאפשר לאבד עוד משתתף ועדיין לעמוד בסף.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — 6</h4><p>לא יישאר אף מפתח זמין ולכן אי אפשר להגיע לסף חיובי של חתימות.</p></div></section>",
+    "topic": "ביטקוין ובלוקצ׳יין",
+    "skill": "escrow",
+    "parent_id": "P42",
+    "history_ids": [
+      "P42",
+      "Q018",
+      "Q147"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "30/11/2025"
+    ],
+    "recent_b_dates": [],
+    "skill_transitions": [],
+    "latest_a_skill": false,
+    "topic_transitions": 6,
+    "confidence": 68,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 69,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 25
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-25.html"
+  },
+  {
+    "id": "B2-26",
+    "title": "זמינות בחתימת סף",
+    "stem": "פלט נשלט באמצעות כלל 2-מתוך-7. כל משתתף מחזיק מפתח נפרד וזמין או שאינו זמין כלל. כמה משתתפים לכל היותר יכולים להיות לא זמינים ועדיין תתאפשר הוצאה בהסכמת כל הזמינים?",
+    "options": [
+      "5",
+      "6",
+      "4",
+      "7"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "5",
+        "correct": true,
+        "reason": "נשארים בדיוק 2 משתתפים זמינים, וזה הסף הנדרש."
+      },
+      {
+        "option": "6",
+        "correct": false,
+        "reason": "נשארים 1 זמינים בלבד. חסרה חתימה אחת."
+      },
+      {
+        "option": "4",
+        "correct": false,
+        "reason": "כמות זו משאירה 3 זמינים, כך שאפשר לאבד עוד משתתף ועדיין לעמוד בסף."
+      },
+      {
+        "option": "7",
+        "correct": false,
+        "reason": "לא יישאר אף מפתח זמין ולכן אי אפשר להגיע לסף חיובי של חתימות."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>נדרשות לפחות 2 חתימות ממפתחות שונים. אם x בעלי מפתחות אינם זמינים, יש 7−x חתימות אפשריות. לכן x≤7−2=5.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — 5</h4><p>נשארים בדיוק 2 משתתפים זמינים, וזה הסף הנדרש.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — 6</h4><p>נשארים 1 זמינים בלבד. חסרה חתימה אחת.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — 4</h4><p>כמות זו משאירה 3 זמינים, כך שאפשר לאבד עוד משתתף ועדיין לעמוד בסף.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — 7</h4><p>לא יישאר אף מפתח זמין ולכן אי אפשר להגיע לסף חיובי של חתימות.</p></div></section>",
+    "topic": "ביטקוין ובלוקצ׳יין",
+    "skill": "escrow",
+    "parent_id": "P42",
+    "history_ids": [
+      "P42",
+      "Q018",
+      "Q147"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "30/11/2025"
+    ],
+    "recent_b_dates": [],
+    "skill_transitions": [],
+    "latest_a_skill": false,
+    "topic_transitions": 6,
+    "confidence": 68,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 69,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 26
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-26.html"
+  },
+  {
+    "id": "B2-27",
+    "title": "דפוסי חזרה ב-ECB",
+    "stem": "הודעה באורך 6 בלוקים שלמים הוצפנה ב-ECB באותו מפתח, בלי להוסיף בלוקים. בצופן יש 3 ערכי בלוק שונים. כמה ערכי בלוק שונים יש בהודעה?",
+    "options": [
+      "3",
+      "6",
+      "2",
+      "4"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "3",
+        "correct": true,
+        "reason": "לכל ערך בלוק שונה בצופן מתאים ערך בלוק שונה אחד בהודעה."
+      },
+      {
+        "option": "6",
+        "correct": false,
+        "reason": "זו כמות הבלוקים כולל חזרות. כמות הערכים השונים קטנה יותר לפי הנתון."
+      },
+      {
+        "option": "2",
+        "correct": false,
+        "reason": "מספר קטן יותר היה מחייב למפות ערך plaintext אחד לשני ערכי ciphertext שונים תחת אותו מפתח."
+      },
+      {
+        "option": "4",
+        "correct": false,
+        "reason": "מספר גדול יותר היה מחייב שמספר קלטים שונים יוצפנו לאותו בלוק, בניגוד לחד-חד-ערכיות."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>הצפנת בלוק בודד עם מפתח קבוע היא תמורה. ב-ECB בלוקים זהים נותנים צופן זהה, ובלוקים שונים נותנים צופן שונה, כך שמספר הערכים השונים נשמר.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — 3</h4><p>לכל ערך בלוק שונה בצופן מתאים ערך בלוק שונה אחד בהודעה.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — 6</h4><p>זו כמות הבלוקים כולל חזרות. כמות הערכים השונים קטנה יותר לפי הנתון.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — 2</h4><p>מספר קטן יותר היה מחייב למפות ערך plaintext אחד לשני ערכי ciphertext שונים תחת אותו מפתח.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — 4</h4><p>מספר גדול יותר היה מחייב שמספר קלטים שונים יוצפנו לאותו בלוק, בניגוד לחד-חד-ערכיות.</p></div></section>",
+    "topic": "הצפנה סימטרית וצפנים קלאסיים",
+    "skill": "ecb",
+    "parent_id": "P22",
+    "history_ids": [
+      "P22",
+      "Q064",
+      "Q166"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "09/08/2026",
+      "20/10/2024",
+      "31/05/2024"
+    ],
+    "recent_b_dates": [
+      "20/10/2024",
+      "09/08/2026"
+    ],
+    "skill_transitions": [],
+    "latest_a_skill": false,
+    "topic_transitions": 3,
+    "confidence": 67,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 74,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 27
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-27.html"
+  },
+  {
+    "id": "B2-28",
+    "title": "דפוסי חזרה ב-ECB",
+    "stem": "הודעה באורך 8 בלוקים שלמים הוצפנה ב-ECB באותו מפתח, בלי להוסיף בלוקים. בצופן יש 4 ערכי בלוק שונים. כמה ערכי בלוק שונים יש בהודעה?",
+    "options": [
+      "4",
+      "8",
+      "3",
+      "5"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "4",
+        "correct": true,
+        "reason": "לכל ערך בלוק שונה בצופן מתאים ערך בלוק שונה אחד בהודעה."
+      },
+      {
+        "option": "8",
+        "correct": false,
+        "reason": "זו כמות הבלוקים כולל חזרות. כמות הערכים השונים קטנה יותר לפי הנתון."
+      },
+      {
+        "option": "3",
+        "correct": false,
+        "reason": "מספר קטן יותר היה מחייב למפות ערך plaintext אחד לשני ערכי ciphertext שונים תחת אותו מפתח."
+      },
+      {
+        "option": "5",
+        "correct": false,
+        "reason": "מספר גדול יותר היה מחייב שמספר קלטים שונים יוצפנו לאותו בלוק, בניגוד לחד-חד-ערכיות."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>הצפנת בלוק בודד עם מפתח קבוע היא תמורה. ב-ECB בלוקים זהים נותנים צופן זהה, ובלוקים שונים נותנים צופן שונה, כך שמספר הערכים השונים נשמר.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — 4</h4><p>לכל ערך בלוק שונה בצופן מתאים ערך בלוק שונה אחד בהודעה.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — 8</h4><p>זו כמות הבלוקים כולל חזרות. כמות הערכים השונים קטנה יותר לפי הנתון.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — 3</h4><p>מספר קטן יותר היה מחייב למפות ערך plaintext אחד לשני ערכי ciphertext שונים תחת אותו מפתח.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — 5</h4><p>מספר גדול יותר היה מחייב שמספר קלטים שונים יוצפנו לאותו בלוק, בניגוד לחד-חד-ערכיות.</p></div></section>",
+    "topic": "הצפנה סימטרית וצפנים קלאסיים",
+    "skill": "ecb",
+    "parent_id": "P22",
+    "history_ids": [
+      "P22",
+      "Q064",
+      "Q166"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "09/08/2026",
+      "20/10/2024",
+      "31/05/2024"
+    ],
+    "recent_b_dates": [
+      "20/10/2024",
+      "09/08/2026"
+    ],
+    "skill_transitions": [],
+    "latest_a_skill": false,
+    "topic_transitions": 3,
+    "confidence": 67,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 74,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 28
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-28.html"
+  },
+  {
+    "id": "B2-29",
+    "title": "דפוסי חזרה ב-ECB",
+    "stem": "הודעה באורך 9 בלוקים שלמים הוצפנה ב-ECB באותו מפתח, בלי להוסיף בלוקים. בצופן יש 2 ערכי בלוק שונים. כמה ערכי בלוק שונים יש בהודעה?",
+    "options": [
+      "2",
+      "9",
+      "1",
+      "3"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "2",
+        "correct": true,
+        "reason": "לכל ערך בלוק שונה בצופן מתאים ערך בלוק שונה אחד בהודעה."
+      },
+      {
+        "option": "9",
+        "correct": false,
+        "reason": "זו כמות הבלוקים כולל חזרות. כמות הערכים השונים קטנה יותר לפי הנתון."
+      },
+      {
+        "option": "1",
+        "correct": false,
+        "reason": "מספר קטן יותר היה מחייב למפות ערך plaintext אחד לשני ערכי ciphertext שונים תחת אותו מפתח."
+      },
+      {
+        "option": "3",
+        "correct": false,
+        "reason": "מספר גדול יותר היה מחייב שמספר קלטים שונים יוצפנו לאותו בלוק, בניגוד לחד-חד-ערכיות."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>הצפנת בלוק בודד עם מפתח קבוע היא תמורה. ב-ECB בלוקים זהים נותנים צופן זהה, ובלוקים שונים נותנים צופן שונה, כך שמספר הערכים השונים נשמר.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — 2</h4><p>לכל ערך בלוק שונה בצופן מתאים ערך בלוק שונה אחד בהודעה.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — 9</h4><p>זו כמות הבלוקים כולל חזרות. כמות הערכים השונים קטנה יותר לפי הנתון.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — 1</h4><p>מספר קטן יותר היה מחייב למפות ערך plaintext אחד לשני ערכי ciphertext שונים תחת אותו מפתח.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — 3</h4><p>מספר גדול יותר היה מחייב שמספר קלטים שונים יוצפנו לאותו בלוק, בניגוד לחד-חד-ערכיות.</p></div></section>",
+    "topic": "הצפנה סימטרית וצפנים קלאסיים",
+    "skill": "ecb",
+    "parent_id": "P22",
+    "history_ids": [
+      "P22",
+      "Q064",
+      "Q166"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "09/08/2026",
+      "20/10/2024",
+      "31/05/2024"
+    ],
+    "recent_b_dates": [
+      "20/10/2024",
+      "09/08/2026"
+    ],
+    "skill_transitions": [],
+    "latest_a_skill": false,
+    "topic_transitions": 3,
+    "confidence": 67,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 74,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 29
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-29.html"
+  },
+  {
+    "id": "B2-30",
+    "title": "דפוסי חזרה ב-ECB",
+    "stem": "הודעה באורך 12 בלוקים שלמים הוצפנה ב-ECB באותו מפתח, בלי להוסיף בלוקים. בצופן יש 5 ערכי בלוק שונים. כמה ערכי בלוק שונים יש בהודעה?",
+    "options": [
+      "5",
+      "12",
+      "4",
+      "6"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "5",
+        "correct": true,
+        "reason": "לכל ערך בלוק שונה בצופן מתאים ערך בלוק שונה אחד בהודעה."
+      },
+      {
+        "option": "12",
+        "correct": false,
+        "reason": "זו כמות הבלוקים כולל חזרות. כמות הערכים השונים קטנה יותר לפי הנתון."
+      },
+      {
+        "option": "4",
+        "correct": false,
+        "reason": "מספר קטן יותר היה מחייב למפות ערך plaintext אחד לשני ערכי ciphertext שונים תחת אותו מפתח."
+      },
+      {
+        "option": "6",
+        "correct": false,
+        "reason": "מספר גדול יותר היה מחייב שמספר קלטים שונים יוצפנו לאותו בלוק, בניגוד לחד-חד-ערכיות."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>הצפנת בלוק בודד עם מפתח קבוע היא תמורה. ב-ECB בלוקים זהים נותנים צופן זהה, ובלוקים שונים נותנים צופן שונה, כך שמספר הערכים השונים נשמר.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — 5</h4><p>לכל ערך בלוק שונה בצופן מתאים ערך בלוק שונה אחד בהודעה.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — 12</h4><p>זו כמות הבלוקים כולל חזרות. כמות הערכים השונים קטנה יותר לפי הנתון.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — 4</h4><p>מספר קטן יותר היה מחייב למפות ערך plaintext אחד לשני ערכי ciphertext שונים תחת אותו מפתח.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — 6</h4><p>מספר גדול יותר היה מחייב שמספר קלטים שונים יוצפנו לאותו בלוק, בניגוד לחד-חד-ערכיות.</p></div></section>",
+    "topic": "הצפנה סימטרית וצפנים קלאסיים",
+    "skill": "ecb",
+    "parent_id": "P22",
+    "history_ids": [
+      "P22",
+      "Q064",
+      "Q166"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "09/08/2026",
+      "20/10/2024",
+      "31/05/2024"
+    ],
+    "recent_b_dates": [
+      "20/10/2024",
+      "09/08/2026"
+    ],
+    "skill_transitions": [],
+    "latest_a_skill": false,
+    "topic_transitions": 3,
+    "confidence": 67,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 74,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 30
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-30.html"
+  },
+  {
+    "id": "B2-31",
+    "title": "בחירת מפתח לאימות תעודת קצה",
+    "stem": "השרשרת היא Root → CA1 → CA2 → אתר. CA2 הנפיקה את תעודת האתר וחתמה עליה. איזה מפתח בודק ישירות את החתימה על תעודת האתר?",
+    "options": [
+      "המפתח הפומבי של CA2",
+      "המפתח הפומבי של האתר",
+      "המפתח הפומבי של CA1",
+      "המפתח הפומבי של Root"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "המפתח הפומבי של CA2",
+        "correct": true,
+        "reason": "חתימה נבדקת בעזרת המפתח הפומבי של מי שחתם עליה. כאן CA2 הנפיקה וחתמה על תעודת האתר."
+      },
+      {
+        "option": "המפתח הפומבי של האתר",
+        "correct": false,
+        "reason": "מפתח האתר משמש להוכחת החזקה במפתח המתאים בזמן החיבור. האתר לא חתם על תעודת הקצה בתרחיש."
+      },
+      {
+        "option": "המפתח הפומבי של CA1",
+        "correct": false,
+        "reason": "CA1 חתמה על תעודת CA2. החתימה של CA1 נבדקת בחוליה אחרת בשרשרת."
+      },
+      {
+        "option": "המפתח הפומבי של Root",
+        "correct": false,
+        "reason": "מפתח השורש מעגן את האמון ומאמת חתימה בהמשך השרשרת, אך הוא אינו מפתח החותם הישיר על תעודת הקצה."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>חתימה נבדקת בעזרת המפתח הפומבי של מי שחתם עליה. כאן CA2 הנפיקה וחתמה על תעודת האתר.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — המפתח הפומבי של CA2</h4><p>חתימה נבדקת בעזרת המפתח הפומבי של מי שחתם עליה. כאן CA2 הנפיקה וחתמה על תעודת האתר.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — המפתח הפומבי של האתר</h4><p>מפתח האתר משמש להוכחת החזקה במפתח המתאים בזמן החיבור. האתר לא חתם על תעודת הקצה בתרחיש.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — המפתח הפומבי של CA1</h4><p>CA1 חתמה על תעודת CA2. החתימה של CA1 נבדקת בחוליה אחרת בשרשרת.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — המפתח הפומבי של Root</h4><p>מפתח השורש מעגן את האמון ומאמת חתימה בהמשך השרשרת, אך הוא אינו מפתח החותם הישיר על תעודת הקצה.</p></div></section>",
+    "topic": "PKI, תעודות, CT ו-OCSP",
+    "skill": "issuer-key",
+    "parent_id": "P02",
+    "history_ids": [
+      "P02",
+      "Q174"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "19/10/2026"
+    ],
+    "recent_b_dates": [],
+    "skill_transitions": [],
+    "latest_a_skill": true,
+    "topic_transitions": 6,
+    "confidence": 73,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 77,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 31
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-31.html"
+  },
+  {
+    "id": "B2-32",
+    "title": "בחירת מפתח לאימות תעודת ביניים",
+    "stem": "Root חתמה על התעודה של I1, ‏I1 חתמה על התעודה של I2, ו-I2 חתמה על תעודת האתר. באיזה מפתח משתמשים כדי לבדוק את החתימה שנמצאת בתעודה של I2?",
+    "options": [
+      "המפתח הפומבי של I1",
+      "המפתח הפומבי של I2",
+      "המפתח הפומבי של Root",
+      "המפתח הפומבי של האתר"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "המפתח הפומבי של I1",
+        "correct": true,
+        "reason": "קוראים את השרשרת לפי החוליה המבוקשת. התעודה של I2 היא המסמך שנחתם, ו-I1 היא החותמת."
+      },
+      {
+        "option": "המפתח הפומבי של I2",
+        "correct": false,
+        "reason": "זה מפתח נושא התעודה. הוא יכול לבדוק חתימה שיצרה I2 על תעודה אחרת."
+      },
+      {
+        "option": "המפתח הפומבי של Root",
+        "correct": false,
+        "reason": "הוא בודק את חתימת Root על תעודת I1, חוליה אחת למעלה."
+      },
+      {
+        "option": "המפתח הפומבי של האתר",
+        "correct": false,
+        "reason": "הוא נמצא בתעודת הקצה ונועד להוכחת זהות האתר. הוא לא אימת אף חתימת הנפקה בתרחיש."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>קוראים את השרשרת לפי החוליה המבוקשת. התעודה של I2 היא המסמך שנחתם, ו-I1 היא החותמת.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — המפתח הפומבי של I1</h4><p>קוראים את השרשרת לפי החוליה המבוקשת. התעודה של I2 היא המסמך שנחתם, ו-I1 היא החותמת.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — המפתח הפומבי של I2</h4><p>זה מפתח נושא התעודה. הוא יכול לבדוק חתימה שיצרה I2 על תעודה אחרת.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — המפתח הפומבי של Root</h4><p>הוא בודק את חתימת Root על תעודת I1, חוליה אחת למעלה.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — המפתח הפומבי של האתר</h4><p>הוא נמצא בתעודת הקצה ונועד להוכחת זהות האתר. הוא לא אימת אף חתימת הנפקה בתרחיש.</p></div></section>",
+    "topic": "PKI, תעודות, CT ו-OCSP",
+    "skill": "issuer-key",
+    "parent_id": "P02",
+    "history_ids": [
+      "P02",
+      "Q174"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "19/10/2026"
+    ],
+    "recent_b_dates": [],
+    "skill_transitions": [],
+    "latest_a_skill": true,
+    "topic_transitions": 6,
+    "confidence": 73,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 77,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 32
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-32.html"
+  },
+  {
+    "id": "B2-33",
+    "title": "זיהוי מנפיק מבין רשויות ביניים",
+    "stem": "שתי רשויות ביניים, I ו-J, מוסמכות מאותו שורש ומשתמשות במפתחות שונים. נמצא שתעודת האתר נחתמה בידי J. איזה מפתח דרוש לבדיקת החתימה של תעודת האתר עצמה?",
+    "options": [
+      "המפתח הפומבי של J",
+      "המפתח הפומבי של I",
+      "המפתח הפומבי של השורש",
+      "המפתח הפרטי של J"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "המפתח הפומבי של J",
+        "correct": true,
+        "reason": "חולקים עוגן אמון, אך לכל רשות מפתח משלה. ברמת תעודת הקצה נדרשת התאמה לחותמת J."
+      },
+      {
+        "option": "המפתח הפומבי של I",
+        "correct": false,
+        "reason": "אותו שורש אינו משווה בין מפתחות רשויות הביניים."
+      },
+      {
+        "option": "המפתח הפומבי של השורש",
+        "correct": false,
+        "reason": "הוא מאמת את הסמכת הרשות, והחתימה המבוקשת נוצרה על ידי J."
+      },
+      {
+        "option": "המפתח הפרטי של J",
+        "correct": false,
+        "reason": "זהו מפתח יצירת החתימה. בדיקת חתימה ציבורית משתמשת במפתח הפומבי."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>חולקים עוגן אמון, אך לכל רשות מפתח משלה. ברמת תעודת הקצה נדרשת התאמה לחותמת J.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — המפתח הפומבי של J</h4><p>חולקים עוגן אמון, אך לכל רשות מפתח משלה. ברמת תעודת הקצה נדרשת התאמה לחותמת J.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — המפתח הפומבי של I</h4><p>אותו שורש אינו משווה בין מפתחות רשויות הביניים.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — המפתח הפומבי של השורש</h4><p>הוא מאמת את הסמכת הרשות, והחתימה המבוקשת נוצרה על ידי J.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — המפתח הפרטי של J</h4><p>זהו מפתח יצירת החתימה. בדיקת חתימה ציבורית משתמשת במפתח הפומבי.</p></div></section>",
+    "topic": "PKI, תעודות, CT ו-OCSP",
+    "skill": "issuer-key",
+    "parent_id": "P02",
+    "history_ids": [
+      "P02",
+      "Q174"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "19/10/2026"
+    ],
+    "recent_b_dates": [],
+    "skill_transitions": [],
+    "latest_a_skill": true,
+    "topic_transitions": 6,
+    "confidence": 73,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 77,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 33
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-33.html"
+  },
+  {
+    "id": "B2-34",
+    "title": "מה לוג CT חושף?",
+    "stem": "בעלת דומיין רואה בלוג Certificate Transparency תעודה לשם הדומיין שלה שהונפקה ללא ידיעתה. איזו מסקנה נתמכת על ידי הממצא עצמו?",
+    "options": [
+      "הרישום מאפשר לזהות ולחקור את ההנפקה",
+      "הרישום מוכיח שההנפקה אושרה בידי בעלת הדומיין",
+      "הרישום מבטל אוטומטית את התעודה",
+      "הרישום מוכיח שהמפתח הפרטי של האתר נגנב"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "הרישום מאפשר לזהות ולחקור את ההנפקה",
+        "correct": true,
+        "reason": "CT מספק ראיות פומביות על תעודות או קדם-תעודות שנרשמו. ניטור הדומיין יכול להתריע, והתגובה דורשת פעולות נוספות."
+      },
+      {
+        "option": "הרישום מוכיח שההנפקה אושרה בידי בעלת הדומיין",
+        "correct": false,
+        "reason": "לוג CT אינו אישור של בעל הדומיין."
+      },
+      {
+        "option": "הרישום מבטל אוטומטית את התעודה",
+        "correct": false,
+        "reason": "גילוי ההנפקה וביטול תעודות הם מנגנונים שונים."
+      },
+      {
+        "option": "הרישום מוכיח שהמפתח הפרטי של האתר נגנב",
+        "correct": false,
+        "reason": "אפשר להנפיק תעודה המשויכת למפתח אחר. הרישום כשלעצמו אינו עדות לגניבת מפתח."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>CT מספק ראיות פומביות על תעודות או קדם-תעודות שנרשמו. ניטור הדומיין יכול להתריע, והתגובה דורשת פעולות נוספות.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — הרישום מאפשר לזהות ולחקור את ההנפקה</h4><p>CT מספק ראיות פומביות על תעודות או קדם-תעודות שנרשמו. ניטור הדומיין יכול להתריע, והתגובה דורשת פעולות נוספות.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — הרישום מוכיח שההנפקה אושרה בידי בעלת הדומיין</h4><p>לוג CT אינו אישור של בעל הדומיין.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — הרישום מבטל אוטומטית את התעודה</h4><p>גילוי ההנפקה וביטול תעודות הם מנגנונים שונים.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — הרישום מוכיח שהמפתח הפרטי של האתר נגנב</h4><p>אפשר להנפיק תעודה המשויכת למפתח אחר. הרישום כשלעצמו אינו עדות לגניבת מפתח.</p></div></section>",
+    "topic": "PKI, תעודות, CT ו-OCSP",
+    "skill": "ct-policy",
+    "parent_id": "P11",
+    "history_ids": [
+      "P11",
+      "Q063",
+      "Q077",
+      "Q129",
+      "Q139",
+      "Q156",
+      "Q181"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "02/11/2025",
+      "05/10/2025",
+      "12/07/2026",
+      "17/09/2024",
+      "19/10/2026",
+      "31/05/2024"
+    ],
+    "recent_b_dates": [
+      "02/11/2025"
+    ],
+    "skill_transitions": [
+      [
+        "05/10/2025",
+        "02/11/2025"
+      ]
+    ],
+    "latest_a_skill": true,
+    "topic_transitions": 6,
+    "confidence": 90,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 103,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 34
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-34.html"
+  },
+  {
+    "id": "B2-35",
+    "title": "עמידה במדיניות שקיפות בלבד",
+    "stem": "לתעודה יש SCT תקינים בכמות שהדפדפן דורש, אך השם שב-SAN אינו מתאים לשם השירות המבוקש. מה צפוי בדפדפן שאוכף בדיקת שם?",
+    "options": [
+      "היא יכולה לעמוד במדיניות CT, אך תיכשל באימות שם השירות",
+      "ה-SCT מאפשר לדלג על בדיקת שם",
+      "השם השגוי הופך את חתימת ה-SCT לשגויה בהכרח",
+      "יש לקבל את התעודה כל עוד לא בוטלה"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "היא יכולה לעמוד במדיניות CT, אך תיכשל באימות שם השירות",
+        "correct": true,
+        "reason": "CT ובדיקת שם הם תנאים נפרדים. SCT נוגע לשקיפות ההנפקה. השם עדיין נבדק מול תעודת האתר."
+      },
+      {
+        "option": "ה-SCT מאפשר לדלג על בדיקת שם",
+        "correct": false,
+        "reason": "SCT לא מאשר שימוש בתעודה עבור שם שלא כלול בה."
+      },
+      {
+        "option": "השם השגוי הופך את חתימת ה-SCT לשגויה בהכרח",
+        "correct": false,
+        "reason": "אי התאמה לשם שהתבקש אינה שינוי בנתונים החתומים."
+      },
+      {
+        "option": "יש לקבל את התעודה כל עוד לא בוטלה",
+        "correct": false,
+        "reason": "סטטוס ביטול תקין אינו מחליף את אימות שם השירות."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>CT ובדיקת שם הם תנאים נפרדים. SCT נוגע לשקיפות ההנפקה. השם עדיין נבדק מול תעודת האתר.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — היא יכולה לעמוד במדיניות CT, אך תיכשל באימות שם השירות</h4><p>CT ובדיקת שם הם תנאים נפרדים. SCT נוגע לשקיפות ההנפקה. השם עדיין נבדק מול תעודת האתר.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — ה-SCT מאפשר לדלג על בדיקת שם</h4><p>SCT לא מאשר שימוש בתעודה עבור שם שלא כלול בה.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — השם השגוי הופך את חתימת ה-SCT לשגויה בהכרח</h4><p>אי התאמה לשם שהתבקש אינה שינוי בנתונים החתומים.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — יש לקבל את התעודה כל עוד לא בוטלה</h4><p>סטטוס ביטול תקין אינו מחליף את אימות שם השירות.</p></div></section>",
+    "topic": "PKI, תעודות, CT ו-OCSP",
+    "skill": "ct-policy",
+    "parent_id": "P11",
+    "history_ids": [
+      "P11",
+      "Q063",
+      "Q077",
+      "Q129",
+      "Q139",
+      "Q156",
+      "Q181"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "02/11/2025",
+      "05/10/2025",
+      "12/07/2026",
+      "17/09/2024",
+      "19/10/2026",
+      "31/05/2024"
+    ],
+    "recent_b_dates": [
+      "02/11/2025"
+    ],
+    "skill_transitions": [
+      [
+        "05/10/2025",
+        "02/11/2025"
+      ]
+    ],
+    "latest_a_skill": true,
+    "topic_transitions": 6,
+    "confidence": 90,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 103,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 35
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-35.html"
+  },
+  {
+    "id": "B2-36",
+    "title": "התגובה להנפקה חריגה עם CT",
+    "stem": "רשות אמון הנפיקה תעודה שגויה, והתעודה נרשמה בלוג מוכר. מה התפקיד הישיר שממלא הרישום עבור הארגון שמנטר את הדומיין?",
+    "options": [
+      "אפשר לחפש את התעודה ולפתוח בבירור על ההנפקה",
+      "הלוג מחזיר את המפתח הפרטי של התעודה",
+      "הלוג מחייב שכל הדפדפנים יסרבו מיד לחיבור",
+      "הלוג מאריך את תוקף התעודה"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "אפשר לחפש את התעודה ולפתוח בבירור על ההנפקה",
+        "correct": true,
+        "reason": "יתרון הרישום הוא שההנפקה הופכת ניתנת לתצפית ולביקורת חיצונית."
+      },
+      {
+        "option": "הלוג מחזיר את המפתח הפרטי של התעודה",
+        "correct": false,
+        "reason": "הלוג נועד לפרסם נתוני תעודה ושקיפות. המפתח הפרטי אינו חלק מהתעודה."
+      },
+      {
+        "option": "הלוג מחייב שכל הדפדפנים יסרבו מיד לחיבור",
+        "correct": false,
+        "reason": "רישום יכול לעמוד בתנאי CT. תגובת דפדפן תלויה בבדיקות נוספות ובמדיניות שלו."
+      },
+      {
+        "option": "הלוג מאריך את תוקף התעודה",
+        "correct": false,
+        "reason": "תאריכי התוקף הם שדות חתומים של התעודה. פרסום בלוג אינו משנה אותם."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>יתרון הרישום הוא שההנפקה הופכת ניתנת לתצפית ולביקורת חיצונית.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — אפשר לחפש את התעודה ולפתוח בבירור על ההנפקה</h4><p>יתרון הרישום הוא שההנפקה הופכת ניתנת לתצפית ולביקורת חיצונית.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — הלוג מחזיר את המפתח הפרטי של התעודה</h4><p>הלוג נועד לפרסם נתוני תעודה ושקיפות. המפתח הפרטי אינו חלק מהתעודה.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — הלוג מחייב שכל הדפדפנים יסרבו מיד לחיבור</h4><p>רישום יכול לעמוד בתנאי CT. תגובת דפדפן תלויה בבדיקות נוספות ובמדיניות שלו.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — הלוג מאריך את תוקף התעודה</h4><p>תאריכי התוקף הם שדות חתומים של התעודה. פרסום בלוג אינו משנה אותם.</p></div></section>",
+    "topic": "PKI, תעודות, CT ו-OCSP",
+    "skill": "ct-policy",
+    "parent_id": "P11",
+    "history_ids": [
+      "P11",
+      "Q063",
+      "Q077",
+      "Q129",
+      "Q139",
+      "Q156",
+      "Q181"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "02/11/2025",
+      "05/10/2025",
+      "12/07/2026",
+      "17/09/2024",
+      "19/10/2026",
+      "31/05/2024"
+    ],
+    "recent_b_dates": [
+      "02/11/2025"
+    ],
+    "skill_transitions": [
+      [
+        "05/10/2025",
+        "02/11/2025"
+      ]
+    ],
+    "latest_a_skill": true,
+    "topic_transitions": 6,
+    "confidence": 90,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 103,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 36
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-36.html"
+  },
+  {
+    "id": "B2-37",
+    "title": "כמה אישורים יש לעסקה?",
+    "stem": "טרנזקציה נכללה בבלוק בגובה 850. השרשרת שנבחרה כעת מגיעה לגובה 854, והבלוק 850 נמצא בה. סופרים גם את בלוק ההכללה. כמה אישורים יש לטרנזקציה?",
+    "options": [
+      "5",
+      "4",
+      "1",
+      "854"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "5",
+        "correct": true,
+        "reason": "הבלוק הראשון נותן אישור אחד. מעליו יש 854−850=4 בלוקים, ולכן יש חמישה בסך הכול."
+      },
+      {
+        "option": "4",
+        "correct": false,
+        "reason": "זו ספירת ארבעת הבלוקים שנוספו אחרי בלוק ההכללה בלבד."
+      },
+      {
+        "option": "1",
+        "correct": false,
+        "reason": "זה היה מספר האישורים לו בלוק ההכללה היה ראש השרשרת."
+      },
+      {
+        "option": "854",
+        "correct": false,
+        "reason": "זה גובה הראש. אישורים סופרים את המרחק מבלוק ההכללה כולל עצמו."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>הבלוק הראשון נותן אישור אחד. מעליו יש 854−850=4 בלוקים, ולכן יש חמישה בסך הכול.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — 5</h4><p>הבלוק הראשון נותן אישור אחד. מעליו יש 854−850=4 בלוקים, ולכן יש חמישה בסך הכול.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — 4</h4><p>זו ספירת ארבעת הבלוקים שנוספו אחרי בלוק ההכללה בלבד.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — 1</h4><p>זה היה מספר האישורים לו בלוק ההכללה היה ראש השרשרת.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — 854</h4><p>זה גובה הראש. אישורים סופרים את המרחק מבלוק ההכללה כולל עצמו.</p></div></section>",
+    "topic": "ביטקוין ובלוקצ׳יין",
+    "skill": "confirmation-risk",
+    "parent_id": "P08",
+    "history_ids": [
+      "P08",
+      "Q137",
+      "Q177"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "02/11/2025",
+      "19/10/2026"
+    ],
+    "recent_b_dates": [
+      "02/11/2025"
+    ],
+    "skill_transitions": [],
+    "latest_a_skill": true,
+    "topic_transitions": 6,
+    "confidence": 78,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 85,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 37
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-37.html"
+  },
+  {
+    "id": "B2-38",
+    "title": "אישורים וסופיות",
+    "stem": "במודל כרייה שבו לצד יריב כוח כרייה קבוע וקיים סיכוי חיובי לשינוי סדר השרשרת, שתי עסקאות נמצאות בשרשרת הנבחרת. לאחת 2 אישורים ולשנייה 8. כל יתר התנאים שווים. מה נכון?",
+    "options": [
+      "לשנייה יש בדרך כלל סיכון נמוך יותר לביטול בהחלפת שרשרת",
+      "8 אישורים מבטיחים סופיות מתמטית",
+      "מספר האישורים מעיד רק על נכונות החתימות",
+      "דווקא לעסקה עם 2 אישורים סיכון נמוך יותר"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "לשנייה יש בדרך כלל סיכון נמוך יותר לביטול בהחלפת שרשרת",
+        "correct": true,
+        "reason": "בשרשרת עם כלל של עבודה מצטברת, החלפה שמוציאה בלוק עמוק דורשת להחליף יותר עבודה. עומק גדול יותר מפחית סיכון במודל הרגיל."
+      },
+      {
+        "option": "8 אישורים מבטיחים סופיות מתמטית",
+        "correct": false,
+        "reason": "אין סף סופי שמבטל כל סיכוי לארגון מחדש בתנאים שניתנו."
+      },
+      {
+        "option": "מספר האישורים מעיד רק על נכונות החתימות",
+        "correct": false,
+        "reason": "אישורים מודדים את עומק ההכללה. החתימות נבדקות בנפרד."
+      },
+      {
+        "option": "דווקא לעסקה עם 2 אישורים סיכון נמוך יותר",
+        "correct": false,
+        "reason": "היא קרובה יותר לראש השרשרת ולכן נדרשת החלפה קצרה יותר כדי להוציא את בלוק ההכללה."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>בשרשרת עם כלל של עבודה מצטברת, החלפה שמוציאה בלוק עמוק דורשת להחליף יותר עבודה. עומק גדול יותר מפחית סיכון במודל הרגיל.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — לשנייה יש בדרך כלל סיכון נמוך יותר לביטול בהחלפת שרשרת</h4><p>בשרשרת עם כלל של עבודה מצטברת, החלפה שמוציאה בלוק עמוק דורשת להחליף יותר עבודה. עומק גדול יותר מפחית סיכון במודל הרגיל.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — 8 אישורים מבטיחים סופיות מתמטית</h4><p>אין סף סופי שמבטל כל סיכוי לארגון מחדש בתנאים שניתנו.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — מספר האישורים מעיד רק על נכונות החתימות</h4><p>אישורים מודדים את עומק ההכללה. החתימות נבדקות בנפרד.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — דווקא לעסקה עם 2 אישורים סיכון נמוך יותר</h4><p>היא קרובה יותר לראש השרשרת ולכן נדרשת החלפה קצרה יותר כדי להוציא את בלוק ההכללה.</p></div></section>",
+    "topic": "ביטקוין ובלוקצ׳יין",
+    "skill": "confirmation-risk",
+    "parent_id": "P08",
+    "history_ids": [
+      "P08",
+      "Q137",
+      "Q177"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "02/11/2025",
+      "19/10/2026"
+    ],
+    "recent_b_dates": [
+      "02/11/2025"
+    ],
+    "skill_transitions": [],
+    "latest_a_skill": true,
+    "topic_transitions": 6,
+    "confidence": 78,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 85,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 38
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-38.html"
+  },
+  {
+    "id": "B2-39",
+    "title": "אישור אחרי ארגון מחדש",
+    "stem": "עסקה עם 3 אישורים הוצאה מן השרשרת כאשר נבחר ענף חלופי. העסקה אינה מופיעה באף בלוק בענף שנבחר. כמה אישורים יש לה כעת בשרשרת הנבחרת?",
+    "options": [
+      "אפס",
+      "שלושה",
+      "שניים",
+      "אחד"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "אפס",
+        "correct": true,
+        "reason": "אישור נספר רק עבור הכללה בשרשרת הנבחרת ברגע המדידה. הענף החדש אינו כולל את העסקה."
+      },
+      {
+        "option": "שלושה",
+        "correct": false,
+        "reason": "אלה היו האישורים בענף הקודם. הם אינם נשמרים כאשר ההכללה נעלמת."
+      },
+      {
+        "option": "שניים",
+        "correct": false,
+        "reason": "אי אפשר להפחית באופן אוטומטי אישור אחד. התנאי הראשוני הוא נוכחות העסקה בשרשרת."
+      },
+      {
+        "option": "אחד",
+        "correct": false,
+        "reason": "אישור אחד דורש בלוק הכללה, ובענף שנבחר אין כזה."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>אישור נספר רק עבור הכללה בשרשרת הנבחרת ברגע המדידה. הענף החדש אינו כולל את העסקה.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — אפס</h4><p>אישור נספר רק עבור הכללה בשרשרת הנבחרת ברגע המדידה. הענף החדש אינו כולל את העסקה.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — שלושה</h4><p>אלה היו האישורים בענף הקודם. הם אינם נשמרים כאשר ההכללה נעלמת.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — שניים</h4><p>אי אפשר להפחית באופן אוטומטי אישור אחד. התנאי הראשוני הוא נוכחות העסקה בשרשרת.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — אחד</h4><p>אישור אחד דורש בלוק הכללה, ובענף שנבחר אין כזה.</p></div></section>",
+    "topic": "ביטקוין ובלוקצ׳יין",
+    "skill": "confirmation-risk",
+    "parent_id": "P08",
+    "history_ids": [
+      "P08",
+      "Q137",
+      "Q177"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "02/11/2025",
+      "19/10/2026"
+    ],
+    "recent_b_dates": [
+      "02/11/2025"
+    ],
+    "skill_transitions": [],
+    "latest_a_skill": true,
+    "topic_transitions": 6,
+    "confidence": 78,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 85,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 39
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-39.html"
+  },
+  {
+    "id": "B2-40",
+    "title": "איזו תכונה חסרה ב-OTP?",
+    "stem": "הודעות הוצפנו ב-OTP עם מפתח אחיד, סודי וחד פעמי באורך ההודעה. אין MAC או חתימה. מה אפשר להסיק מכך שצד מקבל הצליח לפענח בלוק?",
+    "options": [
+      "הפענוח לבדו לא מוכיח שהתוכן נשמר ללא שינוי",
+      "כל שינוי בהכרח יגרום לשגיאת פענוח",
+      "סודיות מושלמת מוכיחה את זהות השולח",
+      "הפענוח מראה שההודעה לא נשלחה בעבר"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "הפענוח לבדו לא מוכיח שהתוכן נשמר ללא שינוי",
+        "correct": true,
+        "reason": "OTP בתנאים אלה נותן סודיות מושלמת. הפענוח מחזיר מחרוזת לכל קלט מתאים באורך ולכן אינו מספק בדיקת שלמות."
+      },
+      {
+        "option": "כל שינוי בהכרח יגרום לשגיאת פענוח",
+        "correct": false,
+        "reason": "פענוח OTP אינו כולל תנאי אימות."
+      },
+      {
+        "option": "סודיות מושלמת מוכיחה את זהות השולח",
+        "correct": false,
+        "reason": "סודיות עוסקת במידע על תוכן ההודעה. זהות השולח דורשת מנגנון אימות."
+      },
+      {
+        "option": "הפענוח מראה שההודעה לא נשלחה בעבר",
+        "correct": false,
+        "reason": "מדידת טריות דורשת מצב, מונה או ערך חד פעמי מאומת לפי הפרוטוקול."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>OTP בתנאים אלה נותן סודיות מושלמת. הפענוח מחזיר מחרוזת לכל קלט מתאים באורך ולכן אינו מספק בדיקת שלמות.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — הפענוח לבדו לא מוכיח שהתוכן נשמר ללא שינוי</h4><p>OTP בתנאים אלה נותן סודיות מושלמת. הפענוח מחזיר מחרוזת לכל קלט מתאים באורך ולכן אינו מספק בדיקת שלמות.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — כל שינוי בהכרח יגרום לשגיאת פענוח</h4><p>פענוח OTP אינו כולל תנאי אימות.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — סודיות מושלמת מוכיחה את זהות השולח</h4><p>סודיות עוסקת במידע על תוכן ההודעה. זהות השולח דורשת מנגנון אימות.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — הפענוח מראה שההודעה לא נשלחה בעבר</h4><p>מדידת טריות דורשת מצב, מונה או ערך חד פעמי מאומת לפי הפרוטוקול.</p></div></section>",
+    "topic": "הצפנה סימטרית וצפנים קלאסיים",
+    "skill": "otp-malleability",
+    "parent_id": "P04",
+    "history_ids": [
+      "P04",
+      "Q179"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "19/10/2026"
+    ],
+    "recent_b_dates": [],
+    "skill_transitions": [],
+    "latest_a_skill": true,
+    "topic_transitions": 3,
+    "confidence": 70,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 74,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 40
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-40.html"
+  },
+  {
+    "id": "B2-41",
+    "title": "הגנת שלמות לצד הצפנה",
+    "stem": "פרוטוקול עם OTP תקין נדרש גם לדחות שינוי בתוכן שהועבר. איזו תוספת עונה ישירות על דרישת השלמות?",
+    "options": [
+      "MAC מאובטח על הצופן לפי הפרוטוקול, עם מפתח אימות נפרד",
+      "hash פומבי לא מאומת שמצורף לצד הצופן",
+      "הגדלת אורך המפתח בלבד",
+      "אימות שאורך הצופן לא השתנה"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "MAC מאובטח על הצופן לפי הפרוטוקול, עם מפתח אימות נפרד",
+        "correct": true,
+        "reason": "צד מקבל בודק תג אימות המצמיד את הצופן למפתח סודי נוסף. שינוי ללא תג תקין גורם לדחייה."
+      },
+      {
+        "option": "hash פומבי לא מאומת שמצורף לצד הצופן",
+        "correct": false,
+        "reason": "מקבל יכול לחשב hash, אך הוא אינו יכול להבחין באמצעותו בין זוג מקורי לזוג ששונה יחד."
+      },
+      {
+        "option": "הגדלת אורך המפתח בלבד",
+        "correct": false,
+        "reason": "אורך מתאים הוא תנאי לסודיות ב-OTP. אין בו מידע נוסף לאימות."
+      },
+      {
+        "option": "אימות שאורך הצופן לא השתנה",
+        "correct": false,
+        "reason": "בדיקת אורך אינה בדיקת תוכן ולכן אינה מזהה את כל השינויים."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>צד מקבל בודק תג אימות המצמיד את הצופן למפתח סודי נוסף. שינוי ללא תג תקין גורם לדחייה.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — MAC מאובטח על הצופן לפי הפרוטוקול, עם מפתח אימות נפרד</h4><p>צד מקבל בודק תג אימות המצמיד את הצופן למפתח סודי נוסף. שינוי ללא תג תקין גורם לדחייה.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — hash פומבי לא מאומת שמצורף לצד הצופן</h4><p>מקבל יכול לחשב hash, אך הוא אינו יכול להבחין באמצעותו בין זוג מקורי לזוג ששונה יחד.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — הגדלת אורך המפתח בלבד</h4><p>אורך מתאים הוא תנאי לסודיות ב-OTP. אין בו מידע נוסף לאימות.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — אימות שאורך הצופן לא השתנה</h4><p>בדיקת אורך אינה בדיקת תוכן ולכן אינה מזהה את כל השינויים.</p></div></section>",
+    "topic": "הצפנה סימטרית וצפנים קלאסיים",
+    "skill": "otp-malleability",
+    "parent_id": "P04",
+    "history_ids": [
+      "P04",
+      "Q179"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "19/10/2026"
+    ],
+    "recent_b_dates": [],
+    "skill_transitions": [],
+    "latest_a_skill": true,
+    "topic_transitions": 3,
+    "confidence": 70,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 74,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 41
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-41.html"
+  },
+  {
+    "id": "B2-42",
+    "title": "בדיקה מול מחיקת הודעה",
+    "stem": "השולח והמקבל משתמשים ב-OTP ללא אימות. המקבל התכונן להודעה מסוימת באורך קבוע והתקבלה מחרוזת צופן באורך הזה. איזו בדיקה חסרה כדי לקשור את הצופן להודעה שהשולח אישר?",
+    "options": [
+      "בדיקת תג אימות שנוצר במפתח אימות מוסכם",
+      "בדיקת אורך המחרוזת שוב",
+      "השוואת אורך המפתח לאורך ההודעה",
+      "בדיקה שהערוץ העביר את הצופן כבתים"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "בדיקת תג אימות שנוצר במפתח אימות מוסכם",
+        "correct": true,
+        "reason": "סודיות אינה נותנת עדות לזהות מי יצר את הודעת הצופן. תג אימות מאובטח קושר את התוכן למפתח הידוע לצדדים."
+      },
+      {
+        "option": "בדיקת אורך המחרוזת שוב",
+        "correct": false,
+        "reason": "הקלט כבר באורך המצופה. כמה תוכני הודעה אפשריים חולקים אותו אורך."
+      },
+      {
+        "option": "השוואת אורך המפתח לאורך ההודעה",
+        "correct": false,
+        "reason": "זה תנאי לשימוש נכון ב-OTP, ולא אימות שהצופן מקורו בשולח."
+      },
+      {
+        "option": "בדיקה שהערוץ העביר את הצופן כבתים",
+        "correct": false,
+        "reason": "ייצוג בתים לא קושר את הנתון למערכת המפתחות או לשולח."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>סודיות אינה נותנת עדות לזהות מי יצר את הודעת הצופן. תג אימות מאובטח קושר את התוכן למפתח הידוע לצדדים.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — בדיקת תג אימות שנוצר במפתח אימות מוסכם</h4><p>סודיות אינה נותנת עדות לזהות מי יצר את הודעת הצופן. תג אימות מאובטח קושר את התוכן למפתח הידוע לצדדים.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — בדיקת אורך המחרוזת שוב</h4><p>הקלט כבר באורך המצופה. כמה תוכני הודעה אפשריים חולקים אותו אורך.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — השוואת אורך המפתח לאורך ההודעה</h4><p>זה תנאי לשימוש נכון ב-OTP, ולא אימות שהצופן מקורו בשולח.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — בדיקה שהערוץ העביר את הצופן כבתים</h4><p>ייצוג בתים לא קושר את הנתון למערכת המפתחות או לשולח.</p></div></section>",
+    "topic": "הצפנה סימטרית וצפנים קלאסיים",
+    "skill": "otp-malleability",
+    "parent_id": "P04",
+    "history_ids": [
+      "P04",
+      "Q179"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "19/10/2026"
+    ],
+    "recent_b_dates": [],
+    "skill_transitions": [],
+    "latest_a_skill": true,
+    "topic_transitions": 3,
+    "confidence": 70,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 74,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 42
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-42.html"
+  },
+  {
+    "id": "B2-43",
+    "title": "HttpOnly והגנה על טוקן CSRF",
+    "stem": "לעוגיית ההתחברות הוגדר HttpOnly והטופס כולל טוקן CSRF בשדה נסתר. נמצא שדף הטופס מריץ סקריפט בלתי מהימן בהקשר המקור של האתר. מה נכון לגבי ההגנות?",
+    "options": [
+      "HttpOnly מגביל קריאה ישירה של העוגייה, אך אינו מגן על הטוקן מפני קוד באותו מקור",
+      "HttpOnly מסתיר גם כל שדה נסתר ב-DOM",
+      "HttpOnly מונע מהדפדפן לצרף את העוגייה לבקשות",
+      "הטוקן מונע את הרצת הסקריפט"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "HttpOnly מגביל קריאה ישירה של העוגייה, אך אינו מגן על הטוקן מפני קוד באותו מקור",
+        "correct": true,
+        "reason": "שדה נסתר הוא רכיב DOM. HttpOnly חל על גישה לעוגייה מתוך JavaScript ולא על קריאת תוכן הדף."
+      },
+      {
+        "option": "HttpOnly מסתיר גם כל שדה נסתר ב-DOM",
+        "correct": false,
+        "reason": "הדגל הוא מאפיין של עוגייה. הוא אינו משנה הרשאות גישה למסמך."
+      },
+      {
+        "option": "HttpOnly מונע מהדפדפן לצרף את העוגייה לבקשות",
+        "correct": false,
+        "reason": "הדפדפן עדיין יכול לצרף עוגייה שעומדת בתנאי השליחה שלה."
+      },
+      {
+        "option": "הטוקן מונע את הרצת הסקריפט",
+        "correct": false,
+        "reason": "הטוקן נבדק בהקשר של בקשה משנה מצב ואינו מדיניות הרצת קוד."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>שדה נסתר הוא רכיב DOM. HttpOnly חל על גישה לעוגייה מתוך JavaScript ולא על קריאת תוכן הדף.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — HttpOnly מגביל קריאה ישירה של העוגייה, אך אינו מגן על הטוקן מפני קוד באותו מקור</h4><p>שדה נסתר הוא רכיב DOM. HttpOnly חל על גישה לעוגייה מתוך JavaScript ולא על קריאת תוכן הדף.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — HttpOnly מסתיר גם כל שדה נסתר ב-DOM</h4><p>הדגל הוא מאפיין של עוגייה. הוא אינו משנה הרשאות גישה למסמך.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — HttpOnly מונע מהדפדפן לצרף את העוגייה לבקשות</h4><p>הדפדפן עדיין יכול לצרף עוגייה שעומדת בתנאי השליחה שלה.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — הטוקן מונע את הרצת הסקריפט</h4><p>הטוקן נבדק בהקשר של בקשה משנה מצב ואינו מדיניות הרצת קוד.</p></div></section>",
+    "topic": "אבטחת Web",
+    "skill": "xss-token",
+    "parent_id": "P05",
+    "history_ids": [
+      "P05",
+      "Q118",
+      "Q157",
+      "Q180"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "12/07/2026",
+      "19/10/2026",
+      "21/08/2025"
+    ],
+    "recent_b_dates": [
+      "21/08/2025"
+    ],
+    "skill_transitions": [],
+    "latest_a_skill": true,
+    "topic_transitions": 4,
+    "confidence": 70,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 78,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 43
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-43.html"
+  },
+  {
+    "id": "B2-44",
+    "title": "טוקן CSRF מול קוד באותו מקור",
+    "stem": "שרת בודק שבקשה משנה מצב כוללת טוקן CSRF ששייך לסשן. הטוקן נגיש בדף של אותו סשן. למה עדיין חשוב למנוע הרצת JavaScript בלתי מהימן בדף?",
+    "options": [
+      "הבדיקה מסתמכת על כך שלקוד בלתי מהימן אין גישה לטוקן שבדף",
+      "כל JavaScript מבטל אוטומטית את בדיקת השרת",
+      "הטוקן נשלח רק כאשר אין JavaScript בדף",
+      "SOP חוסמת תמיד קוד שנכתב על ידי גורם חיצוני"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "הבדיקה מסתמכת על כך שלקוד בלתי מהימן אין גישה לטוקן שבדף",
+        "correct": true,
+        "reason": "הגנת טוקן מבדילה בין צד חיצוני שאינו יכול לקרוא את ערך הטוקן לבין לקוח מורשה. ריצה בתוך הדף משנה את הנחת הגישה."
+      },
+      {
+        "option": "כל JavaScript מבטל אוטומטית את בדיקת השרת",
+        "correct": false,
+        "reason": "בדיקת השרת ממשיכה להתבצע. הבעיה היא גישת הקוד לערך שהבדיקה מצפה לו."
+      },
+      {
+        "option": "הטוקן נשלח רק כאשר אין JavaScript בדף",
+        "correct": false,
+        "reason": "אופן השליחה נקבע על ידי היישום ואינו מוכתב כתנאי כזה."
+      },
+      {
+        "option": "SOP חוסמת תמיד קוד שנכתב על ידי גורם חיצוני",
+        "correct": false,
+        "reason": "SOP פועלת לפי הקשר המקור של הקוד שרץ. זהות המחבר אינה כלל הבידוד."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>הגנת טוקן מבדילה בין צד חיצוני שאינו יכול לקרוא את ערך הטוקן לבין לקוח מורשה. ריצה בתוך הדף משנה את הנחת הגישה.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — הבדיקה מסתמכת על כך שלקוד בלתי מהימן אין גישה לטוקן שבדף</h4><p>הגנת טוקן מבדילה בין צד חיצוני שאינו יכול לקרוא את ערך הטוקן לבין לקוח מורשה. ריצה בתוך הדף משנה את הנחת הגישה.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — כל JavaScript מבטל אוטומטית את בדיקת השרת</h4><p>בדיקת השרת ממשיכה להתבצע. הבעיה היא גישת הקוד לערך שהבדיקה מצפה לו.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — הטוקן נשלח רק כאשר אין JavaScript בדף</h4><p>אופן השליחה נקבע על ידי היישום ואינו מוכתב כתנאי כזה.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — SOP חוסמת תמיד קוד שנכתב על ידי גורם חיצוני</h4><p>SOP פועלת לפי הקשר המקור של הקוד שרץ. זהות המחבר אינה כלל הבידוד.</p></div></section>",
+    "topic": "אבטחת Web",
+    "skill": "xss-token",
+    "parent_id": "P05",
+    "history_ids": [
+      "P05",
+      "Q118",
+      "Q157",
+      "Q180"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "12/07/2026",
+      "19/10/2026",
+      "21/08/2025"
+    ],
+    "recent_b_dates": [
+      "21/08/2025"
+    ],
+    "skill_transitions": [],
+    "latest_a_skill": true,
+    "topic_transitions": 4,
+    "confidence": 70,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 78,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 44
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-44.html"
+  },
+  {
+    "id": "B2-45",
+    "title": "שמירה על ההנחה של טוקן CSRF",
+    "stem": "בדף טופס עם טוקן CSRF ב-DOM נמצא שתיאור משתמש המיועד לטקסט מפורש כ-HTML בתוך div. איזה תיקון מטפל בגורם שמאפשר לקוד בלתי מהימן לקרוא את הטוקן מהדף?",
+    "options": [
+      "להציב את התוכן כשדה טקסט באמצעות textContent",
+      "להשתמש בטוקן CSRF ארוך יותר",
+      "להגדיר HttpOnly לעוגיית החיבור בלבד",
+      "להאריך את תוקף ה-TLS של האתר"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "להציב את התוכן כשדה טקסט באמצעות textContent",
+        "correct": true,
+        "reason": "ב-div רגיל הפעולה מציגה תווים כתוכן טקסט, כך שאינם מתפרשים כתגיות HTML."
+      },
+      {
+        "option": "להשתמש בטוקן CSRF ארוך יותר",
+        "correct": false,
+        "reason": "הטוקן מסייע לבדיקת בקשות. הוא אינו משנה איך הדף מפרש תוכן."
+      },
+      {
+        "option": "להגדיר HttpOnly לעוגיית החיבור בלבד",
+        "correct": false,
+        "reason": "כך אפשר להגביל קריאת עוגייה. יעד שמפרש HTML נשאר ללא תיקון."
+      },
+      {
+        "option": "להאריך את תוקף ה-TLS של האתר",
+        "correct": false,
+        "reason": "אבטחת ההעברה אינה מגדירה את הפירוש שיבצע הדפדפן אחרי קבלת התוכן."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>ב-div רגיל הפעולה מציגה תווים כתוכן טקסט, כך שאינם מתפרשים כתגיות HTML.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — להציב את התוכן כשדה טקסט באמצעות textContent</h4><p>ב-div רגיל הפעולה מציגה תווים כתוכן טקסט, כך שאינם מתפרשים כתגיות HTML.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — להשתמש בטוקן CSRF ארוך יותר</h4><p>הטוקן מסייע לבדיקת בקשות. הוא אינו משנה איך הדף מפרש תוכן.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — להגדיר HttpOnly לעוגיית החיבור בלבד</h4><p>כך אפשר להגביל קריאת עוגייה. יעד שמפרש HTML נשאר ללא תיקון.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — להאריך את תוקף ה-TLS של האתר</h4><p>אבטחת ההעברה אינה מגדירה את הפירוש שיבצע הדפדפן אחרי קבלת התוכן.</p></div></section>",
+    "topic": "אבטחת Web",
+    "skill": "xss-token",
+    "parent_id": "P05",
+    "history_ids": [
+      "P05",
+      "Q118",
+      "Q157",
+      "Q180"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "12/07/2026",
+      "19/10/2026",
+      "21/08/2025"
+    ],
+    "recent_b_dates": [
+      "21/08/2025"
+    ],
+    "skill_transitions": [],
+    "latest_a_skill": true,
+    "topic_transitions": 4,
+    "confidence": 70,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 78,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 45
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-45.html"
+  },
+  {
+    "id": "B2-46",
+    "title": "סדר הפעולות ב-Encrypt-then-MAC",
+    "stem": "חבילה כוללת IV, צופן ותג MAC שנוצר על הקידוד החד-משמעי של IV והצופן. באיזה שלב המקבל אמור לפענח לפי Encrypt-then-MAC?",
+    "options": [
+      "רק אחרי שאימות התג על IV והצופן הצליח",
+      "לפני אימות התג, כדי לקבל את הטקסט עבור ה-MAC",
+      "מיד אחרי בדיקת אורך התג",
+      "רק אם ה-IV זהה לזה של ההודעה הקודמת"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "רק אחרי שאימות התג על IV והצופן הצליח",
+        "correct": true,
+        "reason": "בודקים את התג על הנתונים שהתקבלו באמצעות מפתח האימות. אם הבדיקה נכשלת, אין מעבירים את הקלט לפענוח."
+      },
+      {
+        "option": "לפני אימות התג, כדי לקבל את הטקסט עבור ה-MAC",
+        "correct": false,
+        "reason": "התג בתרחיש מחושב על הצופן וה-IV. אימותו אינו דורש את הטקסט הגלוי."
+      },
+      {
+        "option": "מיד אחרי בדיקת אורך התג",
+        "correct": false,
+        "reason": "תג באורך מתאים יכול להיות שגוי. צריך לאמת את ערכו."
+      },
+      {
+        "option": "רק אם ה-IV זהה לזה של ההודעה הקודמת",
+        "correct": false,
+        "reason": "כלל זה אינו חלק מאימות MAC. בוחרים את ה-IV לפי דרישות מצב ההצפנה."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>בודקים את התג על הנתונים שהתקבלו באמצעות מפתח האימות. אם הבדיקה נכשלת, אין מעבירים את הקלט לפענוח.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — רק אחרי שאימות התג על IV והצופן הצליח</h4><p>בודקים את התג על הנתונים שהתקבלו באמצעות מפתח האימות. אם הבדיקה נכשלת, אין מעבירים את הקלט לפענוח.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — לפני אימות התג, כדי לקבל את הטקסט עבור ה-MAC</h4><p>התג בתרחיש מחושב על הצופן וה-IV. אימותו אינו דורש את הטקסט הגלוי.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — מיד אחרי בדיקת אורך התג</h4><p>תג באורך מתאים יכול להיות שגוי. צריך לאמת את ערכו.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — רק אם ה-IV זהה לזה של ההודעה הקודמת</h4><p>כלל זה אינו חלק מאימות MAC. בוחרים את ה-IV לפי דרישות מצב ההצפנה.</p></div></section>",
+    "topic": "Hash, MAC וסיסמאות",
+    "skill": "mac-composition",
+    "parent_id": "P06",
+    "history_ids": [
+      "P06",
+      "Q057",
+      "Q116",
+      "Q133",
+      "Q143",
+      "Q163"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "02/11/2025",
+      "09/08/2026",
+      "21/08/2025",
+      "30/11/2025",
+      "31/05/2024"
+    ],
+    "recent_b_dates": [
+      "21/08/2025",
+      "02/11/2025",
+      "09/08/2026"
+    ],
+    "skill_transitions": [],
+    "latest_a_skill": false,
+    "topic_transitions": 4,
+    "confidence": 63,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 74,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 46
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-46.html"
+  },
+  {
+    "id": "B2-47",
+    "title": "כיסוי פרמטרי המסר ב-MAC",
+    "stem": "בפרוטוקול Encrypt-then-MAC, ה-IV משפיע על הפענוח ונשלח בגלוי. מה יש לאמת כדי לקשור את התוצאה הן לצופן והן ל-IV שהשולח בחר?",
+    "options": [
+      "את הקידוד החד-משמעי של ה-IV והצופן יחד",
+      "רק את הצופן, מאחר שה-IV אינו סוד",
+      "רק את ה-IV, מאחר שהצופן כבר מוצפן",
+      "רק את מספר הבתים של ה-IV והצופן"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "את הקידוד החד-משמעי של ה-IV והצופן יחד",
+        "correct": true,
+        "reason": "התג אמור להגן על כל הנתונים שמשפיעים על הפענוח. פומביות ה-IV אינה מייתרת את הצורך לקשור אותו לצופן."
+      },
+      {
+        "option": "רק את הצופן, מאחר שה-IV אינו סוד",
+        "correct": false,
+        "reason": "שלמות נדרשת גם בפרמטרים גלויים. תג על הצופן בלבד אינו מתחייב לערך ה-IV."
+      },
+      {
+        "option": "רק את ה-IV, מאחר שהצופן כבר מוצפן",
+        "correct": false,
+        "reason": "הצפנה כשלעצמה אינה מגינה על הצופן מפני שינוי פעיל."
+      },
+      {
+        "option": "רק את מספר הבתים של ה-IV והצופן",
+        "correct": false,
+        "reason": "חבילות שונות יכולות להיות באותו אורך. האימות צריך לכסות את הערכים."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>התג אמור להגן על כל הנתונים שמשפיעים על הפענוח. פומביות ה-IV אינה מייתרת את הצורך לקשור אותו לצופן.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — את הקידוד החד-משמעי של ה-IV והצופן יחד</h4><p>התג אמור להגן על כל הנתונים שמשפיעים על הפענוח. פומביות ה-IV אינה מייתרת את הצורך לקשור אותו לצופן.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — רק את הצופן, מאחר שה-IV אינו סוד</h4><p>שלמות נדרשת גם בפרמטרים גלויים. תג על הצופן בלבד אינו מתחייב לערך ה-IV.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — רק את ה-IV, מאחר שהצופן כבר מוצפן</h4><p>הצפנה כשלעצמה אינה מגינה על הצופן מפני שינוי פעיל.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — רק את מספר הבתים של ה-IV והצופן</h4><p>חבילות שונות יכולות להיות באותו אורך. האימות צריך לכסות את הערכים.</p></div></section>",
+    "topic": "Hash, MAC וסיסמאות",
+    "skill": "mac-composition",
+    "parent_id": "P06",
+    "history_ids": [
+      "P06",
+      "Q057",
+      "Q116",
+      "Q133",
+      "Q143",
+      "Q163"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "02/11/2025",
+      "09/08/2026",
+      "21/08/2025",
+      "30/11/2025",
+      "31/05/2024"
+    ],
+    "recent_b_dates": [
+      "21/08/2025",
+      "02/11/2025",
+      "09/08/2026"
+    ],
+    "skill_transitions": [],
+    "latest_a_skill": false,
+    "topic_transitions": 4,
+    "confidence": 63,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 74,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 47
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-47.html"
+  },
+  {
+    "id": "B2-48",
+    "title": "הפרדת מפתחות ב-Encrypt-then-MAC",
+    "stem": "תכנון Encrypt-then-MAC גוזר שני מפתחות ממפתח ראשי בעזרת KDF ותוויות שונות. למה המפתחות משמשים?",
+    "options": [
+      "מפתח אחד להצפנה ומפתח אחר ליצירה ולאימות של תג",
+      "המפתח הראשון מוודא שלמות והשני מוודא טריות באופן אוטומטי",
+      "משתמשים בשני המפתחות כדי להצפין פעמיים, ומוותרים על התג",
+      "שני המפתחות חייבים להיות זהים כדי לוודא שהתג והצופן מתאימים"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "מפתח אחד להצפנה ומפתח אחר ליצירה ולאימות של תג",
+        "correct": true,
+        "reason": "כל פרימיטיב מקבל מפתח ייעודי. המקבל משתמש במפתח האימות לבדיקת התג לפני פענוח עם מפתח ההצפנה."
+      },
+      {
+        "option": "המפתח הראשון מוודא שלמות והשני מוודא טריות באופן אוטומטי",
+        "correct": false,
+        "reason": "שילוב הצפנה ו-MAC אינו מבטיח טריות ללא מנגנון נוסף."
+      },
+      {
+        "option": "משתמשים בשני המפתחות כדי להצפין פעמיים, ומוותרים על התג",
+        "correct": false,
+        "reason": "שתי הצפנות אינן תחליף לאימות נתונים."
+      },
+      {
+        "option": "שני המפתחות חייבים להיות זהים כדי לוודא שהתג והצופן מתאימים",
+        "correct": false,
+        "reason": "ההתאמה נוצרת משום שהתג מחושב על הצופן. אין צורך להשתמש באותו מפתח לשתי פעולות שונות."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>כל פרימיטיב מקבל מפתח ייעודי. המקבל משתמש במפתח האימות לבדיקת התג לפני פענוח עם מפתח ההצפנה.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — מפתח אחד להצפנה ומפתח אחר ליצירה ולאימות של תג</h4><p>כל פרימיטיב מקבל מפתח ייעודי. המקבל משתמש במפתח האימות לבדיקת התג לפני פענוח עם מפתח ההצפנה.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — המפתח הראשון מוודא שלמות והשני מוודא טריות באופן אוטומטי</h4><p>שילוב הצפנה ו-MAC אינו מבטיח טריות ללא מנגנון נוסף.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — משתמשים בשני המפתחות כדי להצפין פעמיים, ומוותרים על התג</h4><p>שתי הצפנות אינן תחליף לאימות נתונים.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — שני המפתחות חייבים להיות זהים כדי לוודא שהתג והצופן מתאימים</h4><p>ההתאמה נוצרת משום שהתג מחושב על הצופן. אין צורך להשתמש באותו מפתח לשתי פעולות שונות.</p></div></section>",
+    "topic": "Hash, MAC וסיסמאות",
+    "skill": "mac-composition",
+    "parent_id": "P06",
+    "history_ids": [
+      "P06",
+      "Q057",
+      "Q116",
+      "Q133",
+      "Q143",
+      "Q163"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "02/11/2025",
+      "09/08/2026",
+      "21/08/2025",
+      "30/11/2025",
+      "31/05/2024"
+    ],
+    "recent_b_dates": [
+      "21/08/2025",
+      "02/11/2025",
+      "09/08/2026"
+    ],
+    "skill_transitions": [],
+    "latest_a_skill": false,
+    "topic_transitions": 4,
+    "confidence": 63,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 74,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 48
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-48.html"
+  },
+  {
+    "id": "B2-49",
+    "title": "הגנת CSRF בצד השרת",
+    "stem": "שירות משתמש בעוגיית סשן. נניח שעוגייה יכולה להישלח גם בבקשה מאתר אחר, ושהבקשה משנה פרטים בחשבון. איזו בדיקה מגינה ישירות מפני CSRF?",
+    "options": [
+      "לדרוש ולאמת טוקן בלתי צפוי ששויך לסשן לפני שינוי פרטי החשבון",
+      "לבדוק רק שיש עוגיית סשן תקפה",
+      "לבקש מהדפדפן שלא להציג את גוף התשובה לאתר אחר",
+      "להציג הודעת שגיאה רק לאחר ששינוי החשבון כבר בוצע"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "לדרוש ולאמת טוקן בלתי צפוי ששויך לסשן לפני שינוי פרטי החשבון",
+        "correct": true,
+        "reason": "טוקן תקין מעיד שהיוזם יכול להשיג ערך שמקור חיצוני אינו יכול לקרוא לפי ההנחות. השרת דוחה את השינוי אם הטוקן חסר או שגוי."
+      },
+      {
+        "option": "לבדוק רק שיש עוגיית סשן תקפה",
+        "correct": false,
+        "reason": "לפי התרחיש הדפדפן יכול לצרף את העוגייה גם לבקשה מאתר אחר."
+      },
+      {
+        "option": "לבקש מהדפדפן שלא להציג את גוף התשובה לאתר אחר",
+        "correct": false,
+        "reason": "ההגנה חייבת למנוע את שינוי המצב. השינוי יכול לקרות גם בלי קריאת התשובה."
+      },
+      {
+        "option": "להציג הודעת שגיאה רק לאחר ששינוי החשבון כבר בוצע",
+        "correct": false,
+        "reason": "הבדיקה צריכה להקדים את השינוי כדי למנוע אותו."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>טוקן תקין מעיד שהיוזם יכול להשיג ערך שמקור חיצוני אינו יכול לקרוא לפי ההנחות. השרת דוחה את השינוי אם הטוקן חסר או שגוי.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — לדרוש ולאמת טוקן בלתי צפוי ששויך לסשן לפני שינוי פרטי החשבון</h4><p>טוקן תקין מעיד שהיוזם יכול להשיג ערך שמקור חיצוני אינו יכול לקרוא לפי ההנחות. השרת דוחה את השינוי אם הטוקן חסר או שגוי.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — לבדוק רק שיש עוגיית סשן תקפה</h4><p>לפי התרחיש הדפדפן יכול לצרף את העוגייה גם לבקשה מאתר אחר.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — לבקש מהדפדפן שלא להציג את גוף התשובה לאתר אחר</h4><p>ההגנה חייבת למנוע את שינוי המצב. השינוי יכול לקרות גם בלי קריאת התשובה.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — להציג הודעת שגיאה רק לאחר ששינוי החשבון כבר בוצע</h4><p>הבדיקה צריכה להקדים את השינוי כדי למנוע אותו.</p></div></section>",
+    "topic": "אבטחת Web",
+    "skill": "csrf-cross-site",
+    "parent_id": "P17",
+    "history_ids": [
+      "P17",
+      "Q004",
+      "Q022",
+      "Q074",
+      "Q091",
+      "Q111"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "04/07/2024",
+      "20/10/2024",
+      "21/07/2025"
+    ],
+    "recent_b_dates": [
+      "04/07/2024",
+      "20/10/2024"
+    ],
+    "skill_transitions": [],
+    "latest_a_skill": false,
+    "topic_transitions": 4,
+    "confidence": 67,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 74,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 49
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-49.html"
+  },
+  {
+    "id": "B2-50",
+    "title": "שליחה לעומת קריאה ב-CSRF",
+    "stem": "דפדפן רשאי לשלוח בקשת טופס חוצה אתרים הכוללת עוגיית סשן. האתר המקבל מבצע שינוי על סמך העוגייה ואינו בודק מקור או טוקן. מקור שולח אינו רשאי לקרוא את גוף התגובה. איזה משפט נכון?",
+    "options": [
+      "שינוי המצב עדיין יכול להתבצע למרות חוסר יכולת לקרוא את התגובה",
+      "חסימת קריאת התגובה גורמת לדפדפן לבטל את פעולת השרת",
+      "אין CSRF בלי גישה לערך העוגייה מתוך JavaScript",
+      "כל בקשה חוצה אתרים מחייבת אישור מפורש של CORS לפני שליחתה"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "שינוי המצב עדיין יכול להתבצע למרות חוסר יכולת לקרוא את התגובה",
+        "correct": true,
+        "reason": "שליחת בקשה וחשיפת התגובה לקוד מהמקור השולח הן פעולות נפרדות. השרת כבר קיבל בקשה נושאת סשן."
+      },
+      {
+        "option": "חסימת קריאת התגובה גורמת לדפדפן לבטל את פעולת השרת",
+        "correct": false,
+        "reason": "הגבלת קריאה אינה מחזירה לאחור פעולה בצד השרת."
+      },
+      {
+        "option": "אין CSRF בלי גישה לערך העוגייה מתוך JavaScript",
+        "correct": false,
+        "reason": "הדפדפן יכול לצרף את העוגייה בעצמו לפי ההנחה."
+      },
+      {
+        "option": "כל בקשה חוצה אתרים מחייבת אישור מפורש של CORS לפני שליחתה",
+        "correct": false,
+        "reason": "טופס רגיל יכול להישלח ללא אישור כזה, כפי שנקבע בתרחיש."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>שליחת בקשה וחשיפת התגובה לקוד מהמקור השולח הן פעולות נפרדות. השרת כבר קיבל בקשה נושאת סשן.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — שינוי המצב עדיין יכול להתבצע למרות חוסר יכולת לקרוא את התגובה</h4><p>שליחת בקשה וחשיפת התגובה לקוד מהמקור השולח הן פעולות נפרדות. השרת כבר קיבל בקשה נושאת סשן.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — חסימת קריאת התגובה גורמת לדפדפן לבטל את פעולת השרת</h4><p>הגבלת קריאה אינה מחזירה לאחור פעולה בצד השרת.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — אין CSRF בלי גישה לערך העוגייה מתוך JavaScript</h4><p>הדפדפן יכול לצרף את העוגייה בעצמו לפי ההנחה.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — כל בקשה חוצה אתרים מחייבת אישור מפורש של CORS לפני שליחתה</h4><p>טופס רגיל יכול להישלח ללא אישור כזה, כפי שנקבע בתרחיש.</p></div></section>",
+    "topic": "אבטחת Web",
+    "skill": "csrf-cross-site",
+    "parent_id": "P17",
+    "history_ids": [
+      "P17",
+      "Q004",
+      "Q022",
+      "Q074",
+      "Q091",
+      "Q111"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "04/07/2024",
+      "20/10/2024",
+      "21/07/2025"
+    ],
+    "recent_b_dates": [
+      "04/07/2024",
+      "20/10/2024"
+    ],
+    "skill_transitions": [],
+    "latest_a_skill": false,
+    "topic_transitions": 4,
+    "confidence": 67,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 74,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 50
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-50.html"
+  },
+  {
+    "id": "B2-51",
+    "title": "טוקן שייך לסשן",
+    "stem": "בבדיקה נמצא שהשרת מקבל טוקן CSRF תקין של סשן אחד גם יחד עם עוגייה של סשן אחר. איזה תיקון נדרש?",
+    "options": [
+      "לוודא שהטוקן תקין דווקא עבור הסשן המזוהה בבקשה",
+      "לבדוק רק שהטוקן באורך הנכון",
+      "להעביר את הטוקן לכותרת בלי לשנות את בדיקת השיוך",
+      "להשתמש באותו טוקן תקין לכל הסשנים"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "לוודא שהטוקן תקין דווקא עבור הסשן המזוהה בבקשה",
+        "correct": true,
+        "reason": "יש לקשור את הטוקן לאותו סשן שנבחר לפי האישורים בבקשה. אחרת ערך שניתן לסשן אחד עלול להתקבל בסשן אחר."
+      },
+      {
+        "option": "לבדוק רק שהטוקן באורך הנכון",
+        "correct": false,
+        "reason": "אורך אינו מוכיח תקפות או שיוך לסשן."
+      },
+      {
+        "option": "להעביר את הטוקן לכותרת בלי לשנות את בדיקת השיוך",
+        "correct": false,
+        "reason": "שינוי המקום לבדו אינו בודק שיוך. בתרחיש נשאל על תיקון חולשת בדיקת הטוקן."
+      },
+      {
+        "option": "להשתמש באותו טוקן תקין לכל הסשנים",
+        "correct": false,
+        "reason": "ערך משותף מבטל את ההפרדה שעליה מבוססת בדיקת השיוך."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>יש לקשור את הטוקן לאותו סשן שנבחר לפי האישורים בבקשה. אחרת ערך שניתן לסשן אחד עלול להתקבל בסשן אחר.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — לוודא שהטוקן תקין דווקא עבור הסשן המזוהה בבקשה</h4><p>יש לקשור את הטוקן לאותו סשן שנבחר לפי האישורים בבקשה. אחרת ערך שניתן לסשן אחד עלול להתקבל בסשן אחר.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — לבדוק רק שהטוקן באורך הנכון</h4><p>אורך אינו מוכיח תקפות או שיוך לסשן.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — להעביר את הטוקן לכותרת בלי לשנות את בדיקת השיוך</h4><p>שינוי המקום לבדו אינו בודק שיוך. בתרחיש נשאל על תיקון חולשת בדיקת הטוקן.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — להשתמש באותו טוקן תקין לכל הסשנים</h4><p>ערך משותף מבטל את ההפרדה שעליה מבוססת בדיקת השיוך.</p></div></section>",
+    "topic": "אבטחת Web",
+    "skill": "csrf-cross-site",
+    "parent_id": "P17",
+    "history_ids": [
+      "P17",
+      "Q004",
+      "Q022",
+      "Q074",
+      "Q091",
+      "Q111"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "04/07/2024",
+      "20/10/2024",
+      "21/07/2025"
+    ],
+    "recent_b_dates": [
+      "04/07/2024",
+      "20/10/2024"
+    ],
+    "skill_transitions": [],
+    "latest_a_skill": false,
+    "topic_transitions": 4,
+    "confidence": 67,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 74,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 51
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-51.html"
+  },
+  {
+    "id": "B2-52",
+    "title": "מה מצרף השרת ב-OCSP stapling?",
+    "stem": "שרת HTTPS משתמש ב-OCSP stapling כדי שהלקוח יקבל ראיית סטטוס בלי פנייה ישירה למשיב. איזה אובייקט השרת מצרף?",
+    "options": [
+      "תשובת OCSP חתומה בידי משיב מורשה לגבי התעודה המתאימה",
+      "את המפתח הפרטי של משיב ה-OCSP",
+      "את טביעת האצבע של התעודה בלבד",
+      "SCT מלוג Certificate Transparency"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "תשובת OCSP חתומה בידי משיב מורשה לגבי התעודה המתאימה",
+        "correct": true,
+        "reason": "השרת יכול לאחזר ולהצמיד תשובת סטטוס. הלקוח מאמת את החותם, את זיהוי התעודה ואת הטריות תחת מדיניותו."
+      },
+      {
+        "option": "את המפתח הפרטי של משיב ה-OCSP",
+        "correct": false,
+        "reason": "מפתח פרטי אינו נמסר. חומר האימות פומבי והחתימה כבר נוצרה."
+      },
+      {
+        "option": "את טביעת האצבע של התעודה בלבד",
+        "correct": false,
+        "reason": "טביעת אצבע מזהה נתון ואינה מעידה על סטטוס הביטול שלו."
+      },
+      {
+        "option": "SCT מלוג Certificate Transparency",
+        "correct": false,
+        "reason": "SCT מתייחס לשקיפות ההנפקה. תשובת OCSP מספקת ראיית סטטוס."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>השרת יכול לאחזר ולהצמיד תשובת סטטוס. הלקוח מאמת את החותם, את זיהוי התעודה ואת הטריות תחת מדיניותו.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — תשובת OCSP חתומה בידי משיב מורשה לגבי התעודה המתאימה</h4><p>השרת יכול לאחזר ולהצמיד תשובת סטטוס. הלקוח מאמת את החותם, את זיהוי התעודה ואת הטריות תחת מדיניותו.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — את המפתח הפרטי של משיב ה-OCSP</h4><p>מפתח פרטי אינו נמסר. חומר האימות פומבי והחתימה כבר נוצרה.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — את טביעת האצבע של התעודה בלבד</h4><p>טביעת אצבע מזהה נתון ואינה מעידה על סטטוס הביטול שלו.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — SCT מלוג Certificate Transparency</h4><p>SCT מתייחס לשקיפות ההנפקה. תשובת OCSP מספקת ראיית סטטוס.</p></div></section>",
+    "topic": "PKI, תעודות, CT ו-OCSP",
+    "skill": "ocsp-stapling-benefits",
+    "parent_id": "P12",
+    "history_ids": [
+      "P12",
+      "Q073",
+      "Q101",
+      "Q170"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "04/07/2024",
+      "09/08/2026",
+      "24/11/2024"
+    ],
+    "recent_b_dates": [
+      "04/07/2024",
+      "09/08/2026"
+    ],
+    "skill_transitions": [],
+    "latest_a_skill": false,
+    "topic_transitions": 6,
+    "confidence": 70,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 77,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 52
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-52.html"
+  },
+  {
+    "id": "B2-53",
+    "title": "פרטיות ב-OCSP stapling",
+    "stem": "נשווה בין לקוח ששואל את משיב ה-OCSP ישירות בכל חיבור לבין שרת שמצרף תשובה חתומה שנטענה מראש. מהו יתרון ההצמדה עבור פרטיות הלקוח?",
+    "options": [
+      "המשיב אינו רואה פנייה נפרדת מהלקוח עבור ביקור זה",
+      "שרת האתר חדל לדעת שהלקוח התחבר אליו",
+      "התעודה נעשית סודית",
+      "אין עוד צורך לבדוק את חתימת OCSP"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "המשיב אינו רואה פנייה נפרדת מהלקוח עבור ביקור זה",
+        "correct": true,
+        "reason": "השרת מקבל את התשובה ומעביר אותה ללקוח. אין צורך בפנייה נפרדת מן הלקוח למשיב כדי לאמת את הראיה שסופקה."
+      },
+      {
+        "option": "שרת האתר חדל לדעת שהלקוח התחבר אליו",
+        "correct": false,
+        "reason": "השרת עדיין משתתף בחיבור. נחסכת פנייה לשירות הסטטוס."
+      },
+      {
+        "option": "התעודה נעשית סודית",
+        "correct": false,
+        "reason": "התשובה המצורפת אינה הופכת את פרטי התעודה לסוד."
+      },
+      {
+        "option": "אין עוד צורך לבדוק את חתימת OCSP",
+        "correct": false,
+        "reason": "הצמדה מתארת את תעבורת הראיה. הלקוח עדיין חייב לבדוק את תקפותה."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>השרת מקבל את התשובה ומעביר אותה ללקוח. אין צורך בפנייה נפרדת מן הלקוח למשיב כדי לאמת את הראיה שסופקה.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — המשיב אינו רואה פנייה נפרדת מהלקוח עבור ביקור זה</h4><p>השרת מקבל את התשובה ומעביר אותה ללקוח. אין צורך בפנייה נפרדת מן הלקוח למשיב כדי לאמת את הראיה שסופקה.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — שרת האתר חדל לדעת שהלקוח התחבר אליו</h4><p>השרת עדיין משתתף בחיבור. נחסכת פנייה לשירות הסטטוס.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — התעודה נעשית סודית</h4><p>התשובה המצורפת אינה הופכת את פרטי התעודה לסוד.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — אין עוד צורך לבדוק את חתימת OCSP</h4><p>הצמדה מתארת את תעבורת הראיה. הלקוח עדיין חייב לבדוק את תקפותה.</p></div></section>",
+    "topic": "PKI, תעודות, CT ו-OCSP",
+    "skill": "ocsp-stapling-benefits",
+    "parent_id": "P12",
+    "history_ids": [
+      "P12",
+      "Q073",
+      "Q101",
+      "Q170"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "04/07/2024",
+      "09/08/2026",
+      "24/11/2024"
+    ],
+    "recent_b_dates": [
+      "04/07/2024",
+      "09/08/2026"
+    ],
+    "skill_transitions": [],
+    "latest_a_skill": false,
+    "topic_transitions": 6,
+    "confidence": 70,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 77,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 53
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-53.html"
+  },
+  {
+    "id": "B2-54",
+    "title": "טריות ראיית OCSP",
+    "stem": "בדפדפן שדורש תשובת OCSP מוצמדת תקפה, התשובה חתומה בידי משיב מורשה ומתאימה לתעודה, אך זמן ה-nextUpdate כבר עבר לפי מדיניות הדפדפן. מה נובע מכך?",
+    "options": [
+      "החתימה יכולה להיות תקינה ועדיין הראיה ישנה מדי לקבלה",
+      "חתימה תקינה גוברת על תום תוקף הראיה",
+      "הראיה פגה ולכן הוכח שהתעודה בוטלה",
+      "יש לבדוק את החתימה שוב עם המפתח הפרטי של שרת האתר"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "החתימה יכולה להיות תקינה ועדיין הראיה ישנה מדי לקבלה",
+        "correct": true,
+        "reason": "החתימה בודקת שלמות ומקור. בדיקת הזמן קובעת אם המידע מתאים להחלטה הנוכחית."
+      },
+      {
+        "option": "חתימה תקינה גוברת על תום תוקף הראיה",
+        "correct": false,
+        "reason": "אלה תנאים נפרדים. חתימת תשובה אינה מאריכה את חלון הטריות."
+      },
+      {
+        "option": "הראיה פגה ולכן הוכח שהתעודה בוטלה",
+        "correct": false,
+        "reason": "מראיה ישנה אי אפשר להסיק מה הסטטוס הנוכחי."
+      },
+      {
+        "option": "יש לבדוק את החתימה שוב עם המפתח הפרטי של שרת האתר",
+        "correct": false,
+        "reason": "שרת האתר מצרף את הראיה. אימות החתימה משתמש במפתח הפומבי של חותם מורשה."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>החתימה בודקת שלמות ומקור. בדיקת הזמן קובעת אם המידע מתאים להחלטה הנוכחית.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — החתימה יכולה להיות תקינה ועדיין הראיה ישנה מדי לקבלה</h4><p>החתימה בודקת שלמות ומקור. בדיקת הזמן קובעת אם המידע מתאים להחלטה הנוכחית.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — חתימה תקינה גוברת על תום תוקף הראיה</h4><p>אלה תנאים נפרדים. חתימת תשובה אינה מאריכה את חלון הטריות.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — הראיה פגה ולכן הוכח שהתעודה בוטלה</h4><p>מראיה ישנה אי אפשר להסיק מה הסטטוס הנוכחי.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — יש לבדוק את החתימה שוב עם המפתח הפרטי של שרת האתר</h4><p>שרת האתר מצרף את הראיה. אימות החתימה משתמש במפתח הפומבי של חותם מורשה.</p></div></section>",
+    "topic": "PKI, תעודות, CT ו-OCSP",
+    "skill": "ocsp-stapling-benefits",
+    "parent_id": "P12",
+    "history_ids": [
+      "P12",
+      "Q073",
+      "Q101",
+      "Q170"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "04/07/2024",
+      "09/08/2026",
+      "24/11/2024"
+    ],
+    "recent_b_dates": [
+      "04/07/2024",
+      "09/08/2026"
+    ],
+    "skill_transitions": [],
+    "latest_a_skill": false,
+    "topic_transitions": 6,
+    "confidence": 70,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 77,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 54
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-54.html"
+  },
+  {
+    "id": "B2-55",
+    "title": "הפרדת שם משתמש משאילתת SQL",
+    "stem": "מערכת מחפשת חשבון לפי שם שהוזן בטופס. הערך חייב להשתתף כחלק מתנאי השאילתה. איזו דרך מונעת ממנו להפוך לחלק מתחביר SQL?",
+    "options": [
+      "להכין שאילתה עם placeholder ולהעביר את השם כפרמטר קשור",
+      "לשרשר את השם לשאילתה ולבדוק רק את אורכו",
+      "להצפין את החיבור למסד ולהשאיר את שרשור הקלט",
+      "להסתיר הודעות שגיאה ולהשאיר את השאילתה כפי שהיא"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "להכין שאילתה עם placeholder ולהעביר את השם כפרמטר קשור",
+        "correct": true,
+        "reason": "המבנה מוגדר מראש. הנהג מעביר את השם כערך עבור הפרמטר, בלי לפרש אותו כהוראת SQL."
+      },
+      {
+        "option": "לשרשר את השם לשאילתה ולבדוק רק את אורכו",
+        "correct": false,
+        "reason": "בדיקת אורך אינה מפרידה בין ערך לתחביר."
+      },
+      {
+        "option": "להצפין את החיבור למסד ולהשאיר את שרשור הקלט",
+        "correct": false,
+        "reason": "הצפנת תעבורה אינה משנה כיצד מסד הנתונים מפרש את השאילתה."
+      },
+      {
+        "option": "להסתיר הודעות שגיאה ולהשאיר את השאילתה כפי שהיא",
+        "correct": false,
+        "reason": "הסתרת השגיאה מפחיתה חשיפה מסוימת, אך אינה מונעת פירוש קלט כתחביר."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>המבנה מוגדר מראש. הנהג מעביר את השם כערך עבור הפרמטר, בלי לפרש אותו כהוראת SQL.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — להכין שאילתה עם placeholder ולהעביר את השם כפרמטר קשור</h4><p>המבנה מוגדר מראש. הנהג מעביר את השם כערך עבור הפרמטר, בלי לפרש אותו כהוראת SQL.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — לשרשר את השם לשאילתה ולבדוק רק את אורכו</h4><p>בדיקת אורך אינה מפרידה בין ערך לתחביר.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — להצפין את החיבור למסד ולהשאיר את שרשור הקלט</h4><p>הצפנת תעבורה אינה משנה כיצד מסד הנתונים מפרש את השאילתה.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — להסתיר הודעות שגיאה ולהשאיר את השאילתה כפי שהיא</h4><p>הסתרת השגיאה מפחיתה חשיפה מסוימת, אך אינה מונעת פירוש קלט כתחביר.</p></div></section>",
+    "topic": "אבטחת Web",
+    "skill": "sql",
+    "parent_id": "P28",
+    "history_ids": [
+      "P28",
+      "Q017",
+      "Q035",
+      "Q060",
+      "Q095"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "24/11/2024",
+      "31/05/2024"
+    ],
+    "recent_b_dates": [],
+    "skill_transitions": [],
+    "latest_a_skill": false,
+    "topic_transitions": 4,
+    "confidence": 63,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 65,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 55
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-55.html"
+  },
+  {
+    "id": "B2-56",
+    "title": "בחירת עמודה למיון",
+    "stem": "מסך מאפשר למיין תוצאות לפי שם משתמש או לפי תאריך. יש לתמוך בשתי האפשרויות בלבד. למסד יש פרמטרים לערכים, ותחביר המיון דורש מזהה עמודה. מה נכון לעשות?",
+    "options": [
+      "למפות כל בחירה למזהה עמודה קבוע בקוד ולדחות ערכים אחרים",
+      "לשרשר כל טקסט שהתקבל כרכיב המיון",
+      "לקשור שם עמודה כפרמטר ערך ולצפות שיפורש כמזהה",
+      "לבדוק שקיימת עוגיית סשן ואז לשרשר את הבחירה"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "למפות כל בחירה למזהה עמודה קבוע בקוד ולדחות ערכים אחרים",
+        "correct": true,
+        "reason": "מזהה עמודה הוא רכיב תחביר. מיפוי מתוך שתי אפשרויות קבועות משאיר את התחביר בשליטת התוכנה."
+      },
+      {
+        "option": "לשרשר כל טקסט שהתקבל כרכיב המיון",
+        "correct": false,
+        "reason": "הדרישה מוגבלת לשני ערכים, ושרשור כללי מעביר את השליטה בתחביר לקלט."
+      },
+      {
+        "option": "לקשור שם עמודה כפרמטר ערך ולצפות שיפורש כמזהה",
+        "correct": false,
+        "reason": "לפי ההנחה פרמטר מציב ערך. הוא אינו משנה את המזהה התחבירי."
+      },
+      {
+        "option": "לבדוק שקיימת עוגיית סשן ואז לשרשר את הבחירה",
+        "correct": false,
+        "reason": "אימות המשתמש אינו מבטיח שהערך מתאים לתפקיד התחבירי."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>מזהה עמודה הוא רכיב תחביר. מיפוי מתוך שתי אפשרויות קבועות משאיר את התחביר בשליטת התוכנה.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — למפות כל בחירה למזהה עמודה קבוע בקוד ולדחות ערכים אחרים</h4><p>מזהה עמודה הוא רכיב תחביר. מיפוי מתוך שתי אפשרויות קבועות משאיר את התחביר בשליטת התוכנה.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — לשרשר כל טקסט שהתקבל כרכיב המיון</h4><p>הדרישה מוגבלת לשני ערכים, ושרשור כללי מעביר את השליטה בתחביר לקלט.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — לקשור שם עמודה כפרמטר ערך ולצפות שיפורש כמזהה</h4><p>לפי ההנחה פרמטר מציב ערך. הוא אינו משנה את המזהה התחבירי.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — לבדוק שקיימת עוגיית סשן ואז לשרשר את הבחירה</h4><p>אימות המשתמש אינו מבטיח שהערך מתאים לתפקיד התחבירי.</p></div></section>",
+    "topic": "אבטחת Web",
+    "skill": "sql",
+    "parent_id": "P28",
+    "history_ids": [
+      "P28",
+      "Q017",
+      "Q035",
+      "Q060",
+      "Q095"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "24/11/2024",
+      "31/05/2024"
+    ],
+    "recent_b_dates": [],
+    "skill_transitions": [],
+    "latest_a_skill": false,
+    "topic_transitions": 4,
+    "confidence": 63,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 65,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 56
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-56.html"
+  },
+  {
+    "id": "B2-57",
+    "title": "הרשאות למסד לעומת פרמטרים",
+    "stem": "ליישום יש הרשאת קריאה בלבד למסד. בקוד מאחדים קלט חיצוני ושאילתה דרך שרשור. איזו קביעה נכונה לגבי ההגנה?",
+    "options": [
+      "קריאה בלבד מגבילה נזקי כתיבה, אך עדיין צריך להפריד פרמטרים מהשאילתה",
+      "קריאה בלבד מונעת שינוי במשמעות של כל שאילתת קריאה",
+      "פרמטרים דרושים רק לשאילתות שמעדכנות שורות",
+      "הפעלת TLS לבדה תפתור את בעיית השרשור"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "קריאה בלבד מגבילה נזקי כתיבה, אך עדיין צריך להפריד פרמטרים מהשאילתה",
+        "correct": true,
+        "reason": "מדיניות הרשאות מגבילה פעולות שהחשבון רשאי לבצע. פרמטריזציה מונעת מערך חיצוני לשנות את המבנה, כולל מבנה של שאילתות קריאה."
+      },
+      {
+        "option": "קריאה בלבד מונעת שינוי במשמעות של כל שאילתת קריאה",
+        "correct": false,
+        "reason": "ההרשאה אינה קובעת איך שאילתה מורכבת או מתפרשת."
+      },
+      {
+        "option": "פרמטרים דרושים רק לשאילתות שמעדכנות שורות",
+        "correct": false,
+        "reason": "אפשר להשפיע גם על תנאי סינון או על נתונים שנקראים."
+      },
+      {
+        "option": "הפעלת TLS לבדה תפתור את בעיית השרשור",
+        "correct": false,
+        "reason": "TLS מגן על העברת הנתונים, לאחר שהיישום כבר יצר את השאילתה."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>מדיניות הרשאות מגבילה פעולות שהחשבון רשאי לבצע. פרמטריזציה מונעת מערך חיצוני לשנות את המבנה, כולל מבנה של שאילתות קריאה.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — קריאה בלבד מגבילה נזקי כתיבה, אך עדיין צריך להפריד פרמטרים מהשאילתה</h4><p>מדיניות הרשאות מגבילה פעולות שהחשבון רשאי לבצע. פרמטריזציה מונעת מערך חיצוני לשנות את המבנה, כולל מבנה של שאילתות קריאה.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — קריאה בלבד מונעת שינוי במשמעות של כל שאילתת קריאה</h4><p>ההרשאה אינה קובעת איך שאילתה מורכבת או מתפרשת.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — פרמטרים דרושים רק לשאילתות שמעדכנות שורות</h4><p>אפשר להשפיע גם על תנאי סינון או על נתונים שנקראים.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — הפעלת TLS לבדה תפתור את בעיית השרשור</h4><p>TLS מגן על העברת הנתונים, לאחר שהיישום כבר יצר את השאילתה.</p></div></section>",
+    "topic": "אבטחת Web",
+    "skill": "sql",
+    "parent_id": "P28",
+    "history_ids": [
+      "P28",
+      "Q017",
+      "Q035",
+      "Q060",
+      "Q095"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "24/11/2024",
+      "31/05/2024"
+    ],
+    "recent_b_dates": [],
+    "skill_transitions": [],
+    "latest_a_skill": false,
+    "topic_transitions": 4,
+    "confidence": 63,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 65,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 57
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-57.html"
+  },
+  {
+    "id": "B2-58",
+    "title": "שתי סיסמאות זהות עם salt נפרד",
+    "stem": "שני חשבונות בחרו אותה סיסמה. לכל חשבון salt אקראי שונה, ופונקציית גזירת הסיסמה מקבלת גם את ה-salt. איזו תוצאה צפויה?",
+    "options": [
+      "ערכי האימות בדרך כלל יהיו שונים גם כשהסיסמאות זהות",
+      "ערכי האימות חייבים להיות זהים כי הסיסמאות זהות",
+      "כל חשבון צריך לשמור את הסיסמה הגלויה לצד ה-salt",
+      "ה-salt חייב להישאר סודי כדי להבדיל בין החשבונות"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "ערכי האימות בדרך כלל יהיו שונים גם כשהסיסמאות זהות",
+        "correct": true,
+        "reason": "הקלט לפונקציית הגזירה שונה בין החשבונות, כך ששוויון סיסמאות אינו יוצר שוויון שיטתי בערכי האימות."
+      },
+      {
+        "option": "ערכי האימות חייבים להיות זהים כי הסיסמאות זהות",
+        "correct": false,
+        "reason": "הפונקציה מקבלת גם salt. קלטיה אינם זהים."
+      },
+      {
+        "option": "כל חשבון צריך לשמור את הסיסמה הגלויה לצד ה-salt",
+        "correct": false,
+        "reason": "בכניסה מחשבים את ערך האימות מחדש מן הקלט ומן ה-salt. האחסון אינו דורש את הסיסמה הגלויה."
+      },
+      {
+        "option": "ה-salt חייב להישאר סודי כדי להבדיל בין החשבונות",
+        "correct": false,
+        "reason": "ההבדלה נובעת מהשימוש בערכים שונים. ה-salt יכול להישמר ליד ערך האימות."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>הקלט לפונקציית הגזירה שונה בין החשבונות, כך ששוויון סיסמאות אינו יוצר שוויון שיטתי בערכי האימות.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — ערכי האימות בדרך כלל יהיו שונים גם כשהסיסמאות זהות</h4><p>הקלט לפונקציית הגזירה שונה בין החשבונות, כך ששוויון סיסמאות אינו יוצר שוויון שיטתי בערכי האימות.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — ערכי האימות חייבים להיות זהים כי הסיסמאות זהות</h4><p>הפונקציה מקבלת גם salt. קלטיה אינם זהים.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — כל חשבון צריך לשמור את הסיסמה הגלויה לצד ה-salt</h4><p>בכניסה מחשבים את ערך האימות מחדש מן הקלט ומן ה-salt. האחסון אינו דורש את הסיסמה הגלויה.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — ה-salt חייב להישאר סודי כדי להבדיל בין החשבונות</h4><p>ההבדלה נובעת מהשימוש בערכים שונים. ה-salt יכול להישמר ליד ערך האימות.</p></div></section>",
+    "topic": "Hash, MAC וסיסמאות",
+    "skill": "password",
+    "parent_id": "P24",
+    "history_ids": [
+      "P24",
+      "Q014",
+      "Q069",
+      "Q085",
+      "Q103",
+      "Q136"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "02/11/2025",
+      "04/07/2024",
+      "17/09/2024",
+      "21/07/2025"
+    ],
+    "recent_b_dates": [
+      "04/07/2024",
+      "02/11/2025"
+    ],
+    "skill_transitions": [],
+    "latest_a_skill": false,
+    "topic_transitions": 4,
+    "confidence": 63,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 71,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 58
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-58.html"
+  },
+  {
+    "id": "B2-59",
+    "title": "למה salt נפרד לכל חשבון?",
+    "stem": "היישום שומר ערך אימות לסיסמה בעזרת פונקציית גזירה. איזה יתרון מתקבל מ-salt ייחודי לכל חשבון לעומת salt קבוע לכל החשבונות?",
+    "options": [
+      "הוא מקטין את האפשרות לעשות שימוש חוזר באותו חישוב מול חשבונות שונים",
+      "הוא הופך סיסמה קצרה לסיסמה בעלת אנטרופיה גבוהה",
+      "הוא מבטל את הצורך בפונקציית גזירה יקרה",
+      "הוא חוסם ניסיונות כניסה מקוונים בלי הגבלת קצב"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "הוא מקטין את האפשרות לעשות שימוש חוזר באותו חישוב מול חשבונות שונים",
+        "correct": true,
+        "reason": "אותו ניחוש סיסמה משפיע אחרת כאשר ה-salt שונה. עבודה שחושבה עבור ערך salt אחד אינה עוברת ישירות לערך אחר."
+      },
+      {
+        "option": "הוא הופך סיסמה קצרה לסיסמה בעלת אנטרופיה גבוהה",
+        "correct": false,
+        "reason": "בחירת הסיסמה נשארת ללא שינוי. ה-salt מוסיף ייחודיות לחישוב."
+      },
+      {
+        "option": "הוא מבטל את הצורך בפונקציית גזירה יקרה",
+        "correct": false,
+        "reason": "ייחודיות ועלות לניחוש הן הגנות משלימות."
+      },
+      {
+        "option": "הוא חוסם ניסיונות כניסה מקוונים בלי הגבלת קצב",
+        "correct": false,
+        "reason": "השרת עדיין מקבל ניסיונות אימות. הגבלת קצב מטפלת בבעיה נפרדת."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>אותו ניחוש סיסמה משפיע אחרת כאשר ה-salt שונה. עבודה שחושבה עבור ערך salt אחד אינה עוברת ישירות לערך אחר.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — הוא מקטין את האפשרות לעשות שימוש חוזר באותו חישוב מול חשבונות שונים</h4><p>אותו ניחוש סיסמה משפיע אחרת כאשר ה-salt שונה. עבודה שחושבה עבור ערך salt אחד אינה עוברת ישירות לערך אחר.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — הוא הופך סיסמה קצרה לסיסמה בעלת אנטרופיה גבוהה</h4><p>בחירת הסיסמה נשארת ללא שינוי. ה-salt מוסיף ייחודיות לחישוב.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — הוא מבטל את הצורך בפונקציית גזירה יקרה</h4><p>ייחודיות ועלות לניחוש הן הגנות משלימות.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — הוא חוסם ניסיונות כניסה מקוונים בלי הגבלת קצב</h4><p>השרת עדיין מקבל ניסיונות אימות. הגבלת קצב מטפלת בבעיה נפרדת.</p></div></section>",
+    "topic": "Hash, MAC וסיסמאות",
+    "skill": "password",
+    "parent_id": "P24",
+    "history_ids": [
+      "P24",
+      "Q014",
+      "Q069",
+      "Q085",
+      "Q103",
+      "Q136"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "02/11/2025",
+      "04/07/2024",
+      "17/09/2024",
+      "21/07/2025"
+    ],
+    "recent_b_dates": [
+      "04/07/2024",
+      "02/11/2025"
+    ],
+    "skill_transitions": [],
+    "latest_a_skill": false,
+    "topic_transitions": 4,
+    "confidence": 63,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 71,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 59
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-59.html"
+  },
+  {
+    "id": "B2-60",
+    "title": "מה שומרים לצורך אימות סיסמה?",
+    "stem": "יישום מצרף salt אקראי ייחודי לכל חשבון ומשתמש ב-KDF ייעודי לסיסמאות. מה צריך לשמור כדי שאפשר יהיה לבדוק סיסמה בכניסה הבאה?",
+    "options": [
+      "את ה-salt, פרמטרי הגזירה הנדרשים וערך האימות המחושב",
+      "רק את ה-salt",
+      "רק את ערך האימות ולבחור salt חדש בכל כניסה",
+      "את הסיסמה הגלויה, כדי לפענח את ערך האימות"
+    ],
+    "accepted_indices": [
+      0
+    ],
+    "option_explanations": [
+      {
+        "option": "את ה-salt, פרמטרי הגזירה הנדרשים וערך האימות המחושב",
+        "correct": true,
+        "reason": "בעת כניסה מפעילים שוב את הפונקציה על הסיסמה שהוקלדה באותם תנאים ומשווים לערך השמור."
+      },
+      {
+        "option": "רק את ה-salt",
+        "correct": false,
+        "reason": "אין עם מה להשוות את ערך האימות המחושב."
+      },
+      {
+        "option": "רק את ערך האימות ולבחור salt חדש בכל כניסה",
+        "correct": false,
+        "reason": "כך מחשבים על קלט שונה ולכן לא ניתן בדרך כלל לשחזר את ערך האימות."
+      },
+      {
+        "option": "את הסיסמה הגלויה, כדי לפענח את ערך האימות",
+        "correct": false,
+        "reason": "אימות מבוסס על חישוב והשוואה. לא נדרש לפענח את ערך האימות."
+      }
+    ],
+    "answer_html": "<section class=\"forecast-review\"><h3>דרך הפתרון</h3><p>בעת כניסה מפעילים שוב את הפונקציה על הסיסמה שהוקלדה באותם תנאים ומשווים לערך השמור.</p><h3>בדיקת החלופות</h3><div class=\"option-review\" data-option-review=\"0\"><h4>נכונה — את ה-salt, פרמטרי הגזירה הנדרשים וערך האימות המחושב</h4><p>בעת כניסה מפעילים שוב את הפונקציה על הסיסמה שהוקלדה באותם תנאים ומשווים לערך השמור.</p></div><div class=\"option-review\" data-option-review=\"1\"><h4>שגויה — רק את ה-salt</h4><p>אין עם מה להשוות את ערך האימות המחושב.</p></div><div class=\"option-review\" data-option-review=\"2\"><h4>שגויה — רק את ערך האימות ולבחור salt חדש בכל כניסה</h4><p>כך מחשבים על קלט שונה ולכן לא ניתן בדרך כלל לשחזר את ערך האימות.</p></div><div class=\"option-review\" data-option-review=\"3\"><h4>שגויה — את הסיסמה הגלויה, כדי לפענח את ערך האימות</h4><p>אימות מבוסס על חישוב והשוואה. לא נדרש לפענח את ערך האימות.</p></div></section>",
+    "topic": "Hash, MAC וסיסמאות",
+    "skill": "password",
+    "parent_id": "P24",
+    "history_ids": [
+      "P24",
+      "Q014",
+      "Q069",
+      "Q085",
+      "Q103",
+      "Q136"
+    ],
+    "year": "תרגול",
+    "recent_skill_dates": [
+      "02/11/2025",
+      "04/07/2024",
+      "17/09/2024",
+      "21/07/2025"
+    ],
+    "recent_b_dates": [
+      "04/07/2024",
+      "02/11/2025"
+    ],
+    "skill_transitions": [],
+    "latest_a_skill": false,
+    "topic_transitions": 4,
+    "confidence": 63,
+    "confidence_kind": "skill-confidence-not-probability",
+    "selection_score": 71,
+    "question_type": "multiple-choice",
+    "exclude": false,
+    "flags": [],
+    "fixed_order": false,
+    "sources": [
+      {
+        "file": "predictions-2.html",
+        "date": null,
+        "num": 60
+      }
+    ],
+    "answer_origin": "סט 2 · שאלת תרגול מקורית בסגנון הבחינות",
+    "solution": "solutions/B2-60.html"
+  }
+]

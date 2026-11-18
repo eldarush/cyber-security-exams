@@ -281,7 +281,7 @@ function srcLabel(q){ const s = q.sources.find(s=>s.date) || q.sources[0]; retur
 /* ---------- state ---------- */
 const S = {
   tab: 'setup',
-  cfg: Object.assign({mode:'digital', n:10, topics:[], years:[], shuffle:true, onlyMultipleChoice:true, skipNoted:false, wrongOnly:false, minutes:null, versions:2, verMode:'random', seed:''}, store.get('cfg', {})),
+  cfg: Object.assign({mode:'digital', n:10, topics:[], years:[], shuffle:true, onlyMultipleChoice:true, skipNoted:false, wrongOnly:false, minutes:null, prioritizeSet2Errors:true, versions:2, verMode:'random', seed:''}, store.get('cfg', {})),
   exam: null, result: null, print: null,
   bank: {q:'', topic:'', year:'', show:false}
 };
@@ -334,9 +334,15 @@ function renderSetup(app){
       <div><h2>מבחן חדש</h2><p class="sub">בוחרים שאלות מתוך ${QS.length} השאלות שנאספו מ-${countExams()} מבחנים, מערבבים, ומתחילים.</p></div>
       <div class="panel stack">
         <label class="field">מקור השאלות<select id="f-source">
-          ${[['','מבחני עבר — כל המאגר'],['latest','מועד א׳ · אוקטובר 2026'],['forecast-best','הסימולציה הממוקדת למועד ב׳ — 10 שאלות'],['forecast-lecture','תרגול תחזיות עם סימוכין במצגות'],['forecast-no-latest','חלופות ללא בונוס מועד א׳ — בדיקת רגישות'],['forecast-all','תחזית מועד ב׳ — כל 60 השאלות'],['forecast-focus','תחזית מועד ב׳ — 20 המדורגות ראשונות'],...Array.from({length:6},(_,i)=>['forecast-'+(i+1),'תחזית מועד ב׳ — סט '+(i+1)+' (10 שאלות)'])].map(([value,label]) => `<option value="${value}" ${selectedSet===value?'selected':''}>${label}</option>`).join('')}
+          ${[['','מבחני עבר — כל המאגר'],['latest','מועד א׳ · אוקטובר 2026'],['forecast-set2','תחזית מועד ב׳ — סט 2 (60 שאלות חדשות)'],['forecast-best','הסימולציה הממוקדת למועד ב׳ — 10 שאלות'],['forecast-lecture','תרגול תחזיות עם סימוכין במצגות'],['forecast-no-latest','חלופות ללא בונוס מועד א׳ — בדיקת רגישות'],['forecast-all','תחזית מועד ב׳ — כל 60 השאלות'],['forecast-focus','תחזית מועד ב׳ — 20 המדורגות ראשונות'],...Array.from({length:6},(_,i)=>['forecast-'+(i+1),'תחזית מועד ב׳ — סט '+(i+1)+' (10 שאלות)'])].map(([value,label]) => `<option value="${value}" ${selectedSet===value?'selected':''}>${label}</option>`).join('')}
         </select></label>
         <p class="sub">בחרו תחזית מועד ב׳ כדי ליצור מבחן משאלות התחזית בלבד. התשובות מעורבבות בכל ניסיון; פתרון מפורט לכל שאלה זמין לאחר ההגשה. התחזית היא חומר לתרגול, ולא בחינה עתידית ידועה.</p>
+        ${selectedSet==='forecast-set2' ? `<div class="study-intro">
+          <strong>סט 2 · 60 שאלות חדשות</strong>
+          <p class="sub">ברירת המחדל היא מבחן של 10 שאלות. ניתן לבחור ״כל המאגר״ כדי לתרגל את כל ה-60. <a href="predictions-2.html">רשימת השאלות, פתרונות ונימוקי הבחירה</a></p>
+          <label class="check"><input type="checkbox" id="f-set2-errors" ${c.prioritizeSet2Errors?'checked':''}>תן עדיפות לנושאים ולמיומנויות שבהם טעיתי</label>
+          <p class="sub">${set2History().size ? 'עדיפות אישית מבוססת על התשובות האחרונות שנשמרו במכשיר זה. היא עשויה לשנות את הבחירה עם אותו קוד מבחן.' : 'אין במכשיר זה תשובות קודמות רלוונטיות. הבחירה תתבסס על בחינות העבר.'}</p>
+        </div>` : '<a class="btn" href="index.html?set=forecast-set2#setup">תחזית מועד ב׳ · סט 2</a>'}
         <div class="study-intro"><strong>הסימולציה הממוקדת למועד ב׳ — 10 שאלות</strong>
           <p class="sub">השאלות בעלות הביטחון הגבוה ביותר בכל נושא, עם מיומנויות שונות ותמהיל משבעת מועדי ב׳: 2 PKI/CT, ‏2 הצפנה סימטרית, ואחת מכל נושא: RSA, ‏Hash/MAC, ‏Web, ביטקוין, DH ורשתות.</p>
           ${selectedSet==='forecast-no-latest' ? '<p class="sub">שאלות שנוספו כאשר מסירים את בונוס מועד א׳ ומחלקים את משקלו מחדש. זהו תרגול רגישות משלים ולא סימולציה מלאה או הוכחה שהשיטה החלופית מדויקת יותר. <a href="sensitivity.html">שיטת החישוב והמגבלות</a></p>' : ''}
@@ -407,6 +413,7 @@ function renderSetup(app){
   $('#f-n').onchange = e => { c.n = Math.max(1, Math.min(QS.length, +e.target.value||10)); c.minutes = null; save(); };
   $('#f-choice').onchange = e => { c.onlyMultipleChoice = e.target.checked; save(); };
   $('#f-noted').onchange = e => { c.skipNoted = e.target.checked; save(); };
+  if ($('#f-set2-errors')) $('#f-set2-errors').onchange = e => { c.prioritizeSet2Errors = e.target.checked; save(); };
   $('#f-wrong').onchange = e => { c.wrongOnly = e.target.checked; save(); };
   if ($('#f-min')) $('#f-min').onchange = e => { c.minutes = Math.max(0, +e.target.value||0); save(); };
   if ($('#f-ver')) $('#f-ver').onchange = e => { c.versions = Math.max(1, Math.min(20, +e.target.value||1)); save(); };
@@ -414,6 +421,56 @@ function renderSetup(app){
   $('#f-seed').onchange = e => { c.seed = e.target.value.replace(/\D/g,'').slice(0,9); store.set('cfg', c); };
   $('#start').onclick = start;
   bindHistoryMini(app);
+}
+
+function set2History(){
+  const usable = new Map([...BANK.questions, ...FORECAST, ...FORECAST_SET2].map(q => [q.id, q]));
+  const topics = new Set(FORECAST_SET2.map(q => q.topic));
+  const latest = new Map();
+  for (const attempt of store.get('history', [])) for (const answer of attempt.answers) {
+    const q = usable.get(answer.id);
+    if (q && topics.has(q.topic) && (q.revision || 1) === (answer.revision || 1)) {
+      latest.set(q.id, { ...answer, topic:q.topic, skill:q.skill });
+    }
+  }
+  return latest;
+}
+function chooseQuestions(questions, n, random){
+  const shuffled = shuffle(questions, random);
+  if (selectedSet !== 'forecast-set2' || n >= shuffled.length) return shuffled.slice(0, n);
+
+  const history = S.cfg.prioritizeSet2Errors ? set2History() : new Map();
+  const attempts = [...history.values()];
+  // Shrink sparse results toward zero so a single miss gives a modest boost.
+  const weakness = answers => answers.filter(a => !a.ok).length / (answers.length + 1);
+  const groups = new Map();
+  const scores = new Map();
+  for (const q of shuffled) {
+    if (!groups.has(q.topic)) groups.set(q.topic, {topic:q.topic, items:[], count:0,
+      weight:BEST_MOCK.target_counts[q.topic] * (1 + weakness(attempts.filter(a => a.topic === q.topic)))});
+    groups.get(q.topic).items.push(q);
+    const skillAnswers = attempts.filter(a => a.skill === q.skill || q.history_ids.includes(a.id));
+    scores.set(q.id, q.selection_score + 24 * weakness(skillAnswers));
+  }
+  for (const group of groups.values()) {
+    group.items.sort((a,b) => scores.get(b.id) - scores.get(a.id));
+  }
+
+  const usedSkills = new Set(), chosen = [];
+  while (chosen.length < n) {
+    const available = [...groups.values()].filter(group => group.items.length);
+    const fresh = available.filter(group => group.items.some(q => !usedSkills.has(q.skill)));
+    const candidates = fresh.length ? fresh : available;
+    candidates.sort((a,b) => (a.count === 0 ? 0 : 1) - (b.count === 0 ? 0 : 1) ||
+      b.weight / (b.count + 1) - a.weight / (a.count + 1));
+    const group = candidates[0];
+    const index = fresh.length ? group.items.findIndex(q => !usedSkills.has(q.skill)) : 0;
+    const [question] = group.items.splice(index, 1);
+    group.count++;
+    usedSkills.add(question.skill);
+    chosen.push(question);
+  }
+  return shuffle(chosen, random);
 }
 
 function makeItems(qs, r){
@@ -427,19 +484,19 @@ function start(ids){
   const n = Array.isArray(ids) ? P.length : Math.min(c.n, P.length);
   if (!n) return;
   if (c.mode === 'print' && !Array.isArray(ids)){
-    const versions = []; let remaining = P.slice(); const base = shuffle(P, r).slice(0, n);
+    const versions = []; let remaining = P.slice(); const base = chooseQuestions(P, n, r);
     for (let v=0; v<c.versions; v++){
       let chosen;
       if (c.verMode==='same') chosen = shuffle(base, r);
-      else if (c.verMode==='norepeat'){ chosen = shuffle(remaining, r).slice(0,n); remaining = remaining.filter(q => !chosen.includes(q)); }
-      else chosen = shuffle(P, r).slice(0, n);
+      else if (c.verMode==='norepeat'){ chosen = chooseQuestions(remaining, n, r); remaining = remaining.filter(q => !chosen.includes(q)); }
+      else chosen = chooseQuestions(P, n, r);
       versions.push(makeItems(chosen, r));
     }
     S.print = {seed, versions}; go('print'); return;
   }
   const mode = Array.isArray(ids) ? 'digital' : c.mode;
   const minutes = mode!=='digital' ? 0 : Array.isArray(ids) ? Math.round(n*8) : (c.minutes ?? Math.round(n*8));
-  S.exam = {seed, mode, items: makeItems(shuffle(P, r).slice(0, n), r), cur: 0, start: Date.now(), limit: minutes*60, done: false};
+  S.exam = {seed, mode, items: makeItems(chooseQuestions(P, n, r), r), cur: 0, start: Date.now(), limit: minutes*60, done: false};
   go('exam'); startTimer();
 }
 

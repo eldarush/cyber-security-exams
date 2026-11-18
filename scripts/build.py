@@ -9,6 +9,7 @@ from forecast_expansion import EXTRA
 from forecast_confidence import annotate
 from forecast_presentation import confidence_summary, forecast_intro, confidence_page
 from forecast_mock import select_mock, mock_page
+from forecast_set2 import build_set2, evidence_line
 from audit_skill_evidence import evaluate as audit_skill_evidence
 from cover_evidence import cover_page
 from backtest_presentation import backtest_page, allocation_section, skill_section
@@ -87,6 +88,8 @@ attach_lectures(pred)
 save('data/forecast-confidence.json',confidence_report)
 best_mock=select_mock(pred,confidence_report,PAIRS)
 save('data/forecast-best.json',best_mock)
+set2=build_set2(pred,PAIRS)
+save('data/forecast-set2.json',set2)
 sensitivity=allocation_sensitivity(pred,confidence_report,PAIRS,qbank)
 save('data/mock-sensitivity.json',sensitivity)
 for q in qbank+pred:
@@ -147,15 +150,19 @@ def answer_key(q):
     keys=['אבגד'[j]+'. '+q['options'][i] for j,i in enumerate(option_order(q)) if i in q['accepted_indices']]
     label='חלופות שהתקבלו בבדיקה: ' if len(keys)>1 else 'התשובה הנכונה כאן: '
     return '<p class="correct" data-answer-for="opts-'+q['id']+'">'+e(label+' / '.join(keys))+'</p>'
-for q in qbank+pred:
+for q in qbank+pred+set2:
     body='<p class="muted">'+e(q['id']+' · '+q['topic'])+'</p>'+paragraphs(q['stem'])+options(q)
-    if q.get('confidence'):body=confidence_summary(q,'../')+body
+    if q.get('parent_id'):
+        body=evidence_line(q,'../')+body
+    elif q.get('confidence'):body=confidence_summary(q,'../')+body
     body+=answer_key(q)
     if len(q['accepted_indices'])>1:
         body+='<p class="study-intro">הניקוד מכבד את החלופות שהתקבלו בבדיקה המקורית. הפתרון מסביר את ההסתייגות המקצועית.</p>'
     if q.get('note'):body+='<p class="study-intro">'+e(q['note'])+'</p>'
     body+=answer(q,'../')+'<p>'+srclinks(q,'../')+'</p>'
     if q['id'].startswith('P'):body+='<h2>למה לתרגל?</h2><p>עדיפות: '+q['priority']+' — שילוב של חזרתיות במשפחת הנושא, וריאציות במועדי ב׳ ופערים שנחשפו במועד א׳. אין זו הסתברות להופעת השאלה.</p><p>'+qlinks(q['evidence'],'../')+'</p><p><a href="../predictions.html#'+q['id']+'">חזרה לתחזית</a></p>'
+    if q.get('parent_id'):
+        body+='<p><a href="../predictions-2.html#'+q['id']+'">חזרה לסט 2</a></p>'
     page(q['solution'],q.get('title',q['id']+' — פתרון מפורט'),body,1)
 
 # Preserve all open subparts and duplicate/source variants from the local archive.
@@ -229,7 +236,15 @@ page('exam-covers.html','אימות מועדי א׳ וב׳ מול מסמכי ה�
 skill_audit=audit_skill_evidence(qbank,load('data/pairs.json'),pred,best_mock['question_ids'])
 save('data/skill-transition-audit.json',skill_audit)
 page('best-mock.html','הסימולציה הממוקדת למועד ב׳ — 10 שאלות',mock_page(best_mock,pred,skill_audit))
-page('predictions.html','לקראת מועד ב׳ — תחזית ותרגול',intro)
+set2_link='<div class="study-actions"><a class="primary" href="index.html?set=forecast-set2#setup">תרגול סט 2</a><a href="predictions-2.html">60 שאלות חדשות והנימוקים לבחירה</a></div>'
+page('predictions.html','לקראת מועד ב׳ — תחזית ותרגול',set2_link+intro)
+set2_body='''<p class="study-intro">60 שאלות בחירה חדשות בסגנון מועד ב׳. לכל שאלה ציון מיומנות מעל 60 מתוך 100, ארבע חלופות ופתרון מפורט. הציון מבטא עדיפות לתרגול. אין תחזית מכוילת לנוסח או להופעה במבחן.</p>
+<div class="study-actions"><a class="primary" href="index.html?set=forecast-set2#setup">פתיחת ההגדרות של סט 2</a><a href="predictions.html">חזרה למאגר התחזית הראשון</a></div>
+<h2>איך נבחרו המיומנויות?</h2><p>כל שאלה מתרגלת מיומנות שמקבלת יותר מ-60 בשיטת הדירוג של האתר. לבחירה מתוך סט 2 נוספה עדיפות למועדים מ-2024 עד 2026, עם נקודה לכל מועד שתומך במיומנות, שתי נקודות נוספות לכל מועד ב׳ בזוג מאומת, שתי נקודות לכל זוג שבו מופתה המיומנות בשני המועדים ושלוש נקודות למיפוי במועד א׳ של אוקטובר 2026. בעמוד ההגדרות אפשר לתת משקל נוסף לטעויות מהדפדפן המקומי. במבחן של 10 שאלות נפרסות תחילה מיומנויות שונות על פני הנושאים הזמינים, והיתר נבחרות לפי התמהיל ההיסטורי והעדיפות שנבחרה. הנתונים אינם נשלחים לשרת.</p><p><a href="confidence.html">נתוני הביטחון המקוריים</a> · <a href="exam-covers.html">מועדי א׳/ב׳ שאומתו</a></p>'''
+for q in sorted(set2,key=lambda q:(-q['selection_score'],q['id'])):
+    set2_body+=f'<article id="{q["id"]}" class="study-card" data-question-type="multiple-choice"><h3>{q["id"]} · {e(q["title"])}</h3>'+evidence_line(q)+paragraphs(q['stem'])+options(q)
+    set2_body+='<details class="answer-detail"><summary>הצגת הפתרון והסבר כל החלופות</summary>'+answer_key(q)+answer(q)+f'<p><a href="{q["solution"]}">פתרון בעמוד נפרד</a></p></details></article>'
+page('predictions-2.html','תחזית מועד ב׳ — סט 2',set2_body)
 
 audit='''<p class="sub">בדיקה בדיעבד של התחזית הישנה, ואחריה ניתוח א׳→ב׳ לצורך תכנון הלמידה הבא.</p><div class="study-intro"><strong>לא נחשב ״דיוק״ לפי שם הנושא בלבד.</strong><p>ב-50 התרגילים שנכתבו לפני אוקטובר מצאנו 2 התאמות קרובות, 3 התאמות חלקיות ו-5 פערים ביחס ל-10 שאלות הבחינה. זהו סיווג ידני של כיסוי מיומנות, לא ציון צפוי ולא אומדן סטטיסטי של דיוק. תחזית רחבה של 50 שאלות אינה שקולה לניבוי של מבחן בן 10.</p></div><p><a href="old-forecast.html">התחזית הישנה והתרגילים המקוריים</a> · <a href="latest.html">בחינת אוקטובר בפועל</a></p><h2>התחזית מול כל שאלה בפועל</h2><p>״קרוב״: מנגנון הפתרון המרכזי תורגל במפורש. ״חלקי״: אותה משפחת מושגים, אך פעולה או הנחה חשובה השתנתה. ״פער״: אין תרגיל ישיר במיומנות בסט הישן. חומר הסבר רחב עשוי להזכיר יותר נושאים; הטבלה אינה טוענת שהמושג נעדר מכל מסמך בתיקייה.</p><div class="study-table"><table><thead><tr><th>שאלה בפועל</th><th>סיווג</th><th>תרגול ישן</th><th>מה למדנו</th></tr></thead><tbody>'''
 for row in AUDIT:
@@ -268,30 +283,31 @@ template=(R/'scripts/index.template.html').read_text(encoding='utf-8')
 template=template.replace('__BANK_JSON__',json.dumps(original,ensure_ascii=False,separators=(',',':')))
 template=template.replace('__BEST_MOCK_JSON__',json.dumps(best_mock,ensure_ascii=False,separators=(',',':')))
 template=template.replace('const QS = BANK.questions.filter(q => !q.exclude);', '''const FORECAST = '''+json.dumps(pred,ensure_ascii=False,separators=(',',':'))+''';
+const FORECAST_SET2 = '''+json.dumps(set2,ensure_ascii=False,separators=(',',':'))+''';
 const requestedSet = new URLSearchParams(location.search).get('set') || '';
-const selectedSet = ['latest','forecast-all','forecast-focus','forecast-best','forecast-lecture','forecast-no-latest',...Array.from({length:6},(_,i)=>'forecast-'+(i+1))].includes(requestedSet) ? requestedSet : '';
-const isForecast = /^forecast-([1-6]|all|focus|best|lecture|no-latest)$/.test(selectedSet);
+const selectedSet = ['latest','forecast-all','forecast-focus','forecast-best','forecast-set2','forecast-lecture','forecast-no-latest',...Array.from({length:6},(_,i)=>'forecast-'+(i+1))].includes(requestedSet) ? requestedSet : '';
+const isForecast = /^forecast-([1-6]|all|focus|best|set2|lecture|no-latest)$/.test(selectedSet);
 const NO_LATEST_IDS = '''+json.dumps(next(x['added'] for x in sensitivity['weight_tests'] if x['omitted_component']=='latest_a'),ensure_ascii=False)+''';
 const rankedForecast = [...FORECAST].sort((a,b)=>b.confidence-a.confidence || a.id.localeCompare(b.id));
-const QS = selectedSet==='forecast-no-latest' ? NO_LATEST_IDS.map(id=>FORECAST.find(q=>q.id===id)) : selectedSet==='forecast-lecture' ? FORECAST.filter(q=>q.question_type==='multiple-choice' && q.lecture_evidence) : selectedSet==='forecast-best' ? BEST_MOCK.question_ids.map(id=>FORECAST.find(q=>q.id===id)) : isForecast ? (selectedSet==='forecast-focus' ? rankedForecast.slice(0,20) : FORECAST.filter(q => q.question_type==='multiple-choice' && (selectedSet==='forecast-all' || q.mock===Number(selectedSet.slice(-1))))) : BANK.questions.filter(q => q.question_type==='multiple-choice' && !q.exclude && (selectedSet!=='latest' || q.sources.some(s=>s.date==='19/10/2026')));
-const collectionName = selectedSet==='forecast-no-latest' ? 'תרגול חלופות ללא בונוס מועד א׳' : selectedSet==='forecast-lecture' ? 'תרגול תחזיות עם סימוכין במצגות' : selectedSet==='forecast-best' ? 'הסימולציה הממוקדת למועד ב׳ — 10 שאלות בתמהיל היסטורי' : isForecast ? 'תרגול תחזית מועד ב׳ — שאלות שחוברו לתרגול' : selectedSet==='latest' ? 'מועד א׳ · 19/10/2026' : 'מאגר הבחינות';''')
+const QS = selectedSet==='forecast-set2' ? FORECAST_SET2 : selectedSet==='forecast-no-latest' ? NO_LATEST_IDS.map(id=>FORECAST.find(q=>q.id===id)) : selectedSet==='forecast-lecture' ? FORECAST.filter(q=>q.question_type==='multiple-choice' && q.lecture_evidence) : selectedSet==='forecast-best' ? BEST_MOCK.question_ids.map(id=>FORECAST.find(q=>q.id===id)) : isForecast ? (selectedSet==='forecast-focus' ? rankedForecast.slice(0,20) : FORECAST.filter(q => q.question_type==='multiple-choice' && (selectedSet==='forecast-all' || q.mock===Number(selectedSet.slice(-1))))) : BANK.questions.filter(q => q.question_type==='multiple-choice' && !q.exclude && (selectedSet!=='latest' || q.sources.some(s=>s.date==='19/10/2026')));
+const collectionName = selectedSet==='forecast-set2' ? 'תחזית מועד ב׳ — סט 2' : selectedSet==='forecast-no-latest' ? 'תרגול חלופות ללא בונוס מועד א׳' : selectedSet==='forecast-lecture' ? 'תרגול תחזיות עם סימוכין במצגות' : selectedSet==='forecast-best' ? 'הסימולציה הממוקדת למועד ב׳ — 10 שאלות בתמהיל היסטורי' : isForecast ? 'תרגול תחזית מועד ב׳ — שאלות שחוברו לתרגול' : selectedSet==='latest' ? 'מועד א׳ · 19/10/2026' : 'מאגר הבחינות';''')
 template=template.replace('</head>','<link rel="stylesheet" href="'+asset('study.css')+'"><script src="'+asset('answer-order.js')+'"></script></head>')
 template=template.replace('אותו קוד = אותו מבחן', 'אותו קוד = אותן שאלות; סדר התשובות מתחדש')
 template=template.replace('</body>', '<script src="'+asset('study.js')+'" defer></script></body>')
 template=template.replace('<main ', '<main ',1)
 template=template.replace('<body>','<body><a class="skip-link" href="#app">דלג לתוכן</a>')
-template=template.replace('</header>','''</header><div class="study-banner"><div class="wrap"><a href="predictions.html">תחזית מועד ב׳ · 60 שאלות ופתרונות</a><a href="latest.html">בחינת אוקטובר 2026</a><a href="analysis.html">בדיקת התחזית הקודמת</a><a href="archive.html">כל הפתרונות</a><a href="index.html#setup">כל מאגר הבחינות</a></div></div>''',1)
+template=template.replace('</header>','''</header><div class="study-banner"><div class="wrap"><a href="predictions-2.html">תחזית סט 2 · 60 שאלות חדשות</a><a href="predictions.html">תחזית מועד ב׳ · הסט הראשון</a><a href="latest.html">בחינת אוקטובר 2026</a><a href="analysis.html">בדיקת התחזית הקודמת</a><a href="archive.html">כל הפתרונות</a><a href="index.html#setup">כל מאגר הבחינות</a></div></div>''',1)
 template=template.replace('function renderStats(app){', '''function renderStats(app){
   if(isForecast){app.innerHTML='<div class="panel stack"><h2>תחזית אינה נתון היסטורי</h2><p>השאלות בסט הזה נבחרו לתרגול. אין להציג אותן כהופעות במבחני עבר.</p><a href="analysis.html">ניתוח א׳/ב׳ והראיות לבחירה</a><a href="index.html#stats">סטטיסטיקת מאגר הבחינות</a></div>';return;}''')
 template=template.replace('בוחרים שאלות מתוך ${QS.length} השאלות שנאספו מ-${countExams()} מבחנים, מערבבים, ומתחילים.', '${esc(collectionName)} · ${QS.length} שאלות זמינות. בוחרים מצב, מערבבים ומתחילים. לכל שאלה פתרון מפורט לאחר המענה.')
 # Isolate history from other GitHub Pages applications sharing the eldarush origin.
 template=template.replace('localStorage.getItem(k)', "localStorage.getItem('cyber-study-v2:'+k)").replace('localStorage.setItem(k,', "localStorage.setItem('cyber-study-v2:'+k,")
-template=template.replace('function srcLabel(q){', "function srcLabel(q){ if(q.id.startsWith('P')) return 'תרגיל תחזית '+q.id+' · אינו שאלת בחינה מקורית';")
+template=template.replace('function srcLabel(q){', "function srcLabel(q){ if(q.id.startsWith('B2-')) return 'סט תחזית 2 · '+q.id; if(q.id.startsWith('P')) return 'תרגיל תחזית '+q.id+' · אינו שאלת בחינה מקורית';")
 template=template.replace("/* ---------- seeded random ---------- */",'''function solutionDetails(q){return `<details class="answer-detail"><summary>פתרון מפורט — הסבר וניתוח הטעויות</summary><p class="correct"><b>התשובה הנכונה:</b> ${esc(q.options[0])}</p><p class="study-source">${esc(q.answer_origin || '')} · אותיות בפתרון מיובא מתייחסות למקור, ולא לסדר שהוגרל.</p>${q.answer_html}<p><a href="${q.solution}" target="_blank" rel="noopener">פתרון בעמוד נפרד</a></p></details>`;}
 /* ---------- seeded random ---------- */''')
 template=template.replace('function solutionDetails(q){', '''function isCorrect(q,index){return (q.accepted_indices || [0]).includes(index);}
 function correctLetters(item){return item.order.map((oi,j)=>isCorrect(item.q,oi)?LET[j]:null).filter(Boolean).join(' / ');}
-function confidenceBadge(q){return q.confidence ? `<p class="study-source"><b>ביטחון במיומנות: ${q.confidence}/100</b> · מדד שיפוטי, לא הסתברות לניסוח המדויק · <a href="confidence.html" target="_blank" rel="noopener">שיטת הדירוג</a></p>${q.lecture_evidence ? `<p class="study-source">חומר מהתיקייה: ${esc(q.lecture_evidence.file)}, עמ׳ PDF ${esc(q.lecture_evidence.pages)} · <a href="syllabus-coverage.html#lecture-evidence" target="_blank" rel="noopener">פירוט ומגבלות</a></p>` : ''}` : '';}
+function confidenceBadge(q){return q.confidence ? `<p class="study-source"><b>ביטחון במיומנות: ${q.confidence}/100</b> · מדד שיפוטי, לא הסתברות לניסוח המדויק · <a href="${q.parent_id ? 'predictions-2.html#'+q.id : 'confidence.html'}" target="_blank" rel="noopener">שיטת הדירוג</a></p>${q.lecture_evidence ? `<p class="study-source">חומר מהתיקייה: ${esc(q.lecture_evidence.file)}, עמ׳ PDF ${esc(q.lecture_evidence.pages)} · <a href="syllabus-coverage.html#lecture-evidence" target="_blank" rel="noopener">פירוט ומגבלות</a></p>` : ''}` : '';}
 function solutionDetails(q){''')
 template=template.replace('<p class="correct"><b>התשובה הנכונה:</b> ${esc(q.options[0])}</p>', '<p class="correct">${q.accepted_indices?.length>1 ? `<b>הערת בדיקה: ${esc(q.note)}</b> · ההסבר מפרט את ההסתייגות; הניקוד מכבד את החלופות שהתקבלו.` : `<b>התשובה הנכונה:</b> ${esc(q.options[0])}`}</p>')
 for oldexpr,newexpr in [
@@ -313,7 +329,7 @@ template=template.replace("</div>` : ''}\n        <div class=\"qnav\">", "</div>
 template=template.replace('<span class="mono">${q.id}</span></div>','<span class="mono">${q.id}</span></div>${solutionDetails(q)}')
 template=template.replace("${q.note?`<div class=\"meta-line\">${esc(q.note)}</div>`:''}","${q.note?`<div class=\"meta-line\">${esc(q.note)}</div>`:''}${solutionDetails(q)}")
 template=template.replace('tabFromHash();\nrender();', '''if ((S.cfg.collection || '') !== selectedSet) {
-  S.cfg = {...S.cfg, collection:selectedSet, mode:['forecast-best','forecast-lecture','forecast-no-latest'].includes(selectedSet)?'digital':S.cfg.mode, n:selectedSet==='forecast-best'?10:['forecast-lecture','forecast-no-latest'].includes(selectedSet)?QS.length:Math.min(S.cfg.n,QS.length),topics:[],years:[],wrongOnly:false,skipNoted:false,minutes:null,shuffle:true,onlyMultipleChoice:true};
+  S.cfg = {...S.cfg, collection:selectedSet, mode:['forecast-best','forecast-set2','forecast-lecture','forecast-no-latest'].includes(selectedSet)?'digital':S.cfg.mode, n:['forecast-best','forecast-set2'].includes(selectedSet)?10:['forecast-lecture','forecast-no-latest'].includes(selectedSet)?QS.length:Math.min(S.cfg.n,QS.length),topics:[],years:[],wrongOnly:false,skipNoted:false,minutes:null,shuffle:true,onlyMultipleChoice:true};
   store.set('cfg', S.cfg);
 }
 tabFromHash();
@@ -327,5 +343,5 @@ for path in legacy_pages:
     target='../'*(len(Path(path).parts)-1)+'index.html#setup'
     write(path,'<!doctype html><html lang="he" dir="rtl"><head><meta charset="utf-8"><meta http-equiv="refresh" content="0;url='+target+'"><title>תרגול מעודכן</title></head><body><p>התרגול וההדפסה זמינים בגרסה המעודכנת, עם ערבוב אוטומטי ומפתח תואם.</p><a href="'+target+'">פתיחת התרגול המעודכן</a></body></html>')
 write('.nojekyll','')
-save('data/build-summary.json',dict(actual_questions=len(qbank),dated_occurrences=sum(len(v) for v in bydate.values()),dated_exams=len(bydate),paired_exams=len(pairdata),predicted_questions=len(pred),reused_answers=162,new_answers=20,archive_documents=len(archive),built='2026-11-14'))
+save('data/build-summary.json',dict(actual_questions=len(qbank),dated_occurrences=sum(len(v) for v in bydate.values()),dated_exams=len(bydate),paired_exams=len(pairdata),predicted_questions=len(pred),set2_questions=len(set2),reused_answers=162,new_answers=20,archive_documents=len(archive),built='2026-11-14'))
 print(json.dumps(load('data/build-summary.json')))

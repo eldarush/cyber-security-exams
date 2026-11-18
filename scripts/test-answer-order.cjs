@@ -52,7 +52,7 @@ const start = source.match(/function start\(ids\)\{[\s\S]*?(?=\/\* ---------- ex
 const generation = vm.createContext({
   store: { get(key, fallback) { return key === 'cfg' ? { n: 10 } : fallback; } },
   QS: [{id:'choice', question_type:'multiple-choice'}, {id:'open', question_type:'open'}],
-  rng() {}, shuffle: items => items.slice(), makeItems: items => items.map(q => ({q})),
+  rng() {}, shuffle: items => items.slice(), chooseQuestions: (items,n) => items.slice(0,n), makeItems: items => items.map(q => ({q})),
   go() {}, startTimer() {}, Date, Math
 });
 vm.runInContext(state + pool + start, generation);

@@ -9,6 +9,24 @@ R=Path(__file__).resolve().parents[1]
 def load(p):return json.loads((R/p).read_text(encoding='utf-8'))
 bank=load('data/bank.json')['questions'];forecast=load('data/forecast.json');pairs=load('data/pairs.json')
 assert len(bank)==182 and len(forecast)==60 and len(pairs)==7
+set2=load('data/forecast-set2.json')
+assert len(set2)==60
+parents={q['id']:q for q in forecast}
+assert len({q['id'] for q in bank+forecast+set2})==302
+assert len({q['stem'] for q in bank+forecast+set2}) == len({q['stem'] for q in bank+forecast})+60
+for q in set2:
+    assert q['question_type']=='multiple-choice' and q['accepted_indices']==[0]
+    assert len(set(q['options']))==4 and len(q['option_explanations'])==4
+    parent=parents[q['parent_id']]
+    assert q['confidence']==parent['confidence']>60
+    assert q['skill']==parent['skill'] and q['topic']==parent['topic']
+    assert q['latest_a_skill']==parent['confidence_basis']['latest_a_skill']
+    recent={d for d in parent['confidence_basis']['skill_dates'] if d[-4:] in {'2024','2025','2026'}}
+    assert set(q['recent_skill_dates'])==recent
+    assert q['recent_b_dates']==[p['b'] for p in pairs if p['b'] in recent]
+    assert q['skill_transitions']==[[p['a'],p['b']] for p in pairs if p['a'] in recent and p['b'] in recent]
+    assert q['selection_score']==q['confidence']+len(recent)+2*len(q['recent_b_dates'])+2*len(q['skill_transitions'])+3*q['latest_a_skill']
+    assert (R/q['solution']).exists()
 from allocation_backtest import evaluate as evaluate_allocation
 allocation=load('data/allocation-backtest.json')
 assert allocation==evaluate_allocation(load('data/forecast-confidence.json'), pairs)
@@ -89,7 +107,7 @@ class Links(HTMLParser):
         for attr in ['href','src']:
             if attr in attrs:self.links.append(attrs[attr])
 
-files=[R/f for f in ['index.html','latest.html','predictions.html','analysis.html','confidence.html','backtest.html','sensitivity.html','best-mock.html','exam-covers.html','operation-changes.html','syllabus-coverage.html','archive.html','old-forecast.html']]+list((R/'solutions').glob('*.html'))
+files=[R/f for f in ['index.html','latest.html','predictions.html','predictions-2.html','analysis.html','confidence.html','backtest.html','sensitivity.html','best-mock.html','exam-covers.html','operation-changes.html','syllabus-coverage.html','archive.html','old-forecast.html']]+list((R/'solutions').glob('*.html'))
 parsed={}
 for p in files:
     h=Links();h.feed(p.read_text(encoding='utf-8'));parsed[p.resolve()]=h
@@ -141,4 +159,4 @@ for p in files:
         list_id=re.search(r'id="([^"]+)"',attrs)[1]
         assert 'data-answer-for="'+list_id+'"' in doc,p
         assert 'answer-order.js' in doc and 'study.js' in doc,p
-print(json.dumps({'html_pages_checked':len(files),'local_links_checked':links,'past_questions':182,'forecast_questions':60,'pairs':7,'arithmetic':'passed','javascript_syntax':'passed'},indent=2))
+print(json.dumps({'html_pages_checked':len(files),'local_links_checked':links,'past_questions':182,'forecast_questions':60,'set2_questions':len(set2),'pairs':7,'arithmetic':'passed','javascript_syntax':'passed'},indent=2))

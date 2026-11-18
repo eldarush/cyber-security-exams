@@ -6,7 +6,7 @@ const root = path.join(__dirname, '..');
 const source = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 const extract = (from, to) => source.slice(source.indexOf(from), source.indexOf(to, source.indexOf(from)));
 const state = extract('const S = {', '/* ---------- tabs');
-const generation = extract('function makeItems(', '/* ---------- exam');
+const generation = extract('function set2History(', '/* ---------- exam');
 const finish = extract('function finish(', '/* ---------- results');
 const helpers = extract('function isCorrect(', '/* ---------- seeded random');
 const random = extract('function rng(', '/* ---------- state');
@@ -31,7 +31,7 @@ function harness(set = '', initial = {}) {
   return {context, storage, button, run: expression => vm.runInContext(expression, context)};
 }
 
-for (const [set, count] of [['',182], ['latest',10], ['forecast-all',60], ['forecast-focus',20], ['forecast-best',10], ['forecast-lecture',10], ['forecast-no-latest',6], ['forecast-1',10], ['forecast-2',10], ['forecast-3',10], ['forecast-4',10], ['forecast-5',10], ['forecast-6',10]]) {
+for (const [set, count] of [['',182], ['latest',10], ['forecast-all',60], ['forecast-focus',20], ['forecast-best',10], ['forecast-set2',60], ['forecast-lecture',10], ['forecast-no-latest',6], ['forecast-1',10], ['forecast-2',10], ['forecast-3',10], ['forecast-4',10], ['forecast-5',10], ['forecast-6',10]]) {
   const h = harness(set, { cfg: {collection: 'old-source', years:['2022'], topics:['old-topic'], skipNoted:true, wrongOnly:true, n:10} });
   assert.equal(h.run('QS.length'), count);
   assert.equal(h.run('pool().length'), count);
@@ -40,7 +40,7 @@ for (const [set, count] of [['',182], ['latest',10], ['forecast-all',60], ['fore
   assert.equal(h.run('S.exam.items.length'), Math.min(count, 10));
   assert.equal(h.run('S.exam.items.every(x => x.order.length===4 && new Set(x.order).size===4)'), true);
   if (set.startsWith('forecast')) {
-    assert.equal(h.run('S.exam.items.every(x=>x.q.id.startsWith("P"))'), true);
+    assert.equal(h.run('S.exam.items.every(x=>x.q.id.startsWith("P") || x.q.id.startsWith("B2-"))'), true);
     // The forecast disclaimer must not be mistaken for a cancelled exam question.
     h.run('S.cfg.skipNoted=true');
     assert.equal(h.run('pool().length'), count);
@@ -158,4 +158,31 @@ assert.equal(mixed.storage.get('cyber-study-v2:history'), '[]');
 assert.equal(JSON.parse(mixed.storage.get('cyber-study-v2:cfg')).wrongOnly, false);
 assert.equal(mixed.run('pool().length'), 60);
 assert.equal(mixed.run('wrongQuestionIds().size'), 0);
-console.log('Exam flow: thirteen sources; lecture-backed set; full balanced mock; shuffled grading and explanations; wrong-only latest results; reload; clear-history confirmation and recovery passed.');
+console.log('Exam flow: fourteen sources; lecture-backed set; full balanced mock; shuffled grading and explanations; wrong-only latest results; reload; clear-history confirmation and recovery passed.');
+
+// Fixed seed lets us compare the effect of local history on the exact same pool.
+const set2Cfg = {collection:'forecast-set2', mode:'digital', n:10, seed:'251932'};
+const localSet2 = harness('forecast-set2', {cfg:set2Cfg});
+localSet2.run('start()');
+assert.equal(localSet2.run('new Set(S.exam.items.map(x=>x.q.skill)).size'), 10);
+assert.equal(localSet2.run('new Set(S.exam.items.map(x=>x.q.topic)).size'), 6);
+const baselineSkills = localSet2.run('S.exam.items.map(x=>x.q.skill).sort().join()');
+function mockWithHistory(answers, enabled=true) {
+  const h = harness('forecast-set2', {cfg:{...set2Cfg, prioritizeSet2Errors:enabled}, history:[{answers}]});
+  h.run('start()');
+  return h;
+}
+const skills = localSet2.run('FORECAST_SET2.map(q=>q.skill).join()');
+assert(skills.includes('password'));
+const history = ['P24','Q014','Q085','Q103','Q136'].map(id=>({id, ok:false}));
+const personal = mockWithHistory(history);
+assert.equal(personal.run('set2History().size'), history.length);
+assert.notEqual(personal.run('S.exam.items.map(x=>x.q.skill).sort().join()'), baselineSkills);
+assert.equal(personal.run('S.exam.items.some(x=>x.q.skill==="password")'), true);
+assert.equal(mockWithHistory(history,false).run('S.exam.items.map(x=>x.q.skill).sort().join()'), baselineSkills);
+assert.equal(mockWithHistory(history.concat(history.map(a=>({...a,ok:true})))).run('S.exam.items.map(x=>x.q.skill).sort().join()'), baselineSkills);
+assert.equal(mockWithHistory([{id:'P52',ok:false},{id:'unknown',ok:false}]).run('set2History().size'), 0);
+personal.run('S.cfg.n=60; start(); S.exam.items.forEach(x=>x.ans=x.order.indexOf(0)); finish(false)');
+assert.equal(personal.run('S.result.total'), 60);
+assert.equal(personal.run('S.result.score'), 100);
+console.log('Set 2: balanced digital exam, local mistake priority, latest-answer recovery, stale history exclusion and full 60-question grade passed.');
